@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premium ⭐ — Aprueba tu carnet más rápido | Aprobados Ya</title>
+  <meta name="description" content="Consigue el acceso Premium de Aprobados Ya y aprueba tu examen teórico DGT a la primera. Tests ilimitados, sin publicidad, estadísticas avanzadas y mucho más."/>
+  <link rel="canonical" href="https://aprobadosya.com/premium"/>
+  <meta property="og:title" content="Premium ⭐ — Aprobados Ya"/>
+  <meta property="og:description" content="Aprueba tu carnet DGT más rápido con acceso Premium. Tests ilimitados, sin anuncios y estadísticas personalizadas."/>
+  <meta property="og:image" content="https://aprobadosya.com/images/og_image.jpg"/>
+  <meta property="og:url" content="https://aprobadosya.com/premium"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#5C6B1A"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style_v2.css?v=7"/>
+  <style>
+    .premium-page { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
+    .premium-hero { text-align: center; margin-bottom: 60px; }
+    .premium-hero .badge { background: linear-gradient(135deg, #f6d365, #fda085); color: #7B3F00; padding: 6px 18px; border-radius: 30px; font-weight: 700; font-size: 14px; display: inline-block; margin-bottom: 16px; }
+    .premium-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; color: var(--text); line-height: 1.15; margin-bottom: 16px; }
+    .premium-hero h1 span { color: var(--olive); }
+    .premium-hero p { font-size: 18px; color: var(--text2); max-width: 580px; margin: 0 auto; line-height: 1.7; }
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 60px; }
+    @media (max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } }
+    .plan-card { border-radius: 20px; padding: 32px; border: 2px solid var(--border); background: var(--bg-card); }
+    .plan-card.premium { border-color: var(--olive); box-shadow: 0 8px 32px rgba(92,107,26,0.15); position: relative; overflow: hidden; }
+    .plan-card.premium::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--olive), var(--olive-light)); }
+    .plan-name { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text3); margin-bottom: 8px; }
+    .plan-card.premium .plan-name { color: var(--olive); }
+    .plan-price { font-size: 2.4rem; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+    .plan-price span { font-size: 16px; font-weight: 500; color: var(--text2); }
+    .plan-desc { font-size: 14px; color: var(--text2); margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+    .plan-feature { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--text); padding: 8px 0; }
+    .plan-feature .icon { font-size: 18px; width: 24px; text-align: center; }
+    .plan-feature.disabled { color: var(--text3); text-decoration: line-through; opacity: 0.6; }
+    .premium-btn { width: 100%; margin-top: 28px; padding: 16px; background: var(--olive); color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+    .premium-btn:hover { background: var(--olive-hover); }
+    .free-btn { width: 100%; margin-top: 28px; padding: 16px; background: transparent; color: var(--text2); border: 2px solid var(--border); border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; }
+    .trust-badges { text-align: center; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text2); font-weight: 500; }
+    .faq { max-width: 640px; margin: 0 auto 60px; }
+    .faq h2 { font-size: 1.6rem; font-weight: 800; text-align: center; margin-bottom: 32px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-q { font-weight: 700; color: var(--text); font-size: 15px; margin-bottom: 8px; }
+    .faq-a { color: var(--text2); font-size: 14px; line-height: 1.7; }
+    #premiumStatusBanner { background: var(--olive-pale); border: 1px solid var(--olive-border); border-radius: 12px; padding: 16px 20px; margin-bottom: 32px; text-align: center; color: var(--olive); font-weight: 600; display: none; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER mínimo -->
+<header class="site-header" style="position:sticky;top:0;z-index:100;">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <div class="logo-mark">AY</div>
+      <div class="logo-text"><span class="logo-a">Aprobados</span><span class="logo-ya"> YA</span></div>
+    </a>
+    <div class="right-nav">
+      <a href="/" class="outline-btn" style="padding:8px 16px;font-size:14px;">← Volver a los tests</a>
+    </div>
+  </div>
+</header>
+
+<main class="premium-page">
+
+  <!-- Banner si ya es Premium -->
+  <div id="premiumStatusBanner">✅ Ya eres usuario Premium. ¡Disfruta de todos los beneficios!</div>
+
+  <!-- Hero -->
+  <div class="premium-hero">
+    <div class="badge">⭐ Aprobados Ya Premium</div>
+    <h1>Aprueba tu carnet<br><span>más rápido</span></h1>
+    <p>Acceso completo a todos los tests, sin publicidad, con estadísticas avanzadas y sincronización entre dispositivos. La forma más eficiente de preparar el examen DGT.</p>
+  </div>
+
+  <!-- Comparativa -->
+  <div class="compare-grid">
+    <!-- GRATIS -->
+    <div class="plan-card">
+      <div class="plan-name">Gratis</div>
+      <div class="plan-price">0€ <span>/ siempre</span></div>
+      <div class="plan-desc">Empieza a practicar sin compromiso.</div>
+      <div class="plan-feature"><span class="icon">✅</span> Tests básicos del Permiso B</div>
+      <div class="plan-feature"><span class="icon">✅</span> 1 test gratuito sin registro</div>
+      <div class="plan-feature disabled"><span class="icon">🔒</span> Tests de todos los permisos</div>
+      <div class="plan-feature disabled"><span class="icon">🔒</span> Modo Memorizar</div>
+      <div class="plan-feature disabled"><span class="icon">🔒</span> Mis errores</div>
+      <div class="plan-feature disabled"><span class="icon">🔒</span> Estadísticas avanzadas</div>
+      <div class="plan-feature disabled"><span class="icon">🔒</span> Sincronización entre dispositivos</div>
+      <div class="plan-feature disabled"><span class="icon">🔒</span> Sin publicidad</div>
+      <button class="free-btn" onclick="window.location.href='/'">Continuar gratis</button>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="plan-card premium">
+      <div class="plan-name">⭐ Premium</div>
+      <div class="plan-price" id="premiumPrice">—<span> / mes</span></div>
+      <div class="plan-desc">Todo incluido para aprobar a la primera.</div>
+      <div class="plan-feature"><span class="icon">✅</span> <strong>Todos los tests — todos los permisos</strong></div>
+      <div class="plan-feature"><span class="icon">✅</span> <strong>Modo Memorizar completo</strong></div>
+      <div class="plan-feature"><span class="icon">✅</span> <strong>Mis errores y repaso dirigido</strong></div>
+      <div class="plan-feature"><span class="icon">✅</span> <strong>Estadísticas avanzadas</strong></div>
+      <div class="plan-feature"><span class="icon">✅</span> <strong>Mi Preparación con seguimiento</strong></div>
+      <div class="plan-feature"><span class="icon">✅</span> <strong>Sincronización entre dispositivos</strong></div>
+      <div class="plan-feature"><span class="icon">✅</span> <strong>Sin publicidad</strong></div>
+      <button class="premium-btn" id="btnGetPremium" onclick="startCheckout()">🚀 Conseguir Premium</button>
+    </div>
+  </div>
+
+  <!-- Trust badges -->
+  <div class="trust-badges">
+    <div class="trust-item">🔒 Pago 100% seguro</div>
+    <div class="trust-item">💳 Stripe Checkout</div>
+    <div class="trust-item">↩️ Cancela cuando quieras</div>
+    <div class="trust-item">📱 iOS + Android + PC</div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq-item">
+      <div class="faq-q">¿Puedo cancelar en cualquier momento?</div>
+      <div class="faq-a">Sí. Puedes cancelar tu suscripción en cualquier momento desde tu perfil. Seguirás teniendo acceso Premium hasta el final del período pagado.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Qué métodos de pago aceptáis?</div>
+      <div class="faq-a">Aceptamos tarjeta de crédito y débito (Visa, Mastercard, American Express) a través de Stripe, la pasarela de pagos más segura del mundo.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Los tests son oficiales de la DGT?</div>
+      <div class="faq-a">Sí. Todas las preguntas están basadas en el banco oficial de preguntas de la DGT y se actualizan regularmente.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Funciona en el móvil?</div>
+      <div class="faq-a">Sí. Aprobados Ya es una Progressive Web App (PWA). Puedes instalarla en tu iPhone o Android y estudiar con o sin conexión.</div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Footer legal mínimo -->
+<footer style="text-align:center; padding: 24px; font-size:13px; color: var(--text3); border-top: 1px solid var(--border);">
+  <a href="/privacidad" style="color:var(--text3);margin:0 8px;">Privacidad</a>
+  <a href="/terminos" style="color:var(--text3);margin:0 8px;">Términos</a>
+  <a href="/cookies" style="color:var(--text3);margin:0 8px;">Cookies</a>
+  <span style="margin:0 8px;">© 2024 Aprobados Ya</span>
+</footer>
+
+<script type="module" src="auth.js"></script>
+<script>
+async function startCheckout() {
+  const btn = document.getElementById('btnGetPremium');
+  if (btn) { btn.textContent = '⏳ Preparando pago...'; btn.disabled = true; }
+
+  try {
+    // Verificar si ya está logado
+    const { supabase } = await import('./auth.js').catch(() => ({ supabase: null }));
+    
+    const response = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ returnUrl: window.location.href })
+    });
+    
+    if (!response.ok) {
+      throw new Error('Error al crear sesión de pago');
+    }
+
+    const { url } = await response.json();
+    if (url) {
+      window.location.href = url;
+    }
+  } catch (err) {
+    console.error('Error checkout:', err);
+    if (btn) { btn.textContent = '🚀 Conseguir Premium'; btn.disabled = false; }
+    alert('Para acceder al pago necesitas iniciar sesión. Vuelve a la web e inicia sesión primero.');
+    window.location.href = '/?goto=premium';
+  }
+
+  // Evento analytics
+  if (window.AY_Events) window.AY_Events.startCheckout('premium');
+}
+
+// Comprobar si ya es Premium
+document.addEventListener('DOMContentLoaded', async () => {
+  // El estado Premium se lee desde Supabase vía auth.js
+  // Aquí solo actualizamos la UI si ya hay sesión activa
+  setTimeout(async () => {
+    const isPremium = window._cachedPremiumStatus === true;
+    if (isPremium) {
+      const banner = document.getElementById('premiumStatusBanner');
+      if (banner) banner.style.display = 'block';
+      const btn = document.getElementById('btnGetPremium');
+      if (btn) { btn.textContent = '✅ Ya eres Premium'; btn.disabled = true; }
+    }
+  }, 1500);
+});
+</script>
+<script src="analytics.js"></script>
+</body>
+</html>

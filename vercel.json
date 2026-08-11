@@ -4,52 +4,42 @@
   "buildCommand": "",
   "outputDirectory": ".",
   "routes": [
-    {
-      "src": "/google487a714ccca1f9ab.html",
-      "dest": "/google487a714ccca1f9ab.html"
-    },
-    {
-      "src": "/terminos",
-      "dest": "/terminos.html"
-    },
-    {
-      "src": "/privacidad",
-      "dest": "/privacidad.html"
-    },
-    {
-      "src": "/cookies",
-      "dest": "/cookies.html"
-    },
-    {
-      "src": "/aviso-legal",
-      "dest": "/aviso-legal.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
+    { "src": "/google487a714ccca1f9ab.html", "dest": "/google487a714ccca1f9ab.html" },
+    { "src": "/terminos",            "dest": "/terminos.html" },
+    { "src": "/privacidad",          "dest": "/privacidad.html" },
+    { "src": "/cookies",             "dest": "/cookies.html" },
+    { "src": "/aviso-legal",         "dest": "/aviso-legal.html" },
+    { "src": "/premium",             "dest": "/premium.html" },
+    { "src": "/admin",               "dest": "/admin.html" },
+    { "src": "/tests-dgt",           "dest": "/tests-dgt.html" },
+    { "src": "/permiso-b",           "dest": "/permiso-b.html" },
+    { "src": "/permiso-a1-a2",       "dest": "/permiso-a1-a2.html" },
+    { "src": "/permiso-am",          "dest": "/permiso-am.html" },
+    { "src": "/permiso-c1-c",        "dest": "/permiso-c1-c.html" },
+    { "src": "/permiso-d1-d",        "dest": "/permiso-d1-d.html" },
+    { "src": "/permiso-b-e",         "dest": "/permiso-b-e.html" },
+    { "src": "/permiso-c-e",         "dest": "/permiso-c-e.html" },
+    { "src": "/adr",                 "dest": "/adr.html" },
+    { "src": "/recuperacion-puntos", "dest": "/recuperacion-puntos.html" },
+    { "src": "/(.*)",                "dest": "/$1" }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        { "key": "X-Content-Type-Options",  "value": "nosniff" },
+        { "key": "X-Frame-Options",          "value": "DENY" },
+        { "key": "X-XSS-Protection",         "value": "1; mode=block" },
+        { "key": "Referrer-Policy",          "value": "strict-origin-when-cross-origin" }
       ]
     },
     {
       "source": "/data/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
-      ]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
     },
     {
       "source": "/images/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=604800" }
-      ]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
     }
   ]
 }
