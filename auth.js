@@ -147,8 +147,13 @@ export async function signIn(email, password) {
 
 // ─── RECUPERAR CONTRASEÑA ─────────────────────
 export async function resetPassword(email) {
+  // En producción siempre redirige a aprobadosya.com
+  // En local (localhost) usa el origin actual para pruebas
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const redirectBase = isLocal ? window.location.origin : 'https://aprobadosya.com';
+
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: window.location.origin + '/?reset=true'
+    redirectTo: `${redirectBase}/?reset=true`
   });
   if (error) throw error;
 }
