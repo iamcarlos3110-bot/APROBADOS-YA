@@ -99,6 +99,265 @@ const UserManager = {
     if(pCorrect) pCorrect.innerText = this.data.totalCorrect;
   }
 };
+
+// ─── SYNCMANAGER ──────────────────────────────────────────────
+// Sincronización no destructiva entre localStorage y Supabase
+const SyncManager = {
+
+  // Leer datos de Supabase al iniciar sesión y fusionarlos localmente
+  async syncFromDB() {
+    const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
+    if (!user) return;
+
+    try {
+      // Leer progreso general desde Supabase
+      const { data: progress } = await (await import('https://esm.sh/@supabase/supabase-js@2'))
+        .createClient
+        ? Promise.resolve({ data: null }) // placeholder, se usa a través de auth.js
+        : Promise.resolve({ data: null });
+
+      // Usar el cliente de supabase expuesto por auth.js (module)
+      const authModule = window._authModule;
+      if (!authModule) return;
+      const sb = authModule.supabase;
+
+      const [progressRes, mistakesRes, favRes] = await Promise.all([
+        sb.from('user_progress').select('*').eq('user_id', user.id).single(),
+        sb.from('mistakes').select('question_id, times_wrong, times_correct').eq('user_id', user.id),
+        sb.from('favorites').select('question_id').eq('user_id', user.id)
+      ]);
+
+      const dbProgress = progressRes.data;
+      const dbMistakes = mistakesRes.data || [];
+      const dbFavs = favRes.data || [];
+
+      if (dbProgress) {
+        // Tomar el mayor valor para estadísticas acumulativas
+        const local = UserManager.data;
+        const merged = {
+          totalTests: Math.max(local.totalTests || 0, dbProgress.tests_completed || 0),
+          totalCorrect: Math.max(local.totalCorrect || 0, dbProgress.correct_answers || 0),
+          streak: Math.max(local.streak || 0, dbProgress.streak || 0),
+          dailyQuestions: local.dailyQuestions || dbProgress.daily_questions || 0,
+          lastActiveDate: local.lastActiveDate || dbProgress.last_active_date,
+          lastPermit: local.lastPermit || dbProgress.last_permit,
+          lastState: local.lastState || (dbProgress.last_state ? dbProgress.last_state : null)
+        };
+
+        // Fusionar mistakes por question_id (sin duplicados)
+        const localMistakesSet = new Set(local.mistakes || []);
+        dbMistakes.forEach(m => {
+          if (m.times_wrong > m.times_correct) localMistakesSet.add(m.question_id);
+          else localMistakesSet.delete(m.question_id);
+        });
+        merged.mistakes = Array.from(localMistakesSet);
+
+        // Fusionar favoritos por question_id (sin duplicados)
+        const localFavsSet = new Set(local.favorites || []);
+        dbFavs.forEach(f => localFavsSet.add(f.question_id));
+        merged.favorites = Array.from(localFavsSet);
+
+        // Conservar topicStats local (más detallado que la BD por ahora)
+        merged.topicStats = local.topicStats || {};
+
+        UserManager.data = { ...UserManager.data, ...merged };
+        UserManager.save();
+        UserManager.updateUI();
+      }
+    } catch (e) {
+      console.warn('[SyncManager] syncFromDB error:', e);
+    }
+  },
+
+  // Migración no destructiva: local → Supabase (merge, nunca sobreescribir sin comparar)
+  async migrateLocalDataToDB() {
+    const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
+    if (!user) return { success: false, error: 'No hay sesión activa.' };
+
+    const authModule = window._authModule;
+    if (!authModule) return { success: false, error: 'Auth no inicializado.' };
+    const sb = authModule.supabase;
+
+    try {
+      const local = UserManager.data;
+
+      // 1. Leer datos actuales en la nube
+      const [progressRes, mistakesRes, favRes] = await Promise.all([
+        sb.from('user_progress').select('*').eq('user_id', user.id).single(),
+        sb.from('mistakes').select('question_id, times_wrong, times_correct, updated_at').eq('user_id', user.id),
+        sb.from('favorites').select('question_id').eq('user_id', user.id)
+      ]);
+
+      const dbProgress = progressRes.data;
+      const dbMistakes = mistakesRes.data || [];
+      const dbFavs = new Set((favRes.data || []).map(f => f.question_id));
+
+      // 2. Calcular valores consolidados (siempre el mayor)
+      const consolidated = {
+        tests_completed: Math.max(local.totalTests || 0, dbProgress?.tests_completed || 0),
+        correct_answers: Math.max(local.totalCorrect || 0, dbProgress?.correct_answers || 0),
+        wrong_answers: Math.max((local.mistakes || []).length, dbProgress?.wrong_answers || 0),
+        streak: Math.max(local.streak || 0, dbProgress?.streak || 0),
+        daily_questions: local.dailyQuestions || 0,
+        last_active_date: local.lastActiveDate || dbProgress?.last_active_date || null,
+        last_permit: local.lastPermit || dbProgress?.last_permit || null,
+        last_state: local.lastState || dbProgress?.last_state || null,
+        updated_at: new Date().toISOString()
+      };
+
+      // 3. Actualizar progreso
+      await sb.from('user_progress').upsert({
+        user_id: user.id,
+        ...consolidated
+      }, { onConflict: 'user_id' });
+
+      // 4. Fusionar mistakes: comparar local con BD, actualizar contadores
+      const dbMistakesMap = {};
+      dbMistakes.forEach(m => dbMistakesMap[m.question_id] = m);
+
+      const mistakeUpserts = (local.mistakes || []).map(qId => {
+        const existing = dbMistakesMap[qId];
+        return {
+          user_id: user.id,
+          question_id: qId,
+          times_wrong: (existing?.times_wrong || 0) + 1,
+          times_correct: existing?.times_correct || 0,
+          last_wrong_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        };
+      });
+
+      if (mistakeUpserts.length > 0) {
+        await sb.from('mistakes').upsert(mistakeUpserts, { onConflict: 'user_id,question_id' });
+      }
+
+      // 5. Fusionar favoritos: insertar solo los que no existen en la nube
+      const newFavs = (local.favorites || []).filter(qId => !dbFavs.has(qId));
+      if (newFavs.length > 0) {
+        const favInserts = newFavs.map(qId => ({
+          user_id: user.id,
+          question_id: qId,
+          created_at: new Date().toISOString()
+        }));
+        await sb.from('favorites').upsert(favInserts, { onConflict: 'user_id,question_id', ignoreDuplicates: true });
+      }
+
+      console.log('[SyncManager] Migración completada sin errores.');
+      return { success: true };
+    } catch (e) {
+      console.error('[SyncManager] migrateLocalDataToDB error:', e);
+      return { success: false, error: e.message };
+    }
+  },
+
+  // Guardar progreso general tras un test
+  async saveProgressToDB(localData) {
+    const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
+    if (!user) return;
+    const authModule = window._authModule;
+    if (!authModule) return;
+    const sb = authModule.supabase;
+    try {
+      await sb.from('user_progress').upsert({
+        user_id: user.id,
+        tests_completed: localData.totalTests || 0,
+        questions_answered: (localData.totalCorrect || 0) + (localData.mistakes?.length || 0),
+        correct_answers: localData.totalCorrect || 0,
+        wrong_answers: (localData.mistakes || []).length,
+        streak: localData.streak || 0,
+        last_active_date: localData.lastActiveDate || null,
+        daily_questions: localData.dailyQuestions || 0,
+        last_permit: localData.lastPermit || null,
+        last_state: localData.lastState || null,
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'user_id' });
+    } catch (e) {
+      console.warn('[SyncManager] saveProgressToDB error:', e);
+    }
+  },
+
+  // Guardar historial de un test (sin duplicar)
+  async saveTestResultToDB({ testId, permitId, topicId, correct, wrong, total }) {
+    const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
+    if (!user) return;
+    const authModule = window._authModule;
+    if (!authModule) return;
+    const sb = authModule.supabase;
+    try {
+      const score = total > 0 ? Math.round((correct / total) * 100) : 0;
+      await sb.from('test_history').insert({
+        user_id: user.id,
+        test_id: testId,
+        permit_id: permitId,
+        topic_id: topicId,
+        score,
+        correct,
+        wrong,
+        total,
+        completed_at: new Date().toISOString()
+      });
+    } catch (e) {
+      console.warn('[SyncManager] saveTestResultToDB error:', e);
+    }
+  },
+
+  // Actualizar errores en la BD (upsert por question_id)
+  async recordMistakeToDB(questionId, isCorrect) {
+    const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
+    if (!user) return;
+    const authModule = window._authModule;
+    if (!authModule) return;
+    const sb = authModule.supabase;
+    try {
+      const { data: existing } = await sb
+        .from('mistakes')
+        .select('times_wrong, times_correct')
+        .eq('user_id', user.id)
+        .eq('question_id', questionId)
+        .single();
+
+      const times_wrong = (existing?.times_wrong || 0) + (isCorrect ? 0 : 1);
+      const times_correct = (existing?.times_correct || 0) + (isCorrect ? 1 : 0);
+
+      await sb.from('mistakes').upsert({
+        user_id: user.id,
+        question_id: questionId,
+        times_wrong,
+        times_correct,
+        last_wrong_at: isCorrect ? (existing?.last_wrong_at || new Date().toISOString()) : new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'user_id,question_id' });
+    } catch (e) {
+      console.warn('[SyncManager] recordMistakeToDB error:', e);
+    }
+  },
+
+  // Sincronizar un favorito (añadir/quitar)
+  async syncFavorite(questionId, add) {
+    const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
+    if (!user) return;
+    const authModule = window._authModule;
+    if (!authModule) return;
+    const sb = authModule.supabase;
+    try {
+      if (add) {
+        await sb.from('favorites').upsert(
+          { user_id: user.id, question_id: questionId, created_at: new Date().toISOString() },
+          { onConflict: 'user_id,question_id', ignoreDuplicates: true }
+        );
+      } else {
+        await sb.from('favorites').delete()
+          .eq('user_id', user.id)
+          .eq('question_id', questionId);
+      }
+    } catch (e) {
+      console.warn('[SyncManager] syncFavorite error:', e);
+    }
+  }
+};
+
+window.SyncManager = SyncManager;
+
 const state = {
   permit: null,
   topic: null,
@@ -600,33 +859,45 @@ function renderTests() {
 }
 
 // ─── START TEST ─────────────────────────────────────
-function startTest(testIdentifier, mode, isOfficial = false) {
-  // LÓGICA FREEMIUM (Muro de Pago)
-  // Determinar el número del test
-  let testNumberForPaywall = 1;
+// ASYNC: la validación Premium consulta Supabase de forma segura
+async function startTest(testIdentifier, mode, isOfficial = false) {
+  // Determinar número del test para lógica freemium
+  let testNum = 1;
   if (typeof testIdentifier === 'string' && testIdentifier.includes('-')) {
-    testNumberForPaywall = parseInt(testIdentifier.split('-')[1]);
+    // Para DGT tests, el número está en la posición 2: DGT-B-1 → 1
+    const parts = testIdentifier.split('-');
+    testNum = parseInt(parts[parts.length - 1]) || 1;
   } else {
-    testNumberForPaywall = parseInt(testIdentifier);
+    testNum = parseInt(testIdentifier) || 1;
   }
 
-  // Si el test es mayor a 1, requiere Premium
-  if (testNumberForPaywall > 1) {
-    const isPremium = window.currentUser && window.currentUser() && window.currentUser().user_metadata?.is_premium;
-    if (!isPremium) {
+  // ── LÓGICA FREEMIUM ──────────────────────────────
+  if (testNum > 1) {
+    const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
+
+    if (!user) {
+      // Sin cuenta: pedir registro (no pago)
       if (typeof window.triggerPaywall === 'function') {
-        window.triggerPaywall();
-      } else {
-        alert('Este test es solo para usuarios Premium. Inicia sesión y actualiza tu cuenta en el Perfil.');
+        window.triggerPaywall('register');
       }
-      return; // Bloquear acceso
+      return;
+    }
+
+    // Con cuenta FREE: consultar estado real en Supabase
+    const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
+    if (!isUserPremium) {
+      if (typeof window.triggerPaywall === 'function') {
+        window.triggerPaywall('premium');
+      }
+      return;
     }
   }
+  // ── FIN LÓGICA FREEMIUM ───────────────────────────
 
   state.testMode = mode;
   state.isOfficialDgt = isOfficial;
   state.testNum = testIdentifier;
-  
+
   if (isOfficial) {
     state.questions = db.getQuestionsByTest(testIdentifier);
   } else {
@@ -635,10 +906,8 @@ function startTest(testIdentifier, mode, isOfficial = false) {
 
   if (mode === 'test') {
     state.currentQuestion = 0;
-
-  // Guardar estado
-  UserManager.saveLastState(state.permit, state.testNum, state.topic, state.currentQuestion, state.answers);
-
+    // Guardar estado para continuar después
+    UserManager.saveLastState(state.permit, state.testNum, state.topic, state.currentQuestion, state.answers);
     state.answers = {};
     state.score = 0;
     renderEngineUI();
@@ -870,12 +1139,12 @@ function renderMemo() {
       : '';
 
     let imgHtml = '';
-    if (q.imagen_url) {
+    if (q.imagen_url || q.imagen_local) {
       const src = q.imagen_local || q.imagen_url;
-      if (src.includes('.jpg') || src.includes('.png') || src.startsWith('http')) {
+      if (src.includes('.jpg') || src.includes('.JPG') || src.includes('.png') || src.startsWith('http')) {
         imgHtml = `<div class="memo-img" style="border:none; background:transparent;"><img src="${src}" alt="Ilustración" style="max-width:100%; max-height:200px; object-fit:contain; border-radius:4px; display:block; margin:0 auto;" /></div>`;
       } else {
-        imgHtml = `<div class="memo-img">${q.imagen_url}</div>`;
+        imgHtml = `<div class="memo-img">${src}</div>`;
       }
     }
 
