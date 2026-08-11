@@ -18,7 +18,7 @@
 // ─────────────────────────────────────────
 // CONFIGURACIÓN — Pon aquí tus IDs reales
 // ─────────────────────────────────────────
-const GA_MEASUREMENT_ID = null; // Ejemplo: 'G-AB12CD34EF'
+const GA_MEASUREMENT_ID = 'G-S265MZK9Q2'; // Google Analytics 4
 const GOOGLE_ADS_ID      = null; // Ejemplo: 'AW-123456789'
 
 // ─────────────────────────────────────────
