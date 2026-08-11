@@ -1,0 +1,51 @@
+{
+  "version": 2,
+  "name": "aprobados-ya",
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "routes": [
+    {
+      "src": "/terminos",
+      "dest": "/terminos.html"
+    },
+    {
+      "src": "/privacidad",
+      "dest": "/privacidad.html"
+    },
+    {
+      "src": "/cookies",
+      "dest": "/cookies.html"
+    },
+    {
+      "src": "/aviso-legal",
+      "dest": "/aviso-legal.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/data/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800" }
+      ]
+    }
+  ]
+}

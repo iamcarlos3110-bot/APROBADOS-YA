@@ -1,0 +1,250 @@
+{
+  "B": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "senales",
+      "name": "Señales de Tráfico",
+      "numTests": 100
+    },
+    {
+      "id": "normas",
+      "name": "Normas de Circulación",
+      "numTests": 100
+    },
+    {
+      "id": "prioridad",
+      "name": "Prioridad de Paso",
+      "numTests": 100
+    },
+    {
+      "id": "velocidad",
+      "name": "Velocidad",
+      "numTests": 100
+    },
+    {
+      "id": "adelantamiento",
+      "name": "Adelantamientos",
+      "numTests": 100
+    },
+    {
+      "id": "alcohol",
+      "name": "Alcohol y Drogas",
+      "numTests": 100
+    },
+    {
+      "id": "mecanica",
+      "name": "Mecánica Básica",
+      "numTests": 100
+    },
+    {
+      "id": "iluminacion",
+      "name": "Iluminación",
+      "numTests": 100
+    },
+    {
+      "id": "medioambiente",
+      "name": "Medio Ambiente",
+      "numTests": 100
+    },
+    {
+      "id": "accidentes",
+      "name": "Accidentes y Primeros Auxilios",
+      "numTests": 100
+    }
+  ],
+  "A1A2": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "general",
+      "name": "Test General",
+      "numTests": 30
+    }
+  ],
+  "AM": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "general",
+      "name": "Test General",
+      "numTests": 30
+    }
+  ],
+  "C": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "general",
+      "name": "Test General",
+      "numTests": 30
+    }
+  ],
+  "D": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "general",
+      "name": "Test General",
+      "numTests": 30
+    }
+  ],
+  "BE": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "general",
+      "name": "Test General",
+      "numTests": 30
+    }
+  ],
+  "CE": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "general",
+      "name": "Test General",
+      "numTests": 30
+    }
+  ],
+  "ADR": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "obtencion_basico",
+      "name": "Obtención (Básico)",
+      "numTests": 95
+    },
+    {
+      "id": "renovacion_basico",
+      "name": "Renovación (Básico)",
+      "numTests": 23
+    },
+    {
+      "id": "obtencion_cisternas",
+      "name": "Obtención (Cisternas)",
+      "numTests": 73
+    },
+    {
+      "id": "renovacion_cisternas",
+      "name": "Renovación (Cisternas)",
+      "numTests": 61
+    },
+    {
+      "id": "obtencion_explosivos",
+      "name": "Obtención (Explosivos)",
+      "numTests": 47
+    },
+    {
+      "id": "renovacion_explosivos",
+      "name": "Renovación (Explosivos)",
+      "numTests": 38
+    },
+    {
+      "id": "obtencion_radiactivos",
+      "name": "Obtención (Radiactivos)",
+      "numTests": 32
+    },
+    {
+      "id": "renovacion_radiactivos",
+      "name": "Renovación (Radiactivos)",
+      "numTests": 39
+    }
+  ],
+  "CAP_M": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "general",
+      "name": "Test General",
+      "numTests": 30
+    }
+  ],
+  "CAP_V": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "general",
+      "name": "Test General",
+      "numTests": 30
+    }
+  ],
+  "COMP_M": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "general",
+      "name": "Test General",
+      "numTests": 30
+    }
+  ],
+  "COMP_V": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "general",
+      "name": "Test General",
+      "numTests": 30
+    }
+  ],
+  "CONSEJ": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "general",
+      "name": "Test General",
+      "numTests": 30
+    }
+  ],
+  "PUNTOS": [
+    {
+      "id": "oficiales",
+      "name": "Tests Oficiales DGT",
+      "numTests": 0
+    },
+    {
+      "id": "general",
+      "name": "Test General",
+      "numTests": 30
+    }
+  ]
+}

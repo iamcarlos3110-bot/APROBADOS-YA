@@ -1,0 +1,6011 @@
+[
+  {
+    "id": "DGT-A1A2-1",
+    "permit_id": "A1A2",
+    "numero": 1,
+    "fecha": "Test 1",
+    "titulo": "Test Oficial A1A2 - 1",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-2",
+    "permit_id": "A1A2",
+    "numero": 2,
+    "fecha": "Test 2",
+    "titulo": "Test Oficial A1A2 - 2",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-3",
+    "permit_id": "A1A2",
+    "numero": 3,
+    "fecha": "Test 3",
+    "titulo": "Test Oficial A1A2 - 3",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-4",
+    "permit_id": "A1A2",
+    "numero": 4,
+    "fecha": "Test 4",
+    "titulo": "Test Oficial A1A2 - 4",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-5",
+    "permit_id": "A1A2",
+    "numero": 5,
+    "fecha": "Test 5",
+    "titulo": "Test Oficial A1A2 - 5",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-6",
+    "permit_id": "A1A2",
+    "numero": 6,
+    "fecha": "Test 6",
+    "titulo": "Test Oficial A1A2 - 6",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-7",
+    "permit_id": "A1A2",
+    "numero": 7,
+    "fecha": "Test 7",
+    "titulo": "Test Oficial A1A2 - 7",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-8",
+    "permit_id": "A1A2",
+    "numero": 8,
+    "fecha": "Test 8",
+    "titulo": "Test Oficial A1A2 - 8",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-9",
+    "permit_id": "A1A2",
+    "numero": 9,
+    "fecha": "Test 9",
+    "titulo": "Test Oficial A1A2 - 9",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-10",
+    "permit_id": "A1A2",
+    "numero": 10,
+    "fecha": "Test 10",
+    "titulo": "Test Oficial A1A2 - 10",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-11",
+    "permit_id": "A1A2",
+    "numero": 11,
+    "fecha": "Test 11",
+    "titulo": "Test Oficial A1A2 - 11",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-12",
+    "permit_id": "A1A2",
+    "numero": 12,
+    "fecha": "Test 12",
+    "titulo": "Test Oficial A1A2 - 12",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-13",
+    "permit_id": "A1A2",
+    "numero": 13,
+    "fecha": "Test 13",
+    "titulo": "Test Oficial A1A2 - 13",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-14",
+    "permit_id": "A1A2",
+    "numero": 14,
+    "fecha": "Test 14",
+    "titulo": "Test Oficial A1A2 - 14",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-15",
+    "permit_id": "A1A2",
+    "numero": 15,
+    "fecha": "Test 15",
+    "titulo": "Test Oficial A1A2 - 15",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-16",
+    "permit_id": "A1A2",
+    "numero": 16,
+    "fecha": "Test 16",
+    "titulo": "Test Oficial A1A2 - 16",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-17",
+    "permit_id": "A1A2",
+    "numero": 17,
+    "fecha": "Test 17",
+    "titulo": "Test Oficial A1A2 - 17",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-18",
+    "permit_id": "A1A2",
+    "numero": 18,
+    "fecha": "Test 18",
+    "titulo": "Test Oficial A1A2 - 18",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-19",
+    "permit_id": "A1A2",
+    "numero": 19,
+    "fecha": "Test 19",
+    "titulo": "Test Oficial A1A2 - 19",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-20",
+    "permit_id": "A1A2",
+    "numero": 20,
+    "fecha": "Test 20",
+    "titulo": "Test Oficial A1A2 - 20",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-21",
+    "permit_id": "A1A2",
+    "numero": 21,
+    "fecha": "Test 21",
+    "titulo": "Test Oficial A1A2 - 21",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-22",
+    "permit_id": "A1A2",
+    "numero": 22,
+    "fecha": "Test 22",
+    "titulo": "Test Oficial A1A2 - 22",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-23",
+    "permit_id": "A1A2",
+    "numero": 23,
+    "fecha": "Test 23",
+    "titulo": "Test Oficial A1A2 - 23",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-24",
+    "permit_id": "A1A2",
+    "numero": 24,
+    "fecha": "Test 24",
+    "titulo": "Test Oficial A1A2 - 24",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-25",
+    "permit_id": "A1A2",
+    "numero": 25,
+    "fecha": "Test 25",
+    "titulo": "Test Oficial A1A2 - 25",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-26",
+    "permit_id": "A1A2",
+    "numero": 26,
+    "fecha": "Test 26",
+    "titulo": "Test Oficial A1A2 - 26",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-27",
+    "permit_id": "A1A2",
+    "numero": 27,
+    "fecha": "Test 27",
+    "titulo": "Test Oficial A1A2 - 27",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-28",
+    "permit_id": "A1A2",
+    "numero": 28,
+    "fecha": "Test 28",
+    "titulo": "Test Oficial A1A2 - 28",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-29",
+    "permit_id": "A1A2",
+    "numero": 29,
+    "fecha": "Test 29",
+    "titulo": "Test Oficial A1A2 - 29",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-A1A2-30",
+    "permit_id": "A1A2",
+    "numero": 30,
+    "fecha": "Test 30",
+    "titulo": "Test Oficial A1A2 - 30",
+    "fuente": "DGT Exámenes A1A2",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-1",
+    "permit_id": "B",
+    "numero": 1,
+    "fecha": "Test 1",
+    "titulo": "Test Oficial B - 1",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-2",
+    "permit_id": "B",
+    "numero": 2,
+    "fecha": "Test 2",
+    "titulo": "Test Oficial B - 2",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-3",
+    "permit_id": "B",
+    "numero": 3,
+    "fecha": "Test 3",
+    "titulo": "Test Oficial B - 3",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-4",
+    "permit_id": "B",
+    "numero": 4,
+    "fecha": "Test 4",
+    "titulo": "Test Oficial B - 4",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-5",
+    "permit_id": "B",
+    "numero": 5,
+    "fecha": "Test 5",
+    "titulo": "Test Oficial B - 5",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-6",
+    "permit_id": "B",
+    "numero": 6,
+    "fecha": "Test 6",
+    "titulo": "Test Oficial B - 6",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-7",
+    "permit_id": "B",
+    "numero": 7,
+    "fecha": "Test 7",
+    "titulo": "Test Oficial B - 7",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-8",
+    "permit_id": "B",
+    "numero": 8,
+    "fecha": "Test 8",
+    "titulo": "Test Oficial B - 8",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-9",
+    "permit_id": "B",
+    "numero": 9,
+    "fecha": "Test 9",
+    "titulo": "Test Oficial B - 9",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-10",
+    "permit_id": "B",
+    "numero": 10,
+    "fecha": "Test 10",
+    "titulo": "Test Oficial B - 10",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-11",
+    "permit_id": "B",
+    "numero": 11,
+    "fecha": "Test 11",
+    "titulo": "Test Oficial B - 11",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-12",
+    "permit_id": "B",
+    "numero": 12,
+    "fecha": "Test 12",
+    "titulo": "Test Oficial B - 12",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-13",
+    "permit_id": "B",
+    "numero": 13,
+    "fecha": "Test 13",
+    "titulo": "Test Oficial B - 13",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-14",
+    "permit_id": "B",
+    "numero": 14,
+    "fecha": "Test 14",
+    "titulo": "Test Oficial B - 14",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-15",
+    "permit_id": "B",
+    "numero": 15,
+    "fecha": "Test 15",
+    "titulo": "Test Oficial B - 15",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-16",
+    "permit_id": "B",
+    "numero": 16,
+    "fecha": "Test 16",
+    "titulo": "Test Oficial B - 16",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-17",
+    "permit_id": "B",
+    "numero": 17,
+    "fecha": "Test 17",
+    "titulo": "Test Oficial B - 17",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-18",
+    "permit_id": "B",
+    "numero": 18,
+    "fecha": "Test 18",
+    "titulo": "Test Oficial B - 18",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-19",
+    "permit_id": "B",
+    "numero": 19,
+    "fecha": "Test 19",
+    "titulo": "Test Oficial B - 19",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-20",
+    "permit_id": "B",
+    "numero": 20,
+    "fecha": "Test 20",
+    "titulo": "Test Oficial B - 20",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-21",
+    "permit_id": "B",
+    "numero": 21,
+    "fecha": "Test 21",
+    "titulo": "Test Oficial B - 21",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-22",
+    "permit_id": "B",
+    "numero": 22,
+    "fecha": "Test 22",
+    "titulo": "Test Oficial B - 22",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-23",
+    "permit_id": "B",
+    "numero": 23,
+    "fecha": "Test 23",
+    "titulo": "Test Oficial B - 23",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-24",
+    "permit_id": "B",
+    "numero": 24,
+    "fecha": "Test 24",
+    "titulo": "Test Oficial B - 24",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-25",
+    "permit_id": "B",
+    "numero": 25,
+    "fecha": "Test 25",
+    "titulo": "Test Oficial B - 25",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-26",
+    "permit_id": "B",
+    "numero": 26,
+    "fecha": "Test 26",
+    "titulo": "Test Oficial B - 26",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-27",
+    "permit_id": "B",
+    "numero": 27,
+    "fecha": "Test 27",
+    "titulo": "Test Oficial B - 27",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-28",
+    "permit_id": "B",
+    "numero": 28,
+    "fecha": "Test 28",
+    "titulo": "Test Oficial B - 28",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-29",
+    "permit_id": "B",
+    "numero": 29,
+    "fecha": "Test 29",
+    "titulo": "Test Oficial B - 29",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-30",
+    "permit_id": "B",
+    "numero": 30,
+    "fecha": "Test 30",
+    "titulo": "Test Oficial B - 30",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-31",
+    "permit_id": "B",
+    "numero": 31,
+    "fecha": "Test 31",
+    "titulo": "Test Oficial B - 31",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-32",
+    "permit_id": "B",
+    "numero": 32,
+    "fecha": "Test 32",
+    "titulo": "Test Oficial B - 32",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-33",
+    "permit_id": "B",
+    "numero": 33,
+    "fecha": "Test 33",
+    "titulo": "Test Oficial B - 33",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-34",
+    "permit_id": "B",
+    "numero": 34,
+    "fecha": "Test 34",
+    "titulo": "Test Oficial B - 34",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-35",
+    "permit_id": "B",
+    "numero": 35,
+    "fecha": "Test 35",
+    "titulo": "Test Oficial B - 35",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-36",
+    "permit_id": "B",
+    "numero": 36,
+    "fecha": "Test 36",
+    "titulo": "Test Oficial B - 36",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-37",
+    "permit_id": "B",
+    "numero": 37,
+    "fecha": "Test 37",
+    "titulo": "Test Oficial B - 37",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-38",
+    "permit_id": "B",
+    "numero": 38,
+    "fecha": "Test 38",
+    "titulo": "Test Oficial B - 38",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-39",
+    "permit_id": "B",
+    "numero": 39,
+    "fecha": "Test 39",
+    "titulo": "Test Oficial B - 39",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-40",
+    "permit_id": "B",
+    "numero": 40,
+    "fecha": "Test 40",
+    "titulo": "Test Oficial B - 40",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-41",
+    "permit_id": "B",
+    "numero": 41,
+    "fecha": "Test 41",
+    "titulo": "Test Oficial B - 41",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-42",
+    "permit_id": "B",
+    "numero": 42,
+    "fecha": "Test 42",
+    "titulo": "Test Oficial B - 42",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-43",
+    "permit_id": "B",
+    "numero": 43,
+    "fecha": "Test 43",
+    "titulo": "Test Oficial B - 43",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-44",
+    "permit_id": "B",
+    "numero": 44,
+    "fecha": "Test 44",
+    "titulo": "Test Oficial B - 44",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-45",
+    "permit_id": "B",
+    "numero": 45,
+    "fecha": "Test 45",
+    "titulo": "Test Oficial B - 45",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-46",
+    "permit_id": "B",
+    "numero": 46,
+    "fecha": "Test 46",
+    "titulo": "Test Oficial B - 46",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-47",
+    "permit_id": "B",
+    "numero": 47,
+    "fecha": "Test 47",
+    "titulo": "Test Oficial B - 47",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-48",
+    "permit_id": "B",
+    "numero": 48,
+    "fecha": "Test 48",
+    "titulo": "Test Oficial B - 48",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-49",
+    "permit_id": "B",
+    "numero": 49,
+    "fecha": "Test 49",
+    "titulo": "Test Oficial B - 49",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-50",
+    "permit_id": "B",
+    "numero": 50,
+    "fecha": "Test 50",
+    "titulo": "Test Oficial B - 50",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-51",
+    "permit_id": "B",
+    "numero": 51,
+    "fecha": "Test 51",
+    "titulo": "Test Oficial B - 51",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-52",
+    "permit_id": "B",
+    "numero": 52,
+    "fecha": "Test 52",
+    "titulo": "Test Oficial B - 52",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-53",
+    "permit_id": "B",
+    "numero": 53,
+    "fecha": "Test 53",
+    "titulo": "Test Oficial B - 53",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-54",
+    "permit_id": "B",
+    "numero": 54,
+    "fecha": "Test 54",
+    "titulo": "Test Oficial B - 54",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-55",
+    "permit_id": "B",
+    "numero": 55,
+    "fecha": "Test 55",
+    "titulo": "Test Oficial B - 55",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-56",
+    "permit_id": "B",
+    "numero": 56,
+    "fecha": "Test 56",
+    "titulo": "Test Oficial B - 56",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-57",
+    "permit_id": "B",
+    "numero": 57,
+    "fecha": "Test 57",
+    "titulo": "Test Oficial B - 57",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-58",
+    "permit_id": "B",
+    "numero": 58,
+    "fecha": "Test 58",
+    "titulo": "Test Oficial B - 58",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-59",
+    "permit_id": "B",
+    "numero": 59,
+    "fecha": "Test 59",
+    "titulo": "Test Oficial B - 59",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-60",
+    "permit_id": "B",
+    "numero": 60,
+    "fecha": "Test 60",
+    "titulo": "Test Oficial B - 60",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-61",
+    "permit_id": "B",
+    "numero": 61,
+    "fecha": "Test 61",
+    "titulo": "Test Oficial B - 61",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-62",
+    "permit_id": "B",
+    "numero": 62,
+    "fecha": "Test 62",
+    "titulo": "Test Oficial B - 62",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-63",
+    "permit_id": "B",
+    "numero": 63,
+    "fecha": "Test 63",
+    "titulo": "Test Oficial B - 63",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-64",
+    "permit_id": "B",
+    "numero": 64,
+    "fecha": "Test 64",
+    "titulo": "Test Oficial B - 64",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-65",
+    "permit_id": "B",
+    "numero": 65,
+    "fecha": "Test 65",
+    "titulo": "Test Oficial B - 65",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-66",
+    "permit_id": "B",
+    "numero": 66,
+    "fecha": "Test 66",
+    "titulo": "Test Oficial B - 66",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-67",
+    "permit_id": "B",
+    "numero": 67,
+    "fecha": "Test 67",
+    "titulo": "Test Oficial B - 67",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-68",
+    "permit_id": "B",
+    "numero": 68,
+    "fecha": "Test 68",
+    "titulo": "Test Oficial B - 68",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-69",
+    "permit_id": "B",
+    "numero": 69,
+    "fecha": "Test 69",
+    "titulo": "Test Oficial B - 69",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-70",
+    "permit_id": "B",
+    "numero": 70,
+    "fecha": "Test 70",
+    "titulo": "Test Oficial B - 70",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-71",
+    "permit_id": "B",
+    "numero": 71,
+    "fecha": "Test 71",
+    "titulo": "Test Oficial B - 71",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-72",
+    "permit_id": "B",
+    "numero": 72,
+    "fecha": "Test 72",
+    "titulo": "Test Oficial B - 72",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-73",
+    "permit_id": "B",
+    "numero": 73,
+    "fecha": "Test 73",
+    "titulo": "Test Oficial B - 73",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-74",
+    "permit_id": "B",
+    "numero": 74,
+    "fecha": "Test 74",
+    "titulo": "Test Oficial B - 74",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-75",
+    "permit_id": "B",
+    "numero": 75,
+    "fecha": "Test 75",
+    "titulo": "Test Oficial B - 75",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-76",
+    "permit_id": "B",
+    "numero": 76,
+    "fecha": "Test 76",
+    "titulo": "Test Oficial B - 76",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-77",
+    "permit_id": "B",
+    "numero": 77,
+    "fecha": "Test 77",
+    "titulo": "Test Oficial B - 77",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-78",
+    "permit_id": "B",
+    "numero": 78,
+    "fecha": "Test 78",
+    "titulo": "Test Oficial B - 78",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-79",
+    "permit_id": "B",
+    "numero": 79,
+    "fecha": "Test 79",
+    "titulo": "Test Oficial B - 79",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-80",
+    "permit_id": "B",
+    "numero": 80,
+    "fecha": "Test 80",
+    "titulo": "Test Oficial B - 80",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-81",
+    "permit_id": "B",
+    "numero": 81,
+    "fecha": "Test 81",
+    "titulo": "Test Oficial B - 81",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-82",
+    "permit_id": "B",
+    "numero": 82,
+    "fecha": "Test 82",
+    "titulo": "Test Oficial B - 82",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-83",
+    "permit_id": "B",
+    "numero": 83,
+    "fecha": "Test 83",
+    "titulo": "Test Oficial B - 83",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-84",
+    "permit_id": "B",
+    "numero": 84,
+    "fecha": "Test 84",
+    "titulo": "Test Oficial B - 84",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-85",
+    "permit_id": "B",
+    "numero": 85,
+    "fecha": "Test 85",
+    "titulo": "Test Oficial B - 85",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-86",
+    "permit_id": "B",
+    "numero": 86,
+    "fecha": "Test 86",
+    "titulo": "Test Oficial B - 86",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-87",
+    "permit_id": "B",
+    "numero": 87,
+    "fecha": "Test 87",
+    "titulo": "Test Oficial B - 87",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-88",
+    "permit_id": "B",
+    "numero": 88,
+    "fecha": "Test 88",
+    "titulo": "Test Oficial B - 88",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-89",
+    "permit_id": "B",
+    "numero": 89,
+    "fecha": "Test 89",
+    "titulo": "Test Oficial B - 89",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-90",
+    "permit_id": "B",
+    "numero": 90,
+    "fecha": "Test 90",
+    "titulo": "Test Oficial B - 90",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-91",
+    "permit_id": "B",
+    "numero": 91,
+    "fecha": "Test 91",
+    "titulo": "Test Oficial B - 91",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-92",
+    "permit_id": "B",
+    "numero": 92,
+    "fecha": "Test 92",
+    "titulo": "Test Oficial B - 92",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-93",
+    "permit_id": "B",
+    "numero": 93,
+    "fecha": "Test 93",
+    "titulo": "Test Oficial B - 93",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-94",
+    "permit_id": "B",
+    "numero": 94,
+    "fecha": "Test 94",
+    "titulo": "Test Oficial B - 94",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-95",
+    "permit_id": "B",
+    "numero": 95,
+    "fecha": "Test 95",
+    "titulo": "Test Oficial B - 95",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-96",
+    "permit_id": "B",
+    "numero": 96,
+    "fecha": "Test 96",
+    "titulo": "Test Oficial B - 96",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-97",
+    "permit_id": "B",
+    "numero": 97,
+    "fecha": "Test 97",
+    "titulo": "Test Oficial B - 97",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-98",
+    "permit_id": "B",
+    "numero": 98,
+    "fecha": "Test 98",
+    "titulo": "Test Oficial B - 98",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-B-99",
+    "permit_id": "B",
+    "numero": 99,
+    "fecha": "Test 99",
+    "titulo": "Test Oficial B - 99",
+    "fuente": "DGT Exámenes B",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-D-1",
+    "permit_id": "D",
+    "numero": 1,
+    "fecha": "Test 1",
+    "titulo": "Test Oficial D - 1",
+    "fuente": "DGT Exámenes D",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-D-2",
+    "permit_id": "D",
+    "numero": 2,
+    "fecha": "Test 2",
+    "titulo": "Test Oficial D - 2",
+    "fuente": "DGT Exámenes D",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-D-3",
+    "permit_id": "D",
+    "numero": 3,
+    "fecha": "Test 3",
+    "titulo": "Test Oficial D - 3",
+    "fuente": "DGT Exámenes D",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-D-4",
+    "permit_id": "D",
+    "numero": 4,
+    "fecha": "Test 4",
+    "titulo": "Test Oficial D - 4",
+    "fuente": "DGT Exámenes D",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-D-5",
+    "permit_id": "D",
+    "numero": 5,
+    "fecha": "Test 5",
+    "titulo": "Test Oficial D - 5",
+    "fuente": "DGT Exámenes D",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "DGT-D-6",
+    "permit_id": "D",
+    "numero": 6,
+    "fecha": "Test 6",
+    "titulo": "Test Oficial D - 6",
+    "fuente": "DGT Exámenes D",
+    "url_oficial": "",
+    "numero_preguntas": 30,
+    "tipo": "oficial_publicado"
+  },
+  {
+    "id": "AY-AM-1",
+    "permit_id": "AM",
+    "numero": 1,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-1",
+    "permit_id": "C",
+    "numero": 1,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-ADR-1",
+    "permit_id": "ADR",
+    "numero": 1,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-PUNTOS-1",
+    "permit_id": "PUNTOS",
+    "numero": 1,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-BE-1",
+    "permit_id": "BE",
+    "numero": 1,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-BE-2",
+    "permit_id": "BE",
+    "numero": 2,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-BE-3",
+    "permit_id": "BE",
+    "numero": 3,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-BE-4",
+    "permit_id": "BE",
+    "numero": 4,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A-1",
+    "permit_id": "A",
+    "numero": 1,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A-2",
+    "permit_id": "A",
+    "numero": 2,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-2",
+    "permit_id": "C",
+    "numero": 2,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-3",
+    "permit_id": "C",
+    "numero": 3,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-4",
+    "permit_id": "C",
+    "numero": 4,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-5",
+    "permit_id": "C",
+    "numero": 5,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-6",
+    "permit_id": "C",
+    "numero": 6,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-7",
+    "permit_id": "C",
+    "numero": 7,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-8",
+    "permit_id": "C",
+    "numero": 8,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CE-1",
+    "permit_id": "CE",
+    "numero": 1,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CE-2",
+    "permit_id": "CE",
+    "numero": 2,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CE-3",
+    "permit_id": "CE",
+    "numero": 3,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CE-4",
+    "permit_id": "CE",
+    "numero": 4,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-ADR-2",
+    "permit_id": "ADR",
+    "numero": 2,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-3",
+    "permit_id": "ADR",
+    "numero": 3,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-4",
+    "permit_id": "ADR",
+    "numero": 4,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-5",
+    "permit_id": "ADR",
+    "numero": 5,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-6",
+    "permit_id": "ADR",
+    "numero": 6,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-7",
+    "permit_id": "ADR",
+    "numero": 7,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-8",
+    "permit_id": "ADR",
+    "numero": 8,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-9",
+    "permit_id": "ADR",
+    "numero": 9,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-10",
+    "permit_id": "ADR",
+    "numero": 10,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-11",
+    "permit_id": "ADR",
+    "numero": 11,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-12",
+    "permit_id": "ADR",
+    "numero": 12,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-13",
+    "permit_id": "ADR",
+    "numero": 13,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-14",
+    "permit_id": "ADR",
+    "numero": 14,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-15",
+    "permit_id": "ADR",
+    "numero": 15,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-16",
+    "permit_id": "ADR",
+    "numero": 16,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-17",
+    "permit_id": "ADR",
+    "numero": 17,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-18",
+    "permit_id": "ADR",
+    "numero": 18,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-19",
+    "permit_id": "ADR",
+    "numero": 19,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-20",
+    "permit_id": "ADR",
+    "numero": 20,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-21",
+    "permit_id": "ADR",
+    "numero": 21,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-22",
+    "permit_id": "ADR",
+    "numero": 22,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-23",
+    "permit_id": "ADR",
+    "numero": 23,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-24",
+    "permit_id": "ADR",
+    "numero": 24,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-25",
+    "permit_id": "ADR",
+    "numero": 25,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-26",
+    "permit_id": "ADR",
+    "numero": 26,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-27",
+    "permit_id": "ADR",
+    "numero": 27,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-28",
+    "permit_id": "ADR",
+    "numero": 28,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-29",
+    "permit_id": "ADR",
+    "numero": 29,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-30",
+    "permit_id": "ADR",
+    "numero": 30,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-31",
+    "permit_id": "ADR",
+    "numero": 31,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-A1A2-1",
+    "permit_id": "A1A2",
+    "numero": 1,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-2",
+    "permit_id": "A1A2",
+    "numero": 2,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-3",
+    "permit_id": "A1A2",
+    "numero": 3,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-4",
+    "permit_id": "A1A2",
+    "numero": 4,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-5",
+    "permit_id": "A1A2",
+    "numero": 5,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-6",
+    "permit_id": "A1A2",
+    "numero": 6,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-7",
+    "permit_id": "A1A2",
+    "numero": 7,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-8",
+    "permit_id": "A1A2",
+    "numero": 8,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-9",
+    "permit_id": "A1A2",
+    "numero": 9,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-10",
+    "permit_id": "A1A2",
+    "numero": 10,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-11",
+    "permit_id": "A1A2",
+    "numero": 11,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-12",
+    "permit_id": "A1A2",
+    "numero": 12,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-13",
+    "permit_id": "A1A2",
+    "numero": 13,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-14",
+    "permit_id": "A1A2",
+    "numero": 14,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-15",
+    "permit_id": "A1A2",
+    "numero": 15,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-16",
+    "permit_id": "A1A2",
+    "numero": 16,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-17",
+    "permit_id": "A1A2",
+    "numero": 17,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-18",
+    "permit_id": "A1A2",
+    "numero": 18,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-19",
+    "permit_id": "A1A2",
+    "numero": 19,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-20",
+    "permit_id": "A1A2",
+    "numero": 20,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-21",
+    "permit_id": "A1A2",
+    "numero": 21,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-22",
+    "permit_id": "A1A2",
+    "numero": 22,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-23",
+    "permit_id": "A1A2",
+    "numero": 23,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-24",
+    "permit_id": "A1A2",
+    "numero": 24,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-25",
+    "permit_id": "A1A2",
+    "numero": 25,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-26",
+    "permit_id": "A1A2",
+    "numero": 26,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-27",
+    "permit_id": "A1A2",
+    "numero": 27,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-28",
+    "permit_id": "A1A2",
+    "numero": 28,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-29",
+    "permit_id": "A1A2",
+    "numero": 29,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-30",
+    "permit_id": "A1A2",
+    "numero": 30,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-31",
+    "permit_id": "A1A2",
+    "numero": 31,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-32",
+    "permit_id": "A1A2",
+    "numero": 32,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-33",
+    "permit_id": "A1A2",
+    "numero": 33,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-34",
+    "permit_id": "A1A2",
+    "numero": 34,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-35",
+    "permit_id": "A1A2",
+    "numero": 35,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-36",
+    "permit_id": "A1A2",
+    "numero": 36,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-37",
+    "permit_id": "A1A2",
+    "numero": 37,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-38",
+    "permit_id": "A1A2",
+    "numero": 38,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-39",
+    "permit_id": "A1A2",
+    "numero": 39,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-40",
+    "permit_id": "A1A2",
+    "numero": 40,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-41",
+    "permit_id": "A1A2",
+    "numero": 41,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-42",
+    "permit_id": "A1A2",
+    "numero": 42,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-43",
+    "permit_id": "A1A2",
+    "numero": 43,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-44",
+    "permit_id": "A1A2",
+    "numero": 44,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-45",
+    "permit_id": "A1A2",
+    "numero": 45,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-46",
+    "permit_id": "A1A2",
+    "numero": 46,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-47",
+    "permit_id": "A1A2",
+    "numero": 47,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-48",
+    "permit_id": "A1A2",
+    "numero": 48,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-49",
+    "permit_id": "A1A2",
+    "numero": 49,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-50",
+    "permit_id": "A1A2",
+    "numero": 50,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-51",
+    "permit_id": "A1A2",
+    "numero": 51,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-52",
+    "permit_id": "A1A2",
+    "numero": 52,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-53",
+    "permit_id": "A1A2",
+    "numero": 53,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-54",
+    "permit_id": "A1A2",
+    "numero": 54,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-55",
+    "permit_id": "A1A2",
+    "numero": 55,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-56",
+    "permit_id": "A1A2",
+    "numero": 56,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-57",
+    "permit_id": "A1A2",
+    "numero": 57,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-58",
+    "permit_id": "A1A2",
+    "numero": 58,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-59",
+    "permit_id": "A1A2",
+    "numero": 59,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-60",
+    "permit_id": "A1A2",
+    "numero": 60,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-61",
+    "permit_id": "A1A2",
+    "numero": 61,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-62",
+    "permit_id": "A1A2",
+    "numero": 62,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-63",
+    "permit_id": "A1A2",
+    "numero": 63,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-64",
+    "permit_id": "A1A2",
+    "numero": 64,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-65",
+    "permit_id": "A1A2",
+    "numero": 65,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-66",
+    "permit_id": "A1A2",
+    "numero": 66,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-67",
+    "permit_id": "A1A2",
+    "numero": 67,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-68",
+    "permit_id": "A1A2",
+    "numero": 68,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-69",
+    "permit_id": "A1A2",
+    "numero": 69,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-70",
+    "permit_id": "A1A2",
+    "numero": 70,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-71",
+    "permit_id": "A1A2",
+    "numero": 71,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-72",
+    "permit_id": "A1A2",
+    "numero": 72,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-73",
+    "permit_id": "A1A2",
+    "numero": 73,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-74",
+    "permit_id": "A1A2",
+    "numero": 74,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-75",
+    "permit_id": "A1A2",
+    "numero": 75,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-76",
+    "permit_id": "A1A2",
+    "numero": 76,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-77",
+    "permit_id": "A1A2",
+    "numero": 77,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-78",
+    "permit_id": "A1A2",
+    "numero": 78,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-79",
+    "permit_id": "A1A2",
+    "numero": 79,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-80",
+    "permit_id": "A1A2",
+    "numero": 80,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-81",
+    "permit_id": "A1A2",
+    "numero": 81,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-82",
+    "permit_id": "A1A2",
+    "numero": 82,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-A1A2-83",
+    "permit_id": "A1A2",
+    "numero": 83,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-2",
+    "permit_id": "AM",
+    "numero": 2,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-3",
+    "permit_id": "AM",
+    "numero": 3,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-4",
+    "permit_id": "AM",
+    "numero": 4,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-5",
+    "permit_id": "AM",
+    "numero": 5,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-6",
+    "permit_id": "AM",
+    "numero": 6,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-7",
+    "permit_id": "AM",
+    "numero": 7,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-8",
+    "permit_id": "AM",
+    "numero": 8,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-9",
+    "permit_id": "AM",
+    "numero": 9,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-10",
+    "permit_id": "AM",
+    "numero": 10,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-11",
+    "permit_id": "AM",
+    "numero": 11,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-12",
+    "permit_id": "AM",
+    "numero": 12,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-13",
+    "permit_id": "AM",
+    "numero": 13,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-14",
+    "permit_id": "AM",
+    "numero": 14,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-15",
+    "permit_id": "AM",
+    "numero": 15,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-16",
+    "permit_id": "AM",
+    "numero": 16,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-17",
+    "permit_id": "AM",
+    "numero": 17,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-18",
+    "permit_id": "AM",
+    "numero": 18,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-19",
+    "permit_id": "AM",
+    "numero": 19,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-20",
+    "permit_id": "AM",
+    "numero": 20,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-21",
+    "permit_id": "AM",
+    "numero": 21,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-22",
+    "permit_id": "AM",
+    "numero": 22,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-23",
+    "permit_id": "AM",
+    "numero": 23,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-24",
+    "permit_id": "AM",
+    "numero": 24,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-25",
+    "permit_id": "AM",
+    "numero": 25,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-26",
+    "permit_id": "AM",
+    "numero": 26,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-27",
+    "permit_id": "AM",
+    "numero": 27,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-28",
+    "permit_id": "AM",
+    "numero": 28,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-29",
+    "permit_id": "AM",
+    "numero": 29,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-30",
+    "permit_id": "AM",
+    "numero": 30,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-31",
+    "permit_id": "AM",
+    "numero": 31,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-32",
+    "permit_id": "AM",
+    "numero": 32,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-33",
+    "permit_id": "AM",
+    "numero": 33,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-34",
+    "permit_id": "AM",
+    "numero": 34,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-35",
+    "permit_id": "AM",
+    "numero": 35,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-36",
+    "permit_id": "AM",
+    "numero": 36,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-37",
+    "permit_id": "AM",
+    "numero": 37,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-38",
+    "permit_id": "AM",
+    "numero": 38,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-39",
+    "permit_id": "AM",
+    "numero": 39,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-40",
+    "permit_id": "AM",
+    "numero": 40,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-41",
+    "permit_id": "AM",
+    "numero": 41,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-42",
+    "permit_id": "AM",
+    "numero": 42,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-43",
+    "permit_id": "AM",
+    "numero": 43,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-44",
+    "permit_id": "AM",
+    "numero": 44,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-45",
+    "permit_id": "AM",
+    "numero": 45,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-46",
+    "permit_id": "AM",
+    "numero": 46,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-47",
+    "permit_id": "AM",
+    "numero": 47,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-48",
+    "permit_id": "AM",
+    "numero": 48,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-49",
+    "permit_id": "AM",
+    "numero": 49,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-50",
+    "permit_id": "AM",
+    "numero": 50,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-51",
+    "permit_id": "AM",
+    "numero": 51,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-52",
+    "permit_id": "AM",
+    "numero": 52,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-53",
+    "permit_id": "AM",
+    "numero": 53,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-54",
+    "permit_id": "AM",
+    "numero": 54,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-55",
+    "permit_id": "AM",
+    "numero": 55,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-56",
+    "permit_id": "AM",
+    "numero": 56,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-57",
+    "permit_id": "AM",
+    "numero": 57,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-58",
+    "permit_id": "AM",
+    "numero": 58,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-59",
+    "permit_id": "AM",
+    "numero": 59,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-60",
+    "permit_id": "AM",
+    "numero": 60,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-61",
+    "permit_id": "AM",
+    "numero": 61,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-62",
+    "permit_id": "AM",
+    "numero": 62,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-63",
+    "permit_id": "AM",
+    "numero": 63,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-64",
+    "permit_id": "AM",
+    "numero": 64,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-65",
+    "permit_id": "AM",
+    "numero": 65,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-66",
+    "permit_id": "AM",
+    "numero": 66,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-67",
+    "permit_id": "AM",
+    "numero": 67,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-68",
+    "permit_id": "AM",
+    "numero": 68,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-69",
+    "permit_id": "AM",
+    "numero": 69,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-70",
+    "permit_id": "AM",
+    "numero": 70,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-71",
+    "permit_id": "AM",
+    "numero": 71,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-72",
+    "permit_id": "AM",
+    "numero": 72,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-73",
+    "permit_id": "AM",
+    "numero": 73,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-74",
+    "permit_id": "AM",
+    "numero": 74,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-75",
+    "permit_id": "AM",
+    "numero": 75,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-76",
+    "permit_id": "AM",
+    "numero": 76,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-77",
+    "permit_id": "AM",
+    "numero": 77,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-78",
+    "permit_id": "AM",
+    "numero": 78,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-79",
+    "permit_id": "AM",
+    "numero": 79,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-80",
+    "permit_id": "AM",
+    "numero": 80,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-81",
+    "permit_id": "AM",
+    "numero": 81,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-82",
+    "permit_id": "AM",
+    "numero": 82,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-83",
+    "permit_id": "AM",
+    "numero": 83,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-84",
+    "permit_id": "AM",
+    "numero": 84,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-85",
+    "permit_id": "AM",
+    "numero": 85,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-86",
+    "permit_id": "AM",
+    "numero": 86,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-87",
+    "permit_id": "AM",
+    "numero": 87,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-88",
+    "permit_id": "AM",
+    "numero": 88,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-89",
+    "permit_id": "AM",
+    "numero": 89,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-90",
+    "permit_id": "AM",
+    "numero": 90,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-AM-91",
+    "permit_id": "AM",
+    "numero": 91,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-9",
+    "permit_id": "C",
+    "numero": 9,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-10",
+    "permit_id": "C",
+    "numero": 10,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-11",
+    "permit_id": "C",
+    "numero": 11,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-12",
+    "permit_id": "C",
+    "numero": 12,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-13",
+    "permit_id": "C",
+    "numero": 13,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-14",
+    "permit_id": "C",
+    "numero": 14,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-15",
+    "permit_id": "C",
+    "numero": 15,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-16",
+    "permit_id": "C",
+    "numero": 16,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-17",
+    "permit_id": "C",
+    "numero": 17,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-18",
+    "permit_id": "C",
+    "numero": 18,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-19",
+    "permit_id": "C",
+    "numero": 19,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-20",
+    "permit_id": "C",
+    "numero": 20,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-21",
+    "permit_id": "C",
+    "numero": 21,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-22",
+    "permit_id": "C",
+    "numero": 22,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-23",
+    "permit_id": "C",
+    "numero": 23,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-24",
+    "permit_id": "C",
+    "numero": 24,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-25",
+    "permit_id": "C",
+    "numero": 25,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-26",
+    "permit_id": "C",
+    "numero": 26,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-27",
+    "permit_id": "C",
+    "numero": 27,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-28",
+    "permit_id": "C",
+    "numero": 28,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-29",
+    "permit_id": "C",
+    "numero": 29,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-30",
+    "permit_id": "C",
+    "numero": 30,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-31",
+    "permit_id": "C",
+    "numero": 31,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-32",
+    "permit_id": "C",
+    "numero": 32,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-33",
+    "permit_id": "C",
+    "numero": 33,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-34",
+    "permit_id": "C",
+    "numero": 34,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-35",
+    "permit_id": "C",
+    "numero": 35,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-36",
+    "permit_id": "C",
+    "numero": 36,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-37",
+    "permit_id": "C",
+    "numero": 37,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-38",
+    "permit_id": "C",
+    "numero": 38,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-39",
+    "permit_id": "C",
+    "numero": 39,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-40",
+    "permit_id": "C",
+    "numero": 40,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-41",
+    "permit_id": "C",
+    "numero": 41,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-42",
+    "permit_id": "C",
+    "numero": 42,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-43",
+    "permit_id": "C",
+    "numero": 43,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-44",
+    "permit_id": "C",
+    "numero": 44,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-45",
+    "permit_id": "C",
+    "numero": 45,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-46",
+    "permit_id": "C",
+    "numero": 46,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-47",
+    "permit_id": "C",
+    "numero": 47,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-48",
+    "permit_id": "C",
+    "numero": 48,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-49",
+    "permit_id": "C",
+    "numero": 49,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-50",
+    "permit_id": "C",
+    "numero": 50,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-51",
+    "permit_id": "C",
+    "numero": 51,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-52",
+    "permit_id": "C",
+    "numero": 52,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-53",
+    "permit_id": "C",
+    "numero": 53,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-54",
+    "permit_id": "C",
+    "numero": 54,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-55",
+    "permit_id": "C",
+    "numero": 55,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-56",
+    "permit_id": "C",
+    "numero": 56,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-57",
+    "permit_id": "C",
+    "numero": 57,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-58",
+    "permit_id": "C",
+    "numero": 58,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-59",
+    "permit_id": "C",
+    "numero": 59,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-60",
+    "permit_id": "C",
+    "numero": 60,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-61",
+    "permit_id": "C",
+    "numero": 61,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-62",
+    "permit_id": "C",
+    "numero": 62,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-63",
+    "permit_id": "C",
+    "numero": 63,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-64",
+    "permit_id": "C",
+    "numero": 64,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-65",
+    "permit_id": "C",
+    "numero": 65,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-66",
+    "permit_id": "C",
+    "numero": 66,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-67",
+    "permit_id": "C",
+    "numero": 67,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-68",
+    "permit_id": "C",
+    "numero": 68,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-69",
+    "permit_id": "C",
+    "numero": 69,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-70",
+    "permit_id": "C",
+    "numero": 70,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-71",
+    "permit_id": "C",
+    "numero": 71,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-72",
+    "permit_id": "C",
+    "numero": 72,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-73",
+    "permit_id": "C",
+    "numero": 73,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-74",
+    "permit_id": "C",
+    "numero": 74,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-75",
+    "permit_id": "C",
+    "numero": 75,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-76",
+    "permit_id": "C",
+    "numero": 76,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-77",
+    "permit_id": "C",
+    "numero": 77,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-78",
+    "permit_id": "C",
+    "numero": 78,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-79",
+    "permit_id": "C",
+    "numero": 79,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-80",
+    "permit_id": "C",
+    "numero": 80,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-81",
+    "permit_id": "C",
+    "numero": 81,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-82",
+    "permit_id": "C",
+    "numero": 82,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-83",
+    "permit_id": "C",
+    "numero": 83,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-84",
+    "permit_id": "C",
+    "numero": 84,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-85",
+    "permit_id": "C",
+    "numero": 85,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-86",
+    "permit_id": "C",
+    "numero": 86,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-87",
+    "permit_id": "C",
+    "numero": 87,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-88",
+    "permit_id": "C",
+    "numero": 88,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-89",
+    "permit_id": "C",
+    "numero": 89,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-90",
+    "permit_id": "C",
+    "numero": 90,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-C-91",
+    "permit_id": "C",
+    "numero": 91,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-1",
+    "permit_id": "D",
+    "numero": 1,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-2",
+    "permit_id": "D",
+    "numero": 2,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-3",
+    "permit_id": "D",
+    "numero": 3,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-4",
+    "permit_id": "D",
+    "numero": 4,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-5",
+    "permit_id": "D",
+    "numero": 5,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-6",
+    "permit_id": "D",
+    "numero": 6,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-7",
+    "permit_id": "D",
+    "numero": 7,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-8",
+    "permit_id": "D",
+    "numero": 8,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-9",
+    "permit_id": "D",
+    "numero": 9,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-10",
+    "permit_id": "D",
+    "numero": 10,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-11",
+    "permit_id": "D",
+    "numero": 11,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-12",
+    "permit_id": "D",
+    "numero": 12,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-13",
+    "permit_id": "D",
+    "numero": 13,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-D-14",
+    "permit_id": "D",
+    "numero": 14,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-BE-5",
+    "permit_id": "BE",
+    "numero": 5,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-BE-6",
+    "permit_id": "BE",
+    "numero": 6,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-BE-7",
+    "permit_id": "BE",
+    "numero": 7,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-BE-8",
+    "permit_id": "BE",
+    "numero": 8,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-BE-9",
+    "permit_id": "BE",
+    "numero": 9,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CE-5",
+    "permit_id": "CE",
+    "numero": 5,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CE-6",
+    "permit_id": "CE",
+    "numero": 6,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CE-7",
+    "permit_id": "CE",
+    "numero": 7,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CE-8",
+    "permit_id": "CE",
+    "numero": 8,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CE-9",
+    "permit_id": "CE",
+    "numero": 9,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CE-10",
+    "permit_id": "CE",
+    "numero": 10,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CE-11",
+    "permit_id": "CE",
+    "numero": 11,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CE-12",
+    "permit_id": "CE",
+    "numero": 12,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CE-13",
+    "permit_id": "CE",
+    "numero": 13,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-ADR-32",
+    "permit_id": "ADR",
+    "numero": 32,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-33",
+    "permit_id": "ADR",
+    "numero": 33,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-34",
+    "permit_id": "ADR",
+    "numero": 34,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-35",
+    "permit_id": "ADR",
+    "numero": 35,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-36",
+    "permit_id": "ADR",
+    "numero": 36,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-37",
+    "permit_id": "ADR",
+    "numero": 37,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-38",
+    "permit_id": "ADR",
+    "numero": 38,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-39",
+    "permit_id": "ADR",
+    "numero": 39,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-40",
+    "permit_id": "ADR",
+    "numero": 40,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-41",
+    "permit_id": "ADR",
+    "numero": 41,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-42",
+    "permit_id": "ADR",
+    "numero": 42,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-43",
+    "permit_id": "ADR",
+    "numero": 43,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-44",
+    "permit_id": "ADR",
+    "numero": 44,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-45",
+    "permit_id": "ADR",
+    "numero": 45,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-46",
+    "permit_id": "ADR",
+    "numero": 46,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-47",
+    "permit_id": "ADR",
+    "numero": 47,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-48",
+    "permit_id": "ADR",
+    "numero": 48,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-49",
+    "permit_id": "ADR",
+    "numero": 49,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-50",
+    "permit_id": "ADR",
+    "numero": 50,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-51",
+    "permit_id": "ADR",
+    "numero": 51,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-52",
+    "permit_id": "ADR",
+    "numero": 52,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-53",
+    "permit_id": "ADR",
+    "numero": 53,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-54",
+    "permit_id": "ADR",
+    "numero": 54,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-55",
+    "permit_id": "ADR",
+    "numero": 55,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-56",
+    "permit_id": "ADR",
+    "numero": 56,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-57",
+    "permit_id": "ADR",
+    "numero": 57,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-58",
+    "permit_id": "ADR",
+    "numero": 58,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-59",
+    "permit_id": "ADR",
+    "numero": 59,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-60",
+    "permit_id": "ADR",
+    "numero": 60,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-61",
+    "permit_id": "ADR",
+    "numero": 61,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-62",
+    "permit_id": "ADR",
+    "numero": 62,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-63",
+    "permit_id": "ADR",
+    "numero": 63,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-64",
+    "permit_id": "ADR",
+    "numero": 64,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-65",
+    "permit_id": "ADR",
+    "numero": 65,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-66",
+    "permit_id": "ADR",
+    "numero": 66,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-67",
+    "permit_id": "ADR",
+    "numero": 67,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-68",
+    "permit_id": "ADR",
+    "numero": 68,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-69",
+    "permit_id": "ADR",
+    "numero": 69,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-70",
+    "permit_id": "ADR",
+    "numero": 70,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-71",
+    "permit_id": "ADR",
+    "numero": 71,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-72",
+    "permit_id": "ADR",
+    "numero": 72,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-73",
+    "permit_id": "ADR",
+    "numero": 73,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-74",
+    "permit_id": "ADR",
+    "numero": 74,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-75",
+    "permit_id": "ADR",
+    "numero": 75,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-76",
+    "permit_id": "ADR",
+    "numero": 76,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-77",
+    "permit_id": "ADR",
+    "numero": 77,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-78",
+    "permit_id": "ADR",
+    "numero": 78,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-79",
+    "permit_id": "ADR",
+    "numero": 79,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-80",
+    "permit_id": "ADR",
+    "numero": 80,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-81",
+    "permit_id": "ADR",
+    "numero": 81,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-82",
+    "permit_id": "ADR",
+    "numero": 82,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-83",
+    "permit_id": "ADR",
+    "numero": 83,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-84",
+    "permit_id": "ADR",
+    "numero": 84,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-85",
+    "permit_id": "ADR",
+    "numero": 85,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-86",
+    "permit_id": "ADR",
+    "numero": 86,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-87",
+    "permit_id": "ADR",
+    "numero": 87,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-88",
+    "permit_id": "ADR",
+    "numero": 88,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-89",
+    "permit_id": "ADR",
+    "numero": 89,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-90",
+    "permit_id": "ADR",
+    "numero": 90,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-91",
+    "permit_id": "ADR",
+    "numero": 91,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-92",
+    "permit_id": "ADR",
+    "numero": 92,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-93",
+    "permit_id": "ADR",
+    "numero": 93,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-94",
+    "permit_id": "ADR",
+    "numero": 94,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-95",
+    "permit_id": "ADR",
+    "numero": 95,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-96",
+    "permit_id": "ADR",
+    "numero": 96,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-97",
+    "permit_id": "ADR",
+    "numero": 97,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-98",
+    "permit_id": "ADR",
+    "numero": 98,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-99",
+    "permit_id": "ADR",
+    "numero": 99,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-100",
+    "permit_id": "ADR",
+    "numero": 100,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-101",
+    "permit_id": "ADR",
+    "numero": 101,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-102",
+    "permit_id": "ADR",
+    "numero": 102,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-103",
+    "permit_id": "ADR",
+    "numero": 103,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-104",
+    "permit_id": "ADR",
+    "numero": 104,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-105",
+    "permit_id": "ADR",
+    "numero": 105,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-106",
+    "permit_id": "ADR",
+    "numero": 106,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-107",
+    "permit_id": "ADR",
+    "numero": 107,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-108",
+    "permit_id": "ADR",
+    "numero": 108,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-109",
+    "permit_id": "ADR",
+    "numero": 109,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-110",
+    "permit_id": "ADR",
+    "numero": 110,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-111",
+    "permit_id": "ADR",
+    "numero": 111,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-112",
+    "permit_id": "ADR",
+    "numero": 112,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-113",
+    "permit_id": "ADR",
+    "numero": 113,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-114",
+    "permit_id": "ADR",
+    "numero": 114,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-115",
+    "permit_id": "ADR",
+    "numero": 115,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-116",
+    "permit_id": "ADR",
+    "numero": 116,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-117",
+    "permit_id": "ADR",
+    "numero": 117,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-118",
+    "permit_id": "ADR",
+    "numero": 118,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-119",
+    "permit_id": "ADR",
+    "numero": 119,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-120",
+    "permit_id": "ADR",
+    "numero": 120,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-121",
+    "permit_id": "ADR",
+    "numero": 121,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-122",
+    "permit_id": "ADR",
+    "numero": 122,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-123",
+    "permit_id": "ADR",
+    "numero": 123,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-124",
+    "permit_id": "ADR",
+    "numero": 124,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-125",
+    "permit_id": "ADR",
+    "numero": 125,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-126",
+    "permit_id": "ADR",
+    "numero": 126,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-127",
+    "permit_id": "ADR",
+    "numero": 127,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-128",
+    "permit_id": "ADR",
+    "numero": 128,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-129",
+    "permit_id": "ADR",
+    "numero": 129,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-130",
+    "permit_id": "ADR",
+    "numero": 130,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-131",
+    "permit_id": "ADR",
+    "numero": 131,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-132",
+    "permit_id": "ADR",
+    "numero": 132,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-133",
+    "permit_id": "ADR",
+    "numero": 133,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-134",
+    "permit_id": "ADR",
+    "numero": 134,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-135",
+    "permit_id": "ADR",
+    "numero": 135,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-136",
+    "permit_id": "ADR",
+    "numero": 136,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-137",
+    "permit_id": "ADR",
+    "numero": 137,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-138",
+    "permit_id": "ADR",
+    "numero": 138,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-139",
+    "permit_id": "ADR",
+    "numero": 139,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-140",
+    "permit_id": "ADR",
+    "numero": 140,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-141",
+    "permit_id": "ADR",
+    "numero": 141,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-142",
+    "permit_id": "ADR",
+    "numero": 142,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-143",
+    "permit_id": "ADR",
+    "numero": 143,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-144",
+    "permit_id": "ADR",
+    "numero": 144,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-145",
+    "permit_id": "ADR",
+    "numero": 145,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-146",
+    "permit_id": "ADR",
+    "numero": 146,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-147",
+    "permit_id": "ADR",
+    "numero": 147,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-148",
+    "permit_id": "ADR",
+    "numero": 148,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-149",
+    "permit_id": "ADR",
+    "numero": 149,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-150",
+    "permit_id": "ADR",
+    "numero": 150,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-151",
+    "permit_id": "ADR",
+    "numero": 151,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-152",
+    "permit_id": "ADR",
+    "numero": 152,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-153",
+    "permit_id": "ADR",
+    "numero": 153,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-154",
+    "permit_id": "ADR",
+    "numero": 154,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-155",
+    "permit_id": "ADR",
+    "numero": 155,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-156",
+    "permit_id": "ADR",
+    "numero": 156,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-157",
+    "permit_id": "ADR",
+    "numero": 157,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-158",
+    "permit_id": "ADR",
+    "numero": 158,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-159",
+    "permit_id": "ADR",
+    "numero": 159,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-160",
+    "permit_id": "ADR",
+    "numero": 160,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-161",
+    "permit_id": "ADR",
+    "numero": 161,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-162",
+    "permit_id": "ADR",
+    "numero": 162,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-163",
+    "permit_id": "ADR",
+    "numero": 163,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-164",
+    "permit_id": "ADR",
+    "numero": 164,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-165",
+    "permit_id": "ADR",
+    "numero": 165,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-166",
+    "permit_id": "ADR",
+    "numero": 166,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-167",
+    "permit_id": "ADR",
+    "numero": 167,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-168",
+    "permit_id": "ADR",
+    "numero": 168,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-169",
+    "permit_id": "ADR",
+    "numero": 169,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-170",
+    "permit_id": "ADR",
+    "numero": 170,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-171",
+    "permit_id": "ADR",
+    "numero": 171,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-172",
+    "permit_id": "ADR",
+    "numero": 172,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-173",
+    "permit_id": "ADR",
+    "numero": 173,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-174",
+    "permit_id": "ADR",
+    "numero": 174,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-175",
+    "permit_id": "ADR",
+    "numero": 175,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-176",
+    "permit_id": "ADR",
+    "numero": 176,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-177",
+    "permit_id": "ADR",
+    "numero": 177,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-178",
+    "permit_id": "ADR",
+    "numero": 178,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-179",
+    "permit_id": "ADR",
+    "numero": 179,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-180",
+    "permit_id": "ADR",
+    "numero": 180,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-181",
+    "permit_id": "ADR",
+    "numero": 181,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-182",
+    "permit_id": "ADR",
+    "numero": 182,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-183",
+    "permit_id": "ADR",
+    "numero": 183,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-184",
+    "permit_id": "ADR",
+    "numero": 184,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-185",
+    "permit_id": "ADR",
+    "numero": 185,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-186",
+    "permit_id": "ADR",
+    "numero": 186,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-187",
+    "permit_id": "ADR",
+    "numero": 187,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-188",
+    "permit_id": "ADR",
+    "numero": 188,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-189",
+    "permit_id": "ADR",
+    "numero": 189,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-190",
+    "permit_id": "ADR",
+    "numero": 190,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-191",
+    "permit_id": "ADR",
+    "numero": 191,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-192",
+    "permit_id": "ADR",
+    "numero": 192,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-193",
+    "permit_id": "ADR",
+    "numero": 193,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-194",
+    "permit_id": "ADR",
+    "numero": 194,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-195",
+    "permit_id": "ADR",
+    "numero": 195,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-196",
+    "permit_id": "ADR",
+    "numero": 196,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-197",
+    "permit_id": "ADR",
+    "numero": 197,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-198",
+    "permit_id": "ADR",
+    "numero": 198,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-199",
+    "permit_id": "ADR",
+    "numero": 199,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-200",
+    "permit_id": "ADR",
+    "numero": 200,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-201",
+    "permit_id": "ADR",
+    "numero": 201,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-202",
+    "permit_id": "ADR",
+    "numero": 202,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-203",
+    "permit_id": "ADR",
+    "numero": 203,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-204",
+    "permit_id": "ADR",
+    "numero": 204,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-205",
+    "permit_id": "ADR",
+    "numero": 205,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-206",
+    "permit_id": "ADR",
+    "numero": 206,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-207",
+    "permit_id": "ADR",
+    "numero": 207,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-208",
+    "permit_id": "ADR",
+    "numero": 208,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-209",
+    "permit_id": "ADR",
+    "numero": 209,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-210",
+    "permit_id": "ADR",
+    "numero": 210,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-211",
+    "permit_id": "ADR",
+    "numero": 211,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-212",
+    "permit_id": "ADR",
+    "numero": 212,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-213",
+    "permit_id": "ADR",
+    "numero": 213,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-214",
+    "permit_id": "ADR",
+    "numero": 214,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-215",
+    "permit_id": "ADR",
+    "numero": 215,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-216",
+    "permit_id": "ADR",
+    "numero": 216,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-217",
+    "permit_id": "ADR",
+    "numero": 217,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-218",
+    "permit_id": "ADR",
+    "numero": 218,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-219",
+    "permit_id": "ADR",
+    "numero": 219,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-220",
+    "permit_id": "ADR",
+    "numero": 220,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-221",
+    "permit_id": "ADR",
+    "numero": 221,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-222",
+    "permit_id": "ADR",
+    "numero": 222,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-223",
+    "permit_id": "ADR",
+    "numero": 223,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-224",
+    "permit_id": "ADR",
+    "numero": 224,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-225",
+    "permit_id": "ADR",
+    "numero": 225,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-226",
+    "permit_id": "ADR",
+    "numero": 226,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-227",
+    "permit_id": "ADR",
+    "numero": 227,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-228",
+    "permit_id": "ADR",
+    "numero": 228,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-229",
+    "permit_id": "ADR",
+    "numero": 229,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-230",
+    "permit_id": "ADR",
+    "numero": 230,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-231",
+    "permit_id": "ADR",
+    "numero": 231,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-232",
+    "permit_id": "ADR",
+    "numero": 232,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-233",
+    "permit_id": "ADR",
+    "numero": 233,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-234",
+    "permit_id": "ADR",
+    "numero": 234,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-235",
+    "permit_id": "ADR",
+    "numero": 235,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-236",
+    "permit_id": "ADR",
+    "numero": 236,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-237",
+    "permit_id": "ADR",
+    "numero": 237,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-238",
+    "permit_id": "ADR",
+    "numero": 238,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-239",
+    "permit_id": "ADR",
+    "numero": 239,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-240",
+    "permit_id": "ADR",
+    "numero": 240,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-241",
+    "permit_id": "ADR",
+    "numero": 241,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-242",
+    "permit_id": "ADR",
+    "numero": 242,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-243",
+    "permit_id": "ADR",
+    "numero": 243,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-244",
+    "permit_id": "ADR",
+    "numero": 244,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-245",
+    "permit_id": "ADR",
+    "numero": 245,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-246",
+    "permit_id": "ADR",
+    "numero": 246,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-247",
+    "permit_id": "ADR",
+    "numero": 247,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-248",
+    "permit_id": "ADR",
+    "numero": 248,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-249",
+    "permit_id": "ADR",
+    "numero": 249,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-250",
+    "permit_id": "ADR",
+    "numero": 250,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-251",
+    "permit_id": "ADR",
+    "numero": 251,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-252",
+    "permit_id": "ADR",
+    "numero": 252,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-253",
+    "permit_id": "ADR",
+    "numero": 253,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-254",
+    "permit_id": "ADR",
+    "numero": 254,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-255",
+    "permit_id": "ADR",
+    "numero": 255,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-256",
+    "permit_id": "ADR",
+    "numero": 256,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-257",
+    "permit_id": "ADR",
+    "numero": 257,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-258",
+    "permit_id": "ADR",
+    "numero": 258,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-259",
+    "permit_id": "ADR",
+    "numero": 259,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-260",
+    "permit_id": "ADR",
+    "numero": 260,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-261",
+    "permit_id": "ADR",
+    "numero": 261,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-262",
+    "permit_id": "ADR",
+    "numero": 262,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-263",
+    "permit_id": "ADR",
+    "numero": 263,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-264",
+    "permit_id": "ADR",
+    "numero": 264,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-265",
+    "permit_id": "ADR",
+    "numero": 265,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-266",
+    "permit_id": "ADR",
+    "numero": 266,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-267",
+    "permit_id": "ADR",
+    "numero": 267,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-268",
+    "permit_id": "ADR",
+    "numero": 268,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-269",
+    "permit_id": "ADR",
+    "numero": 269,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-270",
+    "permit_id": "ADR",
+    "numero": 270,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-271",
+    "permit_id": "ADR",
+    "numero": 271,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-272",
+    "permit_id": "ADR",
+    "numero": 272,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-273",
+    "permit_id": "ADR",
+    "numero": 273,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-274",
+    "permit_id": "ADR",
+    "numero": 274,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-275",
+    "permit_id": "ADR",
+    "numero": 275,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-276",
+    "permit_id": "ADR",
+    "numero": 276,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-277",
+    "permit_id": "ADR",
+    "numero": 277,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-278",
+    "permit_id": "ADR",
+    "numero": 278,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-279",
+    "permit_id": "ADR",
+    "numero": 279,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-280",
+    "permit_id": "ADR",
+    "numero": 280,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-281",
+    "permit_id": "ADR",
+    "numero": 281,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-282",
+    "permit_id": "ADR",
+    "numero": 282,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-283",
+    "permit_id": "ADR",
+    "numero": 283,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-284",
+    "permit_id": "ADR",
+    "numero": 284,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-285",
+    "permit_id": "ADR",
+    "numero": 285,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-286",
+    "permit_id": "ADR",
+    "numero": 286,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-287",
+    "permit_id": "ADR",
+    "numero": 287,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-288",
+    "permit_id": "ADR",
+    "numero": 288,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-289",
+    "permit_id": "ADR",
+    "numero": 289,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-290",
+    "permit_id": "ADR",
+    "numero": 290,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-291",
+    "permit_id": "ADR",
+    "numero": 291,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-292",
+    "permit_id": "ADR",
+    "numero": 292,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-293",
+    "permit_id": "ADR",
+    "numero": 293,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-294",
+    "permit_id": "ADR",
+    "numero": 294,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-295",
+    "permit_id": "ADR",
+    "numero": 295,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-296",
+    "permit_id": "ADR",
+    "numero": 296,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-297",
+    "permit_id": "ADR",
+    "numero": 297,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-298",
+    "permit_id": "ADR",
+    "numero": 298,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-299",
+    "permit_id": "ADR",
+    "numero": 299,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-300",
+    "permit_id": "ADR",
+    "numero": 300,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-301",
+    "permit_id": "ADR",
+    "numero": 301,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-302",
+    "permit_id": "ADR",
+    "numero": 302,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-303",
+    "permit_id": "ADR",
+    "numero": 303,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-304",
+    "permit_id": "ADR",
+    "numero": 304,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-305",
+    "permit_id": "ADR",
+    "numero": 305,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-306",
+    "permit_id": "ADR",
+    "numero": 306,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-307",
+    "permit_id": "ADR",
+    "numero": 307,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-308",
+    "permit_id": "ADR",
+    "numero": 308,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-309",
+    "permit_id": "ADR",
+    "numero": 309,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-310",
+    "permit_id": "ADR",
+    "numero": 310,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-311",
+    "permit_id": "ADR",
+    "numero": 311,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-312",
+    "permit_id": "ADR",
+    "numero": 312,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-313",
+    "permit_id": "ADR",
+    "numero": 313,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-314",
+    "permit_id": "ADR",
+    "numero": 314,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-315",
+    "permit_id": "ADR",
+    "numero": 315,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-316",
+    "permit_id": "ADR",
+    "numero": 316,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-317",
+    "permit_id": "ADR",
+    "numero": 317,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-318",
+    "permit_id": "ADR",
+    "numero": 318,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-319",
+    "permit_id": "ADR",
+    "numero": 319,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-320",
+    "permit_id": "ADR",
+    "numero": 320,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-321",
+    "permit_id": "ADR",
+    "numero": 321,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-322",
+    "permit_id": "ADR",
+    "numero": 322,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-323",
+    "permit_id": "ADR",
+    "numero": 323,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-324",
+    "permit_id": "ADR",
+    "numero": 324,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-325",
+    "permit_id": "ADR",
+    "numero": 325,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-326",
+    "permit_id": "ADR",
+    "numero": 326,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-327",
+    "permit_id": "ADR",
+    "numero": 327,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-328",
+    "permit_id": "ADR",
+    "numero": 328,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-329",
+    "permit_id": "ADR",
+    "numero": 329,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-330",
+    "permit_id": "ADR",
+    "numero": 330,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-331",
+    "permit_id": "ADR",
+    "numero": 331,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-332",
+    "permit_id": "ADR",
+    "numero": 332,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-333",
+    "permit_id": "ADR",
+    "numero": 333,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-334",
+    "permit_id": "ADR",
+    "numero": 334,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-335",
+    "permit_id": "ADR",
+    "numero": 335,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-336",
+    "permit_id": "ADR",
+    "numero": 336,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-337",
+    "permit_id": "ADR",
+    "numero": 337,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-338",
+    "permit_id": "ADR",
+    "numero": 338,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-339",
+    "permit_id": "ADR",
+    "numero": 339,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-340",
+    "permit_id": "ADR",
+    "numero": 340,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-341",
+    "permit_id": "ADR",
+    "numero": 341,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-342",
+    "permit_id": "ADR",
+    "numero": 342,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-343",
+    "permit_id": "ADR",
+    "numero": 343,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-344",
+    "permit_id": "ADR",
+    "numero": 344,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-345",
+    "permit_id": "ADR",
+    "numero": 345,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-346",
+    "permit_id": "ADR",
+    "numero": 346,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-347",
+    "permit_id": "ADR",
+    "numero": 347,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-348",
+    "permit_id": "ADR",
+    "numero": 348,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-349",
+    "permit_id": "ADR",
+    "numero": 349,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-350",
+    "permit_id": "ADR",
+    "numero": 350,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-351",
+    "permit_id": "ADR",
+    "numero": 351,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-352",
+    "permit_id": "ADR",
+    "numero": 352,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-353",
+    "permit_id": "ADR",
+    "numero": 353,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-354",
+    "permit_id": "ADR",
+    "numero": 354,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-355",
+    "permit_id": "ADR",
+    "numero": 355,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-356",
+    "permit_id": "ADR",
+    "numero": 356,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-357",
+    "permit_id": "ADR",
+    "numero": 357,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-358",
+    "permit_id": "ADR",
+    "numero": 358,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-359",
+    "permit_id": "ADR",
+    "numero": 359,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-360",
+    "permit_id": "ADR",
+    "numero": 360,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-361",
+    "permit_id": "ADR",
+    "numero": 361,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-362",
+    "permit_id": "ADR",
+    "numero": 362,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-363",
+    "permit_id": "ADR",
+    "numero": 363,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-364",
+    "permit_id": "ADR",
+    "numero": 364,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-365",
+    "permit_id": "ADR",
+    "numero": 365,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-366",
+    "permit_id": "ADR",
+    "numero": 366,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-367",
+    "permit_id": "ADR",
+    "numero": 367,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-368",
+    "permit_id": "ADR",
+    "numero": 368,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-369",
+    "permit_id": "ADR",
+    "numero": 369,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-370",
+    "permit_id": "ADR",
+    "numero": 370,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-371",
+    "permit_id": "ADR",
+    "numero": 371,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-372",
+    "permit_id": "ADR",
+    "numero": 372,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-373",
+    "permit_id": "ADR",
+    "numero": 373,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-374",
+    "permit_id": "ADR",
+    "numero": 374,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-375",
+    "permit_id": "ADR",
+    "numero": 375,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-376",
+    "permit_id": "ADR",
+    "numero": 376,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-377",
+    "permit_id": "ADR",
+    "numero": 377,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-378",
+    "permit_id": "ADR",
+    "numero": 378,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-379",
+    "permit_id": "ADR",
+    "numero": 379,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-380",
+    "permit_id": "ADR",
+    "numero": 380,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-381",
+    "permit_id": "ADR",
+    "numero": 381,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-382",
+    "permit_id": "ADR",
+    "numero": 382,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-383",
+    "permit_id": "ADR",
+    "numero": 383,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-384",
+    "permit_id": "ADR",
+    "numero": 384,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-385",
+    "permit_id": "ADR",
+    "numero": 385,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-386",
+    "permit_id": "ADR",
+    "numero": 386,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-387",
+    "permit_id": "ADR",
+    "numero": 387,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-388",
+    "permit_id": "ADR",
+    "numero": 388,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-389",
+    "permit_id": "ADR",
+    "numero": 389,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-390",
+    "permit_id": "ADR",
+    "numero": 390,
+    "tema_aprobados_ya": "renovacion_basico"
+  },
+  {
+    "id": "AY-ADR-391",
+    "permit_id": "ADR",
+    "numero": 391,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-392",
+    "permit_id": "ADR",
+    "numero": 392,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-393",
+    "permit_id": "ADR",
+    "numero": 393,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-394",
+    "permit_id": "ADR",
+    "numero": 394,
+    "tema_aprobados_ya": "renovacion_explosivos"
+  },
+  {
+    "id": "AY-ADR-395",
+    "permit_id": "ADR",
+    "numero": 395,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-396",
+    "permit_id": "ADR",
+    "numero": 396,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-397",
+    "permit_id": "ADR",
+    "numero": 397,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-398",
+    "permit_id": "ADR",
+    "numero": 398,
+    "tema_aprobados_ya": "renovacion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-399",
+    "permit_id": "ADR",
+    "numero": 399,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-400",
+    "permit_id": "ADR",
+    "numero": 400,
+    "tema_aprobados_ya": "obtencion_cisternas"
+  },
+  {
+    "id": "AY-ADR-401",
+    "permit_id": "ADR",
+    "numero": 401,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-402",
+    "permit_id": "ADR",
+    "numero": 402,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-403",
+    "permit_id": "ADR",
+    "numero": 403,
+    "tema_aprobados_ya": "renovacion_cisternas"
+  },
+  {
+    "id": "AY-ADR-404",
+    "permit_id": "ADR",
+    "numero": 404,
+    "tema_aprobados_ya": "obtencion_explosivos"
+  },
+  {
+    "id": "AY-ADR-405",
+    "permit_id": "ADR",
+    "numero": 405,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-406",
+    "permit_id": "ADR",
+    "numero": 406,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-ADR-407",
+    "permit_id": "ADR",
+    "numero": 407,
+    "tema_aprobados_ya": "obtencion_radiactivos"
+  },
+  {
+    "id": "AY-ADR-408",
+    "permit_id": "ADR",
+    "numero": 408,
+    "tema_aprobados_ya": "obtencion_basico"
+  },
+  {
+    "id": "AY-PUNTOS-2",
+    "permit_id": "PUNTOS",
+    "numero": 2,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-3",
+    "permit_id": "PUNTOS",
+    "numero": 3,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-4",
+    "permit_id": "PUNTOS",
+    "numero": 4,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-5",
+    "permit_id": "PUNTOS",
+    "numero": 5,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-6",
+    "permit_id": "PUNTOS",
+    "numero": 6,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-7",
+    "permit_id": "PUNTOS",
+    "numero": 7,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-8",
+    "permit_id": "PUNTOS",
+    "numero": 8,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-9",
+    "permit_id": "PUNTOS",
+    "numero": 9,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-10",
+    "permit_id": "PUNTOS",
+    "numero": 10,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-11",
+    "permit_id": "PUNTOS",
+    "numero": 11,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-12",
+    "permit_id": "PUNTOS",
+    "numero": 12,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-13",
+    "permit_id": "PUNTOS",
+    "numero": 13,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-14",
+    "permit_id": "PUNTOS",
+    "numero": 14,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-15",
+    "permit_id": "PUNTOS",
+    "numero": 15,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-16",
+    "permit_id": "PUNTOS",
+    "numero": 16,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-17",
+    "permit_id": "PUNTOS",
+    "numero": 17,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-18",
+    "permit_id": "PUNTOS",
+    "numero": 18,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-19",
+    "permit_id": "PUNTOS",
+    "numero": 19,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-20",
+    "permit_id": "PUNTOS",
+    "numero": 20,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-21",
+    "permit_id": "PUNTOS",
+    "numero": 21,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-22",
+    "permit_id": "PUNTOS",
+    "numero": 22,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-23",
+    "permit_id": "PUNTOS",
+    "numero": 23,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-24",
+    "permit_id": "PUNTOS",
+    "numero": 24,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-25",
+    "permit_id": "PUNTOS",
+    "numero": 25,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-26",
+    "permit_id": "PUNTOS",
+    "numero": 26,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-27",
+    "permit_id": "PUNTOS",
+    "numero": 27,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-28",
+    "permit_id": "PUNTOS",
+    "numero": 28,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-29",
+    "permit_id": "PUNTOS",
+    "numero": 29,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-30",
+    "permit_id": "PUNTOS",
+    "numero": 30,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-31",
+    "permit_id": "PUNTOS",
+    "numero": 31,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-32",
+    "permit_id": "PUNTOS",
+    "numero": 32,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-33",
+    "permit_id": "PUNTOS",
+    "numero": 33,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-34",
+    "permit_id": "PUNTOS",
+    "numero": 34,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-35",
+    "permit_id": "PUNTOS",
+    "numero": 35,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-36",
+    "permit_id": "PUNTOS",
+    "numero": 36,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-37",
+    "permit_id": "PUNTOS",
+    "numero": 37,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-PUNTOS-38",
+    "permit_id": "PUNTOS",
+    "numero": 38,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CAP-M-1",
+    "permit_id": "CAP-M",
+    "numero": 1,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CAP-V-1",
+    "permit_id": "CAP-V",
+    "numero": 1,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-COMP-M-1",
+    "permit_id": "COMP-M",
+    "numero": 1,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-COMP-V-1",
+    "permit_id": "COMP-V",
+    "numero": 1,
+    "tema_aprobados_ya": "General"
+  },
+  {
+    "id": "AY-CONSEJERO-1",
+    "permit_id": "CONSEJERO",
+    "numero": 1,
+    "tema_aprobados_ya": "General"
+  }
+]

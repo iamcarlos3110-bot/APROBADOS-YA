@@ -1,0 +1,11 @@
+# Archivos a ignorar en el repositorio
+.env
+.env.local
+node_modules/
+*.log
+*.tmp
+
+data/Carnet.B.apkg
+scraper/
+*.pyc
+__pycache__/

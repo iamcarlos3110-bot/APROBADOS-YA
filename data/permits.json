@@ -1,0 +1,12 @@
+[
+  { "id": "B", "name": "Permiso B", "subtitle": "Turismos", "icon": "🚗", "bg": "#D1D7B4" },
+  { "id": "A1A2", "name": "Permiso A1/A2", "subtitle": "Motocicletas", "icon": "🏍️", "bg": "#E5E1D8" },
+  { "id": "AM", "name": "Permiso AM", "subtitle": "Ciclomotores", "icon": "🛵", "bg": "#D1D7B4" },
+  { "id": "C", "name": "Permiso C1/C", "subtitle": "Camiones", "icon": "🚛", "bg": "#E5E1D8" },
+  { "id": "D", "name": "Permiso D1/D", "subtitle": "Autobuses", "icon": "🚌", "bg": "#D1D7B4" },
+  { "id": "BE", "name": "Permiso B+E", "subtitle": "Turismo + Remolque", "icon": "🚙", "bg": "#E5E1D8" },
+  { "id": "CE", "name": "Permiso C+E", "subtitle": "Camión + Remolque", "icon": "🚚", "bg": "#D1D7B4" },
+  { "id": "ADR", "name": "ADR", "subtitle": "Mercancías peligrosas", "icon": "⚠️", "bg": "#E5E1D8" },
+
+  { "id": "PUNTOS", "name": "Recuperación", "subtitle": "Puntos", "icon": "♻️", "bg": "#E5E1D8" }
+]

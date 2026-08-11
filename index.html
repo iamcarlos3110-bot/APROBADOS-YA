@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- SEO -->
+  <title>Aprobados YA — Tests DGT y preparación del examen de conducir</title>
+  <meta name="description" content="Prepara el examen teórico del carné de conducir con tests oficiales de la DGT. Permiso B, A, C, D y más. Modo memorizar, favoritos, estadísticas y seguimiento de progreso."/>
+  <meta name="keywords" content="tests DGT, examen conducir, carnet conducir, permiso B, test online, preguntas DGT"/>
+  <meta name="author" content="Aprobados YA"/>
+  <link rel="canonical" href="https://aprobadosya.com/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://aprobadosya.com/"/>
+  <meta property="og:title" content="Aprobados YA — Tests DGT y preparación del examen de conducir"/>
+  <meta property="og:description" content="Prepara el examen teórico del carné de conducir con tests oficiales DGT. Gratis. Sin registro."/>
+  <meta property="og:image" content="https://aprobadosya.com/og-image.png"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Aprobados YA — Tests DGT"/>
+  <meta name="twitter:description" content="Tests del examen teórico de conducir. Gratis."/>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style_v2.css?v=6"/>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <!-- LEFT: Logo -->
+    <a class="logo" href="#" id="logoLink" data-target="screen-home">
+      <div class="logo-mark">AY</div>
+      <div class="logo-text">
+        <span class="logo-a">Aprobados</span><span class="logo-ya"> YA</span>
+      </div>
+    </a>
+    
+    <!-- CENTER: Main Nav -->
+    <nav class="main-nav" id="mainNav">
+      <a href="#" class="nav-link active" data-target="screen-home">🏠 Tests</a>
+            <a href="#" class="nav-link" data-target="screen-memorize">🧠 Memorizar</a>
+      <a href="#" class="nav-link" data-target="screen-progress">📊 Mi preparación</a>
+    </nav>
+
+    <!-- RIGHT: Right Nav -->
+    <div class="right-nav">
+      <a href="#" class="nav-icon-link" data-target="screen-favorites" title="Favoritos">🔖</a>
+      <div class="streak-indicator" title="Racha">🔥 <span id="streakCount">0</span></div>
+      <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Cambiar modo oscuro" title="Alternar Modo Oscuro/Claro">
+        <span class="theme-icon-light">🌙</span>
+        <span class="theme-icon-dark" style="display: none;">☀️</span>
+      </button>
+      <button class="profile-btn" id="profileBtn" title="Perfil">👤</button>
+    </div>
+
+    <!-- MOBILE: Hamburger -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <div class="mobile-nav-content">
+    <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+    <a href="#" class="mobile-nav-link" data-target="screen-home">🏠 Tests</a>
+    <a href="#" class="mobile-nav-link" data-target="screen-home">📚 Tests</a>
+    <a href="#" class="mobile-nav-link" data-target="screen-memorize">🧠 Memorizar</a>
+    <a href="#" class="mobile-nav-link" data-target="screen-progress">📊 Mi preparación</a>
+    <a href="#" class="mobile-nav-link" data-target="screen-favorites">🔖 Favoritos</a>
+    <div class="mobile-nav-stats">
+      <span>🔥 Racha: <span id="mobileStreakCount">0</span></span>
+    </div>
+    <button class="mobile-theme-btn" id="mobileThemeBtn">🌙 Alternar Tema</button>
+    <button class="mobile-profile-btn" id="mobileProfileBtn">👤 Perfil</button>
+  </div>
+</div>
+
+<!-- ═══════════ MAIN ═══════════ -->
+<main id="appMain">
+
+  <!-- ░░░░ PANTALLA 1: SELECCIÓN DE PERMISO ░░░░ -->
+  <section id="screen-home" class="screen active">
+    <div class="home-wrap">
+      
+
+
+      <div class="home-hero">
+        <div class="home-badge">🇪🇸 Tests oficiales DGT</div>
+        <h1>Elige tu permiso<br>y empieza a aprobar</h1>
+        <p class="home-sub">Selecciona el tipo de carnet que quieres conseguir. Encontrarás tests organizados por temas, con 100 tests de 30 preguntas cada uno.</p>
+      </div>
+      <div class="permits-grid" id="permitsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ░░░░ PANTALLA 2: TEMAS DEL PERMISO ░░░░ -->
+  <section id="screen-topics" class="screen">
+    <div class="inner-wrap">
+      <div class="page-header">
+        <button class="back-btn" id="backToHome">← Volver</button>
+        <div class="page-header-info">
+          <div class="page-permit-badge" id="topicsPermitBadge"></div>
+          <h2 id="topicsTitle">Elige un tema</h2>
+          <p id="topicsSubtitle" class="page-subtitle"></p>
+        </div>
+      </div>
+      <div class="topics-grid" id="topicsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ░░░░ PANTALLA 3: LISTA DE 100 TESTS ░░░░ -->
+  <section id="screen-tests" class="screen">
+    <div class="inner-wrap">
+      <div class="page-header">
+        <button class="back-btn" id="backToTopics">← Volver</button>
+        <div class="page-header-info">
+          <div class="page-permit-badge" id="testsPermitBadge"></div>
+          <h2 id="testsTitle">Tests disponibles</h2>
+          <p id="testsSubtitle" class="page-subtitle">Elige un test para empezar o memorizar sus preguntas</p>
+        </div>
+      </div>
+      <div class="tests-grid" id="testsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ░░░░ PANTALLA 4A: REALIZAR TEST ░░░░ -->
+  <section id="screen-test" class="screen">
+    <div class="test-wrap">
+      <!-- Topbar del test -->
+      <div class="test-topbar">
+        <button class="back-btn sm" id="exitTestBtn">✕ Salir</button>
+        <div class="test-info-center">
+          <div class="test-label" id="testLabel">Test 01 · Señales</div>
+          <div class="test-progress-wrap">
+            <div class="test-prog-bar">
+              <div class="test-prog-fill" id="testProgFill" style="width:0%"></div>
+            </div>
+            <div class="test-prog-text"><span id="testProgCurrent">1</span> de <span id="testProgTotal">30</span></div>
+          </div>
+        </div>
+        <div class="test-counter-badge">
+          <span id="testQCounter">1/30</span>
+        </div>
+      </div>
+
+      <!-- Pregunta -->
+      <div class="test-question-wrap" id="testQuestionWrap">
+        <div class="question-card" id="questionCard">
+          <div class="question-num" id="questionNum">Pregunta 1</div>
+          <div class="question-img" id="questionImg" style="display:none;"></div>
+          <p class="question-text" id="questionText"></p>
+          <div class="question-options" id="questionOptions"></div>
+          <div class="question-feedback" id="questionFeedback" style="display:none;">
+            <div class="feedback-header" id="feedbackHeader"></div>
+            <p class="feedback-explanation" id="feedbackExplanation"></p>
+            <button class="next-question-btn" id="nextQuestionBtn">Siguiente pregunta →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░░ PANTALLA 4B: MEMORIZAR TEST ░░░░ -->
+  <section id="screen-memo" class="screen">
+    <div class="inner-wrap">
+      <div class="page-header">
+        <button class="back-btn" id="exitMemoBtn">← Volver</button>
+        <div class="page-header-info">
+          <div class="page-permit-badge" id="memoPermitBadge"></div>
+          <h2 id="memoTitle">Memorizar preguntas</h2>
+          <p id="memoSubtitle" class="page-subtitle"></p>
+        </div>
+      </div>
+      
+      <div class="memo-tip-bubble" style="background:var(--olive-light); padding:16px 20px; border-radius:16px; margin-bottom:24px; display:flex; gap:16px; align-items:flex-start; border-left:4px solid var(--olive);">
+        <span style="font-size:24px; line-height:1;">💡</span>
+        <div>
+          <strong style="display:block; margin-bottom:6px; font-size:15px; color:var(--text);">Consejo de estudio</strong>
+          <span style="font-size:14px; color:var(--text); line-height:1.5; display:block; opacity:0.9;">Escribir a mano refuerza la memoria motriz. Te recomendamos tener una libreta cerca y anotar las explicaciones de las preguntas que más te cuesten: <strong>retendrás la información mucho más rápido</strong>.</span>
+        </div>
+      </div>
+
+      <div class="memo-list" id="memoList"></div>
+    </div>
+  </section>
+
+  <!-- ░░░░ PANTALLA 5: RESULTADO ░░░░ -->
+  <section id="screen-result" class="screen">
+    <div class="inner-wrap result-wrap">
+      <div class="result-card">
+        <div class="result-score-circle" id="resultScoreCircle">
+          <div class="result-emoji" id="resultEmoji">🎉</div>
+          <div class="result-score-text" id="resultScoreText">27/30</div>
+        </div>
+        <h2 class="result-title" id="resultTitle">¡Enhorabuena!</h2>
+        <p class="result-subtitle" id="resultSubtitle"></p>
+        <div class="result-stats" id="resultStats"></div>
+        <div class="result-review" id="resultReview"></div>
+        <div class="result-actions">
+          <button class="primary-btn" id="retryTestBtn">Repetir test</button>
+          <button class="outline-btn" id="goToTestsBtn">Elegir otro test</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+  <!-- ░░░░ PANTALLA 7: MI PREPARACIÓN ░░░░ -->
+  <section id="screen-prep" class="screen">
+    <div class="inner-wrap">
+      <h2>Mi Preparación</h2>
+      <p class="subtitle">Continúa estudiando y revisa tus estadísticas.</p>
+      
+      <div class="home-top-cards" id="homeTopCards">
+        <!-- Rellenado por JS -->
+      </div>
+
+      <div class="progress-grid" id="progressStatsGrid" style="margin-top:30px;">
+        <!-- Rellenado por JS -->
+      </div>
+    </div>
+  </section>
+
+<!-- ░░░░ PANTALLA 7: FAVORITOS ░░░░ -->
+<section id="screen-favorites" class="screen">
+  <div class="inner-wrap">
+    <div class="page-header">
+      <div class="page-header-info">
+        <h2>🔖 Preguntas Favoritas</h2>
+        <p class="page-subtitle">Repasa las preguntas que has guardado</p>
+      </div>
+    </div>
+    <div class="memo-list" id="favoritesList">
+      <!-- Rellenado por JS -->
+    </div>
+  </div>
+</section>
+
+<!-- MODAL DEL PERFIL -->
+<div class="modal-overlay" id="profileModal">
+  <div class="modal-content">
+    <!-- Contenido generado dinámicamente por auth.js según estado de sesión -->
+    <button class="modal-close" id="closeProfileBtn">✕</button>
+    <div class="profile-header">
+      <div class="profile-avatar-large">👤</div>
+      <h3>Mi Perfil</h3>
+    </div>
+    <div class="profile-stats">
+      <div class="p-stat">
+        <span class="p-stat-val" id="profileTotalTests">0</span>
+        <span class="p-stat-lbl">Tests hechos</span>
+      </div>
+      <div class="p-stat">
+        <span class="p-stat-val" id="profileCorrect">0</span>
+        <span class="p-stat-lbl">Aciertos totales</span>
+      </div>
+      <div class="p-stat">
+        <span class="p-stat-val" id="profileStreak">0</span>
+        <span class="p-stat-lbl">Días de racha</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="data.js?v=45"></script>
+<script src="app_v2.js?v=13"></script>
+<script type="module" src="auth.js"></script>
+<script type="module" src="sync.js"></script>
+</body>
+</html>
