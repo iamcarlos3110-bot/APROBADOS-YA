@@ -601,26 +601,47 @@ function initTheme() {
     console.warn('localStorage not available', e);
   }
   
+  function setDark() {
+      document.body.classList.add('dark-theme');
+      localStorage.setItem('ay_theme', 'dark');
+      if(iconLight) iconLight.style.display = 'none';
+      if(iconDark) iconDark.style.display = 'block';
+      const mCheck = document.getElementById('mobileThemeCheckbox');
+      if(mCheck) mCheck.checked = true;
+    }
+    
+    function setLight() {
+      document.body.classList.remove('dark-theme');
+      localStorage.setItem('ay_theme', 'light');
+      if(iconLight) iconLight.style.display = 'block';
+      if(iconDark) iconDark.style.display = 'none';
+      const mCheck = document.getElementById('mobileThemeCheckbox');
+      if(mCheck) mCheck.checked = false;
+    }
+
   const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   
   if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-    document.body.classList.add('dark-theme');
-    if(iconLight) iconLight.style.display = 'none';
-    if(iconDark) iconDark.style.display = 'inline';
+    setDark();
+  } else {
+    setLight();
   }
   
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
       const isDark = document.body.classList.toggle('dark-theme');
-      
-      if (isDark) {
-        try { localStorage.setItem('ay_theme', 'dark'); } catch(e){}
-        if(iconLight) iconLight.style.display = 'none';
-        if(iconDark) iconDark.style.display = 'inline';
+      if (isDark) setDark(); else setLight();
+    });
+  }
+
+  // Mobile Theme Toggle uses same logic as desktop
+  const mobileThemeCheckbox = document.getElementById('mobileThemeCheckbox');
+  if(mobileThemeCheckbox) {
+    mobileThemeCheckbox.addEventListener('change', (e) => {
+      if(e.target.checked) {
+        setDark();
       } else {
-        try { localStorage.setItem('ay_theme', 'light'); } catch(e){}
-        if(iconLight) iconLight.style.display = 'inline';
-        if(iconDark) iconDark.style.display = 'none';
+        setLight();
       }
     });
   }
@@ -1237,14 +1258,6 @@ function initNav() {
   }
   // closeProfileBtn is now handled dynamically by auth.js renderProfileModal
   if(closeProfileBtn) closeProfileBtn.addEventListener('click', () => profileModal.classList.remove('active'));
-  
-  // Mobile Theme Toggle uses same logic as desktop
-  const mobileThemeBtn = document.getElementById('mobileThemeBtn');
-  if(mobileThemeBtn) {
-    mobileThemeBtn.addEventListener('click', () => {
-      document.getElementById('themeToggleBtn').click();
-    });
-  }
 }
 
 
