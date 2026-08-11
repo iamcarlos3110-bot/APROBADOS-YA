@@ -682,12 +682,12 @@ function renderQuestion(index) {
 
   // Imagen
   const imgEl = document.getElementById('questionImg');
-  if (q.imagen_url) {
+  if (q.imagen_url || q.imagen_local) {
     const src = q.imagen_local || q.imagen_url;
-    if (src.includes('.jpg') || src.includes('.png') || src.startsWith('http')) {
-      imgEl.innerHTML = `<img src="${src}" alt="Ilustración de la pregunta" style="max-width:100%; max-height:220px; object-fit:contain; border-radius:4px; display:block;" />`;
+    if (src.includes('.jpg') || src.includes('.JPG') || src.includes('.png') || src.startsWith('http')) {
+      imgEl.innerHTML = `<img src="${src}" alt="Ilustración de la pregunta" style="max-width:100%; max-height:220px; object-fit:contain; border-radius:4px; display:block; margin: 0 auto;" />`;
     } else {
-      imgEl.innerHTML = q.imagen_url;
+      imgEl.innerHTML = q.imagen_url || q.imagen_local;
     }
     imgEl.style.display = 'flex';
   } else {
