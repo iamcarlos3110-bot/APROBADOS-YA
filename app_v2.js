@@ -601,6 +601,28 @@ function renderTests() {
 
 // ─── START TEST ─────────────────────────────────────
 function startTest(testIdentifier, mode, isOfficial = false) {
+  // LÓGICA FREEMIUM (Muro de Pago)
+  // Determinar el número del test
+  let testNumberForPaywall = 1;
+  if (typeof testIdentifier === 'string' && testIdentifier.includes('-')) {
+    testNumberForPaywall = parseInt(testIdentifier.split('-')[1]);
+  } else {
+    testNumberForPaywall = parseInt(testIdentifier);
+  }
+
+  // Si el test es mayor a 1, requiere Premium
+  if (testNumberForPaywall > 1) {
+    const isPremium = window.currentUser && window.currentUser() && window.currentUser().user_metadata?.is_premium;
+    if (!isPremium) {
+      if (typeof window.triggerPaywall === 'function') {
+        window.triggerPaywall();
+      } else {
+        alert('Este test es solo para usuarios Premium. Inicia sesión y actualiza tu cuenta en el Perfil.');
+      }
+      return; // Bloquear acceso
+    }
+  }
+
   state.testMode = mode;
   state.isOfficialDgt = isOfficial;
   state.testNum = testIdentifier;

@@ -136,6 +136,15 @@ export function renderProfileModal() {
         ${planBadge}
         <p class="profile-date">Miembro desde ${createdAt}</p>
       </div>
+      
+      ${!isPremium ? `
+      <div style="background: rgba(162, 187, 85, 0.1); border: 1px solid var(--olive); border-radius: 12px; padding: 16px; margin-top: 16px; text-align: center;">
+        <h4 style="margin: 0 0 8px 0; color: var(--text);">Desbloquea todo el contenido</h4>
+        <p style="margin: 0 0 16px 0; color: var(--text2); font-size: 14px;">Acceso a todos los tests sin límites.</p>
+        <button class="primary-btn" id="upgradeBtn" style="width:100%; font-size: 14px; padding: 10px;">⭐ Hacerse Premium (4,99€/mes)</button>
+      </div>
+      ` : ''}
+
       <div class="profile-stats">
         <div class="p-stat">
           <span class="p-stat-val" id="profileTotalTests">${stats.totalTests || 0}</span>
@@ -156,6 +165,35 @@ export function renderProfileModal() {
         </button>
       </div>
     `;
+
+    // Bind upgrade button si existe
+    const upgradeBtn = document.getElementById('upgradeBtn');
+    if (upgradeBtn) {
+      upgradeBtn.addEventListener('click', async () => {
+        upgradeBtn.innerHTML = '<span class="loader"></span>';
+        upgradeBtn.disabled = true;
+        try {
+          const res = await fetch('/api/create-checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              priceId: 'price_1U3ICvFkC2ssduzMweZ873xW', // ID DEL PRODUCTO DE STRIPE
+              userId: currentUser.id
+            })
+          });
+          const data = await res.json();
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            throw new Error(data.error || 'Error desconocido');
+          }
+        } catch (e) {
+          alert('Error al iniciar el pago: ' + e.message);
+          upgradeBtn.innerHTML = '⭐ Hacerse Premium (4,99€/mes)';
+          upgradeBtn.disabled = false;
+        }
+      });
+    }
 
     // Bind cerrar sesión
     document.getElementById('signOutBtn')?.addEventListener('click', async () => {
@@ -204,6 +242,69 @@ export function renderProfileModal() {
     document.getElementById('openRegisterBtn')?.addEventListener('click', () => { closeProfileModal(); openAuthModal('register'); });
   }
 }
+
+// ─── MODAL PAYWALL (Freemium) ─────────────────
+export function triggerPaywall() {
+  let modal = document.getElementById('paywallModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'paywallModal';
+    modal.className = 'modal-overlay';
+    document.body.appendChild(modal);
+  }
+  
+  const isAuthenticated = !!currentUser;
+  
+  modal.innerHTML = `
+    <div class="modal-content auth-modal-content" style="text-align: center;">
+      <button class="modal-close" id="closePaywallBtn">✕</button>
+      <div style="font-size: 50px; margin-bottom: 16px;">⭐</div>
+      <h2 style="color: var(--text); margin-bottom: 8px;">Contenido Premium</h2>
+      <p style="color: var(--text2); margin-bottom: 24px;">Has completado el test gratuito. Para seguir haciendo tests de esta sección, necesitas ser Premium.</p>
+      
+      ${isAuthenticated ? `
+        <button class="primary-btn" id="paywallUpgradeBtn" style="width: 100%;">⭐ Hacerse Premium (4,99€/mes)</button>
+      ` : `
+        <p style="color: var(--text); font-weight: 600; margin-bottom: 12px;">Inicia sesión primero para suscribirte.</p>
+        <button class="primary-btn" id="paywallLoginBtn" style="width: 100%; margin-bottom: 12px;">🔑 Iniciar sesión</button>
+      `}
+    </div>
+  `;
+  
+  modal.classList.add('active');
+
+  document.getElementById('closePaywallBtn')?.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+
+  if (isAuthenticated) {
+    const btn = document.getElementById('paywallUpgradeBtn');
+    btn?.addEventListener('click', async () => {
+      btn.innerHTML = '<span class="loader"></span>';
+      btn.disabled = true;
+      try {
+        const res = await fetch('/api/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ priceId: 'price_1U3ICvFkC2ssduzMweZ873xW', userId: currentUser.id })
+        });
+        const data = await res.json();
+        if (data.url) window.location.href = data.url;
+        else throw new Error(data.error);
+      } catch (e) {
+        alert('Error: ' + e.message);
+        btn.innerHTML = '⭐ Hacerse Premium (4,99€/mes)';
+        btn.disabled = false;
+      }
+    });
+  } else {
+    document.getElementById('paywallLoginBtn')?.addEventListener('click', () => {
+      modal.classList.remove('active');
+      openAuthModal('login');
+    });
+  }
+}
+window.triggerPaywall = triggerPaywall;
 
 // ─── MODAL AUTH (Login/Registro/Recuperar) ────
 export function openAuthModal(tab = 'login') {
