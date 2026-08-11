@@ -5,6 +5,10 @@
   "outputDirectory": ".",
   "routes": [
     {
+      "src": "/google487a714ccca1f9ab.html",
+      "dest": "/google487a714ccca1f9ab.html"
+    },
+    {
       "src": "/terminos",
       "dest": "/terminos.html"
     },
