@@ -49,6 +49,15 @@
   }
   </script>
 
+  <!-- PWA & iOS Config -->
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#5C6B1A"/>
+  
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Aprobados Ya"/>
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>"/>
 
@@ -61,6 +70,26 @@
 <body>
 
 <!-- ═══════════ HEADER ═══════════ -->
+<!-- Offline Banner -->
+<div id="offlineBanner" class="offline-banner" style="display: none;">
+  ⚠️ Sin conexión a Internet. Necesitas conexión para sincronizar o acceder a funciones online.
+</div>
+<!-- Install Prompt -->
+<div id="installPrompt" class="install-prompt" style="display: none;">
+  <div class="install-prompt-text">
+    <strong>Instala Aprobados Ya</strong>
+    <span>Ten tus tests siempre a mano y a pantalla completa.</span>
+  </div>
+  <div class="install-prompt-actions">
+    <button id="btnInstallApp" class="install-btn">Instalar</button>
+    <button id="btnCloseInstall" class="close-install-btn">✕</button>
+  </div>
+</div>
+<!-- Update Prompt -->
+<div id="updateBanner" class="update-banner" style="display: none;">
+  ✨ Nueva versión disponible. <button id="btnUpdateApp">Actualizar ahora</button>
+</div>
+
 <header class="site-header" id="siteHeader">
   <div class="header-inner">
     <!-- LEFT: Logo -->

@@ -1658,3 +1658,91 @@ window.handleMemoAnswer = handleMemoAnswer;
 window.showMemoAnswer = showMemoAnswer;
 window.nextMemoQuestion = nextMemoQuestion;
 window.prevMemoQuestion = prevMemoQuestion;
+
+/* ══════════════════════════════════════════
+   PWA & OFFLINE LOGIC
+══════════════════════════════════════════ */
+let deferredPrompt;
+const installPrompt = document.getElementById('installPrompt');
+const btnInstallApp = document.getElementById('btnInstallApp');
+const btnCloseInstall = document.getElementById('btnCloseInstall');
+const offlineBanner = document.getElementById('offlineBanner');
+const updateBanner = document.getElementById('updateBanner');
+const btnUpdateApp = document.getElementById('btnUpdateApp');
+
+// 1. Service Worker Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').then(registration => {
+      console.log('SW registrado con scope:', registration.scope);
+      
+      // Detectar actualizaciones del Service Worker
+      registration.addEventListener('updatefound', () => {
+        const newWorker = registration.installing;
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            // Hay una nueva versión
+            if (updateBanner) updateBanner.style.display = 'flex';
+            if (btnUpdateApp) {
+              btnUpdateApp.onclick = () => {
+                newWorker.postMessage('SKIP_WAITING');
+              };
+            }
+          }
+        });
+      });
+    }).catch(err => {
+      console.error('Error registrando SW:', err);
+    });
+
+    let refreshing;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshing) return;
+      refreshing = true;
+      window.location.reload();
+    });
+  });
+}
+
+// 2. Offline / Online events
+window.addEventListener('online', () => {
+  if (offlineBanner) offlineBanner.style.display = 'none';
+  // Intentar sincronizar si volvió la conexión
+  if (window.SyncManager && window.currentUser) {
+    window.SyncManager.syncFromDB();
+  }
+});
+
+window.addEventListener('offline', () => {
+  if (offlineBanner) offlineBanner.style.display = 'block';
+});
+
+// 3. PWA Install Prompt
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault(); // Evitar que el navegador muestre el suyo por defecto
+  deferredPrompt = e;
+  
+  // Mostrar el nuestro si no lo ha cerrado antes
+  if (localStorage.getItem('ay_pwa_dismissed') !== 'true' && installPrompt) {
+    installPrompt.style.display = 'flex';
+  }
+});
+
+if (btnInstallApp) {
+  btnInstallApp.addEventListener('click', async () => {
+    if (installPrompt) installPrompt.style.display = 'none';
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`Instalación de PWA: ${outcome}`);
+      deferredPrompt = null;
+    }
+  });
+}
+
+if (btnCloseInstall) {
+  btnCloseInstall.addEventListener('click', () => {
+    if (installPrompt) installPrompt.style.display = 'none';
+    localStorage.setItem('ay_pwa_dismissed', 'true');
+  });
+}
