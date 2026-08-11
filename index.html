@@ -4,6 +4,30 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+  <!-- Google tag (gtag.js) — Consent Mode v2 -->
+  <!-- IMPORTANTE: Esta etiqueta debe estar siempre en el head para que Google la detecte. -->
+  <!-- Los datos NO se envían hasta que el usuario acepte las cookies (Consent Mode). -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S265MZK9Q2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    // Consent Mode v2 — DENEGAR todo por defecto hasta que el usuario acepte
+    gtag('consent', 'default', {
+      'analytics_storage':  'denied',
+      'ad_storage':         'denied',
+      'ad_user_data':       'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update':    500
+    });
+
+    gtag('js', new Date());
+    gtag('config', 'G-S265MZK9Q2', { anonymize_ip: true });
+
+    window._gtag_loaded = true;
+  </script>
+
+
   <!-- SEO -->
   <title>Aprobados YA — Aprueba tu test de conducir a la primera</title>
   <meta name="description" content="Practica con tests oficiales de la DGT gratis y sin registrarte. Permiso B, A, C, D. Repaso de fallos, seguimiento de progreso y método de memorización avanzado."/>

@@ -25,36 +25,26 @@ const GOOGLE_ADS_ID      = null; // Ejemplo: 'AW-123456789'
 // Inyección del script de Google Tag
 // Solo se carga si hay un ID configurado
 // ─────────────────────────────────────────
+// ─────────────────────────────────────────
+// Actualizar el estado de consentimiento en Google Tag
+// El script ya está en el head (Consent Mode v2).
+// Aquí solo actualizamos los permisos cuando el usuario acepta.
+// ─────────────────────────────────────────
 function loadGoogleTag() {
-  if (!GA_MEASUREMENT_ID) return; // Sin ID, no cargamos nada
+  if (!GA_MEASUREMENT_ID) return;
+  if (typeof window.gtag !== 'function') return;
 
-  // Comprobar consentimiento (cookies.js lo guarda en localStorage)
   const consent = JSON.parse(localStorage.getItem('ay_cookie_consent') || '{}');
-  if (consent.analytics !== true) return; // Usuario no ha aceptado analítica
 
-  if (window._gtag_loaded) return; // No cargar dos veces
-  window._gtag_loaded = true;
-
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-  document.head.appendChild(script);
-
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function() { dataLayer.push(arguments); };
-
-  gtag('js', new Date());
-  gtag('config', GA_MEASUREMENT_ID, {
-    send_page_view: true,
-    anonymize_ip: true
+  // Actualizar Consent Mode según las preferencias del usuario
+  window.gtag('consent', 'update', {
+    'analytics_storage':  consent.analytics === true ? 'granted' : 'denied',
+    'ad_storage':         consent.ads === true       ? 'granted' : 'denied',
+    'ad_user_data':       consent.ads === true       ? 'granted' : 'denied',
+    'ad_personalization': consent.ads === true       ? 'granted' : 'denied'
   });
 
-  // Configurar Google Ads si está disponible
-  if (GOOGLE_ADS_ID) {
-    gtag('config', GOOGLE_ADS_ID);
-  }
-
-  console.log('[Analytics] Google Tag cargado:', GA_MEASUREMENT_ID);
+  console.log('[Analytics] Consent Mode actualizado:', consent);
 }
 
 // ─────────────────────────────────────────
