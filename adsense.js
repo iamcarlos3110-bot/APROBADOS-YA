@@ -23,7 +23,7 @@
 // ─────────────────────────────────────────
 // CONFIGURACIÓN — Pon aquí tus IDs reales
 // ─────────────────────────────────────────
-const ADSENSE_CLIENT_ID  = 'ca-pub-5821896155002687'; // Google AdSense Publisher ID
+const ADSENSE_CLIENT_ID  = 'ca-pub-5821896155002887'; // Google AdSense Publisher ID
 const ADSENSE_SLOT_TOP   = null; // Ejemplo: '1234567890'  (slot del banner superior)
 const ADSENSE_SLOT_CONTENT = null; // Ejemplo: '0987654321' (slot del banner de contenido)
 const ADSENSE_SLOT_BOTTOM  = null; // Ejemplo: '1122334455' (slot del banner inferior)
