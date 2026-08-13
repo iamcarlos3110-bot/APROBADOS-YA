@@ -1557,7 +1557,19 @@ function startPreparation() {
 window.startPreparation = startPreparation;
 
 async function startSpecialTest(type) {
-  let permitId = UserManager.data.lastPermit || 'B';
+    const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
+    const featureId = `special-${type}`;
+    const isUnlocked = checkUnlock(featureId);
+    
+    if (!isUserPremium && !isUnlocked) {
+      if (typeof window.triggerPaywall === 'function') {
+          window.triggerPaywall('premium', () => {
+              startSpecialTest(type);
+          }, featureId);
+      }
+      return;
+    }
+    let permitId = UserManager.data.lastPermit || 'B';
   
   let allQuestions = [];
   try {
@@ -2151,8 +2163,15 @@ window.openPremiumApuntes = openPremiumApuntes;
 // 🔥 PREGUNTA DEL DÍA
 async function startPreguntaDelDia() {
   const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
-  if (!isUserPremium) {
-    if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
+  const featureId = 'pregunta-del-dia';
+  const isUnlocked = checkUnlock(featureId);
+  
+  if (!isUserPremium && !isUnlocked) {
+    if (typeof window.triggerPaywall === 'function') {
+        window.triggerPaywall('premium', () => {
+            startPreguntaDelDia();
+        }, featureId);
+    }
     return;
   }
   
