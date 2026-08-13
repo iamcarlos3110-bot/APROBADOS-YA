@@ -99,6 +99,8 @@ const UserManager = {
     if(pCorrect) pCorrect.innerText = this.data.totalCorrect;
   }
 };
+window.UserManager = UserManager;
+
 
 // ─── SYNCMANAGER ──────────────────────────────────────────────
 // Sincronización no destructiva entre localStorage y Supabase
@@ -1613,7 +1615,7 @@ async function renderMemoSelectors() {
         <select id="memoPermitSelect" onchange="handleMemoPermitChange(this.value)" style="padding:8px; border-radius:8px; border:1px solid #ddd;">`;
     
     db.getPermits().forEach(p => {
-        html += `<option value="${p.id}" ${memoState.permitId === p.id ? 'selected' : ''}>Permiso ${p.name}</option>`;
+        html += `<option value="${p.id}" ${memoState.permitId === p.id ? 'selected' : ''}>${p.name}</option>`;
     });
     html += `</select>`;
     
