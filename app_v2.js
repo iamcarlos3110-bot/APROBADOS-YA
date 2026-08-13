@@ -1,14 +1,14 @@
 /* =============================================
-   APROBADOS YA â App Logic
-   Pantallas: permits â topics â tests â engine / memo â results
+   APROBADOS YA — App Logic
+   Pantallas: permits → topics → tests → engine / memo → results
 ============================================= */
 'use strict';
 
-// âââ ESTADO GLOBAL & DATA SERVICE ââââââââââââââââââ
+// ─── ESTADO GLOBAL & DATA SERVICE ──────────────────
 
 
-// âââ USER MANAGER (Progreso) âââââââââââââââââââââââââââââââââ
-// âââ USER MANAGER (Progreso Avanzado FASE 1 + ReorganizaciÃ³n) ââââââââââââââââ
+// ─── USER MANAGER (Progreso) ─────────────────────────────────
+// ─── USER MANAGER (Progreso Avanzado FASE 1 + Reorganización) ────────────────
 const UserManager = {
   data: {
     totalTests: 0,
@@ -100,11 +100,11 @@ const UserManager = {
   }
 };
 
-// âââ SYNCMANAGER ââââââââââââââââââââââââââââââââââââââââââââââ
-// SincronizaciÃ³n no destructiva entre localStorage y Supabase
+// ─── SYNCMANAGER ──────────────────────────────────────────────
+// Sincronización no destructiva entre localStorage y Supabase
 const SyncManager = {
 
-  // Leer datos de Supabase al iniciar sesiÃ³n y fusionarlos localmente
+  // Leer datos de Supabase al iniciar sesión y fusionarlos localmente
   async syncFromDB() {
     const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
     if (!user) return;
@@ -113,7 +113,7 @@ const SyncManager = {
       // Leer progreso general desde Supabase
       const { data: progress } = await (await import('https://esm.sh/@supabase/supabase-js@2'))
         .createClient
-        ? Promise.resolve({ data: null }) // placeholder, se usa a travÃ©s de auth.js
+        ? Promise.resolve({ data: null }) // placeholder, se usa a través de auth.js
         : Promise.resolve({ data: null });
 
       // Usar el cliente de supabase expuesto por auth.js (module)
@@ -132,7 +132,7 @@ const SyncManager = {
       const dbFavs = favRes.data || [];
 
       if (dbProgress) {
-        // Tomar el mayor valor para estadÃ­sticas acumulativas
+        // Tomar el mayor valor para estadísticas acumulativas
         const local = UserManager.data;
         const merged = {
           totalTests: Math.max(local.totalTests || 0, dbProgress.tests_completed || 0),
@@ -157,7 +157,7 @@ const SyncManager = {
         dbFavs.forEach(f => localFavsSet.add(f.question_id));
         merged.favorites = Array.from(localFavsSet);
 
-        // Conservar topicStats local (mÃ¡s detallado que la BD por ahora)
+        // Conservar topicStats local (más detallado que la BD por ahora)
         merged.topicStats = local.topicStats || {};
 
         UserManager.data = { ...UserManager.data, ...merged };
@@ -169,10 +169,10 @@ const SyncManager = {
     }
   },
 
-  // MigraciÃ³n no destructiva: local â Supabase (merge, nunca sobreescribir sin comparar)
+  // Migración no destructiva: local → Supabase (merge, nunca sobreescribir sin comparar)
   async migrateLocalDataToDB() {
     const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
-    if (!user) return { success: false, error: 'No hay sesiÃ³n activa.' };
+    if (!user) return { success: false, error: 'No hay sesión activa.' };
 
     const authModule = window._authModule;
     if (!authModule) return { success: false, error: 'Auth no inicializado.' };
@@ -242,7 +242,7 @@ const SyncManager = {
         await sb.from('favorites').upsert(favInserts, { onConflict: 'user_id,question_id', ignoreDuplicates: true });
       }
 
-      console.log('[SyncManager] MigraciÃ³n completada sin errores.');
+      console.log('[SyncManager] Migración completada sin errores.');
       return { success: true };
     } catch (e) {
       console.error('[SyncManager] migrateLocalDataToDB error:', e);
@@ -331,7 +331,7 @@ const SyncManager = {
     }
   },
 
-  // Sincronizar un favorito (aÃ±adir/quitar)
+  // Sincronizar un favorito (añadir/quitar)
   async syncFavorite(questionId, add) {
     const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
     if (!user) return;
@@ -532,8 +532,8 @@ class DataService {
       for (let i = formatted.length; i < testQs; i++) {
         formatted.push({
           id: `PH_${testNum}_${i + 1}`,
-          pregunta: `Pregunta ${i + 1} â Contenido pendiente`,
-          respuestas: {'A':'OpciÃ³n A','B':'OpciÃ³n B','C':'OpciÃ³n C'},
+          pregunta: `Pregunta ${i + 1} — Contenido pendiente`,
+          respuestas: {'A':'Opción A','B':'Opción B','C':'Opción C'},
           correcta: 'A',
           explanation: 'Contenido pendiente de importar.',
           fuente: 'APROBADOS YA',
@@ -548,7 +548,7 @@ class DataService {
 
 const db = new DataService();
 
-// âââ PANTALLAS ââââââââââââââââââââââââââââââââââââââ
+// ─── PANTALLAS ──────────────────────────────────────
 
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -556,7 +556,7 @@ function showScreen(id) {
   window.scrollTo(0,0);
 }
 
-// âââ NAV HELPERS ââââââââââââââââââââââââââââââââââââ
+// ─── NAV HELPERS ────────────────────────────────────
 
 document.getElementById('logoLink').addEventListener('click', (e) => {
   e.preventDefault();
@@ -566,7 +566,7 @@ document.getElementById('logoLink').addEventListener('click', (e) => {
 document.getElementById('backToHome').addEventListener('click', renderPermits);
 document.getElementById('backToTopics').addEventListener('click', renderTopics);
 document.getElementById('exitTestBtn').addEventListener('click', () => {
-  showAppConfirm('Salir del test', 'Â¿Seguro que quieres salir? Se perderÃ¡ tu progreso actual.', () => {
+  showAppConfirm('Salir del test', '¿Seguro que quieres salir? Se perderá tu progreso actual.', () => {
       if (!state.topic) {
           showPrepScreen();
       } else {
@@ -581,7 +581,7 @@ document.getElementById('retryTestBtn').addEventListener('click', () => {
 });
 
 
-// âââ INIT ââââââââââââââââââââââââââââââââââââââââââââ
+// ─── INIT ────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   initTheme();
 
@@ -592,13 +592,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   await db.initialize();
   renderPermits();
 
-  // Inicializar Auth (Supabase) si estÃ¡ disponible
+  // Inicializar Auth (Supabase) si está disponible
   if (typeof window.initAuth === 'function') {
     await window.initAuth();
   }
 });
 
-// âââ THEME LOGIC ââââââââââââââââââââââââââââââââââââ
+// ─── THEME LOGIC ────────────────────────────────────
 function initTheme() {
   const toggleBtn = document.getElementById('themeToggleBtn');
   const iconLight = document.querySelector('.theme-icon-light');
@@ -657,7 +657,7 @@ function initTheme() {
   }
 }
 
-// âââ RENDER PERMITS âââââââââââââââââââââââââââââââââ
+// ─── RENDER PERMITS ─────────────────────────────────
 
 function renderPermits() {
   
@@ -667,11 +667,11 @@ function renderPermits() {
   if (db.getPermits().length === 0) {
     container.innerHTML = `
       <div style="grid-column: 1/-1; background: #fff3f3; color: #d9534f; padding: 20px; border-radius: 8px; border: 1px solid #ffcccc; text-align: center;">
-        <h3 style="margin-top:0;">â ï¸ Error de Carga</h3>
+        <h3 style="margin-top:0;">⚠️ Error de Carga</h3>
         <p>No se han podido cargar los datos de los tests.</p>
-        <p>Como ahora usamos una arquitectura profesional con archivos <b>.json</b>, tu navegador bloquea la lectura directa por seguridad si estÃ¡s abriendo el archivo haciendo doble clic (protocolo <code>file://</code>).</p>
-        <p style="font-weight:bold; margin-top:15px;">SoluciÃ³n:</p>
-        <p>Debes abrir esta web usando un servidor local. Si usas VSCode, instala la extensiÃ³n <b>Live Server</b> y dale a "Go Live", o pÃ­dele al asistente que inicie un servidor por ti.</p>
+        <p>Como ahora usamos una arquitectura profesional con archivos <b>.json</b>, tu navegador bloquea la lectura directa por seguridad si estás abriendo el archivo haciendo doble clic (protocolo <code>file://</code>).</p>
+        <p style="font-weight:bold; margin-top:15px;">Solución:</p>
+        <p>Debes abrir esta web usando un servidor local. Si usas VSCode, instala la extensión <b>Live Server</b> y dale a "Go Live", o pídele al asistente que inicie un servidor por ti.</p>
       </div>
     `;
     showScreen('screen-home');
@@ -687,7 +687,7 @@ function renderPermits() {
       <div class="permit-desc">${p.subtitle}</div>
       <div class="permit-arrow">
         <span class="permit-topics-count">DGT</span>
-        <span class="primary-btn" style="padding: 6px 14px; font-size: 12px; border-radius: 99px;">Entrar â</span>
+        <span class="primary-btn" style="padding: 6px 14px; font-size: 12px; border-radius: 99px;">Entrar ➔</span>
       </div>
     `;
     card.addEventListener('click', () => {
@@ -699,30 +699,30 @@ function renderPermits() {
   showScreen('screen-home');
 }
 
-// âââ RENDER TOPICS ââââââââââââââââââââââââââââââââââ
+// ─── RENDER TOPICS ──────────────────────────────────
 
 function getThemeIcon(id, name) {
     const txt = (id + ' ' + name).toLowerCase();
-    if (txt.includes('oficial')) return 'ðï¸';
-    if (txt.includes('seÃ±al') || txt.includes('seÃ±ali')) return 'ð';
-    if (txt.includes('norma')) return 'ð';
-    if (txt.includes('prioridad')) return 'ð¦';
-    if (txt.includes('velocidad')) return 'â±ï¸';
-    if (txt.includes('adelantam')) return 'ð';
-    if (txt.includes('alcohol') || txt.includes('droga')) return 'ð·';
-    if (txt.includes('mecÃ¡nic') || txt.includes('mecanic')) return 'âï¸';
-    if (txt.includes('ilumin') || txt.includes('luces')) return 'ð¡';
-    if (txt.includes('ambiente') || txt.includes('contamin')) return 'ð±';
-    if (txt.includes('accidente') || txt.includes('auxilio')) return 'ð';
-    if (txt.includes('maniobra')) return 'ð';
-    if (txt.includes('conductor') || txt.includes('estado')) return 'ð¤';
-    if (txt.includes('vÃ­a') || txt.includes('via') || txt.includes('calzada')) return 'ð£ï¸';
-    if (txt.includes('seguridad')) return 'ð¡ï¸';
-    if (txt.includes('document')) return 'ð';
-    if (txt.includes('carga')) return 'ð¦';
-    if (txt.includes('pasajero')) return 'ð¥';
-    if (txt.includes('motocicleta')) return 'ðï¸';
-    return 'ð';
+    if (txt.includes('oficial')) return '🏛️';
+    if (txt.includes('señal') || txt.includes('señali')) return '🛑';
+    if (txt.includes('norma')) return '📏';
+    if (txt.includes('prioridad')) return '🚦';
+    if (txt.includes('velocidad')) return '⏱️';
+    if (txt.includes('adelantam')) return '🚙';
+    if (txt.includes('alcohol') || txt.includes('droga')) return '🍷';
+    if (txt.includes('mecánic') || txt.includes('mecanic')) return '⚙️';
+    if (txt.includes('ilumin') || txt.includes('luces')) return '💡';
+    if (txt.includes('ambiente') || txt.includes('contamin')) return '🌱';
+    if (txt.includes('accidente') || txt.includes('auxilio')) return '🚑';
+    if (txt.includes('maniobra')) return '🔄';
+    if (txt.includes('conductor') || txt.includes('estado')) return '👤';
+    if (txt.includes('vía') || txt.includes('via') || txt.includes('calzada')) return '🛣️';
+    if (txt.includes('seguridad')) return '🛡️';
+    if (txt.includes('document')) return '📁';
+    if (txt.includes('carga')) return '📦';
+    if (txt.includes('pasajero')) return '👥';
+    if (txt.includes('motocicleta')) return '🏍️';
+    return '📚';
 }
 
 function renderTopics() {
@@ -742,7 +742,7 @@ function renderTopics() {
         <span style="font-size:28px; flex-shrink:0; line-height:1;">${icon}</span>
         <div>
           <div class="topic-name" style="margin-bottom:0;">${t.name}</div>
-          ${t.id === 'oficiales' ? '<span class="status-badge" style="background:var(--olive); color:white; font-size:11px; padding:3px 8px; border-radius:6px; margin-top:4px; display:inline-block;">â OFICIAL DGT</span>' : ''}
+          ${t.id === 'oficiales' ? '<span class="status-badge" style="background:var(--olive); color:white; font-size:11px; padding:3px 8px; border-radius:6px; margin-top:4px; display:inline-block;">★ OFICIAL DGT</span>' : ''}
         </div>
       </div>
       <div class="topic-caret">
@@ -759,7 +759,7 @@ function renderTopics() {
   showScreen('screen-topics');
 }
 
-// âââ RENDER TESTS âââââââââââââââââââââââââââââââââââ
+// ─── RENDER TESTS ───────────────────────────────────
 
 function renderTests() {
   const p = state.permit;
@@ -775,7 +775,7 @@ function renderTests() {
     // OFICIAL DGT TESTS
     const dgtTests = db.getTestsBySource('DGT', p.id, t.id);
     if (dgtTests.length === 0) {
-      container.innerHTML = '<p style="grid-column:1/-1;">No hay tests oficiales importados todavÃ­a.</p>';
+      container.innerHTML = '<p style="grid-column:1/-1;">No hay tests oficiales importados todavía.</p>';
     } else {
       dgtTests.forEach(test => {
         const card = document.createElement('div');
@@ -783,15 +783,15 @@ function renderTests() {
         card.innerHTML = `
           <div class="test-card-header">
             <h3>Test DGT ${test.numero || test.id.replace('DGT-','')}</h3>
-            <span class="status-badge" style="background:var(--primary); color:white;">â OFICIAL DGT</span>
+            <span class="status-badge" style="background:var(--primary); color:white;">★ OFICIAL DGT</span>
           </div>
           <div class="status-desc" style="font-size:12px; margin-bottom:15px; color:var(--text2); display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-            <span style="background:rgba(0,0,0,0.05); padding:4px 10px; border-radius:12px; font-weight:500;">ð ${test.numero_preguntas || 30} Preguntas</span>
-            <span style="background:rgba(0,0,0,0.05); padding:4px 10px; border-radius:12px; font-weight:500;">ð ${test.fecha || 'Reciente'}</span>
+            <span style="background:rgba(0,0,0,0.05); padding:4px 10px; border-radius:12px; font-weight:500;">📝 ${test.numero_preguntas || 30} Preguntas</span>
+            <span style="background:rgba(0,0,0,0.05); padding:4px 10px; border-radius:12px; font-weight:500;">📅 ${test.fecha || 'Reciente'}</span>
           </div>
           <div class="test-card-btns">
-            <button class="tc-btn primary" data-id="${test.id}" data-mode="test">â¶ Hacer test</button>
-            <button class="tc-btn secondary" data-id="${test.id}" data-mode="memo">ð§  Memorizar</button>
+            <button class="tc-btn primary" data-id="${test.id}" data-mode="test">▶ Hacer test</button>
+            <button class="tc-btn secondary" data-id="${test.id}" data-mode="memo">🧠 Memorizar</button>
           </div>
         `;
         container.appendChild(card);
@@ -806,7 +806,7 @@ function renderTests() {
     
     for (let n = 1; n <= t.numTests; n++) {
       let isEmpty = false;
-      let label = 'â PrÃ³ximamente';
+      let label = '○ Próximamente';
       
       let testQs = 30;
       if (p.id === 'ADR') {
@@ -828,12 +828,12 @@ function renderTests() {
          if (isThemeFiltered) {
              const themeQs = allPermitQs.filter(q => q.theme_id === t.id);
              if (themeQs.length > start) {
-                 label = 'â Disponible';
+                 label = '● Disponible';
              } else {
                  isEmpty = true;
              }
          } else {
-             label = 'â Disponible';
+             label = '● Disponible';
          }
       } else {
         // Comprobar disponibilidad si tenemos data.js (legacy)
@@ -842,7 +842,7 @@ function renderTests() {
           const legStart = (n - 1) * 30;
           if (bank.length > legStart) {
             const real = bank.slice(legStart, n * 30).length;
-            label = real > 0 ? 'â Disponible' : 'â Demo';
+            label = real > 0 ? '● Disponible' : '◑ Demo';
           } else {
             isEmpty = true;
           }
@@ -859,12 +859,12 @@ function renderTests() {
           <span class="status-badge">${label}</span>
         </div>
         <div class="status-desc" style="font-size:12px; margin-bottom:15px; color:var(--text2); display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-            <span style="background:rgba(0,0,0,0.05); padding:4px 10px; border-radius:12px; font-weight:500;">ð ${testQs} Preguntas</span>
-            <span style="background:rgba(0,0,0,0.05); padding:4px 10px; border-radius:12px; font-weight:500;">ð¡ Exclusivo</span>
+            <span style="background:rgba(0,0,0,0.05); padding:4px 10px; border-radius:12px; font-weight:500;">📝 ${testQs} Preguntas</span>
+            <span style="background:rgba(0,0,0,0.05); padding:4px 10px; border-radius:12px; font-weight:500;">💡 Exclusivo</span>
         </div>
         <div class="test-card-btns">
-          <button class="tc-btn primary" data-n="${n}" data-mode="test" ${isEmpty ? 'disabled' : ''}>â¶ Hacer test</button>
-          <button class="tc-btn secondary" data-n="${n}" data-mode="memo" ${isEmpty ? 'disabled' : ''}>ð§  Memorizar</button>
+          <button class="tc-btn primary" data-n="${n}" data-mode="test" ${isEmpty ? 'disabled' : ''}>▶ Hacer test</button>
+          <button class="tc-btn secondary" data-n="${n}" data-mode="memo" ${isEmpty ? 'disabled' : ''}>🧠 Memorizar</button>
         </div>
       `;
       container.appendChild(card);
@@ -889,20 +889,20 @@ function renderTests() {
   showScreen('screen-tests');
 }
 
-// âââ START TEST âââââââââââââââââââââââââââââââââââââ
-// ASYNC: la validaciÃ³n Premium consulta Supabase de forma segura
+// ─── START TEST ─────────────────────────────────────
+// ASYNC: la validación Premium consulta Supabase de forma segura
 async function startTest(testIdentifier, mode, isOfficial = false) {
-  // Determinar nÃºmero del test para lÃ³gica freemium
+  // Determinar número del test para lógica freemium
   let testNum = 1;
   if (typeof testIdentifier === 'string' && testIdentifier.includes('-')) {
-    // Para DGT tests, el nÃºmero estÃ¡ en la posiciÃ³n 2: DGT-B-1 â 1
+    // Para DGT tests, el número está en la posición 2: DGT-B-1 → 1
     const parts = testIdentifier.split('-');
     testNum = parseInt(parts[parts.length - 1]) || 1;
   } else {
     testNum = parseInt(testIdentifier) || 1;
   }
 
-  // ââ LÃGICA FREEMIUM ââââââââââââââââââââââââââââââ
+  // ── LÓGICA FREEMIUM ──────────────────────────────
   if (testNum > 1) {
     const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
 
@@ -923,7 +923,7 @@ async function startTest(testIdentifier, mode, isOfficial = false) {
       return;
     }
   }
-  // ââ FIN LÃGICA FREEMIUM âââââââââââââââââââââââââââ
+  // ── FIN LÓGICA FREEMIUM ───────────────────────────
 
   state.testMode = mode;
   state.isOfficialDgt = isOfficial;
@@ -937,7 +937,7 @@ async function startTest(testIdentifier, mode, isOfficial = false) {
 
   if (mode === 'test') {
     state.currentQuestion = 0;
-    // Guardar estado para continuar despuÃ©s
+    // Guardar estado para continuar después
     UserManager.saveLastState(state.permit, state.testNum, state.topic, state.currentQuestion, state.answers);
     state.answers = {};
     state.score = 0;
@@ -950,7 +950,7 @@ async function startTest(testIdentifier, mode, isOfficial = false) {
   }
 }
 
-// âââ TEST ENGINE ââââââââââââââââââââââââââââââââââââ
+// ─── TEST ENGINE ────────────────────────────────────
 function renderEngineUI() {
   const title = document.getElementById('testLabel');
   if (state.isOfficialDgt) {
@@ -962,7 +962,7 @@ function renderEngineUI() {
 
 function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.data.favorites = [];
   state.currentQuestion = index;
-  const q = state.questions[index]; if (!q) { document.getElementById('questionText').textContent = 'Error: No se pudo cargar la pregunta (BD vacía o índice inválido).'; return; }
+  const q = state.questions[index]; if (!q) { document.getElementById('questionText').textContent = 'Error: No se pudo cargar la pregunta (BD vaca o ndice invlido).'; return; }
   const total = state.questions.length;
   
   // Progress
@@ -978,12 +978,12 @@ function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.dat
     const btnFav = document.getElementById('btnToggleFavorite');
     if (btnFav) {
       const isFav = UserManager.data.favorites.includes(q.id);
-      btnFav.textContent = isFav ? 'â­' : 'â';
+      btnFav.textContent = isFav ? '⭐' : '☆';
       btnFav.style.color = isFav ? 'var(--olive)' : 'var(--text3)';
       btnFav.onclick = () => {
          toggleFavorite(q.id);
          const nowFav = UserManager.data.favorites.includes(q.id);
-         btnFav.textContent = nowFav ? 'â­' : 'â';
+         btnFav.textContent = nowFav ? '⭐' : '☆';
          btnFav.style.color = nowFav ? 'var(--olive)' : 'var(--text3)';
       };
     }
@@ -991,7 +991,7 @@ function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.dat
     const qText = document.getElementById('questionText');
   qText.textContent = q.pregunta;
   if (q.isPlaceholder) {
-    qText.innerHTML = `<span style="color:#d9534f;">â ï¸ ${q.pregunta}</span>`;
+    qText.innerHTML = `<span style="color:#d9534f;">⚠️ ${q.pregunta}</span>`;
   }
 
   // Imagen
@@ -999,7 +999,7 @@ function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.dat
   if (q.imagen_url || q.imagen_local) {
     const src = q.imagen_local || q.imagen_url;
     if (typeof src === 'string' && (src.includes('.jpg') || src.includes('.JPG') || src.includes('.png') || src.startsWith('http'))) {
-      imgEl.innerHTML = `<img src="${src}" alt="IlustraciÃ³n de la pregunta" style="max-width:100%; max-height:220px; object-fit:contain; border-radius:4px; display:block; margin: 0 auto;" />`;
+      imgEl.innerHTML = `<img src="${src}" alt="Ilustración de la pregunta" style="max-width:100%; max-height:220px; object-fit:contain; border-radius:4px; display:block; margin: 0 auto;" />`;
     } else {
       imgEl.innerHTML = q.imagen_url || q.imagen_local;
     }
@@ -1060,11 +1060,11 @@ function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.dat
     } else {
       const isCorrect = state.answers[index] === q.correcta;
       fhdr.className = `feedback-header ${isCorrect ? 'correct' : 'wrong'}`;
-      fhdr.textContent = isCorrect ? 'â Â¡Respuesta correcta!' : `â Incorrecto â La correcta era: ${q.correcta}`;
+      fhdr.textContent = isCorrect ? '✅ ¡Respuesta correcta!' : `❌ Incorrecto — La correcta era: ${q.correcta}`;
       fexp.textContent = q.explanation || (q.fuente === 'Revista DGT' ? 'Respuesta oficial DGT: ' + q.correcta : '');
     }
 
-    nextBtn.textContent = (index === total - 1) ? 'Finalizar Test' : 'Siguiente pregunta â';
+    nextBtn.textContent = (index === total - 1) ? 'Finalizar Test' : 'Siguiente pregunta →';
     nextBtn.onclick = () => {
       if (index === total - 1) {
         showResults();
@@ -1077,7 +1077,7 @@ function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.dat
   }
 }
 
-// âââ RESULTADOS âââââââââââââââââââââââââââââââââââââ
+// ─── RESULTADOS ─────────────────────────────────────
 function showResults() {
   const results = Object.keys(state.answers).map(idx => ({
     isCorrect: state.answers[idx] === state.questions[idx].correcta,
@@ -1089,7 +1089,7 @@ function showResults() {
   const total = state.questions.filter(q => !q.isPlaceholder).length;
   const wrong = results.filter(r => !r.isCorrect).length;
 
-  // FASE 1: Registrar estadÃ­sticas detalladas
+  // FASE 1: Registrar estadísticas detalladas
   UserManager.data.totalTests++;
   UserManager.recordActivity(); 
   
@@ -1103,7 +1103,7 @@ function showResults() {
   UserManager.data.lastState = null;
   UserManager.save();
 
-  // âââ FASE F: Sincronizar con Supabase si hay sesiÃ³n ââââââââ
+  // ─── FASE F: Sincronizar con Supabase si hay sesión ────────
   if (window.SyncManager && typeof window.currentUser === 'function' && window.currentUser()) {
     const testId = state.isOfficialDgt
       ? `DGT-${pId}-${state.testNum}`
@@ -1131,8 +1131,8 @@ function showResults() {
   const circle = document.getElementById('resultScoreCircle');
   circle.className = `result-score-circle${pct < 70 ? ' fail' : ''}`;
   
-  document.getElementById('resultEmoji').textContent = pct >= 90 ? 'ð' : pct >= 70 ? 'ð' : 'ð';
-  document.getElementById('resultTitle').textContent = pct >= 90 ? 'Â¡Excelente resultado!' : pct >= 70 ? 'Â¡Buen trabajo!' : 'Sigue practicando';
+  document.getElementById('resultEmoji').textContent = pct >= 90 ? '🎉' : pct >= 70 ? '👍' : '📚';
+  document.getElementById('resultTitle').textContent = pct >= 90 ? '¡Excelente resultado!' : pct >= 70 ? '¡Buen trabajo!' : 'Sigue practicando';
   document.getElementById('resultSubtitle').textContent = `Has acertado ${correct} de ${total} preguntas (${pct}%).${pct < 70 ? ' Revisa las respuestas y vuelve a intentarlo.' : ''}`;
 
   const statsEl = document.getElementById('resultStats');
@@ -1150,12 +1150,12 @@ function showResults() {
     const div = document.createElement('div');
     div.className = `rr-item ${ok ? 'ok' : 'err'}`;
     div.innerHTML = `
-      <div class="rr-icon">${ok ? 'â' : 'â'}</div>
+      <div class="rr-icon">${ok ? '✅' : '❌'}</div>
       <div class="rr-content">
         <div class="rr-q">${i+1}. ${r.q.pregunta}</div>
         <div class="rr-ans">
           ${!ok ? `<span class="err-a">${r.selected ? r.q.respuestas[r.selected] : 'Ninguna'}</span>` : ''}
-          <span class="ok-a">â ${r.q.respuestas[r.q.correcta]}</span>
+          <span class="ok-a">✓ ${r.q.respuestas[r.q.correcta]}</span>
         </div>
       </div>
     `;
@@ -1165,7 +1165,7 @@ function showResults() {
   showScreen('screen-result');
 }
 
-// âââ MEMORIZAR ââââââââââââââââââââââââââââââââââââââ
+// ─── MEMORIZAR ──────────────────────────────────────
 function renderMemo() {
   const p = state.permit;
   document.getElementById('memoPermitBadge').textContent = `${p.icon} ${p.name}`;
@@ -1185,14 +1185,14 @@ function renderMemo() {
     card.className = 'memo-card';
     
     const placeholderBadge = q.isPlaceholder 
-      ? `<div class="memo-placeholder-badge">â ï¸ Contenido pendiente de importar</div>`
+      ? `<div class="memo-placeholder-badge">⚠️ Contenido pendiente de importar</div>`
       : '';
 
     let imgHtml = '';
     if (q.imagen_url || q.imagen_local) {
       const src = q.imagen_local || q.imagen_url;
       if (typeof src === 'string' && (src.includes('.jpg') || src.includes('.JPG') || src.includes('.png') || src.startsWith('http'))) {
-        imgHtml = `<div class="memo-img" style="border:none; background:transparent;"><img src="${src}" alt="IlustraciÃ³n" style="max-width:100%; max-height:200px; object-fit:contain; border-radius:4px; display:block; margin:0 auto;" /></div>`;
+        imgHtml = `<div class="memo-img" style="border:none; background:transparent;"><img src="${src}" alt="Ilustración" style="max-width:100%; max-height:200px; object-fit:contain; border-radius:4px; display:block; margin:0 auto;" /></div>`;
       } else {
         imgHtml = `<div class="memo-img">${src}</div>`;
       }
@@ -1229,7 +1229,7 @@ function renderMemo() {
 }
 
 
-// âââ NAVIGATION & NEW FEATURES ââââââââââââââââââââââââââââââ
+// ─── NAVIGATION & NEW FEATURES ──────────────────────────────
 function initNav() {
   // Desktop Nav
   document.querySelectorAll('.nav-link, .nav-icon-link').forEach(link => {
@@ -1307,7 +1307,7 @@ function toggleFavorite(qId) {
 // Make globally accessible
 window.continueLastTest = continueLastTest;
 
-// âââ FASE 1: REORGANIZACIÃN (MI PREPARACIÃN) Y NUEVAS FUNCIONES âââ
+// ─── FASE 1: REORGANIZACIÓN (MI PREPARACIÓN) Y NUEVAS FUNCIONES ───
 
 function renderTopCards() {
   const wc = document.getElementById('homeTopCards');
@@ -1331,33 +1331,33 @@ function renderTopCards() {
     
     html += `
       <div class="home-card-btn" style="grid-column: span 2; align-items: flex-start; text-align: left;" onclick="continueLastTest()">
-        <h3 style="margin-top:0;">ð Â¡Bienvenido de nuevo!</h3>
-        <p style="color:var(--text2); font-size:14px; margin-top:8px;">ContinÃºa donde lo dejaste:<br><strong>${title}</strong></p>
+        <h3 style="margin-top:0;">👋 ¡Bienvenido de nuevo!</h3>
+        <p style="color:var(--text2); font-size:14px; margin-top:8px;">Continúa donde lo dejaste:<br><strong>${title}</strong></p>
         <p style="font-size:12px; margin-top:8px;">Pregunta ${qNum}/30</p>
         <div class="daily-goal-bar-wrap" style="margin: 8px 0;"><div class="daily-goal-bar" style="width: ${progressPct}%"></div></div>
-        <button class="primary-btn" style="margin-top:8px; padding: 8px 16px; font-size:14px;">CONTINUAR â</button>
+        <button class="primary-btn" style="margin-top:8px; padding: 8px 16px; font-size:14px;">CONTINUAR →</button>
       </div>
     `;
   } else {
     html += `
       <div class="home-card-btn" style="grid-column: span 2; align-items: flex-start; text-align: left; cursor: pointer;" onclick="startPreparation()">
-        <h3 style="margin-top:0;">ð¯ Â¡Comienza tu preparaciÃ³n!</h3>
-        <p style="color:var(--text2); font-size:14px; margin-top:8px;">Haz clic aquÃ­ para elegir un tema e iniciar un test.</p>
+        <h3 style="margin-top:0;">🎯 ¡Comienza tu preparación!</h3>
+        <p style="color:var(--text2); font-size:14px; margin-top:8px;">Haz clic aquí para elegir un tema e iniciar un test.</p>
       </div>
     `;
   }
 
   html += `
     <div class="home-card-btn" onclick="startSpecialTest('quick')">
-      <div class="icon">â¡</div>
-      <h3>Test RÃ¡pido</h3>
+      <div class="icon">⚡</div>
+      <h3>Test Rápido</h3>
       <p style="font-size:12px; color:var(--text3); margin-top:4px;">10 preguntas</p>
     </div>
   `;
 
   html += `
     <div class="home-card-btn" onclick="startSpecialTest('mistakes')">
-      <div class="icon">â</div>
+      <div class="icon">❌</div>
       <h3>Mis Errores</h3>
       <p style="font-size:12px; color:var(--text3); margin-top:4px;">${UserManager.data.mistakes.length} preguntas</p>
     </div>
@@ -1469,18 +1469,18 @@ async function startSpecialTest(type) {
   }
 
   const pObj = db.getPermits().find(p => p.id === permitId);
-  state.permit = pObj || { id: permitId, name: 'Permiso ' + permitId, icon: 'ð' };
+  state.permit = pObj || { id: permitId, name: 'Permiso ' + permitId, icon: '🚗' };
   state.topic = null;
   state.testMode = 'test';
   
   if (type === 'quick') {
-      state.testNum = 'RÃ¡pido';
+      state.testNum = 'Rápido';
       state.questions = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 10);
   } else if (type === 'mistakes') {
       state.testNum = 'Mis Errores';
       const mistakesQ = allQuestions.filter(q => UserManager.data.mistakes.includes(q.id));
       if (mistakesQ.length === 0) {
-          showAppAlert("Â¡Enhorabuena!", "No tienes preguntas falladas guardadas para este permiso.");
+          showAppAlert("¡Enhorabuena!", "No tienes preguntas falladas guardadas para este permiso.");
           return;
       }
       state.questions = mistakesQ.sort(() => 0.5 - Math.random()).slice(0, 30);
@@ -1502,7 +1502,7 @@ async function continueLastTest() {
   if (!ls) return;
   
   const pObj = db.getPermits().find(p => p.id === ls.permitId);
-  state.permit = pObj || { id: ls.permitId, name: 'Permiso ' + ls.permitId, icon: 'ð' };
+  state.permit = pObj || { id: ls.permitId, name: 'Permiso ' + ls.permitId, icon: '🚗' };
   
   if (ls.topicId) {
       const tObj = db.getThemes(ls.permitId).find(t => t.id === ls.topicId);
@@ -1565,9 +1565,9 @@ function showPrepScreen() {
   
   if (allTopics.length > 0) {
       allTopics.forEach(t => {
-          let dot = 'ð¢'; let color = 'score-green';
-          if(t.pct < 60) { dot = 'ð´'; color = 'score-red'; }
-          else if(t.pct < 80) { dot = 'ð '; color = 'score-orange'; }
+          let dot = '🟢'; let color = 'score-green';
+          if(t.pct < 60) { dot = '🔴'; color = 'score-red'; }
+          else if(t.pct < 80) { dot = '🟠'; color = 'score-orange'; }
           topicsHtml += `<div class="progress-item"><span class="progress-item-name">${dot} ${t.name}</span><span class="progress-item-score ${color}">${t.pct}%</span></div>`;
       });
   } else {
@@ -1578,7 +1578,7 @@ function showPrepScreen() {
   
   grid.innerHTML = `
     <div style="grid-column: 1 / -1; margin-bottom: 20px;">
-        <h3 style="margin-top:0">ð¯ Objetivo Diario</h3>
+        <h3 style="margin-top:0">🎯 Objetivo Diario</h3>
         <p style="color:var(--text2); font-size:14px; margin-top:4px;">${UserManager.data.dailyQuestions} / 30 preguntas respondidas</p>
         <div class="daily-goal-bar-wrap"><div class="daily-goal-bar" style="width: ${dailyPct}%"></div></div>
     </div>
@@ -1587,9 +1587,9 @@ function showPrepScreen() {
     <div class="progress-card"><h4>Preguntas Acertadas</h4><div class="val">${UserManager.data.totalCorrect}</div></div>
     <div class="progress-card"><h4>Aciertos Totales</h4><div class="val">${pctTotal}%</div></div>
     <div class="progress-card"><h4>Mis Errores</h4><div class="val" style="color:#E74C3C">${UserManager.data.mistakes.length}</div></div>
-    <div class="progress-card"><h4>DÃ­as de Racha</h4><div class="val">${UserManager.data.streak} ð¥</div></div>
+    <div class="progress-card"><h4>Días de Racha</h4><div class="val">${UserManager.data.streak} 🔥</div></div>
     
-    <div style="grid-column: 1 / -1; margin-top:20px;"><h3>ð Temas a mejorar</h3><div class="progress-list">${topicsHtml}</div></div>
+    <div style="grid-column: 1 / -1; margin-top:20px;"><h3>📚 Temas a mejorar</h3><div class="progress-list">${topicsHtml}</div></div>
   `;
 }
 
@@ -1653,7 +1653,7 @@ async function loadMemoQuestions() {
   } catch(e) {}
   
   if(allQs.length === 0) {
-      document.getElementById('memoList').innerHTML = '<div style="padding:40px;text-align:center">No hay preguntas disponibles para esta selecciÃ³n.</div>';
+      document.getElementById('memoList').innerHTML = '<div style="padding:40px;text-align:center">No hay preguntas disponibles para esta selección.</div>';
       return;
   }
   memoState.questions = allQs; 
@@ -1667,7 +1667,7 @@ async function showFavoritesScreen() {
   memoState.mode = 'fav';
   const list = document.getElementById('favoritesList');
   if (UserManager.data.favorites.length === 0) {
-    list.innerHTML = '<div style="text-align:center; padding: 40px; color: var(--text3)">AÃºn no tienes preguntas guardadas en favoritos.</div>';
+    list.innerHTML = '<div style="text-align:center; padding: 40px; color: var(--text3)">Aún no tienes preguntas guardadas en favoritos.</div>';
     return;
   }
   let allQs = db.dgtQuestions ? [...db.dgtQuestions] : [];
@@ -1683,7 +1683,7 @@ function renderMemoCard(container = document.getElementById('memoList')) {
    const q = memoState.questions[memoState.currentIndex];
    if(!q) return;
    const isFav = UserManager.data.favorites.includes(q.id);
-   const favIcon = isFav ? 'â' : 'â';
+   const favIcon = isFav ? '★' : '☆';
    const favClass = isFav ? 'active' : '';
    
    let html = `<div class="memo-card">
@@ -1720,17 +1720,17 @@ function renderMemoCard(container = document.getElementById('memoList')) {
        const correctKey = q.correcta || String.fromCharCode(65 + q.correct);
        const isOk = (memoState.selectedOpt === correctKey);
        const fbClass = isOk ? 'success' : 'error';
-       const fbText = isOk ? 'â Â¡Correcto!' : 'â Incorrecto.';
+       const fbText = isOk ? '✅ ¡Correcto!' : '❌ Incorrecto.';
        html += `<div class="memo-feedback show ${fbClass}" style="margin-bottom:20px; padding:15px; border-radius:8px; background:${isOk?'var(--green-light)':'#ffe5e5'}; color:var(--text); font-size:15px;">
            <strong>${fbText}</strong>
-           ${q.explanation ? '<div style="margin-top:10px;"><strong>ExplicaciÃ³n:</strong> ' + q.explanation + '</div>' : ''}
+           ${q.explanation ? '<div style="margin-top:10px;"><strong>Explicación:</strong> ' + q.explanation + '</div>' : ''}
        </div>`;
    }
    
    html += `<div class="memo-actions" style="display:flex; gap:10px; justify-content:space-between; align-items:center; border-top:1px solid var(--border); padding-top:20px;">
-       <button class="outline-btn" style="flex:1;" onclick="prevMemoQuestion()" ${memoState.currentIndex === 0 ? 'disabled' : ''}>â Anterior</button>
-       ${memoState.selectedOpt === null ? `<button class="primary-btn" style="flex:1;" onclick="showMemoAnswer()">ð Ver respuesta</button>` : ''}
-       <button class="primary-btn" style="flex:1;" onclick="nextMemoQuestion()" ${memoState.currentIndex === memoState.questions.length - 1 ? 'disabled' : ''}>Siguiente â</button>
+       <button class="outline-btn" style="flex:1;" onclick="prevMemoQuestion()" ${memoState.currentIndex === 0 ? 'disabled' : ''}>← Anterior</button>
+       ${memoState.selectedOpt === null ? `<button class="primary-btn" style="flex:1;" onclick="showMemoAnswer()">👁 Ver respuesta</button>` : ''}
+       <button class="primary-btn" style="flex:1;" onclick="nextMemoQuestion()" ${memoState.currentIndex === memoState.questions.length - 1 ? 'disabled' : ''}>Siguiente →</button>
      </div></div>`;
    container.innerHTML = html;
 }
@@ -1773,9 +1773,9 @@ window.showMemoAnswer = showMemoAnswer;
 window.nextMemoQuestion = nextMemoQuestion;
 window.prevMemoQuestion = prevMemoQuestion;
 
-/* ââââââââââââââââââââââââââââââââââââââââââ
+/* ══════════════════════════════════════════
    PWA & OFFLINE LOGIC
-ââââââââââââââââââââââââââââââââââââââââââ */
+══════════════════════════════════════════ */
 let deferredPrompt;
 const installPrompt = document.getElementById('installPrompt');
 const btnInstallApp = document.getElementById('btnInstallApp');
@@ -1795,7 +1795,7 @@ if ('serviceWorker' in navigator) {
         const newWorker = registration.installing;
         newWorker.addEventListener('statechange', () => {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            // Hay una nueva versiÃ³n
+            // Hay una nueva versión
             if (updateBanner) updateBanner.style.display = 'flex';
             if (btnUpdateApp) {
               btnUpdateApp.onclick = () => {
@@ -1821,7 +1821,7 @@ if ('serviceWorker' in navigator) {
 // 2. Offline / Online events
 window.addEventListener('online', () => {
   if (offlineBanner) offlineBanner.style.display = 'none';
-  // Intentar sincronizar si volviÃ³ la conexiÃ³n
+  // Intentar sincronizar si volvió la conexión
   if (window.SyncManager && window.currentUser) {
     window.SyncManager.syncFromDB();
   }
@@ -1848,7 +1848,7 @@ if (btnInstallApp) {
     if (deferredPrompt) {
       deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
-      console.log(`InstalaciÃ³n de PWA: ${outcome}`);
+      console.log(`Instalación de PWA: ${outcome}`);
       deferredPrompt = null;
     }
   });
@@ -1904,18 +1904,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   
-  // LÃGICA DE SIMULACRO
+  // LÓGICA DE SIMULACRO
   const btnSubmitExam = document.getElementById('btnSubmitExam');
   if (btnSubmitExam) {
       btnSubmitExam.addEventListener('click', () => {
-          if(confirm('Â¿Seguro que quieres entregar el examen ahora?')) {
+          if(confirm('¿Seguro que quieres entregar el examen ahora?')) {
              submitSimulacro();
           }
       });
   }
 });
 
-// ððð FUNCIONES SIMULACRO REAL ððð
+// 🎓🎓🎓 FUNCIONES SIMULACRO REAL 🎓🎓🎓
 async function startSimulacro() {
   const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
   const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
@@ -1999,12 +1999,12 @@ function submitSimulacro() {
   
   resultsScreen.innerHTML = `
     <div class="inner-wrap" style="text-align:center; padding-top:60px; max-width:500px; margin:0 auto;">
-      <div style="font-size: 80px; margin-bottom: 20px;">${apto ? 'ð' : 'ð'}</div>
-      <h2 style="font-size: 40px; font-weight: 900; margin-bottom: 10px; color: ${apto ? 'var(--olive)' : '#e53e3e'}">${apto ? 'Â¡APTO!' : 'NO APTO'}</h2>
+      <div style="font-size: 80px; margin-bottom: 20px;">${apto ? '🎉' : '💀'}</div>
+      <h2 style="font-size: 40px; font-weight: 900; margin-bottom: 10px; color: ${apto ? 'var(--olive)' : '#e53e3e'}">${apto ? '¡APTO!' : 'NO APTO'}</h2>
       <p style="font-size: 18px; margin-bottom: 40px; color: var(--text2);">Has tenido <strong>${fallos}</strong> fallos de ${state.questions.length} preguntas.</p>
       
       <div style="display:flex; flex-direction:column; gap:16px;">
-          <button class="primary-btn" onclick="reviewSimulacro()" style="font-size:18px; padding:16px; border-radius:12px; cursor:pointer;">ðï¸ Revisar examen</button>
+          <button class="primary-btn" onclick="reviewSimulacro()" style="font-size:18px; padding:16px; border-radius:12px; cursor:pointer;">👁️ Revisar examen</button>
           <button class="outline-btn" onclick="document.querySelector('[data-target=\\'screen-premium\\']').click()" style="font-size:18px; padding:16px; border-radius:12px; cursor:pointer;">Volver a Premium</button>
       </div>
     </div>
@@ -2021,7 +2021,7 @@ window.startSimulacro = startSimulacro;
 window.submitSimulacro = submitSimulacro;
 window.reviewSimulacro = reviewSimulacro;
 
-// ð¥ DIRECTORIO PREMIUM
+// 🔥 DIRECTORIO PREMIUM
 async function openPremiumSenales() {
   const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
   if (!isUserPremium) {
@@ -2034,7 +2034,7 @@ async function openPremiumSenales() {
 }
 window.openPremiumSenales = openPremiumSenales;
 
-// ð APUNTES PREMIUM
+// 📚 APUNTES PREMIUM
 async function openPremiumApuntes() {
   const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
   if (!isUserPremium) {
@@ -2045,7 +2045,7 @@ async function openPremiumApuntes() {
 }
 window.openPremiumApuntes = openPremiumApuntes;
 
-// ð¥ PREGUNTA DEL DÃA
+// 🔥 PREGUNTA DEL DÍA
 async function startPreguntaDelDia() {
   const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
   if (!isUserPremium) {
@@ -2061,7 +2061,7 @@ async function startPreguntaDelDia() {
     return;
   }
   
-  // Usar la fecha actual como semilla para que sea igual todo el dÃ­a
+  // Usar la fecha actual como semilla para que sea igual todo el día
   const today = new Date().toISOString().slice(0, 10);
   let seed = 0;
   for(let i=0; i<today.length; i++) seed += today.charCodeAt(i);
@@ -2070,7 +2070,7 @@ async function startPreguntaDelDia() {
   
   state.testMode = 'test';
   state.isOfficialDgt = true;
-  state.testNum = 'Pregunta del DÃ­a';
+  state.testNum = 'Pregunta del Día';
   state.questions = [questionDelDia];
   state.currentQuestion = 0;
   state.answers = {};
@@ -2078,7 +2078,7 @@ async function startPreguntaDelDia() {
   state.isSimulacro = false;
   
   renderEngineUI();
-  document.getElementById('testLabel').textContent = "PREGUNTA DEL DÃA";
+  document.getElementById('testLabel').textContent = "PREGUNTA DEL DÍA";
   document.getElementById('simulacroTimerBox').style.display = 'none';
   document.getElementById('btnSubmitExam').style.display = 'none';
   document.getElementById('testQuestionWrap').classList.remove('simulacro-mode');
