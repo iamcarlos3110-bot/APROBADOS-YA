@@ -566,7 +566,13 @@ document.getElementById('logoLink').addEventListener('click', (e) => {
 document.getElementById('backToHome').addEventListener('click', renderPermits);
 document.getElementById('backToTopics').addEventListener('click', renderTopics);
 document.getElementById('exitTestBtn').addEventListener('click', () => {
-  if (confirm('¿Salir del test? Se perderá el progreso.')) renderTests();
+  showAppConfirm('Salir del test', '¿Seguro que quieres salir? Se perderá tu progreso actual.', () => {
+      if (!state.topic) {
+          if(typeof showPrepScreen === 'function') showPrepScreen(); else startPreparation();
+      } else {
+          renderTests();
+      }
+  });
 });
 document.getElementById('exitMemoBtn').addEventListener('click', renderPermits);
 document.getElementById('goToTestsBtn').addEventListener('click', renderTests);
