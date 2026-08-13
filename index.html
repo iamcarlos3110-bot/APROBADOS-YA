@@ -92,7 +92,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style_v2.css?v=6"/>
+  <link rel="stylesheet" href="style_v2.css?v=8"/>
 </head>
 <body>
 
@@ -249,7 +249,10 @@
       <!-- Pregunta -->
       <div class="test-question-wrap" id="testQuestionWrap">
         <div class="question-card" id="questionCard">
-          <div class="question-num" id="questionNum">Pregunta 1</div>
+          <div class="question-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <div class="question-num" id="questionNum" style="margin-bottom:0;">Pregunta 1</div>
+            <button id="btnToggleFavorite" aria-label="Añadir a favoritos" style="background:none; border:none; cursor:pointer; font-size:24px; color:var(--text3); padding:0 5px; transition:transform 0.2s;">☆</button>
+          </div>
           <div class="question-img" id="questionImg" style="display:none;"></div>
           <p class="question-text" id="questionText"></p>
           <div class="question-options" id="questionOptions"></div>
@@ -431,8 +434,8 @@
   </div>
 </section>
 
-<script src="data.js?v=45"></script>
-<script src="app_v2.js?v=14"></script>
+<script src="data.js?v=46"></script>
+<script src="app_v2.js?v=16"></script>
 <script type="module" src="auth.js"></script>
 <script type="module" src="sync.js"></script>
 <script src="analytics.js"></script>

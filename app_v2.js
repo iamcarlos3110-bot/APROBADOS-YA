@@ -965,8 +965,21 @@ function renderQuestion(index) {
   document.getElementById('testQCounter').textContent = `${index + 1}/${total}`;
   
   document.getElementById('questionNum').textContent = `Pregunta ${index + 1} de ${total}`;
-  
-  const qText = document.getElementById('questionText');
+    
+    const btnFav = document.getElementById('btnToggleFavorite');
+    if (btnFav) {
+      const isFav = UserManager.data.favorites.includes(q.id);
+      btnFav.textContent = isFav ? '⭐' : '☆';
+      btnFav.style.color = isFav ? 'var(--olive)' : 'var(--text3)';
+      btnFav.onclick = () => {
+         toggleFavorite(q.id);
+         const nowFav = UserManager.data.favorites.includes(q.id);
+         btnFav.textContent = nowFav ? '⭐' : '☆';
+         btnFav.style.color = nowFav ? 'var(--olive)' : 'var(--text3)';
+      };
+    }
+    
+    const qText = document.getElementById('questionText');
   qText.textContent = q.pregunta;
   if (q.isPlaceholder) {
     qText.innerHTML = `<span style="color:#d9534f;">⚠️ ${q.pregunta}</span>`;
