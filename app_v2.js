@@ -554,6 +554,13 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
+
+  const safeScreens = ['screen-home', 'screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes'];
+  if (safeScreens.includes(id)) {
+      localStorage.setItem('lastActiveScreen', id);
+  } else {
+      localStorage.setItem('lastActiveScreen', 'screen-home');
+  }
 }
 
 // ─── NAV HELPERS ────────────────────────────────────
@@ -591,6 +598,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   await db.initialize();
   renderPermits();
+
+  // Restore safe screens from localStorage
+  const lastScreen = localStorage.getItem('lastActiveScreen');
+  const safeScreens = ['screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes'];
+  if (lastScreen && safeScreens.includes(lastScreen)) {
+      if (lastScreen === 'screen-senales' && typeof openPremiumSenales === 'function') {
+          openPremiumSenales();
+      } else if (lastScreen === 'screen-apuntes' && typeof openPremiumApuntes === 'function') {
+          openPremiumApuntes();
+      } else {
+          showScreen(lastScreen);
+      }
+  }
 
   // Inicializar Auth (Supabase) si está disponible
   if (typeof window.initAuth === 'function') {
@@ -1475,7 +1495,7 @@ async function continueLastTest() {
           renderEngineUI();
           renderQuestion(state.currentQuestion);
       } else {
-          alert('No se pudo cargar el test guardado.');
+          showAppAlert('Error', 'No se pudo cargar el test guardado.');
       }
   } catch(e) { console.error(e); }
 }
@@ -1843,7 +1863,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="sign-name">${s.nombre}</div>
       `;
       card.addEventListener('click', () => {
-        alert(s.nombre + '\n\n' + s.descripcion);
+        showAppAlert(s.nombre, s.descripcion);
       });
       signsGrid.appendChild(card);
     });
@@ -2002,7 +2022,7 @@ async function startPreguntaDelDia() {
   const allPermitQs = db.dgtQuestions.filter(q => q.permit_id === currentPermit);
   
   if (allPermitQs.length === 0) {
-    alert('No hay preguntas disponibles para tu permiso.');
+    showAppAlert('Aviso', 'No hay preguntas disponibles para tu permiso.');
     return;
   }
   
