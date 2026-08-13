@@ -1761,3 +1761,47 @@ if (btnCloseInstall) {
     localStorage.setItem('ay_pwa_dismissed', 'true');
   });
 }
+
+// --- NUEVAS FUNCIONES DE APRENDIZAJE ---
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Inicializar Seales
+  let allSigns = [];
+  fetch('data/senales.json')
+    .then(r => r.json())
+    .then(data => {
+      allSigns = data;
+      renderSigns('peligro');
+    })
+    .catch(err => console.error("Error cargando senales:", err));
+
+  const signsGrid = document.getElementById('signsGrid');
+  const signTabs = document.querySelectorAll('.sign-tab');
+  
+  signTabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      signTabs.forEach(t => t.classList.remove('active'));
+      e.target.classList.add('active');
+      renderSigns(e.target.getAttribute('data-type'));
+    });
+  });
+
+  function renderSigns(tipo) {
+    if(!signsGrid) return;
+    signsGrid.innerHTML = '';
+    const filtered = allSigns.filter(s => s.tipo === tipo);
+    filtered.forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'sign-card';
+      card.innerHTML = `
+        <img src="${s.imagen}" alt="${s.nombre}">
+        <div class="sign-id">${s.id}</div>
+        <div class="sign-name">${s.nombre}</div>
+      `;
+      card.addEventListener('click', () => {
+        alert(s.nombre + '\n\n' + s.descripcion);
+      });
+      signsGrid.appendChild(card);
+    });
+  }
+});

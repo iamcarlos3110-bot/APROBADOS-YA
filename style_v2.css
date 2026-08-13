@@ -1144,3 +1144,34 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--text2);
   margin: 0;
 }
+
+/* --- APUNTES SCREEN -------------------------- */
+.apuntes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 20px 0; }
+.apunte-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.apunte-card h3 { font-size: 1.2rem; margin-bottom: 16px; color: var(--olive); font-weight: 700; }
+.apunte-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 10px; }
+.apunte-table th { background: var(--bg-warm); padding: 10px; text-align: left; font-weight: 600; color: var(--text2); font-size: 13px; }
+.apunte-table td { padding: 10px; border-bottom: 1px solid var(--border); color: var(--text); font-weight: 500; }
+.apunte-table tr:last-child td { border-bottom: none; }
+.apunte-list { padding-left: 20px; font-size: 14.5px; color: var(--text); line-height: 1.6; }
+.apunte-list li { margin-bottom: 10px; }
+
+/* --- SEÑALES SCREEN -------------------------- */
+.signs-tabs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; }
+.sign-tab { padding: 8px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; font-weight: 600; cursor: pointer; color: var(--text2); white-space: nowrap; }
+.sign-tab.active { background: var(--olive); color: white; border-color: var(--olive); }
+.signs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 16px; }
+.sign-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; cursor: pointer; transition: transform 0.2s; }
+.sign-card:hover { transform: translateY(-4px); border-color: var(--olive); }
+.sign-card img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 12px; }
+.sign-card .sign-id { font-size: 12px; font-weight: 700; color: var(--olive); margin-bottom: 4px; }
+.sign-card .sign-name { font-size: 13px; color: var(--text); font-weight: 600; line-height: 1.3; }
+
+/* --- SIMULACRO UI -------------------------- */
+.simulacro-header { background: #e53e3e; color: white; border-radius: 12px; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.simulacro-timer { font-size: 1.2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.btn-submit-exam { background: #1a202c; color: white; border: none; border-radius: 8px; padding: 14px 20px; font-weight: 700; cursor: pointer; width: 100%; margin-top: 20px; font-size: 16px; display: none; }
+.btn-submit-exam:hover { background: #2d3748; }
+.simulacro-mode .correct, .simulacro-mode .incorrect { background: var(--bg-card) !important; color: var(--text) !important; border-color: var(--border) !important; }
+.simulacro-mode .ans-btn.selected { border-color: #3182ce; background: rgba(49, 130, 206, 0.1); color: #3182ce; font-weight: 700; }
+.simulacro-mode .feedback-box { display: none !important; }
