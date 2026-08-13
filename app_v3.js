@@ -570,10 +570,6 @@ function showScreen(id) {
   document.getElementById('logoLink').addEventListener('click', (e) => {
     e.preventDefault();
     renderPermits();
-    setTimeout(() => {
-        const grid = document.getElementById('permitsGrid');
-        if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 50);
   });
 
 document.getElementById('backToHome').addEventListener('click', renderPermits);
@@ -1273,7 +1269,13 @@ function initNav() {
       if(e.target.classList.contains('nav-link')) e.target.classList.add('active');
       const target = e.target.getAttribute('data-target') || e.target.closest('a').getAttribute('data-target');
       
-      if (target === 'screen-home') renderPermits();
+      if (target === 'screen-home') {
+          renderPermits();
+          setTimeout(() => {
+              const grid = document.getElementById('permitsGrid');
+              if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 50);
+      }
       else if (target === 'screen-progress') showPrepScreen();
       else if (target === 'screen-favorites') showFavoritesScreen();
       else if (target === 'screen-memorize') showMemorizeScreen();
