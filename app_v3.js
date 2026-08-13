@@ -557,7 +557,7 @@ function showScreen(id) {
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 
-  const safeScreens = ['screen-home', 'screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes', 'screen-memo', 'screen-favorites', 'screen-prep'];
+  const safeScreens = ['screen-home', 'screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes', 'screen-memo', 'screen-favorites', 'screen-prep', 'screen-por-libre'];
   if (safeScreens.includes(id)) {
       localStorage.setItem('lastActiveScreen', id);
   } else {
@@ -605,7 +605,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderPermits();
 
   // Restore safe screens from localStorage
-  const safeScreens = ['screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes', 'screen-memo', 'screen-favorites', 'screen-prep'];
+  const safeScreens = ['screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes', 'screen-memo', 'screen-favorites', 'screen-prep', 'screen-por-libre'];
   if (lastScreen && safeScreens.includes(lastScreen)) {
       if (lastScreen === 'screen-senales' && typeof openPremiumSenales === 'function') {
           openPremiumSenales();
@@ -1629,31 +1629,51 @@ async function showMemorizeScreen() {
   await loadMemoQuestions();
 }
 
-window.toggleDropdown = function(id) {
-    document.querySelectorAll('.custom-dropdown').forEach(d => {
-        if(d.id !== id) d.classList.remove('open');
-    });
-    document.getElementById(id).classList.toggle('open');
-};
-
 document.addEventListener('click', function(e) {
-    if(!e.target.closest('.custom-dropdown')) {
+    const toggleBtn = e.target.closest('.custom-dropdown-toggle');
+    if (toggleBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const dropdown = toggleBtn.closest('.custom-dropdown');
+        const id = dropdown.id;
+        document.querySelectorAll('.custom-dropdown').forEach(d => {
+            if (d.id !== id) d.classList.remove('open');
+        });
+        dropdown.classList.toggle('open');
+        return;
+    }
+
+    const itemBtn = e.target.closest('.custom-dropdown-item');
+    if (itemBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const action = itemBtn.getAttribute('data-action');
+        const val = itemBtn.getAttribute('data-val');
+        if (action === 'permit' && typeof handleMemoPermitChange === 'function') handleMemoPermitChange(val);
+        if (action === 'topic' && typeof handleMemoTopicChange === 'function') handleMemoTopicChange(val);
+        document.querySelectorAll('.custom-dropdown').forEach(d => d.classList.remove('open'));
+        return;
+    }
+
+    if (!e.target.closest('.custom-dropdown')) {
         document.querySelectorAll('.custom-dropdown').forEach(d => d.classList.remove('open'));
     }
 });
 
 async function renderMemoSelectors() {
     const subtitle = document.getElementById('memoSubtitle');
+    if(!subtitle) return;
+    
     const pObj = db.getPermits().find(p => p.id === memoState.permitId);
     
     let permitOpts = '';
     db.getPermits().forEach(p => {
-        permitOpts += `<div class="custom-dropdown-item ${memoState.permitId === p.id ? 'active' : ''}" onclick="handleMemoPermitChange('${p.id}')">Permiso ${p.name}</div>`;
+        permitOpts += `<div class="custom-dropdown-item ${memoState.permitId === p.id ? 'active' : ''}" data-action="permit" data-val="${p.id}">Permiso ${p.name}</div>`;
     });
     
-    let topicOpts = `<div class="custom-dropdown-item ${memoState.topicId === 'general' ? 'active' : ''}" onclick="handleMemoTopicChange('general')">Todos los temas</div>`;
+    let topicOpts = `<div class="custom-dropdown-item ${memoState.topicId === 'general' ? 'active' : ''}" data-action="topic" data-val="general">Todos los temas</div>`;
     db.getThemes(memoState.permitId).forEach(t => {
-        topicOpts += `<div class="custom-dropdown-item ${memoState.topicId === t.id ? 'active' : ''}" onclick="handleMemoTopicChange('${t.id}')">${t.name}</div>`;
+        topicOpts += `<div class="custom-dropdown-item ${memoState.topicId === t.id ? 'active' : ''}" data-action="topic" data-val="${t.id}">${t.name}</div>`;
     });
     
     const activeTheme = memoState.topicId === 'general' ? 'Todos los temas' : db.getThemes(memoState.permitId).find(t => t.id === memoState.topicId)?.name || 'Temas';
@@ -1661,14 +1681,14 @@ async function renderMemoSelectors() {
     let html = `
     <div style="display:flex; gap:12px; margin-top:16px;">
       <div class="custom-dropdown" id="dd-permit">
-        <button class="custom-dropdown-toggle" onclick="toggleDropdown('dd-permit')">
+        <button class="custom-dropdown-toggle">
           <span>🚘 Permiso ${pObj ? pObj.name : memoState.permitId}</span> <span style="opacity:0.5; font-size:12px;">▼</span>
         </button>
         <div class="custom-dropdown-menu">${permitOpts}</div>
       </div>
       
       <div class="custom-dropdown" id="dd-topic">
-        <button class="custom-dropdown-toggle" onclick="toggleDropdown('dd-topic')">
+        <button class="custom-dropdown-toggle">
           <span>📚 ${activeTheme}</span> <span style="opacity:0.5; font-size:12px;">▼</span>
         </button>
         <div class="custom-dropdown-menu">${topicOpts}</div>
@@ -1676,7 +1696,8 @@ async function renderMemoSelectors() {
     </div>`;
     
     subtitle.innerHTML = html;
-    document.getElementById('memoTitle').innerHTML = 'Memorizar: <span style="color:var(--olive);">' + (pObj ? pObj.name : 'Permiso ' + memoState.permitId) + '</span>';
+    const mt = document.getElementById('memoTitle');
+    if(mt) mt.innerHTML = 'Memorizar: <span style="color:var(--olive);">' + (pObj ? pObj.name : 'Permiso ' + memoState.permitId) + '</span>';
 }
 
 window.handleMemoPermitChange = async function(val) {
@@ -1699,6 +1720,30 @@ async function loadMemoQuestions() {
          allQs = allPermitQs;
      } else {
          allQs = allPermitQs.filter(q => q.theme_aprobados_ya === memoState.topicId || q.theme_id === memoState.topicId);
+         
+         // Fallback for "Aprobados Ya" logic where themes are simulated via offsets
+         if (allQs.length === 0 && allPermitQs.length > 0) {
+             const themes = db.getThemes(memoState.permitId).filter(t => t.id !== 'oficiales');
+             const themeIdx = themes.findIndex(t => t.id === memoState.topicId);
+             if (themeIdx !== -1) {
+                 const offset = themeIdx * 10;
+                 let testQs = 30;
+                 if (memoState.permitId === 'ADR') {
+                     testQs = memoState.topicId.includes('obtencion') ? 20 : (memoState.topicId.includes('basico') ? 30 : 10);
+                     if (memoState.topicId === 'renovacion_basico') testQs = 20;
+                 } else if (memoState.permitId === 'C' || memoState.permitId === 'CE') {
+                     testQs = 20;
+                 }
+                 const startIndex = (offset * testQs) % allPermitQs.length;
+                 const reordered = [];
+                 for (let i = 0; i < allPermitQs.length; i++) {
+                     reordered.push(allPermitQs[(startIndex + i) % allPermitQs.length]);
+                 }
+                 allQs = reordered;
+             } else {
+                 allQs = allPermitQs;
+             }
+         }
      }
   } catch(e) {}
   

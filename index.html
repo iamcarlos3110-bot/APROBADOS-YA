@@ -133,6 +133,7 @@
     <nav class="main-nav" id="mainNav">
       <a href="#" class="nav-link active" data-target="screen-home">🏠 Tests</a>
       <a href="#" class="nav-link" data-target="screen-memorize">🧠 Memorizar</a>
+      <a href="#" class="nav-link" data-target="screen-por-libre">📖 Por Libre</a>
       <a href="#" class="nav-link" data-target="screen-progress">📊 Mi preparación</a>
       <a href="#" class="nav-link premium-btn" data-target="screen-premium">👑 Premium</a>
     </nav>
@@ -158,6 +159,7 @@
     <button class="mobile-nav-close" id="mobileNavClose">✕</button>
     <a href="#" class="mobile-nav-link" data-target="screen-home">🏠 Tests</a>
     <a href="#" class="mobile-nav-link" data-target="screen-memorize">🧠 Memorizar</a>
+    <a href="#" class="mobile-nav-link" data-target="screen-por-libre">📖 Por Libre</a>
     <a href="#" class="mobile-nav-link" data-target="screen-progress">📊 Mi preparación</a>
     <a href="#" class="mobile-nav-link premium-btn" data-target="screen-premium">👑 Premium</a>
     <div class="mobile-nav-stats">
@@ -334,6 +336,50 @@
     </div>
   </section>
 
+  <!-- ░░░░ PANTALLA 8: POR LIBRE ░░░░ -->
+  <section id="screen-por-libre" class="screen">
+    <div class="inner-wrap">
+      <div class="page-header" style="background: linear-gradient(135deg, #1E2330, #2D3748); border: 1px solid var(--border); color: white; border-radius: 16px; padding: 24px;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 8px;">📖 Cómo sacarse el carnet Por Libre</h2>
+        <p style="color: rgba(255,255,255,0.8); line-height: 1.5;">Ahorra dinero en matrícula y prepárate por tu cuenta sin pisar la autoescuela. Aquí tienes los pasos oficiales de la DGT para presentarte por libre al examen teórico.</p>
+      </div>
+      
+      <div class="premium-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 24px;">
+        
+        <div class="premium-card" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+          <div style="font-size: 40px; margin-bottom: 12px;">1️⃣</div>
+          <h3 style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Certificado Médico Psicotécnico</h3>
+          <p style="font-size: 0.95rem; color: var(--text2); line-height: 1.5;">Acude a un Centro de Reconocimiento de Conductores autorizado con tu DNI. Te harán unas pruebas visuales y de coordinación (cuesta aprox. 30-50€). Te darán un certificado que tiene 90 días de validez.</p>
+          <a href="https://www.dgt.es/conoce-la-dgt/con-quien-trabajamos/centros-reconocimiento-conductores/" target="_blank" class="primary-btn" style="display: inline-block; padding: 8px 16px; font-size: 0.9rem; font-weight: bold; text-decoration: none; margin-top: 12px; text-align: center; border-radius: 8px;">Buscador de Centros Autorizados ↗</a>
+        </div>
+
+        <div class="premium-card" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+          <div style="font-size: 40px; margin-bottom: 12px;">2️⃣</div>
+          <h3 style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Pagar la Tasa Oficial DGT</h3>
+          <p style="font-size: 0.95rem; color: var(--text2); line-height: 1.5;">Debes abonar la Tasa 2.1 que da derecho a examen (aprox. 94,05€). Puedes pagarla por internet a través de la Sede Electrónica de la DGT o físicamente con tarjeta en cualquier Jefatura de Tráfico.</p>
+          <a href="https://sede.dgt.gob.es/es/otros-tramites/pago-de-tasas/" target="_blank" class="primary-btn" style="display: inline-block; padding: 8px 16px; font-size: 0.9rem; font-weight: bold; text-decoration: none; margin-top: 12px; text-align: center; border-radius: 8px;">Pagar Tasa DGT Online ↗</a>
+        </div>
+
+        <div class="premium-card" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+          <div style="font-size: 40px; margin-bottom: 12px;">3️⃣</div>
+          <h3 style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Solicitar Fecha de Examen</h3>
+          <p style="font-size: 0.95rem; color: var(--text2); line-height: 1.5;">Solicita cita previa en la web de la DGT para "Trámites de Oficina". Allí deberás presentar: DNI, impreso oficial de solicitud completado, justificante de pago de la tasa y el certificado médico. ¡Ahí te darán la fecha!</p>
+          <a href="https://sede.dgt.gob.es/es/otros-tramites/cita-previa-jefaturas/" target="_blank" class="primary-btn" style="display: inline-block; padding: 8px 16px; font-size: 0.9rem; font-weight: bold; text-decoration: none; margin-top: 12px; text-align: center; border-radius: 8px;">Pedir Cita Previa DGT ↗</a>
+        </div>
+
+        <div class="premium-card" style="background: var(--bg-card); border: 1px solid var(--olive-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(32, 191, 85, 0.1); grid-column: 1 / -1; display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="font-size: 40px;">📚</div>
+            <h3 style="font-size: 1.4rem; color: var(--text); margin: 0;">Estudiar con Aprobados YA</h3>
+          </div>
+          <p style="font-size: 0.95rem; color: var(--text2); line-height: 1.5;">No necesitas pagar manuales ni matrículas de cientos de euros. Usa nuestra plataforma cada día para hacer los Tests Oficiales, utiliza el apartado "Memorizar" y mantén tu Racha activa. Cuando en los Simulacros de examen (Premium) apruebes sistemáticamente sin fallos, estarás 100% listo para aprobar a la primera.</p>
+          <button class="primary-btn" style="align-self: flex-start; margin-top: 12px; padding: 12px 24px; font-size: 1rem; cursor:pointer;" onclick="document.querySelector('[data-target=\'screen-home\']').click()">Empezar a estudiar ahora</button>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
 
 
 <!-- MODAL DEL PERFIL -->
@@ -412,7 +458,7 @@
 <section id="screen-senales" class="screen">
   <div class="inner-wrap">
     <div class="page-header" style="display:flex; gap:20px; align-items:center;">
-      <button class="back-btn" onclick="showScreen('screen-home')">← Volver</button>
+      <button class="back-btn" onclick="showScreen('screen-premium')">← Volver</button>
       <div>
         <h2>🚦 Directorio de Señales</h2>
         <p>Aprende el significado de las señales más importantes.</p>
@@ -434,7 +480,7 @@
 <section id="screen-apuntes" class="screen">
   <div class="inner-wrap">
     <div class="page-header" style="display:flex; gap:20px; align-items:center;">
-      <button class="back-btn" onclick="showScreen('screen-home')">← Volver</button>
+      <button class="back-btn" onclick="showScreen('screen-premium')">← Volver</button>
       <div>
         <h2>📚 Apuntes Rápidos</h2>
       <p>Lo que más cae en el examen resumido.</p>
@@ -478,7 +524,7 @@
 </section>
 
 <script src="data.js?v=47"></script>
-<script src="app_v3.js?v=28"></script>
+<script src="app_v3.js?v=30"></script>
 <script type="module" src="auth.js"></script>
 <script type="module" src="sync.js"></script>
 <script src="analytics.js"></script>

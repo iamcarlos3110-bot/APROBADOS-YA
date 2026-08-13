@@ -1780,6 +1780,30 @@ async function loadMemoQuestions() {
          allQs = allPermitQs;
      } else {
          allQs = allPermitQs.filter(q => q.theme_aprobados_ya === memoState.topicId || q.theme_id === memoState.topicId);
+         
+         // Fallback for "Aprobados Ya" logic where themes are simulated via offsets
+         if (allQs.length === 0 && allPermitQs.length > 0) {
+             const themes = db.getThemes(memoState.permitId).filter(t => t.id !== 'oficiales');
+             const themeIdx = themes.findIndex(t => t.id === memoState.topicId);
+             if (themeIdx !== -1) {
+                 const offset = themeIdx * 10;
+                 let testQs = 30;
+                 if (memoState.permitId === 'ADR') {
+                     testQs = memoState.topicId.includes('obtencion') ? 20 : (memoState.topicId.includes('basico') ? 30 : 10);
+                     if (memoState.topicId === 'renovacion_basico') testQs = 20;
+                 } else if (memoState.permitId === 'C' || memoState.permitId === 'CE') {
+                     testQs = 20;
+                 }
+                 const startIndex = (offset * testQs) % allPermitQs.length;
+                 const reordered = [];
+                 for (let i = 0; i < allPermitQs.length; i++) {
+                     reordered.push(allPermitQs[(startIndex + i) % allPermitQs.length]);
+                 }
+                 allQs = reordered;
+             } else {
+                 allQs = allPermitQs;
+             }
+         }
      }
   } catch(e) {}
   
