@@ -2192,6 +2192,7 @@ async function startPreguntaDelDia() {
   document.getElementById('btnSubmitExam').style.display = 'none';
   document.getElementById('testQuestionWrap').classList.remove('simulacro-mode');
   
+  renderQuestion(0);
   showScreen('screen-test');
 }
 window.startPreguntaDelDia = startPreguntaDelDia;
