@@ -1991,7 +1991,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.className = 'sign-card';
         card.dataset.tipo = s.tipo;
         card.innerHTML = `
-          <img src="${s.imagen}" alt="${s.nombre}" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <img src="${s.imagen}" alt="${s.nombre}" onerror="this.parentElement.style.display='none'">
           <div class="sign-id">${s.id}</div>
           <div class="sign-name">${s.nombre}</div>
         `;
