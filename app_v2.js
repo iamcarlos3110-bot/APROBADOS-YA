@@ -964,7 +964,8 @@ function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.dat
   document.getElementById('testProgFill').style.width = `${pct}%`;
   document.getElementById('testProgCurrent').textContent = index + 1;
   document.getElementById('testProgTotal').textContent = total;
-  document.getElementById('testQCounter').textContent = `${index + 1}/${total}`;
+  const qc = document.getElementById('testQCounter');
+  if (qc) qc.textContent = `${index + 1}/${total}`;
   
   document.getElementById('questionNum').textContent = `Pregunta ${index + 1} de ${total}`;
     
