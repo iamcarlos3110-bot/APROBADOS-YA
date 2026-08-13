@@ -139,7 +139,6 @@
 
     <!-- RIGHT: Right Nav -->
     <div class="right-nav">
-      <a href="#" class="nav-icon-link" data-target="screen-favorites" title="Favoritos">🔖</a>
       <div class="streak-indicator" title="Racha">🔥 <span id="streakCount">0</span></div>
       <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Cambiar modo oscuro" title="Alternar Modo Oscuro/Claro">
         <span class="theme-icon-light">🌙</span>
@@ -160,7 +159,6 @@
     <a href="#" class="mobile-nav-link" data-target="screen-home">🏠 Tests</a>
     <a href="#" class="mobile-nav-link" data-target="screen-memorize">🧠 Memorizar</a>
     <a href="#" class="mobile-nav-link" data-target="screen-progress">📊 Mi preparación</a>
-    <a href="#" class="mobile-nav-link" data-target="screen-favorites">🔖 Favoritos</a>
     <a href="#" class="mobile-nav-link premium-btn" data-target="screen-premium">👑 Premium</a>
     <div class="mobile-nav-stats">
       <span>🔥 Racha: <span id="mobileStreakCount">0</span></span>
@@ -252,7 +250,6 @@
         <div class="question-card" id="questionCard">
           <div class="question-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
             <div class="question-num" id="questionNum" style="margin-bottom:0;">Pregunta 1</div>
-            <button id="btnToggleFavorite" aria-label="Añadir a favoritos" style="background:none; border:none; cursor:pointer; font-size:24px; color:var(--text3); padding:0 5px; transition:transform 0.2s;">☆</button>
           </div>
           <div class="question-img" id="questionImg" style="display:none;"></div>
           <p class="question-text" id="questionText"></p>
@@ -350,20 +347,7 @@
     </div>
   </section>
 
-<!-- ░░░░ PANTALLA 7: FAVORITOS ░░░░ -->
-<section id="screen-favorites" class="screen">
-  <div class="inner-wrap">
-    <div class="page-header">
-      <div class="page-header-info">
-        <h2>🔖 Preguntas Favoritas</h2>
-        <p class="page-subtitle">Repasa las preguntas que has guardado</p>
-      </div>
-    </div>
-    <div class="memo-list" id="favoritesList">
-      <!-- Rellenado por JS -->
-    </div>
-  </div>
-</section>
+
 
 <!-- MODAL DEL PERFIL -->
 <div class="modal-overlay" id="profileModal">
@@ -440,9 +424,12 @@
 <!-- SEÑALES SCREEN -->
 <section id="screen-senales" class="screen">
   <div class="inner-wrap">
-    <div class="page-header">
-      <h2>🚦 Directorio de Señales</h2>
-      <p>Aprende el significado de las señales más importantes.</p>
+    <div class="page-header" style="display:flex; gap:20px; align-items:center;">
+      <button class="back-btn" onclick="showScreen('screen-home')">← Volver</button>
+      <div>
+        <h2>🚦 Directorio de Señales</h2>
+        <p>Aprende el significado de las señales más importantes.</p>
+      </div>
     </div>
     <div class="signs-tabs">
       <button class="sign-tab active" data-type="peligro">Peligro</button>
@@ -504,7 +491,7 @@
 </section>
 
 <script src="data.js?v=47"></script>
-<script src="app_v3.js?v=25"></script>
+<script src="app_v3.js?v=27"></script>
 <script type="module" src="auth.js"></script>
 <script type="module" src="sync.js"></script>
 <script src="analytics.js"></script>
