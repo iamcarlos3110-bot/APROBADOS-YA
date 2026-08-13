@@ -1273,7 +1273,7 @@ function initNav() {
           renderPermits();
           setTimeout(() => {
               const grid = document.getElementById('permitsGrid');
-              if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              window.scrollTo({ top: 0, behavior: \'smooth\' });
           }, 50);
       }
       else if (target === 'screen-progress') showPrepScreen();
@@ -1300,7 +1300,7 @@ function initNav() {
           renderPermits();
           setTimeout(() => {
               const grid = document.getElementById('permitsGrid');
-              if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              window.scrollTo({ top: 0, behavior: \'smooth\' });
           }, 50);
       }
       else if (target === 'screen-progress') showPrepScreen();
