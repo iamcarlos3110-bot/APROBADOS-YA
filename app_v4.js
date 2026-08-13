@@ -9,6 +9,19 @@
 
 // ─── USER MANAGER (Progreso) ─────────────────────────────────
 // ─── USER MANAGER (Progreso Avanzado FASE 1 + Reorganización) ────────────────
+
+function checkUnlock(featureId) {
+    if (!UserManager || !UserManager.data || !UserManager.data.unlocks) return false;
+    const timestamp = UserManager.data.unlocks[featureId];
+    if (!timestamp) return false;
+    const threeHoursMs = 3 * 60 * 60 * 1000;
+    if (Date.now() - timestamp > threeHoursMs) {
+        // Expired
+        return false;
+    }
+    return true;
+}
+
 const UserManager = {
   data: {
     totalTests: 0,
@@ -917,37 +930,36 @@ function renderTests() {
 // ─── START TEST ─────────────────────────────────────
 // ASYNC: la validación Premium consulta Supabase de forma segura
 async function startTest(testIdentifier, mode, isOfficial = false) {
-  // Determinar número del test para lógica freemium
-  let testNum = 1;
-  if (typeof testIdentifier === 'string' && testIdentifier.includes('-')) {
-    // Para DGT tests, el número está en la posición 2: DGT-B-1 → 1
-    const parts = testIdentifier.split('-');
-    testNum = parseInt(parts[parts.length - 1]) || 1;
-  } else {
-    testNum = parseInt(testIdentifier) || 1;
-  }
-
-  // ── LÓGICA FREEMIUM ──────────────────────────────
-  if (testNum > 1) {
-    const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
-
-    if (!user) {
-      // Sin cuenta: pedir registro (no pago)
-      if (typeof window.triggerPaywall === 'function') {
-        window.triggerPaywall('register');
-      }
-      return;
+    let testNum = 1;
+    if (typeof testIdentifier === 'string' && testIdentifier.includes('-')) {
+      const parts = testIdentifier.split('-');
+      testNum = parseInt(parts[parts.length - 1]) || 1;
+    } else {
+      testNum = parseInt(testIdentifier) || 1;
     }
-
-    // Con cuenta FREE: consultar estado real en Supabase
-    const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
-    if (!isUserPremium) {
-      if (typeof window.triggerPaywall === 'function') {
-        window.triggerPaywall('premium');
+  
+    if (testNum > 1) {
+      const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
+      if (!user) {
+        if (typeof window.triggerPaywall === 'function') {
+          window.triggerPaywall('register');
+        }
+        return;
       }
-      return;
+  
+      const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
+      const featureId = `test-${testNum}`;
+      const isUnlocked = checkUnlock(featureId);
+      
+      if (!isUserPremium && !isUnlocked) {
+        if (typeof window.triggerPaywall === 'function') {
+          window.triggerPaywall('premium', () => {
+            startTest(testIdentifier, mode, isOfficial);
+          }, featureId);
+        }
+        return;
+      }
     }
-  }
   // ── FIN LÓGICA FREEMIUM ───────────────────────────
 
   state.testMode = mode;
@@ -2121,8 +2133,15 @@ window.openSenales = openSenales;
 // 📚 APUNTES PREMIUM
 async function openPremiumApuntes() {
   const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
-  if (!isUserPremium) {
-    if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
+  const featureId = 'apuntes';
+  const isUnlocked = checkUnlock(featureId);
+  
+  if (!isUserPremium && !isUnlocked) {
+    if (typeof window.triggerPaywall === 'function') {
+        window.triggerPaywall('premium', () => {
+            openPremiumApuntes();
+        }, featureId);
+    }
     return;
   }
   showScreen('screen-apuntes');
