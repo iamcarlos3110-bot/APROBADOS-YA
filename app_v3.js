@@ -557,7 +557,7 @@ function showScreen(id) {
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 
-  const safeScreens = ['screen-home', 'screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes'];
+  const safeScreens = ['screen-home', 'screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes', 'screen-memo', 'screen-favorites', 'screen-prep'];
   if (safeScreens.includes(id)) {
       localStorage.setItem('lastActiveScreen', id);
   } else {
@@ -567,10 +567,14 @@ function showScreen(id) {
 
 // ─── NAV HELPERS ────────────────────────────────────
 
-document.getElementById('logoLink').addEventListener('click', (e) => {
-  e.preventDefault();
-  renderPermits();
-});
+  document.getElementById('logoLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    renderPermits();
+    setTimeout(() => {
+        const grid = document.getElementById('permitsGrid');
+        if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  });
 
 document.getElementById('backToHome').addEventListener('click', renderPermits);
 document.getElementById('backToTopics').addEventListener('click', renderTopics);
@@ -605,12 +609,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderPermits();
 
   // Restore safe screens from localStorage
-  const safeScreens = ['screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes'];
+  const safeScreens = ['screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes', 'screen-memo', 'screen-favorites', 'screen-prep'];
   if (lastScreen && safeScreens.includes(lastScreen)) {
       if (lastScreen === 'screen-senales' && typeof openPremiumSenales === 'function') {
           openPremiumSenales();
       } else if (lastScreen === 'screen-apuntes' && typeof openPremiumApuntes === 'function') {
           openPremiumApuntes();
+      } else if (lastScreen === 'screen-memo') {
+          showMemorizeScreen();
+      } else if (lastScreen === 'screen-favorites') {
+          showFavoritesScreen();
+      } else if (lastScreen === 'screen-prep' || lastScreen === 'screen-progress') {
+          if (typeof showPrepScreen === 'function') showPrepScreen(); else showScreen(lastScreen);
       } else {
           showScreen(lastScreen);
       }
@@ -986,7 +996,7 @@ function renderEngineUI() {
 
 function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.data.favorites = [];
   state.currentQuestion = index;
-  const q = state.questions[index]; if (!q) { document.getElementById('questionText').textContent = 'Error: No se pudo cargar la pregunta (BD vac�a o �ndice inv�lido).'; return; }
+  const q = state.questions[index]; if (!q) { document.getElementById('questionText').textContent = 'Error: No se pudo cargar la pregunta (BD vaca o ndice invlido).'; return; }
   const total = state.questions.length;
   
   // Progress
@@ -1611,28 +1621,54 @@ async function showMemorizeScreen() {
   await loadMemoQuestions();
 }
 
+window.toggleDropdown = function(id) {
+    document.querySelectorAll('.custom-dropdown').forEach(d => {
+        if(d.id !== id) d.classList.remove('open');
+    });
+    document.getElementById(id).classList.toggle('open');
+};
+
+document.addEventListener('click', function(e) {
+    if(!e.target.closest('.custom-dropdown')) {
+        document.querySelectorAll('.custom-dropdown').forEach(d => d.classList.remove('open'));
+    }
+});
+
 async function renderMemoSelectors() {
     const subtitle = document.getElementById('memoSubtitle');
-    let html = `<div style="display:flex; gap:10px; margin-top:10px;">
-        <select id="memoPermitSelect" onchange="handleMemoPermitChange(this.value)" style="padding:8px; border-radius:8px; border:1px solid #ddd;">`;
+    const pObj = db.getPermits().find(p => p.id === memoState.permitId);
     
+    let permitOpts = '';
     db.getPermits().forEach(p => {
-        html += `<option value="${p.id}" ${memoState.permitId === p.id ? 'selected' : ''}>${p.name}</option>`;
+        permitOpts += `<div class="custom-dropdown-item ${memoState.permitId === p.id ? 'active' : ''}" onclick="handleMemoPermitChange('${p.id}')">Permiso ${p.name}</div>`;
     });
-    html += `</select>`;
     
-    html += `<select id="memoTopicSelect" onchange="handleMemoTopicChange(this.value)" style="padding:8px; border-radius:8px; border:1px solid #ddd;">`;
-    html += `<option value="general" ${memoState.topicId === 'general' ? 'selected' : ''}>Todos los temas</option>`;
-    
+    let topicOpts = `<div class="custom-dropdown-item ${memoState.topicId === 'general' ? 'active' : ''}" onclick="handleMemoTopicChange('general')">Todos los temas</div>`;
     db.getThemes(memoState.permitId).forEach(t => {
-        html += `<option value="${t.id}" ${memoState.topicId === t.id ? 'selected' : ''}>Tema: ${t.name}</option>`;
+        topicOpts += `<div class="custom-dropdown-item ${memoState.topicId === t.id ? 'active' : ''}" onclick="handleMemoTopicChange('${t.id}')">${t.name}</div>`;
     });
-    html += `</select></div>`;
+    
+    const activeTheme = memoState.topicId === 'general' ? 'Todos los temas' : db.getThemes(memoState.permitId).find(t => t.id === memoState.topicId)?.name || 'Temas';
+
+    let html = `
+    <div style="display:flex; gap:12px; margin-top:16px;">
+      <div class="custom-dropdown" id="dd-permit">
+        <button class="custom-dropdown-toggle" onclick="toggleDropdown('dd-permit')">
+          <span>🚘 Permiso ${pObj ? pObj.name : memoState.permitId}</span> <span style="opacity:0.5; font-size:12px;">▼</span>
+        </button>
+        <div class="custom-dropdown-menu">${permitOpts}</div>
+      </div>
+      
+      <div class="custom-dropdown" id="dd-topic">
+        <button class="custom-dropdown-toggle" onclick="toggleDropdown('dd-topic')">
+          <span>📚 ${activeTheme}</span> <span style="opacity:0.5; font-size:12px;">▼</span>
+        </button>
+        <div class="custom-dropdown-menu">${topicOpts}</div>
+      </div>
+    </div>`;
     
     subtitle.innerHTML = html;
-    
-    const pObj = db.getPermits().find(p => p.id === memoState.permitId);
-    document.getElementById('memoTitle').innerText = 'Memorizar: ' + (pObj ? pObj.name : 'Permiso ' + memoState.permitId);
+    document.getElementById('memoTitle').innerHTML = 'Memorizar: <span style="color:var(--olive);">' + (pObj ? pObj.name : 'Permiso ' + memoState.permitId) + '</span>';
 }
 
 window.handleMemoPermitChange = async function(val) {

@@ -92,7 +92,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style_v2.css?v=17"/>
+  <link rel="stylesheet" href="style_v2.css?v=19"/>
 </head>
 <body>
 
@@ -273,12 +273,30 @@
   <!-- ░░░░ PANTALLA 4B: MEMORIZAR TEST ░░░░ -->
   <section id="screen-memo" class="screen">
     <div class="inner-wrap">
-      <div class="page-header">
-        <button class="back-btn" id="exitMemoBtn">← Volver</button>
-        <div class="page-header-info">
-          <div class="page-permit-badge" id="memoPermitBadge"></div>
-          <h2 id="memoTitle">Memorizar preguntas</h2>
-          <p id="memoSubtitle" class="page-subtitle"></p>
+      <div class="page-header" style="flex-direction: column; align-items: flex-start; gap: 16px;">
+        <div style="display: flex; width: 100%; align-items: center; gap: 16px;">
+          <button class="back-btn" id="exitMemoBtn">← Volver</button>
+          <div class="page-header-info">
+            <h2 id="memoTitle" style="margin:0; font-size: 24px; color: var(--text);">Memorizar: <span style="color:var(--olive);">Permiso B</span></h2>
+          </div>
+        </div>
+        
+        <!-- Premium Modern Filters -->
+        <div class="premium-filters-row">
+          <div class="premium-dropdown">
+            <button class="premium-dropdown-btn">
+              <span class="dropdown-icon">🚗</span>
+              <span class="dropdown-text">Permiso B</span>
+              <span class="dropdown-arrow">▼</span>
+            </button>
+          </div>
+          <div class="premium-dropdown">
+            <button class="premium-dropdown-btn">
+              <span class="dropdown-icon">📚</span>
+              <span class="dropdown-text">Todos los temas</span>
+              <span class="dropdown-arrow">▼</span>
+            </button>
+          </div>
         </div>
       </div>
       
@@ -486,7 +504,7 @@
 </section>
 
 <script src="data.js?v=47"></script>
-<script src="app_v3.js?v=23"></script>
+<script src="app_v3.js?v=25"></script>
 <script type="module" src="auth.js"></script>
 <script type="module" src="sync.js"></script>
 <script src="analytics.js"></script>

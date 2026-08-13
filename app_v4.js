@@ -571,7 +571,7 @@ function showScreen(id) {
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 
-  const safeScreens = ['screen-home', 'screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes'];
+  const safeScreens = ['screen-home', 'screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes', 'screen-memo', 'screen-favorites', 'screen-prep'];
   if (safeScreens.includes(id)) {
       localStorage.setItem('lastActiveScreen', id);
   } else {
@@ -619,12 +619,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderPermits();
 
   // Restore safe screens from localStorage
-  const safeScreens = ['screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes'];
+  const safeScreens = ['screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes', 'screen-memo', 'screen-favorites', 'screen-prep'];
   if (lastScreen && safeScreens.includes(lastScreen)) {
       if (lastScreen === 'screen-senales' && typeof openPremiumSenales === 'function') {
           openPremiumSenales();
       } else if (lastScreen === 'screen-apuntes' && typeof openPremiumApuntes === 'function') {
           openPremiumApuntes();
+      } else if (lastScreen === 'screen-memo' && typeof showMemorizeScreen === 'function') {
+          showMemorizeScreen();
+      } else if (lastScreen === 'screen-favorites' && typeof showFavoritesScreen === 'function') {
+          showFavoritesScreen();
+      } else if (lastScreen === 'screen-prep' || lastScreen === 'screen-progress') {
+          if (typeof showPrepScreen === 'function') showPrepScreen(); else showScreen(lastScreen);
       } else {
           showScreen(lastScreen);
       }
