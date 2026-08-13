@@ -566,13 +566,7 @@ document.getElementById('logoLink').addEventListener('click', (e) => {
 document.getElementById('backToHome').addEventListener('click', renderPermits);
 document.getElementById('backToTopics').addEventListener('click', renderTopics);
 document.getElementById('exitTestBtn').addEventListener('click', () => {
-  showAppConfirm('Salir del test', '¿Seguro que quieres salir? Se perderá tu progreso actual.', () => {
-      if (!state.topic) {
-          showPrepScreen();
-      } else {
-          renderTests();
-      }
-  });
+  if (confirm('¿Salir del test? Se perderá el progreso.')) renderTests();
 });
 document.getElementById('exitMemoBtn').addEventListener('click', renderPermits);
 document.getElementById('goToTestsBtn').addEventListener('click', renderTests);
@@ -962,7 +956,7 @@ function renderEngineUI() {
 
 function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.data.favorites = [];
   state.currentQuestion = index;
-  const q = state.questions[index]; if (!q) { document.getElementById('questionText').textContent = 'Error: No se pudo cargar la pregunta (BD vaca o ndice invlido).'; return; }
+  const q = state.questions[index]; if (!q) { document.getElementById('questionText').textContent = 'Error: No se pudo cargar la pregunta (BD vac�a o �ndice inv�lido).'; return; }
   const total = state.questions.length;
   
   // Progress
@@ -1371,77 +1365,22 @@ function showAppAlert(title, message) {
     if (!overlay) {
         overlay = document.createElement('div');
         overlay.id = 'customAlertOverlay';
-        Object.assign(overlay.style, {
-            position: 'fixed', top: '0', left: '0', right: '0', bottom: '0',
-            background: 'rgba(0,0,0,0.65)', display: 'flex', alignItems: 'center',
-            justifyContent: 'center', zIndex: '100000'
-        });
-        const alertBox = document.createElement('div');
-        Object.assign(alertBox.style, {
-            background: 'var(--surface, #1e1e1e)', borderRadius: '20px', padding: '28px 24px',
-            maxWidth: '340px', width: '90%', textAlign: 'center', boxShadow: '0 20px 60px rgba(0,0,0,0.5)'
-        });
-        alertBox.innerHTML = '<h3 id="customAlertTitle" style="margin:0 0 10px; font-size:20px; color:var(--text,#fff);"></h3>' +
-            '<p id="customAlertMessage" style="color:var(--text2,#aaa); font-size:15px; margin:0 0 24px; line-height:1.5;"></p>' +
-            '<button onclick="document.getElementById('customAlertOverlay').style.display='none'" style="width:100%; padding:13px; border-radius:12px; border:none; background:#6b8e23; color:#fff; font-size:15px; font-weight:700; cursor:pointer;">Entendido</button>';
-        overlay.appendChild(alertBox);
+        overlay.className = 'modal-overlay';
+        overlay.style.zIndex = '100000';
+        overlay.innerHTML = `
+            <div class="modal-content" style="max-width: 350px; text-align: center; padding: 30px 20px;">
+                <h3 id="customAlertTitle" style="margin-top:0; font-size: 20px; color: var(--text);"></h3>
+                <p id="customAlertMessage" style="color: var(--text2); margin: 15px 0 25px;"></p>
+                <button class="primary-btn" onclick="document.getElementById('customAlertOverlay').classList.remove('active')" style="width: 100%;">Entendido</button>
+            </div>
+        `;
         document.body.appendChild(overlay);
     }
     document.getElementById('customAlertTitle').textContent = title;
     document.getElementById('customAlertMessage').textContent = message;
-    overlay.style.display = 'flex';
+    overlay.classList.add('active');
 }
 window.showAppAlert = showAppAlert;
-
-function showAppConfirm(title, message, onConfirm) {
-    let overlay = document.getElementById('customConfirmOverlay');
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.id = 'customConfirmOverlay';
-        Object.assign(overlay.style, {
-            position: 'fixed', top: '0', left: '0', right: '0', bottom: '0',
-            background: 'rgba(0,0,0,0.65)', display: 'flex', alignItems: 'center',
-            justifyContent: 'center', zIndex: '100000'
-        });
-        const box = document.createElement('div');
-        Object.assign(box.style, {
-            background: 'var(--surface, #1e1e1e)', borderRadius: '20px', padding: '28px 24px',
-            maxWidth: '340px', width: '90%', textAlign: 'center',
-            boxShadow: '0 20px 60px rgba(0,0,0,0.5)'
-        });
-        box.innerHTML = '<h3 id="customConfirmTitle" style="margin:0 0 10px; font-size:20px; color:var(--text,#fff);"></h3>' +
-            '<p id="customConfirmMessage" style="color:var(--text2,#aaa); font-size:15px; margin:0 0 24px; line-height:1.5;"></p>' +
-            '<div style="display:flex; gap:10px;">' +
-            '<button id="customConfirmCancelBtn" style="flex:1; padding:13px; border-radius:12px; border:2px solid rgba(255,255,255,0.15); background:transparent; color:var(--text,#fff); font-size:15px; font-weight:600; cursor:pointer;">Cancelar</button>' +
-            '<button id="customConfirmOkBtn" style="flex:1; padding:13px; border-radius:12px; border:none; background:#6b8e23; color:#fff; font-size:15px; font-weight:700; cursor:pointer;">Salir</button>' +
-            '</div>';
-        overlay.appendChild(box);
-        document.body.appendChild(overlay);
-    }
-    
-    document.getElementById('customConfirmTitle').textContent = title;
-    document.getElementById('customConfirmMessage').textContent = message;
-    
-    const cancelBtn = document.getElementById('customConfirmCancelBtn');
-    const okBtn = document.getElementById('customConfirmOkBtn');
-    
-    const newCancel = cancelBtn.cloneNode(true);
-    const newOk = okBtn.cloneNode(true);
-    cancelBtn.parentNode.replaceChild(newCancel, cancelBtn);
-    okBtn.parentNode.replaceChild(newOk, okBtn);
-    
-    newCancel.addEventListener('click', () => {
-        document.getElementById('customConfirmOverlay').style.display = 'none';
-    });
-    
-    newOk.addEventListener('click', () => {
-        document.getElementById('customConfirmOverlay').style.display = 'none';
-        if (onConfirm) onConfirm();
-    });
-    
-    overlay.style.display = 'flex';
-}
-window.showAppConfirm = showAppConfirm;
 
 function startPreparation() {
     const permitId = UserManager.data.lastPermit || 'B';
@@ -1908,9 +1847,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnSubmitExam = document.getElementById('btnSubmitExam');
   if (btnSubmitExam) {
       btnSubmitExam.addEventListener('click', () => {
-          if(confirm('¿Seguro que quieres entregar el examen ahora?')) {
+          showAppConfirm('Entregar examen', '¿Seguro que quieres entregar el examen ahora?', () => {
              submitSimulacro();
-          }
+          });
       });
   }
 });
