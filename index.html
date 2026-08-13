@@ -376,6 +376,17 @@
 <!-- PREMIUM HUB SCREEN -->
 <section id="screen-premium" class="screen">
   <div class="inner-wrap">
+    
+    <!-- WIDGET: Pregunta del Día -->
+    <div style="background: var(--bg-card); border: 1px solid var(--primary); border-radius: 16px; padding: 20px; margin-bottom: 24px; box-shadow: 0 4px 15px rgba(32, 191, 85, 0.15); display: flex; flex-direction: column; gap: 12px; cursor: pointer;" onclick="startPreguntaDelDia()">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <h3 style="font-size: 1.1rem; color: var(--text); margin: 0; display: flex; align-items: center; gap: 8px;"><span style="font-size: 1.5rem;">🔥</span> Pregunta del Día</h3>
+        <span style="background: var(--primary); color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: bold;">NUEVO</span>
+      </div>
+      <p style="font-size: 0.95rem; color: var(--text2); margin: 0;">Resuelve el reto de hoy antes de que acabe el tiempo y mantén tu racha.</p>
+      <button class="primary-btn" style="padding: 10px; font-size: 0.9rem; align-self: flex-start;">Responder ahora</button>
+    </div>
+
     <div class="page-header" style="background: linear-gradient(135deg, var(--olive), #6b8c2a); color: white; border-radius: 16px; padding: 24px;">
       <h2>👑 Academia Premium</h2>
       <p style="color: rgba(255,255,255,0.9);">Herramientas avanzadas para asegurar tu aprobado.</p>
@@ -391,14 +402,14 @@
       </div>
 
       <!-- Señales -->
-      <div class="premium-card" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" onclick="document.querySelector('[data-target=\'screen-senales\']').click()">
+      <div class="premium-card" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" onclick="openPremiumSenales()">
         <div style="font-size: 40px; margin-bottom: 12px;">🚦</div>
         <h3 style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Directorio de Señales</h3>
         <p style="font-size: 0.9rem; color: var(--text2); line-height: 1.4;">Repasa todas las señales de peligro, prohibición, obligación e indicación.</p>
       </div>
 
       <!-- Apuntes -->
-      <div class="premium-card" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" onclick="document.querySelector('[data-target=\'screen-apuntes\']').click()">
+      <div class="premium-card" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" onclick="openPremiumApuntes()">
         <div style="font-size: 40px; margin-bottom: 12px;">📚</div>
         <h3 style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Apuntes Rápidos</h3>
         <p style="font-size: 0.9rem; color: var(--text2); line-height: 1.4;">Chuletas súper visuales con las velocidades, tasas de alcohol y luces.</p>
@@ -470,11 +481,10 @@
         </ul>
       </div>
     </div>
-  </div>
 </section>
 
 <script src="data.js?v=47"></script>
-<script src="app_v2.js?v=18"></script>
+<script src="app_v2.js?v=21"></script>
 <script type="module" src="auth.js"></script>
 <script type="module" src="sync.js"></script>
 <script src="analytics.js"></script>

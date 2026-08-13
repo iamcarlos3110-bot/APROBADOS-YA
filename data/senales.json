@@ -1,100 +1,135 @@
 [
   {
-    "id": "P-1",
+    "id": "P1",
     "tipo": "peligro",
-    "nombre": "Intersección con prioridad",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/8/89/Spain_traffic_sign_p1.svg",
-    "descripcion": "Peligro por la proximidad de una intersección con una vía cuyos usuarios deben ceder el paso."
+    "nombre": "Señal P1",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_p1.svg",
+    "descripcion": "Información reglamentaria de la señal P1 según el código de circulación de España."
   },
   {
-    "id": "P-2",
+    "id": "P1A",
     "tipo": "peligro",
-    "nombre": "Intersección con prioridad de la derecha",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Spain_traffic_signal_p2.svg",
-    "descripcion": "Peligro por la proximidad de una intersección donde rige la regla general de prioridad de la derecha."
+    "nombre": "Señal P1A",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_p1a.svg",
+    "descripcion": "Información reglamentaria de la señal P1A según el código de circulación de España."
   },
   {
-    "id": "P-3",
+    "id": "P1B",
     "tipo": "peligro",
-    "nombre": "Semáforos",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Spain_traffic_signal_p3.svg",
-    "descripcion": "Peligro por la proximidad de una intersección aislada o tramo controlado por semáforos."
+    "nombre": "Señal P1B",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_p1b.svg",
+    "descripcion": "Información reglamentaria de la señal P1B según el código de circulación de España."
   },
   {
-    "id": "P-4",
+    "id": "P2",
     "tipo": "peligro",
-    "nombre": "Intersección con circulación giratoria",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Spain_traffic_signal_p4.svg",
-    "descripcion": "Peligro por la proximidad de una glorieta o intersección giratoria."
+    "nombre": "Señal P2",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_p2.svg",
+    "descripcion": "Información reglamentaria de la señal P2 según el código de circulación de España."
   },
   {
-    "id": "R-1",
+    "id": "P3",
+    "tipo": "peligro",
+    "nombre": "Señal P3",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_p3.svg",
+    "descripcion": "Información reglamentaria de la señal P3 según el código de circulación de España."
+  },
+  {
+    "id": "P4",
+    "tipo": "peligro",
+    "nombre": "Señal P4",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_p4.svg",
+    "descripcion": "Información reglamentaria de la señal P4 según el código de circulación de España."
+  },
+  {
+    "id": "P5",
+    "tipo": "peligro",
+    "nombre": "Señal P5",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_p5.svg",
+    "descripcion": "Información reglamentaria de la señal P5 según el código de circulación de España."
+  },
+  {
+    "id": "P6",
+    "tipo": "peligro",
+    "nombre": "Señal P6",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_p6.svg",
+    "descripcion": "Información reglamentaria de la señal P6 según el código de circulación de España."
+  },
+  {
+    "id": "P8",
+    "tipo": "peligro",
+    "nombre": "Señal P8",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_p8.svg",
+    "descripcion": "Información reglamentaria de la señal P8 según el código de circulación de España."
+  },
+  {
+    "id": "P9A",
+    "tipo": "peligro",
+    "nombre": "Señal P9A",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_p9a.svg",
+    "descripcion": "Información reglamentaria de la señal P9A según el código de circulación de España."
+  },
+  {
+    "id": "P10B",
+    "tipo": "peligro",
+    "nombre": "Señal P10B",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_p10b.svg",
+    "descripcion": "Información reglamentaria de la señal P10B según el código de circulación de España."
+  },
+  {
+    "id": "R1",
     "tipo": "prohibicion",
-    "nombre": "Ceda el paso",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/79/Spain_traffic_signal_r1.svg",
-    "descripcion": "Obligación de ceder el paso a los vehículos que circulen por la vía a la que se aproxime."
+    "nombre": "Señal R1",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_r1.svg",
+    "descripcion": "Información reglamentaria de la señal R1 según el código de circulación de España."
   },
   {
-    "id": "R-2",
+    "id": "R2",
     "tipo": "prohibicion",
-    "nombre": "Detención obligatoria (STOP)",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Spain_traffic_signal_r2%2C_2023_set.svg",
-    "descripcion": "Obligación de detener el vehículo ante la próxima línea de detención y ceder el paso."
+    "nombre": "Señal R2",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_r2.svg",
+    "descripcion": "Información reglamentaria de la señal R2 según el código de circulación de España."
   },
   {
-    "id": "R-100",
+    "id": "R100",
     "tipo": "prohibicion",
-    "nombre": "Circulación prohibida",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/91/Spain_traffic_signal_r100.svg",
-    "descripcion": "Prohibición de circulación de toda clase de vehículos en ambos sentidos."
+    "nombre": "Señal R100",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_r100.svg",
+    "descripcion": "Información reglamentaria de la señal R100 según el código de circulación de España."
   },
   {
-    "id": "R-101",
+    "id": "R101",
     "tipo": "prohibicion",
-    "nombre": "Entrada prohibida",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/75/Spain_traffic_signal_r101.svg",
-    "descripcion": "Prohibición de acceso a toda clase de vehículos."
+    "nombre": "Señal R101",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_r101.svg",
+    "descripcion": "Información reglamentaria de la señal R101 según el código de circulación de España."
   },
   {
-    "id": "R-400a",
-    "tipo": "obligacion",
-    "nombre": "Sentido obligatorio (frente)",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Spain_traffic_signal_r400a.svg",
-    "descripcion": "Obligación de seguir la dirección y el sentido indicados por la flecha."
-  },
-  {
-    "id": "R-401a",
-    "tipo": "obligacion",
-    "nombre": "Paso obligatorio (derecha)",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/98/Spain_traffic_signal_r401a.svg",
-    "descripcion": "Obligación de pasar por el lado indicado por la flecha."
-  },
-  {
-    "id": "S-1",
+    "id": "S1",
     "tipo": "indicacion",
-    "nombre": "Autopista",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Spain_traffic_signal_s1.svg",
-    "descripcion": "Indica el principio de una autopista."
+    "nombre": "Señal S1",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_s1.svg",
+    "descripcion": "Información reglamentaria de la señal S1 según el código de circulación de España."
   },
   {
-    "id": "S-2",
+    "id": "S2",
     "tipo": "indicacion",
-    "nombre": "Autovía",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Spain_traffic_signal_s2.svg",
-    "descripcion": "Indica el principio de una autovía."
+    "nombre": "Señal S2",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_s2.svg",
+    "descripcion": "Información reglamentaria de la señal S2 según el código de circulación de España."
   },
   {
-    "id": "S-11",
+    "id": "S11",
     "tipo": "indicacion",
-    "nombre": "Calzada de sentido único",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Spain_traffic_signal_s11.svg",
-    "descripcion": "Indica que la calzada es de sentido único."
+    "nombre": "Señal S11",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_s11.svg",
+    "descripcion": "Información reglamentaria de la señal S11 según el código de circulación de España."
   },
   {
-    "id": "S-13",
+    "id": "S13",
     "tipo": "indicacion",
-    "nombre": "Paso para peatones",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Spain_traffic_signal_s13.svg",
-    "descripcion": "Indica la situación de un paso para peatones."
+    "nombre": "Señal S13",
+    "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Spain_traffic_signal_s13.svg",
+    "descripcion": "Información reglamentaria de la señal S13 según el código de circulación de España."
   }
 ]

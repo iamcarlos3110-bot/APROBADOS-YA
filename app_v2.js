@@ -1333,9 +1333,9 @@ function renderTopCards() {
     `;
   } else {
     html += `
-      <div class="home-card-btn" style="grid-column: span 2; align-items: flex-start; text-align: left;">
+      <div class="home-card-btn" style="grid-column: span 2; align-items: flex-start; text-align: left; cursor: pointer;" onclick="startPreparation()">
         <h3 style="margin-top:0;">🎯 ¡Comienza tu preparación!</h3>
-        <p style="color:var(--text2); font-size:14px; margin-top:8px;">Inicia un test para activar tu seguimiento diario.</p>
+        <p style="color:var(--text2); font-size:14px; margin-top:8px;">Haz clic aquí para elegir un tema e iniciar un test.</p>
       </div>
     `;
   }
@@ -1359,33 +1359,50 @@ function renderTopCards() {
   wc.innerHTML = html;
 }
 
+function showAppAlert(title, message) {
+    let overlay = document.getElementById('customAlertOverlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'customAlertOverlay';
+        overlay.className = 'modal-overlay';
+        overlay.style.zIndex = '100000';
+        overlay.innerHTML = `
+            <div class="modal-content" style="max-width: 350px; text-align: center; padding: 30px 20px;">
+                <h3 id="customAlertTitle" style="margin-top:0; font-size: 20px; color: var(--text);"></h3>
+                <p id="customAlertMessage" style="color: var(--text2); margin: 15px 0 25px;"></p>
+                <button class="primary-btn" onclick="document.getElementById('customAlertOverlay').classList.remove('active')" style="width: 100%;">Entendido</button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+    }
+    document.getElementById('customAlertTitle').textContent = title;
+    document.getElementById('customAlertMessage').textContent = message;
+    overlay.classList.add('active');
+}
+window.showAppAlert = showAppAlert;
+
+function startPreparation() {
+    const permitId = UserManager.data.lastPermit || 'B';
+    const pObj = db.getPermits().find(p => p.id === permitId);
+    if (pObj) {
+        state.permit = pObj;
+        renderTopics();
+    } else {
+        renderPermits();
+    }
+}
+window.startPreparation = startPreparation;
+
 async function startSpecialTest(type) {
-  let permitId = UserManager.data.lastPermit;
-  if (!permitId) {
-     const p = prompt("Introduce el permiso (ej: B, A, AM) para el test especial:", "B");
-     if(p) permitId = p.toUpperCase();
-     else return;
-  }
+  let permitId = UserManager.data.lastPermit || 'B';
   
   let allQuestions = [];
   try {
-     if (permitId === 'B') {
-        const raw = await db.fetchB();
-        raw.forEach(t => allQuestions = allQuestions.concat(t.questions));
-     } else {
-        const raw = await db.fetchDGT();
-        const pData = raw.tests[permitId];
-        if (pData) {
-           pData.general.forEach(t => allQuestions = allQuestions.concat(t.questions));
-           for(let k in pData.topics) {
-               pData.topics[k].forEach(t => allQuestions = allQuestions.concat(t.questions));
-           }
-        }
-     }
-  } catch(e) { console.error(e); alert('Error cargando preguntas.'); return; }
+     allQuestions = db.dgtQuestions.filter(q => q.permit_id === permitId);
+  } catch(e) { console.error(e); showAppAlert('Error', 'Error cargando preguntas.'); return; }
   
   if (allQuestions.length === 0) {
-      alert("No hay preguntas disponibles para el permiso " + permitId);
+      showAppAlert("Sin preguntas", "No hay preguntas disponibles para el permiso " + permitId);
       return;
   }
 
@@ -1401,15 +1418,21 @@ async function startSpecialTest(type) {
       state.testNum = 'Mis Errores';
       const mistakesQ = allQuestions.filter(q => UserManager.data.mistakes.includes(q.id));
       if (mistakesQ.length === 0) {
-          alert("¡Enhorabuena! No tienes preguntas falladas guardadas para este permiso.");
+          showAppAlert("¡Enhorabuena!", "No tienes preguntas falladas guardadas para este permiso.");
           return;
       }
       state.questions = mistakesQ.sort(() => 0.5 - Math.random()).slice(0, 30);
   }
   
   state.isOfficialDgt = (permitId !== 'B');
-  showScreen('screen-engine');
-  renderEngine();
+  
+  state.currentQuestion = 0;
+  state.answers = {};
+  state.score = 0;
+
+  showScreen('screen-test');
+  renderEngineUI();
+  renderQuestion(0);
 }
 
 async function continueLastTest() {
@@ -1432,24 +1455,18 @@ async function continueLastTest() {
   state.answers = ls.answers || {};
   
   try {
-      if (ls.permitId === 'B') {
-          const raw = await db.fetchB();
-          const match = raw.find(t => t.id == ls.testNum);
-          if(match) state.questions = match.questions;
+      const isOfficial = ls.testNum && typeof ls.testNum === 'string' && ls.testNum.startsWith('DGT');
+      if (isOfficial) {
+          state.questions = db.getQuestionsByTest(ls.testNum);
       } else {
-          const raw = await db.fetchDGT();
-          const perms = raw.tests[ls.permitId];
-          if(perms) {
-              const arr = ls.topicId ? perms.topics[ls.topicId] : perms.general;
-              const match = arr.find(t => t.id == ls.testNum);
-              if(match) state.questions = match.questions;
-          }
+          state.questions = db.getAyQuestions(ls.permitId, ls.topicId, parseInt(ls.testNum));
       }
       
       if (state.questions && state.questions.length > 0) {
-          state.isOfficialDgt = (ls.permitId !== 'B');
-          showScreen('screen-engine');
-          renderEngine();
+          state.isOfficialDgt = isOfficial;
+          showScreen('screen-test');
+          renderEngineUI();
+          renderQuestion(state.currentQuestion);
       } else {
           alert('No se pudo cargar el test guardado.');
       }
@@ -1591,15 +1608,7 @@ async function showFavoritesScreen() {
     list.innerHTML = '<div style="text-align:center; padding: 40px; color: var(--text3)">Aún no tienes preguntas guardadas en favoritos.</div>';
     return;
   }
-  let allQs = [];
-  try {
-     const rawB = await db.fetchB(); rawB.forEach(t => allQs = allQs.concat(t.questions));
-     const rawDGT = await db.fetchDGT();
-     for(let p in rawDGT.tests) {
-         rawDGT.tests[p].general.forEach(t => allQs = allQs.concat(t.questions));
-         for(let k in rawDGT.tests[p].topics) rawDGT.tests[p].topics[k].forEach(t => allQs = allQs.concat(t.questions));
-     }
-  } catch(e) {}
+  let allQs = db.dgtQuestions ? [...db.dgtQuestions] : [];
   
   const favQs = allQs.filter(q => UserManager.data.favorites.includes(q.id));
   if(favQs.length === 0) { list.innerHTML = '<div style="text-align:center">Tus favoritos no se han encontrado en la base de datos actual.</div>'; return; }
@@ -1949,3 +1958,67 @@ function reviewSimulacro() {
 window.startSimulacro = startSimulacro;
 window.submitSimulacro = submitSimulacro;
 window.reviewSimulacro = reviewSimulacro;
+
+// 🔥 DIRECTORIO PREMIUM
+async function openPremiumSenales() {
+  const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
+  if (!isUserPremium) {
+    if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
+    return;
+  }
+  showScreen('screen-senales');
+}
+window.openPremiumSenales = openPremiumSenales;
+
+// 📚 APUNTES PREMIUM
+async function openPremiumApuntes() {
+  const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
+  if (!isUserPremium) {
+    if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
+    return;
+  }
+  showScreen('screen-apuntes');
+}
+window.openPremiumApuntes = openPremiumApuntes;
+
+// 🔥 PREGUNTA DEL DÍA
+async function startPreguntaDelDia() {
+  const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
+  if (!isUserPremium) {
+    if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
+    return;
+  }
+  
+  const currentPermit = UserManager.data.lastPermit || 'B';
+  const allPermitQs = db.dgtQuestions.filter(q => q.permit_id === currentPermit);
+  
+  if (allPermitQs.length === 0) {
+    alert('No hay preguntas disponibles para tu permiso.');
+    return;
+  }
+  
+  // Usar la fecha actual como semilla para que sea igual todo el día
+  const today = new Date().toISOString().slice(0, 10);
+  let seed = 0;
+  for(let i=0; i<today.length; i++) seed += today.charCodeAt(i);
+  const randomIndex = seed % allPermitQs.length;
+  const questionDelDia = allPermitQs[randomIndex];
+  
+  state.testMode = 'test';
+  state.isOfficialDgt = true;
+  state.testNum = 'Pregunta del Día';
+  state.questions = [questionDelDia];
+  state.currentQuestion = 0;
+  state.answers = {};
+  state.score = 0;
+  state.isSimulacro = false;
+  
+  renderEngineUI();
+  document.getElementById('testLabel').textContent = "PREGUNTA DEL DÍA";
+  document.getElementById('simulacroTimerBox').style.display = 'none';
+  document.getElementById('btnSubmitExam').style.display = 'none';
+  document.getElementById('testQuestionWrap').classList.remove('simulacro-mode');
+  
+  showScreen('screen-test');
+}
+window.startPreguntaDelDia = startPreguntaDelDia;
