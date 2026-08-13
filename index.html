@@ -366,6 +366,71 @@
   </div>
 </div>
 
+<!-- SEÑALES SCREEN -->
+<section id="screen-senales" class="screen">
+  <div class="inner-wrap">
+    <div class="page-header">
+      <h2>🚦 Directorio de Señales</h2>
+      <p>Aprende el significado de las señales más importantes.</p>
+    </div>
+    <div class="signs-tabs">
+      <button class="sign-tab active" data-type="peligro">Peligro</button>
+      <button class="sign-tab" data-type="prohibicion">Prohibición</button>
+      <button class="sign-tab" data-type="obligacion">Obligación</button>
+      <button class="sign-tab" data-type="indicacion">Indicación</button>
+    </div>
+    <div id="signsGrid" class="signs-grid">
+      <!-- Se llena por JS -->
+    </div>
+  </div>
+</section>
+
+<!-- APUNTES SCREEN -->
+<section id="screen-apuntes" class="screen">
+  <div class="inner-wrap">
+    <div class="page-header">
+      <h2>📚 Apuntes Rápidos</h2>
+      <p>Lo que más cae en el examen resumido.</p>
+    </div>
+    <div class="apuntes-grid">
+      <!-- Tarjeta Velocidades -->
+      <div class="apunte-card">
+        <h3>🏎️ Velocidades Máximas</h3>
+        <table class="apunte-table">
+          <tr><th>Vía</th><th>Turismo / Moto</th><th>Camión</th></tr>
+          <tr><td>Autopista / Autovía</td><td>120 km/h</td><td>90 km/h</td></tr>
+          <tr><td>Carretera Convencional</td><td>90 km/h</td><td>80 km/h</td></tr>
+          <tr><td>Ciudad (1 carril sentido)</td><td>30 km/h</td><td>30 km/h</td></tr>
+          <tr><td>Ciudad (2+ carriles)</td><td>50 km/h</td><td>50 km/h</td></tr>
+        </table>
+      </div>
+
+      <!-- Tarjeta Alcohol -->
+      <div class="apunte-card">
+        <h3>🍺 Tasas de Alcoholemia</h3>
+        <table class="apunte-table">
+          <tr><th>Conductor</th><th>Sangre (g/l)</th><th>Aire (mg/l)</th></tr>
+          <tr><td>General</td><td>0,50</td><td>0,25</td></tr>
+          <tr><td>Novel (< 2 años)</td><td>0,30</td><td>0,15</td></tr>
+          <tr><td>Profesional</td><td>0,30</td><td>0,15</td></tr>
+          <tr><td>Menor de edad</td><td>0,0</td><td>0,0</td></tr>
+        </table>
+      </div>
+
+      <!-- Tarjeta Luces -->
+      <div class="apunte-card">
+        <h3>💡 Uso de Luces</h3>
+        <ul class="apunte-list">
+          <li><strong>Posición:</strong> Obligatorio de noche al parar/estacionar en vías insuficientemente iluminadas o travesías. Nunca circular solo con posición.</li>
+          <li><strong>Cruce (Cortas):</strong> Obligatorio de noche, en túneles, con niebla/lluvia y siempre para motos.</li>
+          <li><strong>Largas:</strong> Obligatorio de noche fuera de poblado (a >40km/h). Prohibido si deslumbras o en poblado.</li>
+          <li><strong>Antiniebla Trasera:</strong> Obligatorio SOLAMENTE con niebla espesa, lluvia muy intensa o fuerte nevada.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <script src="data.js?v=45"></script>
 <script src="app_v2.js?v=14"></script>
 <script type="module" src="auth.js"></script>
