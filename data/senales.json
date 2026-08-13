@@ -3,70 +3,70 @@
     "id": "P-1",
     "tipo": "peligro",
     "nombre": "Intersección con prioridad",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Spain_traffic_signal_p1.svg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/8/89/Spain_traffic_sign_p1.svg",
     "descripcion": "Peligro por la proximidad de una intersección con una vía cuyos usuarios deben ceder el paso."
   },
   {
     "id": "P-2",
     "tipo": "peligro",
     "nombre": "Intersección con prioridad de la derecha",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Spain_traffic_signal_p2.svg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Spain_traffic_signal_p2.svg",
     "descripcion": "Peligro por la proximidad de una intersección donde rige la regla general de prioridad de la derecha."
   },
   {
     "id": "P-3",
     "tipo": "peligro",
     "nombre": "Semáforos",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Spain_traffic_signal_p3.svg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Spain_traffic_signal_p3.svg",
     "descripcion": "Peligro por la proximidad de una intersección aislada o tramo controlado por semáforos."
   },
   {
     "id": "P-4",
     "tipo": "peligro",
     "nombre": "Intersección con circulación giratoria",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Spain_traffic_signal_p4.svg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Spain_traffic_signal_p4.svg",
     "descripcion": "Peligro por la proximidad de una glorieta o intersección giratoria."
   },
   {
     "id": "R-1",
     "tipo": "prohibicion",
     "nombre": "Ceda el paso",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/76/Spain_traffic_signal_r1.svg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/79/Spain_traffic_signal_r1.svg",
     "descripcion": "Obligación de ceder el paso a los vehículos que circulen por la vía a la que se aproxime."
   },
   {
     "id": "R-2",
     "tipo": "prohibicion",
     "nombre": "Detención obligatoria (STOP)",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/0/07/Spain_traffic_signal_r2.svg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Spain_traffic_signal_r2%2C_2023_set.svg",
     "descripcion": "Obligación de detener el vehículo ante la próxima línea de detención y ceder el paso."
   },
   {
     "id": "R-100",
     "tipo": "prohibicion",
     "nombre": "Circulación prohibida",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Spain_traffic_signal_r100.svg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/91/Spain_traffic_signal_r100.svg",
     "descripcion": "Prohibición de circulación de toda clase de vehículos en ambos sentidos."
   },
   {
     "id": "R-101",
     "tipo": "prohibicion",
     "nombre": "Entrada prohibida",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/23/Spain_traffic_signal_r101.svg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/75/Spain_traffic_signal_r101.svg",
     "descripcion": "Prohibición de acceso a toda clase de vehículos."
   },
   {
     "id": "R-400a",
     "tipo": "obligacion",
     "nombre": "Sentido obligatorio (frente)",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/6/67/Spain_traffic_signal_r400a.svg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Spain_traffic_signal_r400a.svg",
     "descripcion": "Obligación de seguir la dirección y el sentido indicados por la flecha."
   },
   {
     "id": "R-401a",
     "tipo": "obligacion",
     "nombre": "Paso obligatorio (derecha)",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/1/15/Spain_traffic_signal_r401a.svg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/98/Spain_traffic_signal_r401a.svg",
     "descripcion": "Obligación de pasar por el lado indicado por la flecha."
   }
 ]
