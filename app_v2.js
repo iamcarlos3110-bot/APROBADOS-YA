@@ -496,9 +496,11 @@ class DataService {
       }
       
       const start = ((testNum - 1) + offset) * testQs;
-      const end = start + testQs;
       
-      const real = bank.slice(start, end);
+      const real = [];
+      for (let i = 0; i < testQs; i++) {
+        real.push(bank[(start + i) % bank.length]);
+      }
       const result = [...real];
       
       const formatted = result.map(q => {
