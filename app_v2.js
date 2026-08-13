@@ -99,6 +99,8 @@ const UserManager = {
     if(pCorrect) pCorrect.innerText = this.data.totalCorrect;
   }
 };
+window.UserManager = UserManager;
+
 
 // ─── SYNCMANAGER ──────────────────────────────────────────────
 // Sincronización no destructiva entre localStorage y Supabase
@@ -1408,6 +1410,43 @@ function showAppAlert(title, message) {
 }
 window.showAppAlert = showAppAlert;
 
+function showAppConfirm(title, message, onConfirm) {
+    let overlay = document.getElementById('customConfirmOverlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'customConfirmOverlay';
+        overlay.className = 'modal-overlay';
+        overlay.style.zIndex = '100000';
+        overlay.innerHTML = `
+            <div class="modal-content" style="max-width: 350px; text-align: center; padding: 30px 20px;">
+                <h3 id="customConfirmTitle" style="margin-top:0; font-size: 20px; color: var(--text);"></h3>
+                <p id="customConfirmMessage" style="color: var(--text2); margin: 15px 0 25px;"></p>
+                <div style="display: flex; gap: 10px;">
+                    <button class="secondary-btn" id="customConfirmCancelBtn" style="flex:1;">Cancelar</button>
+                    <button class="primary-btn" id="customConfirmOkBtn" style="flex:1; background-color: #d9534f; color: white;">Aceptar</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+        
+        document.getElementById('customConfirmCancelBtn').onclick = () => {
+            document.getElementById('customConfirmOverlay').classList.remove('active');
+        };
+    }
+    
+    document.getElementById('customConfirmTitle').textContent = title;
+    document.getElementById('customConfirmMessage').textContent = message;
+    
+    document.getElementById('customConfirmOkBtn').onclick = () => {
+        document.getElementById('customConfirmOverlay').classList.remove('active');
+        if (typeof onConfirm === 'function') onConfirm();
+    };
+    
+    overlay.classList.add('active');
+}
+window.showAppConfirm = showAppConfirm;
+
+
 function startPreparation() {
     const permitId = UserManager.data.lastPermit || 'B';
     const pObj = db.getPermits().find(p => p.id === permitId);
@@ -1576,7 +1615,7 @@ async function renderMemoSelectors() {
         <select id="memoPermitSelect" onchange="handleMemoPermitChange(this.value)" style="padding:8px; border-radius:8px; border:1px solid #ddd;">`;
     
     db.getPermits().forEach(p => {
-        html += `<option value="${p.id}" ${memoState.permitId === p.id ? 'selected' : ''}>Permiso ${p.name}</option>`;
+        html += `<option value="${p.id}" ${memoState.permitId === p.id ? 'selected' : ''}>${p.name}</option>`;
     });
     html += `</select>`;
     

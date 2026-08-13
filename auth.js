@@ -299,7 +299,7 @@ export async function renderProfileModal() {
       : '<span class="plan-badge free">FREE</span>';
 
     // Estadísticas desde UserManager (local, sincronizadas)
-    const stats = typeof UserManager !== 'undefined' ? UserManager.data : {};
+    const stats = window.UserManager ? window.UserManager.data : {};
 
     // Calcular fecha de renovación si es Premium
     let renewalHtml = '';
@@ -399,7 +399,7 @@ export async function renderProfileModal() {
 
   } else {
     // Usuario no autenticado
-    const stats = typeof UserManager !== 'undefined' ? UserManager.data : {};
+    const stats = window.UserManager ? window.UserManager.data : {};
     content.innerHTML = `
       <button class="modal-close" id="closeProfileBtn">✕</button>
       <div class="profile-header">
