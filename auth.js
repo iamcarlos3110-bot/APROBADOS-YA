@@ -33,6 +33,9 @@ const CACHE_TTL_MS = 60000; // 1 minuto
 export async function isPremium() {
   if (!currentUser) return false;
 
+  // Excepción de Propietario (Owner Exception)
+  if (currentUser.id === 'b977ec10-61f1-48c7-a88b-80d8a7afdc33') return true;
+
   const now = Date.now();
   // Usar caché si es reciente
   if (_subscriptionCache && (now - _subscriptionCacheTime) < CACHE_TTL_MS) {
