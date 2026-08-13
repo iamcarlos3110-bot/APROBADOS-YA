@@ -592,6 +592,9 @@ document.getElementById('retryTestBtn').addEventListener('click', () => {
 
 // ─── INIT ────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
+  // Capture last screen before renderPermits overwrites it
+  const lastScreen = localStorage.getItem('lastActiveScreen');
+
   initTheme();
 
   UserManager.load();
@@ -602,7 +605,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderPermits();
 
   // Restore safe screens from localStorage
-  const lastScreen = localStorage.getItem('lastActiveScreen');
   const safeScreens = ['screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes'];
   if (lastScreen && safeScreens.includes(lastScreen)) {
       if (lastScreen === 'screen-senales' && typeof openPremiumSenales === 'function') {
