@@ -134,8 +134,7 @@
       <a href="#" class="nav-link active" data-target="screen-home">🏠 Tests</a>
       <a href="#" class="nav-link" data-target="screen-memorize">🧠 Memorizar</a>
       <a href="#" class="nav-link" data-target="screen-progress">📊 Mi preparación</a>
-      <a href="#" class="nav-link" data-target="screen-senales">🚦 Señales</a>
-      <a href="#" class="nav-link" data-target="screen-apuntes">📚 Apuntes</a>
+      <a href="#" class="nav-link premium-btn" data-target="screen-premium">👑 Premium</a>
     </nav>
 
     <!-- RIGHT: Right Nav -->
@@ -162,8 +161,7 @@
     <a href="#" class="mobile-nav-link" data-target="screen-memorize">🧠 Memorizar</a>
     <a href="#" class="mobile-nav-link" data-target="screen-progress">📊 Mi preparación</a>
     <a href="#" class="mobile-nav-link" data-target="screen-favorites">🔖 Favoritos</a>
-    <a href="#" class="mobile-nav-link" data-target="screen-senales">🚦 Señales</a>
-    <a href="#" class="mobile-nav-link" data-target="screen-apuntes">📚 Apuntes</a>
+    <a href="#" class="mobile-nav-link premium-btn" data-target="screen-premium">👑 Premium</a>
     <div class="mobile-nav-stats">
       <span>🔥 Racha: <span id="mobileStreakCount">0</span></span>
     </div>
@@ -231,7 +229,13 @@
     <div class="test-wrap">
       <!-- Topbar del test -->
       <div class="test-topbar">
-        <button class="back-btn sm" id="exitTestBtn">✕ Salir</button>
+        <button class="back-btn sm" id="exitTestBtn">🚪 Salir</button>
+        
+        <!-- Timer para simulacro -->
+        <div class="simulacro-timer-box" id="simulacroTimerBox" style="display:none; background:var(--olive); color:white; padding:4px 10px; border-radius:6px; font-weight:700; font-variant-numeric:tabular-nums;">
+          ⏱️ <span id="simulacroTimerTxt">30:00</span>
+        </div>
+
         <div class="test-info-center">
           <div class="test-label" id="testLabel">Test 01 · Señales</div>
           <div class="test-progress-wrap">
@@ -240,9 +244,6 @@
             </div>
             <div class="test-prog-text"><span id="testProgCurrent">1</span> de <span id="testProgTotal">30</span></div>
           </div>
-        </div>
-        <div class="test-counter-badge">
-          <span id="testQCounter">1/30</span>
         </div>
       </div>
 
@@ -256,6 +257,9 @@
           <div class="question-img" id="questionImg" style="display:none;"></div>
           <p class="question-text" id="questionText"></p>
           <div class="question-options" id="questionOptions"></div>
+          
+          <button id="btnSubmitExam" class="btn-submit-exam">📝 Entregar Examen</button>
+          
           <div class="question-feedback" id="questionFeedback" style="display:none;">
             <div class="feedback-header" id="feedbackHeader"></div>
             <p class="feedback-explanation" id="feedbackExplanation"></p>
@@ -368,6 +372,41 @@
     </div>
   </div>
 </div>
+
+<!-- PREMIUM HUB SCREEN -->
+<section id="screen-premium" class="screen">
+  <div class="inner-wrap">
+    <div class="page-header" style="background: linear-gradient(135deg, var(--olive), #6b8c2a); color: white; border-radius: 16px; padding: 24px;">
+      <h2>👑 Academia Premium</h2>
+      <p style="color: rgba(255,255,255,0.9);">Herramientas avanzadas para asegurar tu aprobado.</p>
+    </div>
+    
+    <div class="premium-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
+      
+      <!-- Simulacro -->
+      <div class="premium-card" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" onclick="startSimulacro()">
+        <div style="font-size: 40px; margin-bottom: 12px;">⏱️</div>
+        <h3 style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Simulacro Real DGT</h3>
+        <p style="font-size: 0.9rem; color: var(--text2); line-height: 1.4;">Examen estricto de 30 minutos sin corrección instantánea. ¿Estás preparado?</p>
+      </div>
+
+      <!-- Señales -->
+      <div class="premium-card" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" onclick="document.querySelector('[data-target=\'screen-senales\']').click()">
+        <div style="font-size: 40px; margin-bottom: 12px;">🚦</div>
+        <h3 style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Directorio de Señales</h3>
+        <p style="font-size: 0.9rem; color: var(--text2); line-height: 1.4;">Repasa todas las señales de peligro, prohibición, obligación e indicación.</p>
+      </div>
+
+      <!-- Apuntes -->
+      <div class="premium-card" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" onclick="document.querySelector('[data-target=\'screen-apuntes\']').click()">
+        <div style="font-size: 40px; margin-bottom: 12px;">📚</div>
+        <h3 style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Apuntes Rápidos</h3>
+        <p style="font-size: 0.9rem; color: var(--text2); line-height: 1.4;">Chuletas súper visuales con las velocidades, tasas de alcohol y luces.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- SEÑALES SCREEN -->
 <section id="screen-senales" class="screen">

@@ -367,7 +367,10 @@ const state = {
   answers: {}, // { index: 'A' }
   score: 0,
   questions: [], // Preguntas del test actual
-  isOfficialDgt: false // flag para saber el origen
+  isOfficialDgt: false, // flag para saber el origen
+  isSimulacro: false,
+  timerInterval: null,
+  timeLeft: 0
 };
 
 class DataService {
@@ -1012,20 +1015,25 @@ function renderQuestion(index) {
     btn.className = 'option-btn';
     
     if (answered) {
-      btn.disabled = true;
-      if (key === q.correcta) btn.classList.add('correct-opt');
-      else if (state.answers[index] === key) btn.classList.add('wrong-opt');
+      if (state.isSimulacro) {
+         if (state.answers[index] === key) btn.classList.add('selected');
+      } else {
+         btn.disabled = true;
+         if (key === q.correcta) btn.classList.add('correct-opt');
+         else if (state.answers[index] === key) btn.classList.add('wrong-opt');
+      }
     }
 
     btn.innerHTML = `<span class="option-letter">${key}</span><span>${q.respuestas[key]}</span>`;
 
-    if (!answered && !q.isPlaceholder) {
-      btn.addEventListener('click', () => {
-        state.answers[index] = key;
-        if (key === q.correcta) state.score++;
-        
-        renderQuestion(index);
-      });
+    if (!q.isPlaceholder) {
+      if (!answered || state.isSimulacro) {
+        btn.addEventListener('click', () => {
+          state.answers[index] = key;
+          if (!state.isSimulacro && key === q.correcta && !answered) state.score++;
+          renderQuestion(index);
+        });
+      }
     }
     
     optsContainer.appendChild(btn);
@@ -1036,11 +1044,6 @@ function renderQuestion(index) {
   const fexp = document.getElementById('feedbackExplanation');
   const nextBtn = document.getElementById('nextQuestionBtn');
 
-  if (answered || q.isPlaceholder) {
-    feedback.style.display = 'block';
-    
-    if (q.isPlaceholder) {
-        fhdr.className = 'feedback-header';
         fhdr.textContent = 'Pendiente de importar';
         fexp.innerHTML = `<em>${q.explanation}</em>`;
     } else {
@@ -1817,4 +1820,120 @@ document.addEventListener('DOMContentLoaded', () => {
       signsGrid.appendChild(card);
     });
   }
+  
+  // LÓGICA DE SIMULACRO
+  const btnSubmitExam = document.getElementById('btnSubmitExam');
+  if (btnSubmitExam) {
+      btnSubmitExam.addEventListener('click', () => {
+          if(confirm('¿Seguro que quieres entregar el examen ahora?')) {
+             submitSimulacro();
+          }
+      });
+  }
 });
+
+// 🎓🎓🎓 FUNCIONES SIMULACRO REAL 🎓🎓🎓
+async function startSimulacro() {
+  const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
+  const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
+  
+  if (!user) {
+    if (typeof window.triggerPaywall === 'function') window.triggerPaywall('register');
+    return;
+  }
+  if (!isUserPremium) {
+    if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
+    return;
+  }
+
+  const allPermitQs = db.dgtQuestions.filter(q => q.permit_id === 'B' && q.test_id); 
+  const testIds = [...new Set(allPermitQs.map(q => q.test_id))];
+  const randomTestId = testIds[Math.floor(Math.random() * testIds.length)];
+
+  state.testMode = 'test';
+  state.isOfficialDgt = true;
+  state.testNum = randomTestId;
+  state.questions = db.getQuestionsByTest(randomTestId);
+  state.currentQuestion = 0;
+  state.answers = {};
+  state.score = 0;
+  state.isSimulacro = true;
+  state.timeLeft = 30 * 60; // 30 minutes
+
+  // Ensure test size is 30
+  if(state.questions.length > 30) state.questions = state.questions.slice(0, 30);
+
+  renderEngineUI();
+  document.getElementById('testLabel').textContent = "SIMULACRO DGT";
+  
+  document.getElementById('simulacroTimerBox').style.display = 'block';
+  document.getElementById('btnSubmitExam').style.display = 'block';
+  document.getElementById('testQuestionWrap').classList.add('simulacro-mode');
+  
+  updateTimerUI();
+  if (state.timerInterval) clearInterval(state.timerInterval);
+  state.timerInterval = setInterval(() => {
+    state.timeLeft--;
+    updateTimerUI();
+    if (state.timeLeft <= 0) {
+       submitSimulacro();
+    }
+  }, 1000);
+
+  renderQuestion(0);
+  showScreen('screen-test');
+}
+
+function updateTimerUI() {
+  const mins = Math.floor(state.timeLeft / 60).toString().padStart(2, '0');
+  const secs = (state.timeLeft % 60).toString().padStart(2, '0');
+  document.getElementById('simulacroTimerTxt').textContent = `${mins}:${secs}`;
+}
+
+function submitSimulacro() {
+  if (state.timerInterval) clearInterval(state.timerInterval);
+  state.isSimulacro = false;
+  document.getElementById('simulacroTimerBox').style.display = 'none';
+  document.getElementById('btnSubmitExam').style.display = 'none';
+  document.getElementById('testQuestionWrap').classList.remove('simulacro-mode');
+
+  let aciertos = 0;
+  state.questions.forEach((q, idx) => {
+    const ans = state.answers[idx];
+    if (ans === q.correcta) aciertos++;
+  });
+
+  const fallos = state.questions.length - aciertos;
+  const apto = fallos <= 3;
+
+  let resultsScreen = document.getElementById('screen-results');
+  if (!resultsScreen) {
+      resultsScreen = document.createElement('section');
+      resultsScreen.id = 'screen-results';
+      resultsScreen.className = 'screen';
+      document.getElementById('appMain').appendChild(resultsScreen);
+  }
+  
+  resultsScreen.innerHTML = `
+    <div class="inner-wrap" style="text-align:center; padding-top:60px; max-width:500px; margin:0 auto;">
+      <div style="font-size: 80px; margin-bottom: 20px;">${apto ? '🎉' : '💀'}</div>
+      <h2 style="font-size: 40px; font-weight: 900; margin-bottom: 10px; color: ${apto ? 'var(--olive)' : '#e53e3e'}">${apto ? '¡APTO!' : 'NO APTO'}</h2>
+      <p style="font-size: 18px; margin-bottom: 40px; color: var(--text2);">Has tenido <strong>${fallos}</strong> fallos de ${state.questions.length} preguntas.</p>
+      
+      <div style="display:flex; flex-direction:column; gap:16px;">
+          <button class="primary-btn" onclick="reviewSimulacro()" style="font-size:18px; padding:16px; border-radius:12px; cursor:pointer;">👁️ Revisar examen</button>
+          <button class="outline-btn" onclick="document.querySelector('[data-target=\\'screen-premium\\']').click()" style="font-size:18px; padding:16px; border-radius:12px; cursor:pointer;">Volver a Premium</button>
+      </div>
+    </div>
+  `;
+  showScreen('screen-results');
+}
+
+function reviewSimulacro() {
+  showScreen('screen-test');
+  renderQuestion(0);
+}
+
+window.startSimulacro = startSimulacro;
+window.submitSimulacro = submitSimulacro;
+window.reviewSimulacro = reviewSimulacro;

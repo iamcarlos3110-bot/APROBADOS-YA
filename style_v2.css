@@ -1175,3 +1175,6 @@ button { font-family: inherit; cursor: pointer; }
 .simulacro-mode .correct, .simulacro-mode .incorrect { background: var(--bg-card) !important; color: var(--text) !important; border-color: var(--border) !important; }
 .simulacro-mode .ans-btn.selected { border-color: #3182ce; background: rgba(49, 130, 206, 0.1); color: #3182ce; font-weight: 700; }
 .simulacro-mode .feedback-box { display: none !important; }
+
+.simulacro-mode .option-btn.selected { border-color: var(--primary); background: rgba(59,130,246,0.1); color: var(--primary); font-weight: 700; }
+.simulacro-mode .option-btn.selected .option-letter { background: var(--primary); color: #fff; border-color: var(--primary); }
