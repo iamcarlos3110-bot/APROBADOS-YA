@@ -68,5 +68,33 @@
     "nombre": "Paso obligatorio (derecha)",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/98/Spain_traffic_signal_r401a.svg",
     "descripcion": "Obligación de pasar por el lado indicado por la flecha."
+  },
+  {
+    "id": "S-1",
+    "tipo": "indicacion",
+    "nombre": "Autopista",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Spain_traffic_signal_s1.svg",
+    "descripcion": "Indica el principio de una autopista."
+  },
+  {
+    "id": "S-2",
+    "tipo": "indicacion",
+    "nombre": "Autovía",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Spain_traffic_signal_s2.svg",
+    "descripcion": "Indica el principio de una autovía."
+  },
+  {
+    "id": "S-11",
+    "tipo": "indicacion",
+    "nombre": "Calzada de sentido único",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Spain_traffic_signal_s11.svg",
+    "descripcion": "Indica que la calzada es de sentido único."
+  },
+  {
+    "id": "S-13",
+    "tipo": "indicacion",
+    "nombre": "Paso para peatones",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Spain_traffic_signal_s13.svg",
+    "descripcion": "Indica la situación de un paso para peatones."
   }
 ]
