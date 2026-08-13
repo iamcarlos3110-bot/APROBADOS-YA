@@ -265,7 +265,6 @@ const SyncManager = {
         correct_answers: localData.totalCorrect || 0,
         wrong_answers: (localData.mistakes || []).length,
         streak: localData.streak || 0,
-        last_active_date: localData.lastActiveDate || null,
         daily_questions: localData.dailyQuestions || 0,
         last_permit: localData.lastPermit || null,
         last_state: localData.lastState || null,
@@ -1044,6 +1043,11 @@ function renderQuestion(index) {
   const fexp = document.getElementById('feedbackExplanation');
   const nextBtn = document.getElementById('nextQuestionBtn');
 
+  if (answered) {
+    feedback.style.display = 'block';
+    
+    if (q.isPlaceholder) {
+        fhdr.className = 'feedback-header wrong';
         fhdr.textContent = 'Pendiente de importar';
         fexp.innerHTML = `<em>${q.explanation}</em>`;
     } else {
@@ -1664,19 +1668,27 @@ function handleMemoAnswer(idx) { memoState.selectedOpt = idx; renderMemoCard(mem
 function showMemoAnswer() { memoState.selectedOpt = memoState.questions[memoState.currentIndex].correcta || String.fromCharCode(65 + memoState.questions[memoState.currentIndex].correct); renderMemoCard(memoState.mode === 'fav' ? document.getElementById('favoritesList') : document.getElementById('memoList')); }
 function nextMemoQuestion() { if (memoState.currentIndex < memoState.questions.length - 1) { memoState.currentIndex++; memoState.selectedOpt = null; renderMemoCard(memoState.mode === 'fav' ? document.getElementById('favoritesList') : document.getElementById('memoList')); } }
 function prevMemoQuestion() { if (memoState.currentIndex > 0) { memoState.currentIndex--; memoState.selectedOpt = null; renderMemoCard(memoState.mode === 'fav' ? document.getElementById('favoritesList') : document.getElementById('memoList')); } }
+
 function toggleFavorite(qId) {
-   const idx = UserManager.data.favorites.indexOf(qId);
-   if (idx === -1) UserManager.data.favorites.push(qId);
-   else UserManager.data.favorites.splice(idx, 1);
-   UserManager.save();
-   
-   const container = memoState.mode === 'fav' ? document.getElementById('favoritesList') : document.getElementById('memoList');
-   if (memoState.mode === 'fav' && idx !== -1) {
-       memoState.questions = memoState.questions.filter(q => q.id !== qId);
-       if (memoState.currentIndex >= memoState.questions.length) memoState.currentIndex--;
-       if (memoState.questions.length === 0) { showFavoritesScreen(); return; }
-   }
-   renderMemoCard(container);
+    const idx = UserManager.data.favorites.indexOf(qId);
+    const isAdding = idx === -1;
+    if (isAdding) UserManager.data.favorites.push(qId);
+    else UserManager.data.favorites.splice(idx, 1);
+    UserManager.save();
+    
+    if (window.SyncManager && typeof window.currentUser === 'function' && window.currentUser()) {
+        window.SyncManager.syncFavorite(qId, isAdding);
+    }
+    
+    const container = memoState.mode === 'fav' ? document.getElementById('favoritesList') : document.getElementById('memoList');
+    if (container) {
+        if (memoState.mode === 'fav' && !isAdding) {
+            memoState.questions = memoState.questions.filter(q => q.id !== qId);
+            if (memoState.currentIndex >= memoState.questions.length) memoState.currentIndex--;
+            if (memoState.questions.length === 0) { showFavoritesScreen(); return; }
+        }
+        if (memoState.questions && memoState.questions.length > 0) renderMemoCard(container);
+    }
 }
 
 window.startSpecialTest = startSpecialTest;
