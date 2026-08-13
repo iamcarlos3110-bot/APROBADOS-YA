@@ -1980,22 +1980,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  let signsRendered = false;
   function renderSigns(tipo) {
     if(!signsGrid) return;
-    signsGrid.innerHTML = '';
-    const filtered = allSigns.filter(s => s.tipo === tipo);
-    filtered.forEach(s => {
-      const card = document.createElement('div');
-      card.className = 'sign-card';
-      card.innerHTML = `
-        <img src="${s.imagen}" alt="${s.nombre}" loading="lazy" onerror="this.parentElement.style.display='none'">
-        <div class="sign-id">${s.id}</div>
-        <div class="sign-name">${s.nombre}</div>
-      `;
-      card.addEventListener('click', () => {
-        showAppAlert(s.nombre, s.descripcion);
+    
+    if (!signsRendered) {
+      signsGrid.innerHTML = '';
+      allSigns.forEach(s => {
+        const card = document.createElement('div');
+        card.className = 'sign-card';
+        card.dataset.tipo = s.tipo;
+        card.innerHTML = `
+          <img src="${s.imagen}" alt="${s.nombre}" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <div class="sign-id">${s.id}</div>
+          <div class="sign-name">${s.nombre}</div>
+        `;
+        card.addEventListener('click', () => {
+          showAppAlert(s.nombre, s.descripcion);
+        });
+        signsGrid.appendChild(card);
       });
-      signsGrid.appendChild(card);
+      signsRendered = true;
+    }
+    
+    // Toggle visibility without rebuilding DOM to prevent flickering
+    Array.from(signsGrid.children).forEach(card => {
+      if (card.dataset.tipo === tipo) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
     });
   }
   
