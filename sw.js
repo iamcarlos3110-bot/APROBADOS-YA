@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aprobados-ya-v3';
+const CACHE_NAME = 'aprobados-ya-v4';
 
 // Recursos estrictamente estáticos para arrancar la UI
 const STATIC_ASSETS = [

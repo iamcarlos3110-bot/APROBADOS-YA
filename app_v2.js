@@ -954,9 +954,9 @@ function renderEngineUI() {
   }
 }
 
-function renderQuestion(index) {
+function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.data.favorites = [];
   state.currentQuestion = index;
-  const q = state.questions[index];
+  const q = state.questions[index]; if (!q) { document.getElementById('questionText').textContent = 'Error: No se pudo cargar la pregunta (BD vacía o índice inválido).'; return; }
   const total = state.questions.length;
   
   // Progress
@@ -991,7 +991,7 @@ function renderQuestion(index) {
   const imgEl = document.getElementById('questionImg');
   if (q.imagen_url || q.imagen_local) {
     const src = q.imagen_local || q.imagen_url;
-    if (src.includes('.jpg') || src.includes('.JPG') || src.includes('.png') || src.startsWith('http')) {
+    if (typeof src === 'string' && (src.includes('.jpg') || src.includes('.JPG') || src.includes('.png') || src.startsWith('http')))) {
       imgEl.innerHTML = `<img src="${src}" alt="IlustraciÃ³n de la pregunta" style="max-width:100%; max-height:220px; object-fit:contain; border-radius:4px; display:block; margin: 0 auto;" />`;
     } else {
       imgEl.innerHTML = q.imagen_url || q.imagen_local;
@@ -1184,7 +1184,7 @@ function renderMemo() {
     let imgHtml = '';
     if (q.imagen_url || q.imagen_local) {
       const src = q.imagen_local || q.imagen_url;
-      if (src.includes('.jpg') || src.includes('.JPG') || src.includes('.png') || src.startsWith('http')) {
+      if (typeof src === 'string' && (src.includes('.jpg') || src.includes('.JPG') || src.includes('.png') || src.startsWith('http')))) {
         imgHtml = `<div class="memo-img" style="border:none; background:transparent;"><img src="${src}" alt="IlustraciÃ³n" style="max-width:100%; max-height:200px; object-fit:contain; border-radius:4px; display:block; margin:0 auto;" /></div>`;
       } else {
         imgHtml = `<div class="memo-img">${src}</div>`;
