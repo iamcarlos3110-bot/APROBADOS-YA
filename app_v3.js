@@ -2198,9 +2198,10 @@ async function startPreguntaDelDia() {
 window.startPreguntaDelDia = startPreguntaDelDia;
 
 // Lógica de detección de Adblock (Se ejecuta 2 segundos después de cargar la página)
-setTimeout(() => {
+setTimeout(async () => {
     // Si el usuario es premium, no nos importa si usa AdBlock
-    if (state.isPremium) return;
+    const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
+    if (isUserPremium) return;
 
     // Crear un cebo para los bloqueadores de DOM
     let bait = document.createElement('div');
