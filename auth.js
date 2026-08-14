@@ -99,11 +99,19 @@ export async function initAuth() {
   const { data: { session } } = await supabase.auth.getSession();
   currentUser = session?.user ?? null;
   updateAuthUI();
+  window.isPremium().then(isP => {
+    window._cachedPremiumStatus = isP;
+    document.dispatchEvent(new Event('ay:consent-updated'));
+  });
 
   supabase.auth.onAuthStateChange(async (_event, session) => {
     currentUser = session?.user ?? null;
     _clearSubscriptionCache();
     updateAuthUI();
+    window.isPremium().then(isP => {
+      window._cachedPremiumStatus = isP;
+      document.dispatchEvent(new Event('ay:consent-updated'));
+    });
 
     if (_event === 'SIGNED_IN') {
       closeAuthModal();

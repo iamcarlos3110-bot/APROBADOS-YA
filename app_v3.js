@@ -1273,7 +1273,7 @@ function initNav() {
           renderPermits();
           setTimeout(() => {
               const grid = document.getElementById('permitsGrid');
-              if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (grid) { const y = grid.getBoundingClientRect().top + window.scrollY - 80; window.scrollTo({ top: y, behavior: 'smooth' }); }
           }, 50);
       }
       else if (target === 'screen-progress') showPrepScreen();
@@ -1300,7 +1300,7 @@ function initNav() {
           renderPermits();
           setTimeout(() => {
               const grid = document.getElementById('permitsGrid');
-              if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (grid) { const y = grid.getBoundingClientRect().top + window.scrollY - 80; window.scrollTo({ top: y, behavior: 'smooth' }); }
           }, 50);
       }
       else if (target === 'screen-progress') showPrepScreen();
@@ -1790,10 +1790,18 @@ function renderMemoCard(container = document.getElementById('memoList')) {
    
    html += `<div class="memo-opts" style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">`;
    
-   const respKeys = q.respuestas ? Object.keys(q.respuestas) : (q.options ? ['A','B','C','D'].slice(0, q.options.length) : []);
+   let parsedOpts = {};
+   if (q.respuestas) parsedOpts = q.respuestas;
+   else if (q.options) {
+       q.options.forEach((o, i) => {
+           let t = typeof o === 'string' ? o : (o.text || o.label || JSON.stringify(o));
+           parsedOpts[String.fromCharCode(65+i)] = t;
+       });
+   }
+   const respKeys = Object.keys(parsedOpts);
    
    respKeys.forEach(k => {
-       const optText = q.respuestas ? q.respuestas[k] : q.options[k.charCodeAt(0)-65];
+       const optText = parsedOpts[k];
        let btnClass = 'memo-opt-btn outline-btn';
        let btnStyle = 'text-align:left; justify-content:flex-start; padding:15px; font-weight:normal; border-color:var(--border); font-size:16px;';
        
@@ -1816,9 +1824,11 @@ function renderMemoCard(container = document.getElementById('memoList')) {
        const isOk = (memoState.selectedOpt === correctKey);
        const fbClass = isOk ? 'success' : 'error';
        const fbText = isOk ? '✅ ¡Correcto!' : '❌ Incorrecto.';
+       const explText = typeof q.explanation === 'string' ? q.explanation : (q.explanation ? JSON.stringify(q.explanation) : (q.explicacion ? (typeof q.explicacion === 'string' ? q.explicacion : JSON.stringify(q.explicacion)) : ''));
+       
        html += `<div class="memo-feedback show ${fbClass}" style="margin-bottom:20px; padding:15px; border-radius:8px; background:${isOk?'var(--green-light)':'#ffe5e5'}; color:var(--text); font-size:15px;">
            <strong>${fbText}</strong>
-           ${q.explanation ? '<div style="margin-top:10px;"><strong>Explicación:</strong> ' + q.explanation + '</div>' : ''}
+           ${explText ? '<div style="margin-top:10px;"><strong>Explicación:</strong> ' + explText + '</div>' : ''}
        </div>`;
    }
    
@@ -1961,7 +1971,7 @@ if (btnCloseInstall) {
 document.addEventListener('DOMContentLoaded', () => {
   // Inicializar Seales
   let allSigns = [];
-  fetch('data/senales.json')
+  fetch('data/senales.json?v=31')
     .then(r => r.json())
     .then(data => {
       allSigns = data;
@@ -1980,22 +1990,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  let signsRendered = false;
   function renderSigns(tipo) {
     if(!signsGrid) return;
-    signsGrid.innerHTML = '';
-    const filtered = allSigns.filter(s => s.tipo === tipo);
-    filtered.forEach(s => {
-      const card = document.createElement('div');
-      card.className = 'sign-card';
-      card.innerHTML = `
-        <img src="${s.imagen}" alt="${s.nombre}" loading="lazy" onerror="this.parentElement.style.display='none'">
-        <div class="sign-id">${s.id}</div>
-        <div class="sign-name">${s.nombre}</div>
-      `;
-      card.addEventListener('click', () => {
-        showAppAlert(s.nombre, s.descripcion);
+    
+    if (!signsRendered) {
+      signsGrid.innerHTML = '';
+      allSigns.forEach(s => {
+        const card = document.createElement('div');
+        card.className = 'sign-card';
+        card.dataset.tipo = s.tipo;
+        card.innerHTML = `
+          <img src="${s.imagen}" alt="${s.nombre}" onerror="this.style.display='none';">
+          <div class="sign-id">${s.id}</div>
+          <div class="sign-name">${s.nombre}</div>
+        `;
+        card.addEventListener('click', () => {
+          showAppAlert(s.nombre, s.descripcion);
+        });
+        signsGrid.appendChild(card);
       });
-      signsGrid.appendChild(card);
+      signsRendered = true;
+    }
+    
+    // Toggle visibility without rebuilding DOM to prevent flickering
+    Array.from(signsGrid.children).forEach(card => {
+      if (card.dataset.tipo === tipo) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
     });
   }
   
@@ -2178,6 +2202,45 @@ async function startPreguntaDelDia() {
   document.getElementById('btnSubmitExam').style.display = 'none';
   document.getElementById('testQuestionWrap').classList.remove('simulacro-mode');
   
+  renderQuestion(0);
   showScreen('screen-test');
 }
 window.startPreguntaDelDia = startPreguntaDelDia;
+
+// Lógica de detección de Adblock (Se ejecuta 2 segundos después de cargar la página)
+setTimeout(async () => {
+    // Si el usuario es premium, no nos importa si usa AdBlock
+    const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
+    if (isUserPremium) return;
+
+    // Crear un cebo para los bloqueadores de DOM
+    let bait = document.createElement('div');
+    bait.innerHTML = '&nbsp;';
+    bait.className = 'adsbox ad-placement doubleclick ad-placeholder';
+    bait.style.width = '1px';
+    bait.style.height = '1px';
+    bait.style.position = 'absolute';
+    bait.style.left = '-10000px';
+    document.body.appendChild(bait);
+
+    setTimeout(() => {
+        // Si el cebo no tiene altura, o si el script de AdSense (adsbygoogle) fue bloqueado por DNS
+        let adblockEnabled = false;
+        
+        if (bait.offsetHeight === 0 || bait.clientHeight === 0 || window.getComputedStyle(bait).display === 'none') {
+            adblockEnabled = true;
+        }
+        
+        // Comprobar si Google Adsense se pudo cargar (AdGuard DNS bloquea el dominio directamente)
+        if (typeof adsbygoogle === 'undefined') {
+            adblockEnabled = true;
+        }
+
+        if (adblockEnabled) {
+            const modal = document.getElementById('adblock-modal');
+            if (modal) modal.style.display = 'flex';
+        }
+        
+        document.body.removeChild(bait);
+    }, 100);
+}, 2000);

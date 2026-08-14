@@ -2021,7 +2021,7 @@ if (btnCloseInstall) {
 document.addEventListener('DOMContentLoaded', () => {
   // Inicializar Seales
   let allSigns = [];
-  fetch('data/senales.json')
+  fetch('data/senales.json?v=31')
     .then(r => r.json())
     .then(data => {
       allSigns = data;
@@ -2048,7 +2048,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = 'sign-card';
       card.innerHTML = `
-        <img src="${s.imagen}" alt="${s.nombre}" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <img src="${s.imagen}" alt="${s.nombre}" loading="lazy" onerror="this.style.display='none';">
         <div class="sign-id">${s.id}</div>
         <div class="sign-name">${s.nombre}</div>
       `;
