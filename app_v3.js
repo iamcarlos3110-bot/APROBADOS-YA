@@ -2196,7 +2196,7 @@ async function startPreguntaDelDia() {
   showScreen('screen-test');
 }
 window.startPreguntaDelDia = startPreguntaDelDia;
-\n
+
 // Lógica de detección de Adblock (Se ejecuta 2 segundos después de cargar la página)
 setTimeout(() => {
     // Si el usuario es premium, no nos importa si usa AdBlock
