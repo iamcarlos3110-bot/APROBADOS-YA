@@ -590,5 +590,15 @@
   </div>
 </div>
 
+
+  <div id="adblock-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99999; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+      <div style="background: rgba(30,30,30,0.9); padding: 40px 20px; border-radius: 20px; border: 1px solid var(--olive); max-width: 400px; width: 100%;">
+          <h2 style="color: #ff4d4d; font-size: 28px; font-weight: 900; margin-bottom: 15px;">¡AdBlock Detectado!</h2>
+          <p style="color: white; font-size: 16px; margin-bottom: 30px;">Aprobados YA es gratis gracias a los anuncios. Por favor, desactiva tu bloqueador de anuncios (AdBlock, AdGuard, DNS) para seguir estudiando, o hazte Premium para eliminar la publicidad para siempre.</p>
+          <button onclick="location.reload()" class="primary-btn" style="width: 100%; margin-bottom: 15px; background: var(--olive); color: black;">🔄 Ya lo he desactivado</button>
+          <button onclick="document.getElementById('adblock-modal').style.display='none'; showScreen('screen-premium');" class="outline-btn" style="width: 100%;">⭐ Hacerme Premium (Sin anuncios)</button>
+      </div>
+  </div>
 </body>
+
 </html>

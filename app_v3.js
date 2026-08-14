@@ -2196,3 +2196,40 @@ async function startPreguntaDelDia() {
   showScreen('screen-test');
 }
 window.startPreguntaDelDia = startPreguntaDelDia;
+\n
+// Lógica de detección de Adblock (Se ejecuta 2 segundos después de cargar la página)
+setTimeout(() => {
+    // Si el usuario es premium, no nos importa si usa AdBlock
+    if (state.isPremium) return;
+
+    // Crear un cebo para los bloqueadores de DOM
+    let bait = document.createElement('div');
+    bait.innerHTML = '&nbsp;';
+    bait.className = 'adsbox ad-placement doubleclick ad-placeholder';
+    bait.style.width = '1px';
+    bait.style.height = '1px';
+    bait.style.position = 'absolute';
+    bait.style.left = '-10000px';
+    document.body.appendChild(bait);
+
+    setTimeout(() => {
+        // Si el cebo no tiene altura, o si el script de AdSense (adsbygoogle) fue bloqueado por DNS
+        let adblockEnabled = false;
+        
+        if (bait.offsetHeight === 0 || bait.clientHeight === 0 || window.getComputedStyle(bait).display === 'none') {
+            adblockEnabled = true;
+        }
+        
+        // Comprobar si Google Adsense se pudo cargar (AdGuard DNS bloquea el dominio directamente)
+        if (typeof adsbygoogle === 'undefined') {
+            adblockEnabled = true;
+        }
+
+        if (adblockEnabled) {
+            const modal = document.getElementById('adblock-modal');
+            if (modal) modal.style.display = 'flex';
+        }
+        
+        document.body.removeChild(bait);
+    }, 100);
+}, 2000);
