@@ -1197,19 +1197,31 @@ function showResults() {
   const total = state.questions.filter(q => !q.isPlaceholder).length;
   const wrong = results.filter(r => !r.isCorrect).length;
 
-  // FASE 1: Registrar estadísticas detalladas
+  // FASE 1: Registrar estadísticas detalladas sin lanzar 30 peticiones red concurrentes
   UserManager.data.totalTests++;
-  UserManager.recordActivity(); 
   
   const pId = typeof state.permit === 'object' ? state.permit.id : state.permit;
   const tId = (state.topic && typeof state.topic === 'object') ? state.topic.id : state.topic;
   
   results.forEach(r => {
-      UserManager.recordQuestionResult(pId, tId, r.q.id, r.isCorrect);
+      UserManager.data.dailyQuestions++;
+      if (r.isCorrect) UserManager.data.totalCorrect++;
+
+      if (!r.isCorrect && !UserManager.data.mistakes.includes(r.q.id)) {
+          UserManager.data.mistakes.push(r.q.id);
+      } else if (r.isCorrect && UserManager.data.mistakes.includes(r.q.id)) {
+          UserManager.data.mistakes = UserManager.data.mistakes.filter(id => id !== r.q.id);
+      }
+
+      if (!UserManager.data.topicStats[pId]) UserManager.data.topicStats[pId] = {};
+      const t = tId || 'general';
+      if (!UserManager.data.topicStats[pId][t]) UserManager.data.topicStats[pId][t] = { correct: 0, total: 0 };
+      UserManager.data.topicStats[pId][t].total++;
+      if (r.isCorrect) UserManager.data.topicStats[pId][t].correct++;
   });
   
   UserManager.data.lastState = null;
-  UserManager.save();
+  UserManager.recordActivity(); // Guarda localmente y lanza una sola petición de progreso en la nube
 
   // ─── FASE F: Sincronizar con Supabase si hay sesión ────────
   if (window.SyncManager && typeof window.currentUser === 'function' && window.currentUser()) {
@@ -1222,13 +1234,14 @@ function showResults() {
       testId, permitId: pId, topicId: tId, correct, wrong, total
     });
 
-    // Guardar errores/aciertos individuales en la DB
-    results.forEach(r => {
-      window.SyncManager.recordMistakeToDB(r.q.id, r.isCorrect);
-    });
-
-    // Guardar progreso general
-    window.SyncManager.saveProgressToDB(UserManager.data);
+    // Guardar errores/aciertos en lote en la DB (2 peticiones en total)
+    if (typeof window.SyncManager.recordMistakesBulkToDB === 'function') {
+      window.SyncManager.recordMistakesBulkToDB(results);
+    } else {
+      results.forEach(r => {
+        window.SyncManager.recordMistakeToDB(r.q.id, r.isCorrect);
+      });
+    }
   }
 
 

@@ -39,9 +39,9 @@ export async function saveProgressToDB(progressData) {
     const payload = {
       user_id: user.id,
       tests_completed: progressData.totalTests || 0,
-      questions_answered: (progressData.totalCorrect || 0) + (progressData.totalWrong || 0),
+      questions_answered: (progressData.totalCorrect || 0) + (progressData.mistakes?.length || 0),
       correct_answers: progressData.totalCorrect || 0,
-      wrong_answers: progressData.totalWrong || 0,
+      wrong_answers: (progressData.mistakes || []).length,
       streak: progressData.streak || 0,
       last_active_date: progressData.lastActiveDate || null,
       daily_questions: progressData.dailyQuestions || 0,
@@ -164,6 +164,79 @@ export async function recordMistakeToDB(questionId, isCorrect) {
     return true;
   } catch (e) {
     console.warn('SyncManager: error guardando error', e);
+    return false;
+  }
+}
+
+export async function recordMistakesBulkToDB(results) {
+  const user = window.currentUser?.();
+  if (!user || !Array.isArray(results) || results.length === 0) return false;
+
+  try {
+    const { data: existing, error: selectError } = await supabase
+      .from('mistakes')
+      .select('*')
+      .eq('user_id', user.id);
+
+    if (selectError) throw selectError;
+
+    const existingMap = {};
+    (existing || []).forEach(m => {
+      existingMap[m.question_id] = m;
+    });
+
+    const upserts = [];
+    results.forEach(r => {
+      const qId = r.q.id;
+      const isCorrect = r.isCorrect;
+      const dbRow = existingMap[qId];
+
+      if (isCorrect) {
+        if (dbRow) {
+          upserts.push({
+            id: dbRow.id,
+            user_id: user.id,
+            question_id: qId,
+            times_wrong: dbRow.times_wrong,
+            times_correct: dbRow.times_correct + 1,
+            last_wrong_at: dbRow.last_wrong_at,
+            updated_at: new Date().toISOString()
+          });
+        }
+      } else {
+        if (dbRow) {
+          upserts.push({
+            id: dbRow.id,
+            user_id: user.id,
+            question_id: qId,
+            times_wrong: dbRow.times_wrong + 1,
+            times_correct: dbRow.times_correct,
+            last_wrong_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+          });
+        } else {
+          upserts.push({
+            user_id: user.id,
+            question_id: qId,
+            times_wrong: 1,
+            times_correct: 0,
+            last_wrong_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+          });
+        }
+      }
+    });
+
+    if (upserts.length > 0) {
+      const { error: upsertError } = await supabase
+        .from('mistakes')
+        .upsert(upserts, { onConflict: 'user_id,question_id' });
+      if (upsertError) throw upsertError;
+    }
+
+    return true;
+  } catch (e) {
+    console.warn('SyncManager: error en guardado masivo de errores', e);
     return false;
   }
 }
@@ -310,6 +383,7 @@ window.SyncManager = {
   loadFavoritesFromDB,
   loadMistakesFromDB,
   recordMistakeToDB,
+  recordMistakesBulkToDB,
   saveTestResultToDB,
   migrateLocalDataToDB,
   syncFromDB
