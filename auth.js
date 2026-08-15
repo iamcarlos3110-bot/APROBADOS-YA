@@ -27,10 +27,15 @@ let _subscriptionCache = null;
 let _subscriptionCacheTime = 0;
 const CACHE_TTL_MS = 60000; // 1 minuto
 
+// ─── PROMO FREE MODE (Modo Lanzamiento / AdSense Review) ───
+// Si es true, todo el contenido es GRATIS para revisión de Google AdSense y campaña de tráfico.
+window.PROMO_FREE_MODE = true;
+
 // ─── FUNCIÓN CENTRAL isPremium() ─────────────
 // Fuente de verdad: tabla subscriptions en Supabase
 // NO depende de user_metadata, localStorage ni DOM
 export async function isPremium() {
+  if (window.PROMO_FREE_MODE) return true;
   if (!currentUser) return false;
 
   // Excepción de Propietario (Owner Exception)
@@ -215,13 +220,13 @@ function showPasswordResetForm() {
   `;
   modal.classList.add('active');
 
-  document.getElementById('newPasswordForm').addEventListener('submit', async (e) => {
+  document.getElementById('newPasswordForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('newPwdBtn');
     const errEl = document.getElementById('newPwdError');
     const sucEl = document.getElementById('newPwdSuccess');
-    const pwd = document.getElementById('newPwd').value;
-    const conf = document.getElementById('newPwdConfirm').value;
+    const pwd = document.getElementById('newPwd')?.value;
+    const conf = document.getElementById('newPwdConfirm')?.value;
 
     errEl.style.display = 'none';
     sucEl.style.display = 'none';
@@ -643,7 +648,7 @@ function renderAuthModal(modal, tab) {
     </div>
   `;
 
-  document.getElementById('closeAuthModalBtn').addEventListener('click', closeAuthModal);
+  document.getElementById('closeAuthModalBtn')?.addEventListener('click', closeAuthModal);
   modal.addEventListener('click', (e) => { if (e.target === modal) closeAuthModal(); });
 
   modal.querySelectorAll('.auth-tab').forEach(btn => {
@@ -655,26 +660,26 @@ function renderAuthModal(modal, tab) {
     });
   });
 
-  document.getElementById('forgotPasswordBtn').addEventListener('click', () => {
+  document.getElementById('forgotPasswordBtn')?.addEventListener('click', () => {
     modal.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
     modal.querySelectorAll('.auth-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('authPanelReset').classList.add('active');
+    document.getElementById('authPanelReset')?.classList.add('active');
   });
 
-  document.getElementById('backToLoginBtn').addEventListener('click', () => {
+  document.getElementById('backToLoginBtn')?.addEventListener('click', () => {
     modal.querySelectorAll('.auth-panel').forEach(p => p.classList.remove('active'));
     modal.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('authPanelLogin').classList.add('active');
+    document.getElementById('authPanelLogin')?.classList.add('active');
     modal.querySelector('[data-tab="login"]').classList.add('active');
   });
 
   // ── Login Form ──
-  document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('loginSubmitBtn');
     const errEl = document.getElementById('loginError');
-    const email = document.getElementById('loginEmail').value.trim();
-    const password = document.getElementById('loginPassword').value;
+    const email = document.getElementById('loginEmail')?.value.trim();
+    const password = document.getElementById('loginPassword')?.value;
     setLoadingBtn(btn, true, 'Iniciando sesión...');
     errEl.style.display = 'none';
     try {
@@ -688,16 +693,16 @@ function renderAuthModal(modal, tab) {
   });
 
   // ── Register Form ──
-  document.getElementById('registerForm').addEventListener('submit', async (e) => {
+  document.getElementById('registerForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('registerSubmitBtn');
     const errEl = document.getElementById('registerError');
     const successEl = document.getElementById('registerSuccess');
-    const name = document.getElementById('regName').value.trim();
-    const email = document.getElementById('regEmail').value.trim();
-    const password = document.getElementById('regPassword').value;
-    const confirm = document.getElementById('regPasswordConfirm').value;
-    const terms = document.getElementById('acceptTerms').checked;
+    const name = document.getElementById('regName')?.value.trim();
+    const email = document.getElementById('regEmail')?.value.trim();
+    const password = document.getElementById('regPassword')?.value;
+    const confirm = document.getElementById('regPasswordConfirm')?.value;
+    const terms = document.getElementById('acceptTerms')?.checked;
 
     errEl.style.display = 'none';
     successEl.style.display = 'none';
@@ -718,7 +723,7 @@ function renderAuthModal(modal, tab) {
       await signUp(name, email, password);
       successEl.textContent = '✅ ¡Cuenta creada! Revisa tu correo para verificar tu dirección antes de iniciar sesión.';
       successEl.style.display = 'block';
-      document.getElementById('registerForm').reset();
+      document.getElementById('registerForm')?.reset();
     } catch(err) {
       errEl.textContent = translateAuthError(err.message);
       errEl.style.display = 'block';
@@ -728,12 +733,12 @@ function renderAuthModal(modal, tab) {
   });
 
   // ── Reset Password Form ──
-  document.getElementById('resetForm').addEventListener('submit', async (e) => {
+  document.getElementById('resetForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('resetSubmitBtn');
     const errEl = document.getElementById('resetError');
     const successEl = document.getElementById('resetSuccess');
-    const email = document.getElementById('resetEmail').value.trim();
+    const email = document.getElementById('resetEmail')?.value.trim();
     setLoadingBtn(btn, true, 'Enviando...');
     errEl.style.display = 'none';
     successEl.style.display = 'none';
@@ -803,7 +808,7 @@ function showMigrationBanner(data) {
   `;
   document.body.appendChild(banner);
 
-  document.getElementById('migrateSyncBtn').addEventListener('click', async () => {
+  document.getElementById('migrateSyncBtn')?.addEventListener('click', async () => {
     const btn = document.getElementById('migrateSyncBtn');
     btn.textContent = '⏳ Sincronizando...';
     btn.disabled = true;
@@ -826,7 +831,7 @@ function showMigrationBanner(data) {
     setTimeout(() => banner.remove(), 3000);
   });
 
-  document.getElementById('migrateDismissBtn').addEventListener('click', () => banner.remove());
+  document.getElementById('migrateDismissBtn')?.addEventListener('click', () => banner.remove());
 }
 
 // ─── UTILIDADES ────────────────────────────────

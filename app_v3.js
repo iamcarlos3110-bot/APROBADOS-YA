@@ -567,14 +567,14 @@ function showScreen(id) {
 
 // ─── NAV HELPERS ────────────────────────────────────
 
-  document.getElementById('logoLink').addEventListener('click', (e) => {
+  document.getElementById('logoLink')?.addEventListener('click', (e) => {
     e.preventDefault();
     renderPermits();
   });
 
-document.getElementById('backToHome').addEventListener('click', renderPermits);
-document.getElementById('backToTopics').addEventListener('click', renderTopics);
-document.getElementById('exitTestBtn').addEventListener('click', () => {
+document.getElementById('backToHome')?.addEventListener('click', renderPermits);
+document.getElementById('backToTopics')?.addEventListener('click', renderTopics);
+document.getElementById('exitTestBtn')?.addEventListener('click', () => {
   showAppConfirm('Salir del test', '¿Seguro que quieres salir? Se perderá tu progreso actual.', () => {
       if (!state.topic) {
           if(typeof showPrepScreen === 'function') showPrepScreen(); else startPreparation();
@@ -583,9 +583,9 @@ document.getElementById('exitTestBtn').addEventListener('click', () => {
       }
   });
 });
-document.getElementById('exitMemoBtn').addEventListener('click', renderPermits);
-document.getElementById('goToTestsBtn').addEventListener('click', renderTests);
-document.getElementById('retryTestBtn').addEventListener('click', () => {
+document.getElementById('exitMemoBtn')?.addEventListener('click', renderPermits);
+document.getElementById('goToTestsBtn')?.addEventListener('click', renderTests);
+document.getElementById('retryTestBtn')?.addEventListener('click', () => {
   startTest(state.testNum, 'test', state.isOfficialDgt);
 });
 
@@ -757,8 +757,8 @@ function getThemeIcon(id, name) {
 
 function renderTopics() {
   const p = state.permit;
-  document.getElementById('topicsPermitBadge').textContent = `${p.icon} ${p.name}`;
-  document.getElementById('topicsTitle').textContent = `Temario ${p.name}`;
+  document.getElementById('topicsPermitBadge')?.textContent = `${p.icon} ${p.name}`;
+  document.getElementById('topicsTitle')?.textContent = `Temario ${p.name}`;
   
   const container = document.getElementById('topicsGrid');
   container.innerHTML = '';
@@ -795,8 +795,8 @@ function renderTests() {
   const p = state.permit;
   const t = state.topic;
   
-  document.getElementById('testsPermitBadge').textContent = `${p.icon} ${p.name}`;
-  document.getElementById('testsTitle').textContent = `Tests: ${t.name}`;
+  document.getElementById('testsPermitBadge')?.textContent = `${p.icon} ${p.name}`;
+  document.getElementById('testsTitle')?.textContent = `Tests: ${t.name}`;
   
   const container = document.getElementById('testsGrid');
   container.innerHTML = '';
@@ -992,18 +992,18 @@ function renderEngineUI() {
 
 function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.data.favorites = [];
   state.currentQuestion = index;
-  const q = state.questions[index]; if (!q) { document.getElementById('questionText').textContent = 'Error: No se pudo cargar la pregunta (BD vaca o ndice invlido).'; return; }
+  const q = state.questions[index]; if (!q) { document.getElementById('questionText')?.textContent = 'Error: No se pudo cargar la pregunta (BD vaca o ndice invlido).'; return; }
   const total = state.questions.length;
   
   // Progress
   const pct = Math.round(((index + 1) / total) * 100);
-  document.getElementById('testProgFill').style.width = `${pct}%`;
-  document.getElementById('testProgCurrent').textContent = index + 1;
-  document.getElementById('testProgTotal').textContent = total;
+  document.getElementById('testProgFill')?.style.width = `${pct}%`;
+  document.getElementById('testProgCurrent')?.textContent = index + 1;
+  document.getElementById('testProgTotal')?.textContent = total;
   const qc = document.getElementById('testQCounter');
   if (qc) qc.textContent = `${index + 1}/${total}`;
   
-  document.getElementById('questionNum').textContent = `Pregunta ${index + 1} de ${total}`;
+  document.getElementById('questionNum')?.textContent = `Pregunta ${index + 1} de ${total}`;
     
     const btnFav = document.getElementById('btnToggleFavorite');
     if (btnFav) {
@@ -1029,7 +1029,7 @@ function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.dat
   if (q.imagen_url || q.imagen_local) {
     const src = q.imagen_local || q.imagen_url;
     if (typeof src === 'string' && (src.includes('.jpg') || src.includes('.JPG') || src.includes('.png') || src.startsWith('http'))) {
-      imgEl.innerHTML = `<img src="${src}" alt="Ilustración de la pregunta" style="max-width:100%; max-height:220px; object-fit:contain; border-radius:4px; display:block; margin: 0 auto;" />`;
+      imgEl.innerHTML = `<img src="${src}" referrerpolicy="no-referrer" alt="Ilustración de la pregunta" style="max-width:100%; max-height:220px; object-fit:contain; border-radius:4px; display:block; margin: 0 auto;" />`;
     } else {
       imgEl.innerHTML = q.imagen_url || q.imagen_local;
     }
@@ -1157,13 +1157,13 @@ function showResults() {
   const skipped = total - results.length;
   const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
 
-  document.getElementById('resultScoreText').textContent = `${correct}/${total}`;
+  document.getElementById('resultScoreText')?.textContent = `${correct}/${total}`;
   const circle = document.getElementById('resultScoreCircle');
   circle.className = `result-score-circle${pct < 70 ? ' fail' : ''}`;
   
-  document.getElementById('resultEmoji').textContent = pct >= 90 ? '🎉' : pct >= 70 ? '👍' : '📚';
-  document.getElementById('resultTitle').textContent = pct >= 90 ? '¡Excelente resultado!' : pct >= 70 ? '¡Buen trabajo!' : 'Sigue practicando';
-  document.getElementById('resultSubtitle').textContent = `Has acertado ${correct} de ${total} preguntas (${pct}%).${pct < 70 ? ' Revisa las respuestas y vuelve a intentarlo.' : ''}`;
+  document.getElementById('resultEmoji')?.textContent = pct >= 90 ? '🎉' : pct >= 70 ? '👍' : '📚';
+  document.getElementById('resultTitle')?.textContent = pct >= 90 ? '¡Excelente resultado!' : pct >= 70 ? '¡Buen trabajo!' : 'Sigue practicando';
+  document.getElementById('resultSubtitle')?.textContent = `Has acertado ${correct} de ${total} preguntas (${pct}%).${pct < 70 ? ' Revisa las respuestas y vuelve a intentarlo.' : ''}`;
 
   const statsEl = document.getElementById('resultStats');
   statsEl.innerHTML = `
@@ -1198,7 +1198,7 @@ function showResults() {
 // ─── MEMORIZAR ──────────────────────────────────────
 function renderMemo() {
   const p = state.permit;
-  document.getElementById('memoPermitBadge').textContent = `${p.icon} ${p.name}`;
+  document.getElementById('memoPermitBadge')?.textContent = `${p.icon} ${p.name}`;
   
   const title = document.getElementById('memoTitle');
   if (state.isOfficialDgt) {
@@ -1222,7 +1222,7 @@ function renderMemo() {
     if (q.imagen_url || q.imagen_local) {
       const src = q.imagen_local || q.imagen_url;
       if (typeof src === 'string' && (src.includes('.jpg') || src.includes('.JPG') || src.includes('.png') || src.startsWith('http'))) {
-        imgHtml = `<div class="memo-img" style="border:none; background:transparent;"><img src="${src}" alt="Ilustración" style="max-width:100%; max-height:200px; object-fit:contain; border-radius:4px; display:block; margin:0 auto;" /></div>`;
+        imgHtml = `<div class="memo-img" style="border:none; background:transparent;"><img src="${src}" referrerpolicy="no-referrer" alt="Ilustración" style="max-width:100%; max-height:200px; object-fit:contain; border-radius:4px; display:block; margin:0 auto;" /></div>`;
       } else {
         imgHtml = `<div class="memo-img">${src}</div>`;
       }
@@ -1419,13 +1419,13 @@ function showAppAlert(title, message) {
             <div class="modal-content" style="max-width: 350px; text-align: center; padding: 30px 20px;">
                 <h3 id="customAlertTitle" style="margin-top:0; font-size: 20px; color: var(--text);"></h3>
                 <p id="customAlertMessage" style="color: var(--text2); margin: 15px 0 25px;"></p>
-                <button class="primary-btn" onclick="document.getElementById('customAlertOverlay').classList.remove('active')" style="width: 100%;">Entendido</button>
+                <button class="primary-btn" onclick="document.getElementById('customAlertOverlay')?.classList.remove('active')" style="width: 100%;">Entendido</button>
             </div>
         `;
         document.body.appendChild(overlay);
     }
-    document.getElementById('customAlertTitle').textContent = title;
-    document.getElementById('customAlertMessage').textContent = message;
+    document.getElementById('customAlertTitle')?.textContent = title;
+    document.getElementById('customAlertMessage')?.textContent = message;
     overlay.classList.add('active');
 }
 window.showAppAlert = showAppAlert;
@@ -1449,16 +1449,16 @@ function showAppConfirm(title, message, onConfirm) {
         `;
         document.body.appendChild(overlay);
         
-        document.getElementById('customConfirmCancelBtn').onclick = () => {
-            document.getElementById('customConfirmOverlay').classList.remove('active');
+        document.getElementById('customConfirmCancelBtn')?.onclick = () => {
+            document.getElementById('customConfirmOverlay')?.classList.remove('active');
         };
     }
     
-    document.getElementById('customConfirmTitle').textContent = title;
-    document.getElementById('customConfirmMessage').textContent = message;
+    document.getElementById('customConfirmTitle')?.textContent = title;
+    document.getElementById('customConfirmMessage')?.textContent = message;
     
-    document.getElementById('customConfirmOkBtn').onclick = () => {
-        document.getElementById('customConfirmOverlay').classList.remove('active');
+    document.getElementById('customConfirmOkBtn')?.onclick = () => {
+        document.getElementById('customConfirmOverlay')?.classList.remove('active');
         if (typeof onConfirm === 'function') onConfirm();
     };
     
@@ -1748,7 +1748,7 @@ async function loadMemoQuestions() {
   } catch(e) {}
   
   if(allQs.length === 0) {
-      document.getElementById('memoList').innerHTML = '<div style="padding:40px;text-align:center">No hay preguntas disponibles para esta selección.</div>';
+      document.getElementById('memoList')?.innerHTML = '<div style="padding:40px;text-align:center">No hay preguntas disponibles para esta selección.</div>';
       return;
   }
   memoState.questions = allQs; 
@@ -1786,7 +1786,7 @@ function renderMemoCard(container = document.getElementById('memoList')) {
        <div class="memo-q" style="font-size:18px; margin-bottom:15px; padding-right:30px;"><strong>${memoState.currentIndex + 1}/${memoState.questions.length}</strong>. ${q.pregunta || q.q}</div>`;
    
    const imgUrl = q.imagen_local || (q.imagen_url && !q.imagen_url.startsWith('http') ? 'images/' + q.imagen_url : q.imagen_url) || (q.image ? 'img/' + q.image : null);
-   if (imgUrl) html += `<img src="${imgUrl}" style="max-width:100%; max-height:250px; border-radius:12px; margin-bottom:20px; display:block; object-fit:contain; border:1px solid var(--border);">`;
+   if (imgUrl) html += `<img src="${imgUrl}" referrerpolicy="no-referrer" style="max-width:100%; max-height:250px; border-radius:12px; margin-bottom:20px; display:block; object-fit:contain; border:1px solid var(--border);">`;
    
    html += `<div class="memo-opts" style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">`;
    
@@ -1969,13 +1969,15 @@ if (btnCloseInstall) {
 // --- NUEVAS FUNCIONES DE APRENDIZAJE ---
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Inicializar Seales
+  // Inicializar Senales
   let allSigns = [];
-  fetch('data/senales.json?v=31')
+  let currentSignType = 'peligro';
+  
+  fetch('data/senales.json?v=37')
     .then(r => r.json())
     .then(data => {
       allSigns = data;
-      // renderSigns deferred
+      renderSigns(currentSignType);
     })
     .catch(err => console.error("Error cargando senales:", err));
 
@@ -1986,27 +1988,29 @@ document.addEventListener('DOMContentLoaded', () => {
     tab.addEventListener('click', (e) => {
       signTabs.forEach(t => t.classList.remove('active'));
       e.target.classList.add('active');
-      renderSigns(e.target.getAttribute('data-type'));
+      currentSignType = e.target.getAttribute('data-type');
+      renderSigns(currentSignType);
     });
   });
 
-  let signsRendered = false;
-  function renderSigns(tipo) {
-    if(!signsGrid) return;
+  window.renderSigns = function renderSigns(tipo) {
+    if (!tipo) tipo = 'peligro';
+    currentSignType = tipo;
+    if (!signsGrid) return;
     
-    if (!signsRendered) {
+    if (!signsRendered && allSigns.length > 0) {
       signsGrid.innerHTML = '';
       allSigns.forEach(s => {
         const card = document.createElement('div');
         card.className = 'sign-card';
         card.dataset.tipo = s.tipo;
         card.innerHTML = `
-          <img src="${s.imagen}" alt="${s.nombre}" onerror="this.style.display='none';">
+          <img src="${s.imagen}" loading="lazy" alt="${s.nombre}">
           <div class="sign-id">${s.id}</div>
           <div class="sign-name">${s.nombre}</div>
         `;
         card.addEventListener('click', () => {
-          showAppAlert(s.nombre, s.descripcion);
+          if (typeof showAppAlert === 'function') showAppAlert(s.nombre, s.descripcion);
         });
         signsGrid.appendChild(card);
       });
@@ -2014,14 +2018,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Toggle visibility without rebuilding DOM to prevent flickering
-    Array.from(signsGrid.children).forEach(card => {
-      if (card.dataset.tipo === tipo) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
+    if (signsGrid.children.length > 0) {
+      Array.from(signsGrid.children).forEach(card => {
+        if (card.dataset.tipo === tipo) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  };
   
   // LÓGICA DE SIMULACRO
   const btnSubmitExam = document.getElementById('btnSubmitExam');
@@ -2039,13 +2045,15 @@ async function startSimulacro() {
   const user = typeof window.currentUser === 'function' ? window.currentUser() : null;
   const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
   
-  if (!user) {
-    if (typeof window.triggerPaywall === 'function') window.triggerPaywall('register');
-    return;
-  }
-  if (!isUserPremium) {
-    if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
-    return;
+  if (!window.PROMO_FREE_MODE) {
+    if (!user) {
+      if (typeof window.triggerPaywall === 'function') window.triggerPaywall('register');
+      return;
+    }
+    if (!isUserPremium) {
+      if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
+      return;
+    }
   }
 
   const allPermitQs = db.dgtQuestions.filter(q => q.permit_id === 'B' && q.test_id); 
@@ -2066,11 +2074,11 @@ async function startSimulacro() {
   if(state.questions.length > 30) state.questions = state.questions.slice(0, 30);
 
   renderEngineUI();
-  document.getElementById('testLabel').textContent = "SIMULACRO DGT";
+  document.getElementById('testLabel')?.textContent = "SIMULACRO DGT";
   
-  document.getElementById('simulacroTimerBox').style.display = 'block';
-  document.getElementById('btnSubmitExam').style.display = 'block';
-  document.getElementById('testQuestionWrap').classList.add('simulacro-mode');
+  document.getElementById('simulacroTimerBox')?.style.display = 'block';
+  document.getElementById('btnSubmitExam')?.style.display = 'block';
+  document.getElementById('testQuestionWrap')?.classList.add('simulacro-mode');
   
   updateTimerUI();
   if (state.timerInterval) clearInterval(state.timerInterval);
@@ -2089,15 +2097,15 @@ async function startSimulacro() {
 function updateTimerUI() {
   const mins = Math.floor(state.timeLeft / 60).toString().padStart(2, '0');
   const secs = (state.timeLeft % 60).toString().padStart(2, '0');
-  document.getElementById('simulacroTimerTxt').textContent = `${mins}:${secs}`;
+  document.getElementById('simulacroTimerTxt')?.textContent = `${mins}:${secs}`;
 }
 
 function submitSimulacro() {
   if (state.timerInterval) clearInterval(state.timerInterval);
   state.isSimulacro = false;
-  document.getElementById('simulacroTimerBox').style.display = 'none';
-  document.getElementById('btnSubmitExam').style.display = 'none';
-  document.getElementById('testQuestionWrap').classList.remove('simulacro-mode');
+  document.getElementById('simulacroTimerBox')?.style.display = 'none';
+  document.getElementById('btnSubmitExam')?.style.display = 'none';
+  document.getElementById('testQuestionWrap')?.classList.remove('simulacro-mode');
 
   let aciertos = 0;
   state.questions.forEach((q, idx) => {
@@ -2113,7 +2121,7 @@ function submitSimulacro() {
       resultsScreen = document.createElement('section');
       resultsScreen.id = 'screen-results';
       resultsScreen.className = 'screen';
-      document.getElementById('appMain').appendChild(resultsScreen);
+      document.getElementById('appMain')?.appendChild(resultsScreen);
   }
   
   resultsScreen.innerHTML = `
@@ -2148,8 +2156,9 @@ async function openPremiumSenales() {
     return;
   }
   showScreen('screen-senales');
-  const sg = document.getElementById('signsGrid');
-  if(sg && sg.innerHTML === '') renderSigns('peligro');
+  if (typeof window.renderSigns === 'function') {
+    window.renderSigns('peligro');
+  }
 }
 window.openPremiumSenales = openPremiumSenales;
 
@@ -2197,10 +2206,10 @@ async function startPreguntaDelDia() {
   state.isSimulacro = false;
   
   renderEngineUI();
-  document.getElementById('testLabel').textContent = "PREGUNTA DEL DÍA";
-  document.getElementById('simulacroTimerBox').style.display = 'none';
-  document.getElementById('btnSubmitExam').style.display = 'none';
-  document.getElementById('testQuestionWrap').classList.remove('simulacro-mode');
+  document.getElementById('testLabel')?.textContent = "PREGUNTA DEL DÍA";
+  document.getElementById('simulacroTimerBox')?.style.display = 'none';
+  document.getElementById('btnSubmitExam')?.style.display = 'none';
+  document.getElementById('testQuestionWrap')?.classList.remove('simulacro-mode');
   
   renderQuestion(0);
   showScreen('screen-test');
@@ -2231,7 +2240,7 @@ setTimeout(async () => {
             adblockEnabled = true;
         }
         
-        // Comprobar si Google Adsense se pudo cargar (AdGuard DNS bloquea el dominio directamente)
+        // Comprobar si Google Adsense se pudo cargar
         if (typeof adsbygoogle === 'undefined') {
             adblockEnabled = true;
         }
