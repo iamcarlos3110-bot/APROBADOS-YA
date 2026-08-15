@@ -178,7 +178,7 @@
     "id": "P-16A",
     "tipo": "peligro",
     "nombre": "Bajada con fuerte pendiente",
-    "imagen": "images/dgt/p16a.jpg",
+    "imagen": "images/senales/P-16A.svg",
     "descripcion": "Bajada con fuerte pendiente"
   },
   {
@@ -187,6 +187,13 @@
     "nombre": "Subida con fuerte pendiente",
     "imagen": "images/senales/P-16B.png",
     "descripcion": "Subida con fuerte pendiente"
+  },
+  {
+    "id": "P-20",
+    "tipo": "peligro",
+    "nombre": "Paso para peatones",
+    "imagen": "images/senales/P-20.svg",
+    "descripcion": "Paso para peatones"
   },
   {
     "id": "P-21",
@@ -199,8 +206,15 @@
     "id": "P-25",
     "tipo": "peligro",
     "nombre": "Circulación en dos sentidos",
-    "imagen": "images/dgt/p25.jpg",
+    "imagen": "images/senales/P-25.svg",
     "descripcion": "Circulación en dos sentidos"
+  },
+  {
+    "id": "P-28",
+    "tipo": "peligro",
+    "nombre": "Proyección de gravilla",
+    "imagen": "images/senales/P-28.svg",
+    "descripcion": "Proyección de gravilla"
   },
   {
     "id": "P-29",
@@ -208,6 +222,13 @@
     "nombre": "Viento transversal",
     "imagen": "images/dgt/p29.jpg",
     "descripcion": "Viento transversal"
+  },
+  {
+    "id": "P-30",
+    "tipo": "peligro",
+    "nombre": "Escalón lateral",
+    "imagen": "images/senales/P-30.svg",
+    "descripcion": "Escalón lateral"
   },
   {
     "id": "P-31",
@@ -311,7 +332,7 @@
     "id": "R-411",
     "tipo": "obligacion",
     "nombre": "Velocidad mínima",
-    "imagen": "images/dgt/r411.jpg",
+    "imagen": "images/senales/R-411.svg",
     "descripcion": "Velocidad mínima"
   },
   {
