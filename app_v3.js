@@ -2301,6 +2301,10 @@ setTimeout(async () => {
     const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
     if (isUserPremium) return;
 
+    // Verificar consentimiento de cookies para anuncios
+    const consent = JSON.parse(localStorage.getItem('ay_cookie_consent') || '{}');
+    const adsConsented = consent.ads === true;
+
     // Crear un cebo para los bloqueadores de DOM
     let bait = document.createElement('div');
     bait.innerHTML = '&nbsp;';
@@ -2312,15 +2316,15 @@ setTimeout(async () => {
     document.body.appendChild(bait);
 
     setTimeout(() => {
-        // Si el cebo no tiene altura, o si el script de AdSense (adsbygoogle) fue bloqueado por DNS
         let adblockEnabled = false;
         
+        // Si el cebo no tiene altura, o si el script de AdSense (adsbygoogle) fue bloqueado por DNS
         if (bait.offsetHeight === 0 || bait.clientHeight === 0 || window.getComputedStyle(bait).display === 'none') {
             adblockEnabled = true;
         }
         
-        // Comprobar si Google Adsense se pudo cargar
-        if (typeof adsbygoogle === 'undefined') {
+        // Comprobar si Google Adsense se pudo cargar (solo si el usuario lo consintió)
+        if (adsConsented && typeof adsbygoogle === 'undefined') {
             adblockEnabled = true;
         }
 
