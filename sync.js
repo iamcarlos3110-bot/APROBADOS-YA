@@ -233,6 +233,24 @@ export async function migrateLocalDataToDB() {
   }
 }
 
+// ─── LEER ERRORES DESDE SUPABASE ─────────────────────────
+export async function loadMistakesFromDB() {
+  const user = window.currentUser?.();
+  if (!user) return null;
+
+  try {
+    const { data, error } = await supabase
+      .from('mistakes')
+      .select('question_id')
+      .eq('user_id', user.id);
+    if (error) throw error;
+    return data ? data.map(m => m.question_id) : [];
+  } catch (e) {
+    console.warn('SyncManager: error leyendo errores', e);
+    return null;
+  }
+}
+
 // ─── CARGAR DATOS DE SUPABASE AL INICIO ──────────────────
 // Llamar cuando el usuario inicia sesión
 export async function syncFromDB() {
@@ -240,9 +258,10 @@ export async function syncFromDB() {
   if (!user || typeof UserManager === 'undefined') return;
 
   try {
-    const [progressData, favData] = await Promise.all([
+    const [progressData, favData, mistakeData] = await Promise.all([
       loadProgressFromDB(),
-      loadFavoritesFromDB()
+      loadFavoritesFromDB(),
+      loadMistakesFromDB()
     ]);
 
     if (progressData) {
@@ -267,6 +286,13 @@ export async function syncFromDB() {
       UserManager.data.favorites = allFavs;
     }
 
+    if (mistakeData) {
+      // Fusionar errores locales y de DB (sin duplicados)
+      const localMistakes = UserManager.data.mistakes || [];
+      const allMistakes = [...new Set([...localMistakes, ...mistakeData])];
+      UserManager.data.mistakes = allMistakes;
+    }
+
     UserManager.save();
     UserManager.updateUI();
     console.log('SyncManager: datos sincronizados desde Supabase');
@@ -282,6 +308,7 @@ window.SyncManager = {
   addFavoriteToDB,
   removeFavoriteFromDB,
   loadFavoritesFromDB,
+  loadMistakesFromDB,
   recordMistakeToDB,
   saveTestResultToDB,
   migrateLocalDataToDB,
