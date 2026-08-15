@@ -36,6 +36,9 @@ const UserManager = {
   save() {
     try {
       localStorage.setItem('ay_progress', JSON.stringify(this.data));
+      if (typeof window.currentUser === 'function' && window.currentUser() && window.SyncManager?.saveProgressToDB) {
+        window.SyncManager.saveProgressToDB(this.data);
+      }
     } catch(e) { console.warn('No se pudo guardar progreso', e); }
   },
   checkDaily() {

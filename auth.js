@@ -118,15 +118,15 @@ export async function initAuth() {
       document.dispatchEvent(new Event('ay:consent-updated'));
     });
 
-    if (_event === 'SIGNED_IN') {
-      closeAuthModal();
-      // Pequeño retardo para que el DOM esté listo
+    if (_event === 'SIGNED_IN' || _event === 'INITIAL_SESSION' || (_event === 'TOKEN_REFRESHED' && session?.user)) {
+      if (_event === 'SIGNED_IN') closeAuthModal();
+      // Retardo para asegurar inicialización de SyncManager
       setTimeout(async () => {
-        checkLocalDataMigration();
+        if (_event === 'SIGNED_IN') checkLocalDataMigration();
         if (window.SyncManager?.syncFromDB) {
           await window.SyncManager.syncFromDB();
         }
-      }, 600);
+      }, 400);
     }
 
     if (_event === 'SIGNED_OUT') {
