@@ -1397,16 +1397,7 @@ function initNav() {
 
 
 
-// Favoritos Logic para el futuro
-function toggleFavorite(qId) {
-   const idx = UserManager.data.favorites.indexOf(qId);
-   if (idx === -1) {
-       UserManager.data.favorites.push(qId);
-   } else {
-       UserManager.data.favorites.splice(idx, 1);
-   }
-   UserManager.save();
-}
+
 
 
 // Make globally accessible
@@ -1916,7 +1907,11 @@ function toggleFavorite(qId) {
     UserManager.save();
     
     if (window.SyncManager && typeof window.currentUser === 'function' && window.currentUser()) {
-        window.SyncManager.syncFavorite(qId, isAdding);
+        if (isAdding) {
+            window.SyncManager.addFavoriteToDB(qId);
+        } else {
+            window.SyncManager.removeFavoriteFromDB(qId);
+        }
     }
     
     const container = memoState.mode === 'fav' ? document.getElementById('favoritesList') : document.getElementById('memoList');
