@@ -580,8 +580,22 @@ const db = new DataService();
 
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  const el = document.getElementById(id);
+  if (el) el.classList.add('active');
   window.scrollTo(0,0);
+
+  // Sincronizar clases active en los enlaces de navegación (escritorio y móvil)
+  let targetId = id;
+  if (id === 'screen-prep') targetId = 'screen-progress';
+  if (id === 'screen-senales' || id === 'screen-apuntes') targetId = 'screen-premium';
+  
+  document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+    if (link.getAttribute('data-target') === targetId) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
 
   const safeScreens = ['screen-home', 'screen-premium', 'screen-profile', 'screen-progress', 'screen-senales', 'screen-apuntes', 'screen-memo', 'screen-favorites', 'screen-prep', 'screen-por-libre'];
   if (safeScreens.includes(id)) {
