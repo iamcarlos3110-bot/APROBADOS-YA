@@ -1,5 +1,5 @@
 /* =============================================
-   APROBADOS YA — App Logic
+   APROBADOS YA - App Logic
    Pantallas: permits → topics → tests → engine / memo → results
 ============================================= */
 'use strict';
@@ -534,7 +534,7 @@ class DataService {
       for (let i = formatted.length; i < testQs; i++) {
         formatted.push({
           id: `PH_${testNum}_${i + 1}`,
-          pregunta: `Pregunta ${i + 1} — Contenido pendiente`,
+          pregunta: `Pregunta ${i + 1} - Contenido pendiente`,
           respuestas: {'A':'Opción A','B':'Opción B','C':'Opción C'},
           correcta: 'A',
           explanation: 'Contenido pendiente de importar.',
@@ -1090,7 +1090,7 @@ function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.dat
     } else {
       const isCorrect = state.answers[index] === q.correcta;
       fhdr.className = `feedback-header ${isCorrect ? 'correct' : 'wrong'}`;
-      fhdr.textContent = isCorrect ? '✅ ¡Respuesta correcta!' : `❌ Incorrecto — La correcta era: ${q.correcta}`;
+      fhdr.textContent = isCorrect ? '✅ ¡Respuesta correcta!' : `❌ Incorrecto - La correcta era: ${q.correcta}`;
       fexp.textContent = q.explanation || (q.fuente === 'Revista DGT' ? 'Respuesta oficial DGT: ' + q.correcta : '');
     }
 
