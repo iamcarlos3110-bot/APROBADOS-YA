@@ -587,7 +587,7 @@ function showScreen(id) {
   // Sincronizar clases active en los enlaces de navegación (escritorio y móvil)
   let targetId = id;
   if (id === 'screen-prep') targetId = 'screen-progress';
-  if (id === 'screen-senales' || id === 'screen-apuntes') targetId = 'screen-premium';
+  if (id === 'screen-senales' || id === 'screen-apuntes' || id === 'screen-favorites') targetId = 'screen-premium';
   
   document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
     if (link.getAttribute('data-target') === targetId) {

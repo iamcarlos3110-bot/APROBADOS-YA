@@ -135,7 +135,6 @@
       <a href="#" class="nav-link" data-target="screen-memorize">🧠 Memorizar</a>
       <a href="#" class="nav-link" data-target="screen-por-libre">📖 Por Libre</a>
       <a href="#" class="nav-link" data-target="screen-progress">📊 Mi preparación</a>
-      <a href="#" class="nav-link" data-target="screen-favorites">⭐ Favoritos</a>
       <a href="#" class="nav-link premium-btn" data-target="screen-premium">👑 Premium</a>
     </nav>
 
@@ -162,7 +161,6 @@
     <a href="#" class="mobile-nav-link" data-target="screen-memorize">🧠 Memorizar</a>
     <a href="#" class="mobile-nav-link" data-target="screen-por-libre">📖 Por Libre</a>
     <a href="#" class="mobile-nav-link" data-target="screen-progress">📊 Mi preparación</a>
-    <a href="#" class="mobile-nav-link" data-target="screen-favorites">⭐ Favoritos</a>
     <a href="#" class="mobile-nav-link premium-btn" data-target="screen-premium">👑 Premium</a>
     <div class="mobile-nav-stats">
       <span>🔥 Racha: <span id="mobileStreakCount">0</span></span>
@@ -340,6 +338,9 @@
   <!-- ░░░░ PANTALLA 9: FAVORITOS ░░░░ -->
   <section id="screen-favorites" class="screen">
     <div class="inner-wrap">
+      <button class="outline-btn" onclick="showScreen('screen-premium')" style="margin-bottom: 20px; padding: 8px 16px; font-size: 0.9rem;">
+        ← Volver a Premium
+      </button>
       <h2>Preguntas Favoritas</h2>
       <p class="subtitle">Repasa las preguntas que has guardado como favoritas.</p>
       
@@ -479,6 +480,13 @@
         <p style="font-size: 0.9rem; color: var(--text2); line-height: 1.4;">Chuletas súper visuales con las velocidades, tasas de alcohol y luces.</p>
       </div>
 
+      <!-- Favoritos -->
+      <div class="premium-card" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" onclick="showFavoritesScreen()">
+        <div style="font-size: 40px; margin-bottom: 12px;">⭐</div>
+        <h3 style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Preguntas Favoritas</h3>
+        <p style="font-size: 0.9rem; color: var(--text2); line-height: 1.4;">Repasa todas las preguntas que has guardado como favoritas para estudiar mejor.</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -555,7 +563,7 @@
 </main>
 
 <script src="data.js?v=47"></script>
-<script src="app_v3.js?v=52"></script>
+<script src="app_v3.js?v=53"></script>
 <script type="module" src="auth.js"></script>
 <script type="module" src="sync.js"></script>
 <script src="analytics.js"></script>
