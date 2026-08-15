@@ -385,6 +385,8 @@ window.SyncManager = SyncManager;
 
 const state = {
   permit: null,
+
+  permit: null,
   topic: null,
   testNum: null,
   testMode: null, // 'test' | 'memo'
@@ -818,6 +820,7 @@ function renderTopics() {
 function renderTests() {
   const p = state.permit;
   const t = state.topic;
+  if (!t) { renderPermits(); return; }
   
   if(document.getElementById('testsPermitBadge')) document.getElementById('testsPermitBadge').textContent = `${p.icon} ${p.name}`;
   if(document.getElementById('testsTitle')) document.getElementById('testsTitle').textContent = `Tests: ${t.name}`;
@@ -2284,3 +2287,7 @@ setTimeout(async () => {
         document.body.removeChild(bait);
     }, 100);
 }, 2000);
+
+window.appState = state;
+window.startTest = startTest;
+window.renderTests = renderTests;
