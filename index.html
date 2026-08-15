@@ -327,8 +327,8 @@
         <div class="result-stats" id="resultStats"></div>
         <div class="result-review" id="resultReview"></div>
         <div class="result-actions">
-          <button class="primary-btn" id="retryTestBtn">Repetir test</button>
-          <button class="outline-btn" id="goToTestsBtn">Elegir otro test</button>
+          <button class="primary-btn" id="retryTestBtn" onclick="startTest(state.testNum, 'test', state.isOfficialDgt)">Repetir test</button>
+          <button class="outline-btn" id="goToTestsBtn" onclick="renderTests()">Elegir otro test</button>
         </div>
       </div>
     </div>
@@ -540,7 +540,7 @@
 </main>
 
 <script src="data.js?v=47"></script>
-<script src="app_v3.js?v=45"></script>
+<script src="app_v3.js?v=46"></script>
 <script type="module" src="auth.js"></script>
 <script type="module" src="sync.js"></script>
 <script src="analytics.js"></script>

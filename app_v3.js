@@ -588,14 +588,14 @@ function showScreen(id) {
 
 // ─── NAV HELPERS ────────────────────────────────────
 
-  document.getElementById('logoLink')?.addEventListener('click', (e) => {
+  if(document.getElementById('logoLink')) document.getElementById('logoLink').addEventListener('click', (e) => {
     e.preventDefault();
     renderPermits();
   });
 
-document.getElementById('backToHome')?.addEventListener('click', renderPermits);
-document.getElementById('backToTopics')?.addEventListener('click', renderTopics);
-document.getElementById('exitTestBtn')?.addEventListener('click', () => {
+if(document.getElementById('backToHome')) document.getElementById('backToHome').addEventListener('click', renderPermits);
+if(document.getElementById('backToTopics')) document.getElementById('backToTopics').addEventListener('click', renderTopics);
+if(document.getElementById('exitTestBtn')) document.getElementById('exitTestBtn').addEventListener('click', () => {
   showAppConfirm('Salir del test', '¿Seguro que quieres salir? Se perderá tu progreso actual.', () => {
       if (!state.topic) {
           if(typeof showPrepScreen === 'function') showPrepScreen(); else startPreparation();
@@ -604,9 +604,9 @@ document.getElementById('exitTestBtn')?.addEventListener('click', () => {
       }
   });
 });
-document.getElementById('exitMemoBtn')?.addEventListener('click', renderPermits);
-document.getElementById('goToTestsBtn')?.addEventListener('click', renderTests);
-document.getElementById('retryTestBtn')?.addEventListener('click', () => {
+if(document.getElementById('exitMemoBtn')) document.getElementById('exitMemoBtn').addEventListener('click', renderPermits);
+if(document.getElementById('goToTestsBtn')) document.getElementById('goToTestsBtn').addEventListener('click', renderTests);
+if(document.getElementById('retryTestBtn')) document.getElementById('retryTestBtn').addEventListener('click', () => {
   startTest(state.testNum, 'test', state.isOfficialDgt);
 });
 
@@ -1440,7 +1440,7 @@ function showAppAlert(title, message) {
             <div class="modal-content" style="max-width: 350px; text-align: center; padding: 30px 20px;">
                 <h3 id="customAlertTitle" style="margin-top:0; font-size: 20px; color: var(--text);"></h3>
                 <p id="customAlertMessage" style="color: var(--text2); margin: 15px 0 25px;"></p>
-                <button class="primary-btn" onclick="document.getElementById('customAlertOverlay')?.classList.remove('active')" style="width: 100%;">Entendido</button>
+                <button class="primary-btn" onclick="if(document.getElementById('customAlertOverlay')) document.getElementById('customAlertOverlay').classList.remove('active')" style="width: 100%;">Entendido</button>
             </div>
         `;
         document.body.appendChild(overlay);
@@ -1471,7 +1471,7 @@ function showAppConfirm(title, message, onConfirm) {
         document.body.appendChild(overlay);
         
         if(document.getElementById('customConfirmCancelBtn')) document.getElementById('customConfirmCancelBtn').onclick = () => {
-            document.getElementById('customConfirmOverlay')?.classList.remove('active');
+            if(document.getElementById('customConfirmOverlay')) document.getElementById('customConfirmOverlay').classList.remove('active');
         };
     }
     
@@ -1479,7 +1479,7 @@ function showAppConfirm(title, message, onConfirm) {
     if(document.getElementById('customConfirmMessage')) document.getElementById('customConfirmMessage').textContent = message;
     
     if(document.getElementById('customConfirmOkBtn')) document.getElementById('customConfirmOkBtn').onclick = () => {
-        document.getElementById('customConfirmOverlay')?.classList.remove('active');
+        if(document.getElementById('customConfirmOverlay')) document.getElementById('customConfirmOverlay').classList.remove('active');
         if (typeof onConfirm === 'function') onConfirm();
     };
     
@@ -2100,7 +2100,7 @@ async function startSimulacro() {
   
   if(document.getElementById('simulacroTimerBox')) document.getElementById('simulacroTimerBox').style.display = 'block';
   if(document.getElementById('btnSubmitExam')) document.getElementById('btnSubmitExam').style.display = 'block';
-  document.getElementById('testQuestionWrap')?.classList.add('simulacro-mode');
+  if(document.getElementById('testQuestionWrap')) document.getElementById('testQuestionWrap').classList.add('simulacro-mode');
   
   updateTimerUI();
   if (state.timerInterval) clearInterval(state.timerInterval);
@@ -2127,7 +2127,7 @@ function submitSimulacro() {
   state.isSimulacro = false;
   if(document.getElementById('simulacroTimerBox')) document.getElementById('simulacroTimerBox').style.display = 'none';
   if(document.getElementById('btnSubmitExam')) document.getElementById('btnSubmitExam').style.display = 'none';
-  document.getElementById('testQuestionWrap')?.classList.remove('simulacro-mode');
+  if(document.getElementById('testQuestionWrap')) document.getElementById('testQuestionWrap').classList.remove('simulacro-mode');
 
   let aciertos = 0;
   state.questions.forEach((q, idx) => {
@@ -2143,7 +2143,7 @@ function submitSimulacro() {
       resultsScreen = document.createElement('section');
       resultsScreen.id = 'screen-results';
       resultsScreen.className = 'screen';
-      document.getElementById('appMain')?.appendChild(resultsScreen);
+      if(document.getElementById('appMain')) document.getElementById('appMain').appendChild(resultsScreen);
   }
   
   resultsScreen.innerHTML = `
@@ -2237,7 +2237,7 @@ async function startPreguntaDelDia() {
   if(document.getElementById('testLabel')) document.getElementById('testLabel').textContent = "PREGUNTA DEL DÍA";
   if(document.getElementById('simulacroTimerBox')) document.getElementById('simulacroTimerBox').style.display = 'none';
   if(document.getElementById('btnSubmitExam')) document.getElementById('btnSubmitExam').style.display = 'none';
-  document.getElementById('testQuestionWrap')?.classList.remove('simulacro-mode');
+  if(document.getElementById('testQuestionWrap')) document.getElementById('testQuestionWrap').classList.remove('simulacro-mode');
   
   renderQuestion(0);
   showScreen('screen-test');
