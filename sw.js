@@ -1,20 +1,19 @@
-const CACHE_NAME = 'aprobados-ya-v16';
+const CACHE_NAME = 'aprobados-ya-v17';
 
-// Recursos estrictamente estáticos para arrancar la UI
+// Recursos estrictamente estáticos para arrancar la UI (solo rutas verificadas)
 const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/style_v2.css',
-  '/app_v2.js',
-  '/data.js',
-  '/auth.js',
-  '/sync.js',
-  '/manifest.json',
-  '/images/icon-192.png',
-  '/images/icon-512.png',
-  '/images/apple-touch-icon.png',
-  '/logo.jpg',
-  '/images/og_image.jpg'
+  './',
+  './index.html',
+  './style_v2.css',
+  './app_v3.js',
+  './data.js',
+  './auth.js',
+  './sync.js',
+  './manifest.json',
+  './images/icon-192.png',
+  './images/icon-512.png',
+  './images/apple-touch-icon.png',
+  './images/logo.png'
 ];
 
 // URLs que NUNCA deben cachearse
@@ -30,7 +29,9 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(STATIC_ASSETS);
+      return Promise.allSettled(
+        STATIC_ASSETS.map(url => cache.add(url).catch(err => console.warn('[SW] Non-critical asset cache skip:', url)))
+      );
     })
   );
 });
