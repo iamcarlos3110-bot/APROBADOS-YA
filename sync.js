@@ -187,6 +187,7 @@ export async function recordMistakesBulkToDB(results) {
 
     const upserts = [];
     results.forEach(r => {
+      if (!r || !r.q || !r.q.id) return; // Safeguard against placeholders or missing data
       const qId = r.q.id;
       const isCorrect = r.isCorrect;
       const dbRow = existingMap[qId];
@@ -194,7 +195,6 @@ export async function recordMistakesBulkToDB(results) {
       if (isCorrect) {
         if (dbRow) {
           upserts.push({
-            id: dbRow.id,
             user_id: user.id,
             question_id: qId,
             times_wrong: dbRow.times_wrong,
@@ -206,7 +206,6 @@ export async function recordMistakesBulkToDB(results) {
       } else {
         if (dbRow) {
           upserts.push({
-            id: dbRow.id,
             user_id: user.id,
             question_id: qId,
             times_wrong: dbRow.times_wrong + 1,
@@ -366,7 +365,7 @@ export async function syncFromDB() {
       UserManager.data.mistakes = allMistakes;
     }
 
-    UserManager.save();
+    localStorage.setItem('ay_progress', JSON.stringify(UserManager.data));
     UserManager.updateUI();
     console.log('SyncManager: datos sincronizados desde Supabase');
   } catch (e) {
