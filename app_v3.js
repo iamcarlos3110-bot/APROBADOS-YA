@@ -2150,10 +2150,12 @@ window.reviewSimulacro = reviewSimulacro;
 
 // 🔥 DIRECTORIO PREMIUM
 async function openPremiumSenales() {
-  const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
-  if (!isUserPremium) {
-    if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
-    return;
+  if (!window.PROMO_FREE_MODE) {
+    const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
+    if (!isUserPremium) {
+      if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
+      return;
+    }
   }
   showScreen('screen-senales');
   if (typeof window.renderSigns === 'function') {
@@ -2164,10 +2166,12 @@ window.openPremiumSenales = openPremiumSenales;
 
 // 📚 APUNTES PREMIUM
 async function openPremiumApuntes() {
-  const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
-  if (!isUserPremium) {
-    if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
-    return;
+  if (!window.PROMO_FREE_MODE) {
+    const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
+    if (!isUserPremium) {
+      if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
+      return;
+    }
   }
   showScreen('screen-apuntes');
 }
@@ -2175,10 +2179,12 @@ window.openPremiumApuntes = openPremiumApuntes;
 
 // 🔥 PREGUNTA DEL DÍA
 async function startPreguntaDelDia() {
-  const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
-  if (!isUserPremium) {
-    if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
-    return;
+  if (!window.PROMO_FREE_MODE) {
+    const isUserPremium = typeof window.isPremium === 'function' ? await window.isPremium() : false;
+    if (!isUserPremium) {
+      if (typeof window.triggerPaywall === 'function') window.triggerPaywall('premium');
+      return;
+    }
   }
   
   const currentPermit = UserManager.data.lastPermit || 'B';
