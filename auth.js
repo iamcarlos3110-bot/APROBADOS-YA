@@ -727,10 +727,36 @@ function renderAuthModal(modal, tab) {
 
     setLoadingBtn(btn, true, 'Creando cuenta...');
     try {
-      await signUp(name, email, password);
-      successEl.textContent = '✅ ¡Cuenta creada! Revisa tu correo para verificar tu dirección antes de iniciar sesión.';
-      successEl.style.display = 'block';
-      document.getElementById('registerForm')?.reset();
+      const signUpData = await signUp(name, email, password);
+      
+      // Intentar auto-login:
+      // Si la respuesta de signUp contiene sesión, ya estaremos logueados automáticamente
+      if (signUpData && signUpData.session) {
+        currentUser = signUpData.session.user;
+        updateAuthUI();
+        closeAuthModal();
+      } else {
+        // Fallback: intentar iniciar sesión con las credenciales recién creadas
+        try {
+          const signInData = await signIn(email, password);
+          if (signInData && signInData.session) {
+            currentUser = signInData.session.user;
+            updateAuthUI();
+            closeAuthModal();
+          } else {
+            successEl.textContent = '✅ ¡Cuenta creada! Iniciando sesión...';
+            successEl.style.display = 'block';
+          }
+        } catch (signInErr) {
+          if (signInErr.message.includes('Email not confirmed')) {
+            errEl.textContent = 'Error de configuración en Supabase: Se requiere confirmación de email. Desactiva "Confirm email" en la pestaña Auth de tu consola de Supabase.';
+            errEl.style.display = 'block';
+          } else {
+            errEl.textContent = translateAuthError(signInErr.message);
+            errEl.style.display = 'block';
+          }
+        }
+      }
     } catch(err) {
       errEl.textContent = translateAuthError(err.message);
       errEl.style.display = 'block';

@@ -135,6 +135,7 @@
       <a href="#" class="nav-link" data-target="screen-memorize">🧠 Memorizar</a>
       <a href="#" class="nav-link" data-target="screen-por-libre">📖 Por Libre</a>
       <a href="#" class="nav-link" data-target="screen-progress">📊 Mi preparación</a>
+      <a href="#" class="nav-link" data-target="screen-favorites">⭐ Favoritos</a>
       <a href="#" class="nav-link premium-btn" data-target="screen-premium">👑 Premium</a>
     </nav>
 
@@ -161,6 +162,7 @@
     <a href="#" class="mobile-nav-link" data-target="screen-memorize">🧠 Memorizar</a>
     <a href="#" class="mobile-nav-link" data-target="screen-por-libre">📖 Por Libre</a>
     <a href="#" class="mobile-nav-link" data-target="screen-progress">📊 Mi preparación</a>
+    <a href="#" class="mobile-nav-link" data-target="screen-favorites">⭐ Favoritos</a>
     <a href="#" class="mobile-nav-link premium-btn" data-target="screen-premium">👑 Premium</a>
     <div class="mobile-nav-stats">
       <span>🔥 Racha: <span id="mobileStreakCount">0</span></span>
@@ -330,6 +332,18 @@
           <button class="primary-btn" id="retryTestBtn" onclick="window.startTest(window.appState.testNum, 'test', window.appState.isOfficialDgt)">Repetir test</button>
           <button class="outline-btn" id="goToTestsBtn" onclick="window.renderTests()">Elegir otro test</button>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░░ PANTALLA 9: FAVORITOS ░░░░ -->
+  <section id="screen-favorites" class="screen">
+    <div class="inner-wrap">
+      <h2>Preguntas Favoritas</h2>
+      <p class="subtitle">Repasa las preguntas que has guardado como favoritas.</p>
+      
+      <div id="favoritesList" class="memo-list" style="margin-top:20px;">
+        <!-- Rellenado por JS -->
       </div>
     </div>
   </section>
@@ -540,7 +554,7 @@
 </main>
 
 <script src="data.js?v=47"></script>
-<script src="app_v3.js?v=48"></script>
+<script src="app_v3.js?v=49"></script>
 <script type="module" src="auth.js"></script>
 <script type="module" src="sync.js"></script>
 <script src="analytics.js"></script>

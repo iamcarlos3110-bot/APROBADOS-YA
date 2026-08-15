@@ -602,6 +602,15 @@ if(document.getElementById('backToHome')) document.getElementById('backToHome').
 if(document.getElementById('backToTopics')) document.getElementById('backToTopics').addEventListener('click', renderTopics);
 if(document.getElementById('exitTestBtn')) document.getElementById('exitTestBtn').addEventListener('click', () => {
   showAppConfirm('Salir del test', '¿Seguro que quieres salir? Se perderá tu progreso actual.', () => {
+      if (state.timerInterval) {
+          clearInterval(state.timerInterval);
+          state.timerInterval = null;
+      }
+      if (document.getElementById('simulacroTimerBox')) document.getElementById('simulacroTimerBox').style.display = 'none';
+      if (document.getElementById('btnSubmitExam')) document.getElementById('btnSubmitExam').style.display = 'none';
+      if (document.getElementById('testQuestionWrap')) document.getElementById('testQuestionWrap').classList.remove('simulacro-mode');
+      state.isSimulacro = false;
+
       if (!state.topic) {
           if(typeof showPrepScreen === 'function') showPrepScreen(); else startPreparation();
       } else {
@@ -949,6 +958,16 @@ function renderTests() {
 // ─── START TEST ─────────────────────────────────────
 // ASYNC: la validación Premium consulta Supabase de forma segura
 async function startTest(testIdentifier, mode, isOfficial = false) {
+  // Limpiar temporizador y estado de simulacro previo si existe
+  if (state.timerInterval) {
+    clearInterval(state.timerInterval);
+    state.timerInterval = null;
+  }
+  if (document.getElementById('simulacroTimerBox')) document.getElementById('simulacroTimerBox').style.display = 'none';
+  if (document.getElementById('btnSubmitExam')) document.getElementById('btnSubmitExam').style.display = 'none';
+  if (document.getElementById('testQuestionWrap')) document.getElementById('testQuestionWrap').classList.remove('simulacro-mode');
+  state.isSimulacro = false;
+
   // Determinar número del test para lógica freemium
   let testNum = 1;
   if (typeof testIdentifier === 'string' && testIdentifier.includes('-')) {
@@ -1108,27 +1127,44 @@ function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.dat
   const nextBtn = document.getElementById('nextQuestionBtn');
 
   if (answered) {
-    feedback.style.display = 'block';
+    if (feedback) feedback.style.display = 'block';
     
-    if (q.isPlaceholder) {
-        fhdr.className = 'feedback-header wrong';
-        fhdr.textContent = 'Pendiente de importar';
-        fexp.innerHTML = `<em>${q.explanation}</em>`;
+    if (state.isSimulacro) {
+        if (fhdr) fhdr.style.display = 'none';
+        if (fexp) fexp.style.display = 'none';
     } else {
-      const isCorrect = state.answers[index] === q.correcta;
-      fhdr.className = `feedback-header ${isCorrect ? 'correct' : 'wrong'}`;
-      fhdr.textContent = isCorrect ? '✅ ¡Respuesta correcta!' : `❌ Incorrecto - La correcta era: ${q.correcta}`;
-      fexp.textContent = q.explanation || (q.fuente === 'Revista DGT' ? 'Respuesta oficial DGT: ' + q.correcta : '');
+        if (fhdr) fhdr.style.display = 'block';
+        if (fexp) fexp.style.display = 'block';
+        if (q.isPlaceholder) {
+            if (fhdr) {
+                fhdr.className = 'feedback-header wrong';
+                fhdr.textContent = 'Pendiente de importar';
+            }
+            if (fexp) fexp.innerHTML = `<em>${q.explanation}</em>`;
+        } else {
+            const isCorrect = state.answers[index] === q.correcta;
+            if (fhdr) {
+                fhdr.className = `feedback-header ${isCorrect ? 'correct' : 'wrong'}`;
+                fhdr.textContent = isCorrect ? '✅ ¡Respuesta correcta!' : `❌ Incorrecto - La correcta era: ${q.correcta}`;
+            }
+            if (fexp) fexp.textContent = q.explanation || (q.fuente === 'Revista DGT' ? 'Respuesta oficial DGT: ' + q.correcta : '');
+        }
     }
 
-    nextBtn.textContent = (index === total - 1) ? 'Finalizar Test' : 'Siguiente pregunta →';
-    nextBtn.onclick = () => {
-      if (index === total - 1) {
-        showResults();
-      } else {
-        renderQuestion(index + 1);
-      }
-    };
+    if (nextBtn) {
+        nextBtn.textContent = (index === total - 1) ? 'Finalizar Test' : 'Siguiente pregunta →';
+        nextBtn.onclick = () => {
+          if (index === total - 1) {
+            if (state.isSimulacro) {
+                submitSimulacro();
+            } else {
+                showResults();
+            }
+          } else {
+            renderQuestion(index + 1);
+          }
+        };
+    }
   } else {
     feedback.style.display = 'none';
   }
@@ -1315,13 +1351,13 @@ function initNav() {
   const mobileNavOverlay = document.getElementById('mobileNavOverlay');
   const mobileNavClose = document.getElementById('mobileNavClose');
 
-  if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => mobileNavOverlay.classList.add('active'));
-  if(mobileNavClose) mobileNavClose.addEventListener('click', () => mobileNavOverlay.classList.remove('active'));
+  if(mobileMenuBtn && mobileNavOverlay) mobileMenuBtn.addEventListener('click', () => mobileNavOverlay.classList.add('active'));
+  if(mobileNavClose && mobileNavOverlay) mobileNavClose.addEventListener('click', () => mobileNavOverlay.classList.remove('active'));
 
   document.querySelectorAll('.mobile-nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      mobileNavOverlay.classList.remove('active');
+      if (mobileNavOverlay) mobileNavOverlay.classList.remove('active');
       const target = e.target.getAttribute('data-target') || e.target.closest('a').getAttribute('data-target');
       if (target === 'screen-home') {
           renderPermits();
@@ -1345,17 +1381,17 @@ function initNav() {
 
   if(profileBtn) profileBtn.addEventListener('click', () => {
     if (typeof window.openProfileModal === 'function') window.openProfileModal();
-    else profileModal.classList.add('active');
+    else if (profileModal) profileModal.classList.add('active');
   });
   if(mobileProfileBtn) {
     mobileProfileBtn.addEventListener('click', () => {
-      mobileNavOverlay.classList.remove('active');
+      if (mobileNavOverlay) mobileNavOverlay.classList.remove('active');
       if (typeof window.openProfileModal === 'function') window.openProfileModal();
-      else profileModal.classList.add('active');
+      else if (profileModal) profileModal.classList.add('active');
     });
   }
   // closeProfileBtn is now handled dynamically by auth.js renderProfileModal
-  if(closeProfileBtn) closeProfileBtn.addEventListener('click', () => profileModal.classList.remove('active'));
+  if(closeProfileBtn && profileModal) closeProfileBtn.addEventListener('click', () => profileModal.classList.remove('active'));
 }
 
 
@@ -1919,7 +1955,7 @@ const btnUpdateApp = document.getElementById('btnUpdateApp');
 // 1. Service Worker Registration
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').then(registration => {
+    navigator.serviceWorker.register('./sw.js').then(registration => {
       console.log('SW registrado con scope:', registration.scope);
       
       // Detectar actualizaciones del Service Worker
