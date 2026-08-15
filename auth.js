@@ -120,13 +120,22 @@ export async function initAuth() {
 
     if (_event === 'SIGNED_IN' || _event === 'INITIAL_SESSION' || (_event === 'TOKEN_REFRESHED' && session?.user)) {
       if (_event === 'SIGNED_IN') closeAuthModal();
-      // Retardo para asegurar inicialización de SyncManager
-      setTimeout(async () => {
-        if (_event === 'SIGNED_IN') checkLocalDataMigration();
-        if (window.SyncManager?.syncFromDB) {
+      
+      // Esperar a que el SyncManager real (módulo sync.js) esté cargado y expuesto en window
+      let attempts = 0;
+      const interval = setInterval(async () => {
+        attempts++;
+        const hasRealSync = window.SyncManager && typeof window.SyncManager.loadProgressFromDB === 'function';
+        
+        if (hasRealSync) {
+          clearInterval(interval);
+          if (_event === 'SIGNED_IN') checkLocalDataMigration();
           await window.SyncManager.syncFromDB();
+        } else if (attempts >= 40) { // 2 segundos máximo
+          clearInterval(interval);
+          console.warn('[auth.js] No se cargó SyncManager real a tiempo. Se canceló la sincronización automática.');
         }
-      }, 400);
+      }, 50);
     }
 
     if (_event === 'SIGNED_OUT') {

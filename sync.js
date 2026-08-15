@@ -373,7 +373,6 @@ export async function syncFromDB() {
   }
 }
 
-// ─── EXPONER AL SCOPE GLOBAL ──────────────────────────────
 window.SyncManager = {
   loadProgressFromDB,
   saveProgressToDB,
@@ -389,3 +388,12 @@ window.SyncManager = {
 };
 
 console.log('SyncManager cargado ✓');
+
+// Si ya hay un usuario con sesión activa en window, lanzar sincronización inmediata
+(async () => {
+  const user = window.currentUser?.();
+  if (user) {
+    console.log('SyncManager: detectado usuario al cargar, iniciando syncFromDB...');
+    await syncFromDB();
+  }
+})();
