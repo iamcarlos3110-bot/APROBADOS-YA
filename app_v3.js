@@ -1993,6 +1993,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  let signsRendered = false;
   window.renderSigns = function renderSigns(tipo) {
     if (!tipo) tipo = 'peligro';
     currentSignType = tipo;
