@@ -757,8 +757,8 @@ function getThemeIcon(id, name) {
 
 function renderTopics() {
   const p = state.permit;
-  document.getElementById('topicsPermitBadge')?.textContent = `${p.icon} ${p.name}`;
-  document.getElementById('topicsTitle')?.textContent = `Temario ${p.name}`;
+  if(document.getElementById('topicsPermitBadge')) document.getElementById('topicsPermitBadge').textContent = `${p.icon} ${p.name}`;
+  if(document.getElementById('topicsTitle')) document.getElementById('topicsTitle').textContent = `Temario ${p.name}`;
   
   const container = document.getElementById('topicsGrid');
   container.innerHTML = '';
@@ -795,8 +795,8 @@ function renderTests() {
   const p = state.permit;
   const t = state.topic;
   
-  document.getElementById('testsPermitBadge')?.textContent = `${p.icon} ${p.name}`;
-  document.getElementById('testsTitle')?.textContent = `Tests: ${t.name}`;
+  if(document.getElementById('testsPermitBadge')) document.getElementById('testsPermitBadge').textContent = `${p.icon} ${p.name}`;
+  if(document.getElementById('testsTitle')) document.getElementById('testsTitle').textContent = `Tests: ${t.name}`;
   
   const container = document.getElementById('testsGrid');
   container.innerHTML = '';
@@ -992,18 +992,18 @@ function renderEngineUI() {
 
 function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.data.favorites = [];
   state.currentQuestion = index;
-  const q = state.questions[index]; if (!q) { document.getElementById('questionText')?.textContent = 'Error: No se pudo cargar la pregunta (BD vaca o ndice invlido).'; return; }
+  const q = state.questions[index]; if (!q) { if(document.getElementById('questionText')) document.getElementById('questionText').textContent = 'Error: No se pudo cargar la pregunta (BD vaca o ndice invlido).'; return; }
   const total = state.questions.length;
   
   // Progress
   const pct = Math.round(((index + 1) / total) * 100);
-  document.getElementById('testProgFill')?.style.width = `${pct}%`;
-  document.getElementById('testProgCurrent')?.textContent = index + 1;
-  document.getElementById('testProgTotal')?.textContent = total;
+  if(document.getElementById('testProgFill')) document.getElementById('testProgFill').style.width = `${pct}%`;
+  if(document.getElementById('testProgCurrent')) document.getElementById('testProgCurrent').textContent = index + 1;
+  if(document.getElementById('testProgTotal')) document.getElementById('testProgTotal').textContent = total;
   const qc = document.getElementById('testQCounter');
   if (qc) qc.textContent = `${index + 1}/${total}`;
   
-  document.getElementById('questionNum')?.textContent = `Pregunta ${index + 1} de ${total}`;
+  if(document.getElementById('questionNum')) document.getElementById('questionNum').textContent = `Pregunta ${index + 1} de ${total}`;
     
     const btnFav = document.getElementById('btnToggleFavorite');
     if (btnFav) {
@@ -1157,13 +1157,13 @@ function showResults() {
   const skipped = total - results.length;
   const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
 
-  document.getElementById('resultScoreText')?.textContent = `${correct}/${total}`;
+  if(document.getElementById('resultScoreText')) document.getElementById('resultScoreText').textContent = `${correct}/${total}`;
   const circle = document.getElementById('resultScoreCircle');
   circle.className = `result-score-circle${pct < 70 ? ' fail' : ''}`;
   
-  document.getElementById('resultEmoji')?.textContent = pct >= 90 ? '🎉' : pct >= 70 ? '👍' : '📚';
-  document.getElementById('resultTitle')?.textContent = pct >= 90 ? '¡Excelente resultado!' : pct >= 70 ? '¡Buen trabajo!' : 'Sigue practicando';
-  document.getElementById('resultSubtitle')?.textContent = `Has acertado ${correct} de ${total} preguntas (${pct}%).${pct < 70 ? ' Revisa las respuestas y vuelve a intentarlo.' : ''}`;
+  if(document.getElementById('resultEmoji')) document.getElementById('resultEmoji').textContent = pct >= 90 ? '🎉' : pct >= 70 ? '👍' : '📚';
+  if(document.getElementById('resultTitle')) document.getElementById('resultTitle').textContent = pct >= 90 ? '¡Excelente resultado!' : pct >= 70 ? '¡Buen trabajo!' : 'Sigue practicando';
+  if(document.getElementById('resultSubtitle')) document.getElementById('resultSubtitle').textContent = `Has acertado ${correct} de ${total} preguntas (${pct}%).${pct < 70 ? ' Revisa las respuestas y vuelve a intentarlo.' : ''}`;
 
   const statsEl = document.getElementById('resultStats');
   statsEl.innerHTML = `
@@ -1198,7 +1198,7 @@ function showResults() {
 // ─── MEMORIZAR ──────────────────────────────────────
 function renderMemo() {
   const p = state.permit;
-  document.getElementById('memoPermitBadge')?.textContent = `${p.icon} ${p.name}`;
+  if(document.getElementById('memoPermitBadge')) document.getElementById('memoPermitBadge').textContent = `${p.icon} ${p.name}`;
   
   const title = document.getElementById('memoTitle');
   if (state.isOfficialDgt) {
@@ -1424,8 +1424,8 @@ function showAppAlert(title, message) {
         `;
         document.body.appendChild(overlay);
     }
-    document.getElementById('customAlertTitle')?.textContent = title;
-    document.getElementById('customAlertMessage')?.textContent = message;
+    if(document.getElementById('customAlertTitle')) document.getElementById('customAlertTitle').textContent = title;
+    if(document.getElementById('customAlertMessage')) document.getElementById('customAlertMessage').textContent = message;
     overlay.classList.add('active');
 }
 window.showAppAlert = showAppAlert;
@@ -1449,15 +1449,15 @@ function showAppConfirm(title, message, onConfirm) {
         `;
         document.body.appendChild(overlay);
         
-        document.getElementById('customConfirmCancelBtn')?.onclick = () => {
+        if(document.getElementById('customConfirmCancelBtn')) document.getElementById('customConfirmCancelBtn').onclick = () => {
             document.getElementById('customConfirmOverlay')?.classList.remove('active');
         };
     }
     
-    document.getElementById('customConfirmTitle')?.textContent = title;
-    document.getElementById('customConfirmMessage')?.textContent = message;
+    if(document.getElementById('customConfirmTitle')) document.getElementById('customConfirmTitle').textContent = title;
+    if(document.getElementById('customConfirmMessage')) document.getElementById('customConfirmMessage').textContent = message;
     
-    document.getElementById('customConfirmOkBtn')?.onclick = () => {
+    if(document.getElementById('customConfirmOkBtn')) document.getElementById('customConfirmOkBtn').onclick = () => {
         document.getElementById('customConfirmOverlay')?.classList.remove('active');
         if (typeof onConfirm === 'function') onConfirm();
     };
@@ -1748,7 +1748,7 @@ async function loadMemoQuestions() {
   } catch(e) {}
   
   if(allQs.length === 0) {
-      document.getElementById('memoList')?.innerHTML = '<div style="padding:40px;text-align:center">No hay preguntas disponibles para esta selección.</div>';
+      if(document.getElementById('memoList')) document.getElementById('memoList').innerHTML = '<div style="padding:40px;text-align:center">No hay preguntas disponibles para esta selección.</div>';
       return;
   }
   memoState.questions = allQs; 
@@ -2075,10 +2075,10 @@ async function startSimulacro() {
   if(state.questions.length > 30) state.questions = state.questions.slice(0, 30);
 
   renderEngineUI();
-  document.getElementById('testLabel')?.textContent = "SIMULACRO DGT";
+  if(document.getElementById('testLabel')) document.getElementById('testLabel').textContent = "SIMULACRO DGT";
   
-  document.getElementById('simulacroTimerBox')?.style.display = 'block';
-  document.getElementById('btnSubmitExam')?.style.display = 'block';
+  if(document.getElementById('simulacroTimerBox')) document.getElementById('simulacroTimerBox').style.display = 'block';
+  if(document.getElementById('btnSubmitExam')) document.getElementById('btnSubmitExam').style.display = 'block';
   document.getElementById('testQuestionWrap')?.classList.add('simulacro-mode');
   
   updateTimerUI();
@@ -2098,14 +2098,14 @@ async function startSimulacro() {
 function updateTimerUI() {
   const mins = Math.floor(state.timeLeft / 60).toString().padStart(2, '0');
   const secs = (state.timeLeft % 60).toString().padStart(2, '0');
-  document.getElementById('simulacroTimerTxt')?.textContent = `${mins}:${secs}`;
+  if(document.getElementById('simulacroTimerTxt')) document.getElementById('simulacroTimerTxt').textContent = `${mins}:${secs}`;
 }
 
 function submitSimulacro() {
   if (state.timerInterval) clearInterval(state.timerInterval);
   state.isSimulacro = false;
-  document.getElementById('simulacroTimerBox')?.style.display = 'none';
-  document.getElementById('btnSubmitExam')?.style.display = 'none';
+  if(document.getElementById('simulacroTimerBox')) document.getElementById('simulacroTimerBox').style.display = 'none';
+  if(document.getElementById('btnSubmitExam')) document.getElementById('btnSubmitExam').style.display = 'none';
   document.getElementById('testQuestionWrap')?.classList.remove('simulacro-mode');
 
   let aciertos = 0;
@@ -2213,9 +2213,9 @@ async function startPreguntaDelDia() {
   state.isSimulacro = false;
   
   renderEngineUI();
-  document.getElementById('testLabel')?.textContent = "PREGUNTA DEL DÍA";
-  document.getElementById('simulacroTimerBox')?.style.display = 'none';
-  document.getElementById('btnSubmitExam')?.style.display = 'none';
+  if(document.getElementById('testLabel')) document.getElementById('testLabel').textContent = "PREGUNTA DEL DÍA";
+  if(document.getElementById('simulacroTimerBox')) document.getElementById('simulacroTimerBox').style.display = 'none';
+  if(document.getElementById('btnSubmitExam')) document.getElementById('btnSubmitExam').style.display = 'none';
   document.getElementById('testQuestionWrap')?.classList.remove('simulacro-mode');
   
   renderQuestion(0);
