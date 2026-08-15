@@ -1,4 +1,4 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, { apiVersion: '2025-03-31.basil' });
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, { apiVersion: '2024-11-20' });
 const { createClient } = require('@supabase/supabase-js');
 
 // Configuración: bodyParser desactivado para verificar firma de Stripe
