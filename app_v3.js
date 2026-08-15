@@ -97,6 +97,27 @@ const UserManager = {
     if(pTotal) pTotal.innerText = this.data.totalTests;
     const pCorrect = document.getElementById('profileCorrect');
     if(pCorrect) pCorrect.innerText = this.data.totalCorrect;
+  },
+  reset() {
+    this.data = {
+      totalTests: 0,
+      totalCorrect: 0,
+      streak: 0,
+      lastActiveDate: null,
+      favorites: [],
+      mistakes: [],
+      topicStats: {},
+      dailyQuestions: 0,
+      lastState: null,
+      lastPermit: null
+    };
+    try {
+      localStorage.removeItem('ay_progress');
+      localStorage.removeItem('ay_test_history');
+      localStorage.removeItem('dgt_user_data_v2');
+      localStorage.removeItem('testProgress');
+    } catch(e) {}
+    this.updateUI();
   }
 };
 window.UserManager = UserManager;

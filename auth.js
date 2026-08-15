@@ -183,8 +183,15 @@ export async function updatePassword(newPassword) {
 // ─── CERRAR SESIÓN ────────────────────────────
 export async function signOut() {
   _clearSubscriptionCache();
+  try {
+    if (window.UserManager && typeof window.UserManager.reset === 'function') {
+      window.UserManager.reset();
+    }
+    localStorage.clear();
+  } catch(e) {}
   const { error } = await supabase.auth.signOut();
-  if (error) throw error;
+  if (error) console.warn('[signOut] Error:', error);
+  location.reload();
 }
 
 // ─── MOSTRAR FORMULARIO DE NUEVA CONTRASEÑA ───
