@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Cache Buster & Service Worker Force Update -->
+  <script>
+    (async () => {
+      const CURRENT_VERSION = 'v57';
+      const lastVersion = localStorage.getItem('ay_app_version');
+      if (lastVersion !== CURRENT_VERSION) {
+        localStorage.setItem('ay_app_version', CURRENT_VERSION);
+        if ('caches' in window) {
+          try {
+            const keys = await caches.keys();
+            await Promise.all(keys.map(key => caches.delete(key)));
+          } catch(e) {}
+        }
+        if ('serviceWorker' in navigator) {
+          try {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            await Promise.all(registrations.map(r => r.unregister()));
+          } catch(e) {}
+        }
+        window.location.reload(true);
+      }
+    })();
+  </script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -564,8 +587,8 @@
 
 <script src="data.js?v=47"></script>
 <script src="app_v3.js?v=57"></script>
-<script type="module" src="auth.js?v=56"></script>
-<script type="module" src="sync.js?v=56"></script>
+<script type="module" src="auth.js?v=57"></script>
+<script type="module" src="sync.js?v=57"></script>
 <script src="analytics.js"></script>
 <script src="adsense.js"></script>
 <script src="cookies.js"></script>
