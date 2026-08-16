@@ -1136,8 +1136,8 @@ function showResults() {
   UserManager.data.totalTests++;
   UserManager.recordActivity(); 
   
-  const pId = typeof state.permit === 'object' ? state.permit.id : state.permit;
-  const tId = (state.topic && typeof state.topic === 'object') ? state.topic.id : state.topic;
+  const pId = (state.permit && typeof state.permit === 'object') ? state.permit.id : (state.permit || 'B');
+  const tId = (state.topic && typeof state.topic === 'object') ? state.topic.id : (state.topic || 'general');
   
   results.forEach(r => {
       UserManager.recordQuestionResult(pId, tId, r.q.id, r.isCorrect);
@@ -2232,6 +2232,8 @@ async function startPreguntaDelDia() {
   const randomIndex = seed % allPermitQs.length;
   const questionDelDia = allPermitQs[randomIndex];
   
+  state.permit = currentPermit;
+  state.topic = 'general';
   state.testMode = 'test';
   state.isOfficialDgt = true;
   state.testNum = 'Pregunta del Día';
