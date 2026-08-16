@@ -2037,11 +2037,7 @@ async function startPreguntaDelDia() {
     return;
   }
   
-  // Usar la fecha actual como semilla para que sea igual todo el día
-  const today = new Date().toISOString().slice(0, 10);
-  let seed = 0;
-  for(let i=0; i<today.length; i++) seed += today.charCodeAt(i);
-  const randomIndex = seed % allPermitQs.length;
+  const randomIndex = Math.floor(Math.random() * allPermitQs.length);
   const questionDelDia = allPermitQs[randomIndex];
   const pObj = db.getPermits().find(p => p.id === currentPermit);
   state.permit = pObj || { id: currentPermit, name: 'Permiso ' + currentPermit, icon: '🚗' };
