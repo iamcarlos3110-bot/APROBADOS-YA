@@ -3,12 +3,26 @@
    Sincroniza datos entre localStorage y Supabase.
    
    Orden de prioridad:
-   1. Si hay sesión activa → leer/guardar en Supabase
-   2. localStorage como caché temporal/offline
-   3. Al iniciar sesión → ofrecer migración de datos locales
+   1. Si hay sesión activa → Supabase es la FUENTE DE VERDAD
+   2. localStorage funciona como caché temporal/offline
+   3. Al iniciar sesión → se ofrece migrar los datos locales una sola vez
 ============================================= */
 
 import { supabase, currentUser } from './auth.js';
+
+// ─── UTILS: LOG DE ERRORES DETALLADO (REGLA DE CONTRATACIÓN) ───
+function logSupabaseError(operation, table, error) {
+  if (!error) return;
+  console.error(
+    `[SYNC PROGRESS ERROR]\n` +
+    `operación: ${operation}\n` +
+    `tabla: ${table}\n` +
+    `error de Supabase: ${JSON.stringify(error)}\n` +
+    `código: ${error.code || 'N/A'}\n` +
+    `mensaje: ${error.message || 'N/A'}\n` +
+    `detalles: ${error.details || 'N/A'}`
+  );
+}
 
 // ─── LEER PROGRESO DESDE SUPABASE ─────────────────────────
 export async function loadProgressFromDB() {
@@ -22,7 +36,13 @@ export async function loadProgressFromDB() {
       .eq('user_id', user.id)
       .single();
 
-    if (error || !data) return null;
+    if (error) {
+      if (error.code === 'PGRST116') {
+        return null;
+      }
+      logSupabaseError('select', 'user_progress', error);
+      throw error;
+    }
     return data;
   } catch (e) {
     console.warn('SyncManager: error leyendo progreso', e);
@@ -38,15 +58,12 @@ export async function saveProgressToDB(progressData) {
   try {
     const payload = {
       user_id: user.id,
-      tests_completed: progressData.totalTests || 0,
-      questions_answered: (progressData.totalCorrect || 0) + (progressData.mistakes?.length || 0),
-      correct_answers: progressData.totalCorrect || 0,
-      wrong_answers: (progressData.mistakes || []).length,
-      streak: progressData.streak || 0,
-      last_active_date: progressData.lastActiveDate || null,
-      daily_questions: progressData.dailyQuestions || 0,
-      last_permit: progressData.lastPermit || null,
-      last_state: progressData.lastState || null,
+      total_tests_taken: progressData.totalTests || 0,
+      total_questions_answered: (progressData.totalCorrect || 0) + (progressData.mistakes?.length || 0),
+      total_correct_answers: progressData.totalCorrect || 0,
+      current_streak: progressData.streak || 0,
+      best_streak: progressData.bestStreak || progressData.streak || 0,
+      last_test_date: progressData.lastActiveDate || null,
       updated_at: new Date().toISOString()
     };
 
@@ -54,7 +71,10 @@ export async function saveProgressToDB(progressData) {
       .from('user_progress')
       .upsert(payload, { onConflict: 'user_id' });
 
-    if (error) throw error;
+    if (error) {
+      logSupabaseError('upsert', 'user_progress', error);
+      throw error;
+    }
     return true;
   } catch (e) {
     console.warn('SyncManager: error guardando progreso', e);
@@ -71,7 +91,10 @@ export async function addFavoriteToDB(questionId) {
     const { error } = await supabase
       .from('favorites')
       .upsert({ user_id: user.id, question_id: questionId }, { onConflict: 'user_id,question_id' });
-    if (error) throw error;
+    if (error) {
+      logSupabaseError('upsert', 'favorites', error);
+      throw error;
+    }
     return true;
   } catch (e) {
     console.warn('SyncManager: error añadiendo favorito', e);
@@ -90,7 +113,10 @@ export async function removeFavoriteFromDB(questionId) {
       .delete()
       .eq('user_id', user.id)
       .eq('question_id', questionId);
-    if (error) throw error;
+    if (error) {
+      logSupabaseError('delete', 'favorites', error);
+      throw error;
+    }
     return true;
   } catch (e) {
     console.warn('SyncManager: error eliminando favorito', e);
@@ -108,8 +134,11 @@ export async function loadFavoritesFromDB() {
       .from('favorites')
       .select('question_id')
       .eq('user_id', user.id);
-    if (error) throw error;
-    return data.map(f => f.question_id);
+    if (error) {
+      logSupabaseError('select', 'favorites', error);
+      throw error;
+    }
+    return data ? data.map(f => f.question_id) : [];
   } catch (e) {
     console.warn('SyncManager: error leyendo favoritos', e);
     return null;
@@ -123,7 +152,6 @@ export async function recordMistakeToDB(questionId, isCorrect) {
 
   try {
     if (isCorrect) {
-      // Si acierta, incrementar times_correct
       const { data: existing } = await supabase
         .from('mistakes')
         .select('*')
@@ -132,13 +160,16 @@ export async function recordMistakeToDB(questionId, isCorrect) {
         .single();
 
       if (existing) {
-        await supabase.from('mistakes').update({
+        const { error } = await supabase.from('mistakes').update({
           times_correct: existing.times_correct + 1,
           updated_at: new Date().toISOString()
         }).eq('user_id', user.id).eq('question_id', questionId);
+        if (error) {
+          logSupabaseError('update', 'mistakes', error);
+          throw error;
+        }
       }
     } else {
-      // Si falla, insertar o incrementar times_wrong
       const { data: existing } = await supabase
         .from('mistakes')
         .select('*')
@@ -147,18 +178,26 @@ export async function recordMistakeToDB(questionId, isCorrect) {
         .single();
 
       if (existing) {
-        await supabase.from('mistakes').update({
+        const { error } = await supabase.from('mistakes').update({
           times_wrong: existing.times_wrong + 1,
           last_wrong_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         }).eq('user_id', user.id).eq('question_id', questionId);
+        if (error) {
+          logSupabaseError('update', 'mistakes', error);
+          throw error;
+        }
       } else {
-        await supabase.from('mistakes').insert({
+        const { error } = await supabase.from('mistakes').insert({
           user_id: user.id,
           question_id: questionId,
           times_wrong: 1,
           times_correct: 0
         });
+        if (error) {
+          logSupabaseError('insert', 'mistakes', error);
+          throw error;
+        }
       }
     }
     return true;
@@ -168,6 +207,7 @@ export async function recordMistakeToDB(questionId, isCorrect) {
   }
 }
 
+// ─── GUARDADO DE ERRORES EN LOTE (OPTIMIZADO) ─────────────
 export async function recordMistakesBulkToDB(results) {
   const user = window.currentUser?.();
   if (!user || !Array.isArray(results) || results.length === 0) return false;
@@ -178,7 +218,10 @@ export async function recordMistakesBulkToDB(results) {
       .select('*')
       .eq('user_id', user.id);
 
-    if (selectError) throw selectError;
+    if (selectError) {
+      logSupabaseError('select', 'mistakes', selectError);
+      throw selectError;
+    }
 
     const existingMap = {};
     (existing || []).forEach(m => {
@@ -187,7 +230,7 @@ export async function recordMistakesBulkToDB(results) {
 
     const upserts = [];
     results.forEach(r => {
-      if (!r || !r.q || !r.q.id) return; // Safeguard against placeholders or missing data
+      if (!r || !r.q || !r.q.id) return;
       const qId = r.q.id;
       const isCorrect = r.isCorrect;
       const dbRow = existingMap[qId];
@@ -230,13 +273,89 @@ export async function recordMistakesBulkToDB(results) {
       const { error: upsertError } = await supabase
         .from('mistakes')
         .upsert(upserts, { onConflict: 'user_id,question_id' });
-      if (upsertError) throw upsertError;
+      if (upsertError) {
+        logSupabaseError('upsert', 'mistakes', upsertError);
+        throw upsertError;
+      }
     }
 
     return true;
   } catch (e) {
     console.warn('SyncManager: error en guardado masivo de errores', e);
     return false;
+  }
+}
+
+// ─── GUARDAR ESTADÍSTICAS POR TEMA EN LOTE ───────────────
+export async function saveTopicStatsBulkToDB(topicStats) {
+  const user = window.currentUser?.();
+  if (!user || !topicStats) return false;
+
+  try {
+    const upserts = [];
+    Object.keys(topicStats).forEach(permitId => {
+      const topics = topicStats[permitId];
+      if (topics && typeof topics === 'object') {
+        Object.keys(topics).forEach(topicId => {
+          const stats = topics[topicId];
+          if (stats) {
+            upserts.push({
+              user_id: user.id,
+              permit_id: permitId,
+              topic_id: topicId,
+              correct: stats.correct || 0,
+              total: stats.total || 0,
+              updated_at: new Date().toISOString()
+            });
+          }
+        });
+      }
+    });
+
+    if (upserts.length > 0) {
+      const { error } = await supabase
+        .from('topic_stats')
+        .upsert(upserts, { onConflict: 'user_id,permit_id,topic_id' });
+      if (error) {
+        logSupabaseError('upsert', 'topic_stats', error);
+        throw error;
+      }
+    }
+    return true;
+  } catch (e) {
+    console.warn('SyncManager: error en guardado de estadísticas por tema', e);
+    return false;
+  }
+}
+
+// ─── LEER ESTADÍSTICAS POR TEMA DESDE SUPABASE ───────────
+export async function loadTopicStatsFromDB() {
+  const user = window.currentUser?.();
+  if (!user) return null;
+
+  try {
+    const { data, error } = await supabase
+      .from('topic_stats')
+      .select('permit_id, topic_id, correct, total')
+      .eq('user_id', user.id);
+
+    if (error) {
+      logSupabaseError('select', 'topic_stats', error);
+      throw error;
+    }
+
+    const topicStats = {};
+    (data || []).forEach(row => {
+      if (!topicStats[row.permit_id]) topicStats[row.permit_id] = {};
+      topicStats[row.permit_id][row.topic_id] = {
+        correct: row.correct,
+        total: row.total
+      };
+    });
+    return topicStats;
+  } catch (e) {
+    console.warn('SyncManager: error leyendo estadísticas por tema', e);
+    return null;
   }
 }
 
@@ -258,50 +377,14 @@ export async function saveTestResultToDB({ testId, permitId, topicId, correct, w
       wrong,
       total
     });
-    if (error) throw error;
+    if (error) {
+      logSupabaseError('insert', 'test_history', error);
+      throw error;
+    }
     return true;
   } catch (e) {
     console.warn('SyncManager: error guardando historial', e);
     return false;
-  }
-}
-
-// ─── MIGRAR LOCALSTORAGE → SUPABASE ──────────────────────
-export async function migrateLocalDataToDB() {
-  const user = window.currentUser?.();
-  if (!user) return { success: false, reason: 'no_user' };
-
-  try {
-    const raw = localStorage.getItem('ay_progress');
-    if (!raw) return { success: false, reason: 'no_local_data' };
-    const local = JSON.parse(raw);
-
-    // 1. Subir progreso principal
-    await saveProgressToDB(local);
-
-    // 2. Subir favoritos (sin duplicados gracias al UNIQUE)
-    if (Array.isArray(local.favorites) && local.favorites.length > 0) {
-      const rows = local.favorites.map(qId => ({ user_id: user.id, question_id: qId }));
-      await supabase.from('favorites')
-        .upsert(rows, { onConflict: 'user_id,question_id' });
-    }
-
-    // 3. Subir errores (sin duplicados)
-    if (Array.isArray(local.mistakes) && local.mistakes.length > 0) {
-      const rows = local.mistakes.map(qId => ({
-        user_id: user.id,
-        question_id: qId,
-        times_wrong: 1,
-        times_correct: 0
-      }));
-      await supabase.from('mistakes')
-        .upsert(rows, { onConflict: 'user_id,question_id', ignoreDuplicates: true });
-    }
-
-    return { success: true };
-  } catch (e) {
-    console.error('SyncManager: error en migración', e);
-    return { success: false, reason: e.message };
   }
 }
 
@@ -315,7 +398,10 @@ export async function loadMistakesFromDB() {
       .from('mistakes')
       .select('question_id')
       .eq('user_id', user.id);
-    if (error) throw error;
+    if (error) {
+      logSupabaseError('select', 'mistakes', error);
+      throw error;
+    }
     return data ? data.map(m => m.question_id) : [];
   } catch (e) {
     console.warn('SyncManager: error leyendo errores', e);
@@ -323,56 +409,183 @@ export async function loadMistakesFromDB() {
   }
 }
 
-// ─── CARGAR DATOS DE SUPABASE AL INICIO ──────────────────
-// Llamar cuando el usuario inicia sesión
+// ─── CARGAR DATOS DE SUPABASE AL INICIO (FUENTE DE VERDAD) ───
 export async function syncFromDB() {
   const user = window.currentUser?.();
   if (!user || typeof UserManager === 'undefined') return;
 
   try {
-    const [progressData, favData, mistakeData] = await Promise.all([
+    console.log('SyncManager: Descargando progreso del usuario desde la nube...');
+    const [progressData, favData, mistakeData, topicStatsData] = await Promise.all([
       loadProgressFromDB(),
       loadFavoritesFromDB(),
-      loadMistakesFromDB()
+      loadMistakesFromDB(),
+      loadTopicStatsFromDB()
     ]);
 
+    // Supabase es la fuente de verdad. Reemplazamos los datos en UserManager sin Math.max.
     if (progressData) {
-      // Combinar datos de DB con los locales (tomar el mayor en tests/streak)
-      const local = UserManager.data;
-      UserManager.data = {
-        ...local,
-        totalTests: Math.max(local.totalTests || 0, progressData.tests_completed || 0),
-        totalCorrect: Math.max(local.totalCorrect || 0, progressData.correct_answers || 0),
-        streak: Math.max(local.streak || 0, progressData.streak || 0),
-        lastActiveDate: progressData.last_active_date || local.lastActiveDate,
-        dailyQuestions: progressData.daily_questions || local.dailyQuestions || 0,
-        lastPermit: progressData.last_permit || local.lastPermit,
-        lastState: progressData.last_state || local.lastState,
-      };
+      UserManager.data.totalTests = progressData.total_tests_taken || 0;
+      UserManager.data.totalCorrect = progressData.total_correct_answers || 0;
+      UserManager.data.streak = progressData.current_streak || 0;
+      UserManager.data.bestStreak = progressData.best_streak || 0;
+      UserManager.data.lastActiveDate = progressData.last_test_date || null;
+      UserManager.data.dailyQuestions = 0; // Se reinicia al iniciar sesión/refrescar
+      UserManager.data.lastPermit = null;
+      UserManager.data.lastState = null;
+    } else {
+      console.log('SyncManager: No existe registro en la nube. Creando progreso inicial...');
+      await saveProgressToDB(UserManager.data);
     }
 
     if (favData) {
-      // Fusionar favoritos locales y de DB (sin duplicados)
-      const localFavs = UserManager.data.favorites || [];
-      const allFavs = [...new Set([...localFavs, ...favData])];
-      UserManager.data.favorites = allFavs;
+      UserManager.data.favorites = favData;
     }
 
     if (mistakeData) {
-      // Fusionar errores locales y de DB (sin duplicados)
-      const localMistakes = UserManager.data.mistakes || [];
-      const allMistakes = [...new Set([...localMistakes, ...mistakeData])];
-      UserManager.data.mistakes = allMistakes;
+      UserManager.data.mistakes = mistakeData;
     }
 
+    if (topicStatsData) {
+      UserManager.data.topicStats = topicStatsData;
+    }
+
+    // Guardar en caché local e hidratar UI
     localStorage.setItem('ay_progress', JSON.stringify(UserManager.data));
     UserManager.updateUI();
-    console.log('SyncManager: datos sincronizados desde Supabase');
+    console.log('SyncManager: Sincronización e hidratación completada con éxito.');
   } catch (e) {
     console.warn('SyncManager: error sincronizando desde DB', e);
   }
 }
 
+// ─── MIGRAR LOCALSTORAGE → SUPABASE (UNA SOLA VEZ) ─────────
+export async function migrateLocalDataToDB() {
+  const user = window.currentUser?.();
+  if (!user) return { success: false, reason: 'no_user' };
+
+  try {
+    const raw = localStorage.getItem('ay_progress');
+    if (!raw) return { success: false, reason: 'no_local_data' };
+    const local = JSON.parse(raw);
+
+    const [dbProgress, dbFavs, dbMistakes, dbTopicStats] = await Promise.all([
+      loadProgressFromDB(),
+      loadFavoritesFromDB(),
+      loadMistakesFromDB(),
+      loadTopicStatsFromDB()
+    ]);
+
+    // Combinar acumulativos usando Math.max solo durante la migración única
+    const mergedProgress = {
+      totalTests: Math.max(local.totalTests || 0, dbProgress?.total_tests_taken || 0),
+      totalCorrect: Math.max(local.totalCorrect || 0, dbProgress?.total_correct_answers || 0),
+      streak: Math.max(local.streak || 0, dbProgress?.current_streak || 0),
+      bestStreak: Math.max(local.bestStreak || local.streak || 0, dbProgress?.best_streak || 0),
+      lastActiveDate: local.lastActiveDate || dbProgress?.last_test_date || null,
+    };
+
+    const localFavs = local.favorites || [];
+    const dbFavsList = dbFavs || [];
+    const allFavs = [...new Set([...localFavs, ...dbFavsList])];
+
+    const localMistakes = local.mistakes || [];
+    const dbMistakesList = dbMistakes || [];
+    const allMistakes = [...new Set([...localMistakes, ...dbMistakesList])];
+
+    const mergedTopicStats = { ...(dbTopicStats || {}) };
+    if (local.topicStats) {
+      Object.keys(local.topicStats).forEach(permitId => {
+        if (!mergedTopicStats[permitId]) mergedTopicStats[permitId] = {};
+        Object.keys(local.topicStats[permitId]).forEach(topicId => {
+          const localVal = local.topicStats[permitId][topicId];
+          const dbVal = mergedTopicStats[permitId][topicId];
+          if (localVal) {
+            mergedTopicStats[permitId][topicId] = {
+              correct: Math.max(localVal.correct || 0, dbVal?.correct || 0),
+              total: Math.max(localVal.total || 0, dbVal?.total || 0)
+            };
+          }
+        });
+      });
+    }
+
+    // Upserts masivos
+    // A. Progreso general
+    const payload = {
+      user_id: user.id,
+      total_tests_taken: mergedProgress.totalTests,
+      total_questions_answered: mergedProgress.totalCorrect + allMistakes.length,
+      total_correct_answers: mergedProgress.totalCorrect,
+      current_streak: mergedProgress.streak,
+      best_streak: mergedProgress.bestStreak,
+      last_test_date: mergedProgress.lastActiveDate,
+      updated_at: new Date().toISOString()
+    };
+    const { error: progErr } = await supabase
+      .from('user_progress')
+      .upsert(payload, { onConflict: 'user_id' });
+    if (progErr) {
+      logSupabaseError('upsert', 'user_progress', progErr);
+      throw progErr;
+    }
+
+    // B. Favoritos
+    if (allFavs.length > 0) {
+      const favRows = allFavs.map(qId => ({ user_id: user.id, question_id: qId }));
+      const { error: favErr } = await supabase
+        .from('favorites')
+        .upsert(favRows, { onConflict: 'user_id,question_id' });
+      if (favErr) {
+        logSupabaseError('upsert', 'favorites', favErr);
+        throw favErr;
+      }
+    }
+
+    // C. Errores
+    if (allMistakes.length > 0) {
+      const mistakeRows = allMistakes.map(qId => ({
+        user_id: user.id,
+        question_id: qId,
+        times_wrong: 1,
+        times_correct: 0,
+        last_wrong_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      }));
+      const { error: mistErr } = await supabase
+        .from('mistakes')
+        .upsert(mistakeRows, { onConflict: 'user_id,question_id' });
+      if (mistErr) {
+        logSupabaseError('upsert', 'mistakes', mistErr);
+        throw mistErr;
+      }
+    }
+
+    // D. Topic Stats
+    await saveTopicStatsBulkToDB(mergedTopicStats);
+
+    // Actualizar UserManager local
+    UserManager.data.totalTests = mergedProgress.totalTests;
+    UserManager.data.totalCorrect = mergedProgress.totalCorrect;
+    UserManager.data.streak = mergedProgress.streak;
+    UserManager.data.bestStreak = mergedProgress.bestStreak;
+    UserManager.data.lastActiveDate = mergedProgress.lastActiveDate;
+    UserManager.data.favorites = allFavs;
+    UserManager.data.mistakes = allMistakes;
+    UserManager.data.topicStats = mergedTopicStats;
+
+    localStorage.setItem('ay_progress', JSON.stringify(UserManager.data));
+    UserManager.updateUI();
+
+    console.log('SyncManager: Migración de datos locales completada.');
+    return { success: true };
+  } catch (e) {
+    console.error('SyncManager: error en migración', e);
+    return { success: false, reason: e.message };
+  }
+}
+
+// ─── EXPONER AL SCOPE GLOBAL ──────────────────────────────
 window.SyncManager = {
   loadProgressFromDB,
   saveProgressToDB,
@@ -382,6 +595,8 @@ window.SyncManager = {
   loadMistakesFromDB,
   recordMistakeToDB,
   recordMistakesBulkToDB,
+  saveTopicStatsBulkToDB,
+  loadTopicStatsFromDB,
   saveTestResultToDB,
   migrateLocalDataToDB,
   syncFromDB
