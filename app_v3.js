@@ -2043,9 +2043,9 @@ async function startPreguntaDelDia() {
   for(let i=0; i<today.length; i++) seed += today.charCodeAt(i);
   const randomIndex = seed % allPermitQs.length;
   const questionDelDia = allPermitQs[randomIndex];
-  
-  state.permit = currentPermit;
-  state.topic = 'general';
+  const pObj = db.getPermits().find(p => p.id === currentPermit);
+  state.permit = pObj || { id: currentPermit, name: 'Permiso ' + currentPermit, icon: '🚗' };
+  state.topic = null;
   state.testMode = 'test';
   state.isOfficialDgt = true;
   state.testNum = 'Pregunta del Día';
