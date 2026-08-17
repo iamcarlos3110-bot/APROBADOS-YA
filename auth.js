@@ -821,59 +821,32 @@ function checkLocalDataMigration() {
     if (!hasData) return;
     if (localStorage.getItem('ay_sync_done') === 'true') return;
 
-    showMigrationBanner(data);
-  } catch(e) { /* sin datos locales */ }
-}
-
-function showMigrationBanner(data) {
-  if (document.getElementById('migrationBanner')) return;
-
-  const banner = document.createElement('div');
-  banner.id = 'migrationBanner';
-  banner.style.cssText = `
-    position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
-    background:var(--bg-card); border:2px solid var(--olive);
-    border-radius:16px; padding:20px 24px; max-width:440px; width:90%;
-    z-index:9999; box-shadow:0 8px 32px rgba(0,0,0,0.2);
-    animation: slideUp 0.4s ease;
-  `;
-  banner.innerHTML = `
-    <h4 style="margin:0 0 8px; font-size:15px; color:var(--text);">📦 Tienes datos guardados en este dispositivo</h4>
-    <p style="margin:0 0 16px; font-size:13px; color:var(--text2); line-height:1.5;">
-      Hemos encontrado tu progreso local (${data.totalTests || 0} tests, ${data.favorites?.length || 0} favoritos).
-      ¿Quieres sincronizarlos con tu cuenta en la nube?
-    </p>
-    <div style="display:flex; gap:10px;">
-      <button class="primary-btn" id="migrateSyncBtn" style="flex:1; padding:10px;">☁️ Sincronizar</button>
-      <button class="outline-btn" id="migrateDismissBtn" style="flex:1; padding:10px;">Ahora no</button>
-    </div>
-  `;
-  document.body.appendChild(banner);
-
-  document.getElementById('migrateSyncBtn')?.addEventListener('click', async () => {
-    const btn = document.getElementById('migrateSyncBtn');
-    btn.textContent = '⏳ Sincronizando...';
-    btn.disabled = true;
-    try {
-      if (window.SyncManager?.migrateLocalDataToDB) {
-        const result = await window.SyncManager.migrateLocalDataToDB();
-        if (result.success) {
-          localStorage.setItem('ay_sync_done', 'true');
-          banner.innerHTML = '<p style="text-align:center; padding:10px; color:var(--olive); font-weight:600;">✅ ¡Datos sincronizados correctamente!</p>';
+    // Ejecutar migración silenciosa en segundo plano
+    (async () => {
+      try {
+        if (window.SyncManager?.migrateLocalDataToDB) {
+          const result = await window.SyncManager.migrateLocalDataToDB();
+          if (result.success) {
+            localStorage.setItem('ay_sync_done', 'true');
+            console.log('SyncManager: Migración automática completada con éxito.');
+          }
         } else {
-          banner.innerHTML = `<p style="text-align:center; padding:10px; color:var(--red);">❌ Error al sincronizar: ${result.error || 'Inténtalo de nuevo.'}</p>`;
+          // Esperar un segundo por si el SyncManager aún se está registrando
+          setTimeout(async () => {
+            if (window.SyncManager?.migrateLocalDataToDB) {
+              const result = await window.SyncManager.migrateLocalDataToDB();
+              if (result.success) {
+                localStorage.setItem('ay_sync_done', 'true');
+                console.log('SyncManager: Migración automática tardía completada con éxito.');
+              }
+            }
+          }, 1000);
         }
-      } else {
-        localStorage.setItem('ay_sync_done', 'true');
-        banner.innerHTML = '<p style="text-align:center; padding:10px; color:var(--olive);">✅ ¡Datos sincronizados!</p>';
+      } catch (err) {
+        console.warn('SyncManager: Error en migración automática silenciosa', err);
       }
-    } catch(e) {
-      banner.innerHTML = `<p style="text-align:center; padding:10px; color:var(--red);">❌ Error: ${e.message}</p>`;
-    }
-    setTimeout(() => banner.remove(), 3000);
-  });
-
-  document.getElementById('migrateDismissBtn')?.addEventListener('click', () => banner.remove());
+    })();
+  } catch(e) { /* sin datos locales */ }
 }
 
 // ─── UTILIDADES ────────────────────────────────
