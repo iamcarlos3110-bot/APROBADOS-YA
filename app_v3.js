@@ -686,9 +686,11 @@ function renderTests() {
           isEmpty = true;
         }
       }
+      
+      if (isEmpty) continue;
 
       const card = document.createElement('div');
-      card.className = `test-card${isEmpty ? ' empty-test' : ''}`;
+      card.className = 'test-card';
       card.innerHTML = `
         <div class="test-card-header">
           <h3>TEST ${n.toString().padStart(2, '0')}</h3>
@@ -699,8 +701,8 @@ function renderTests() {
             <span style="background:rgba(0,0,0,0.05); padding:4px 10px; border-radius:12px; font-weight:500;">💡 Exclusivo</span>
         </div>
         <div class="test-card-btns">
-          <button class="tc-btn primary" data-n="${n}" data-mode="test" ${isEmpty ? 'disabled' : ''}>▶ Hacer test</button>
-          <button class="tc-btn secondary" data-n="${n}" data-mode="memo" ${isEmpty ? 'disabled' : ''}>🧠 Memorizar</button>
+          <button class="tc-btn primary" data-n="${n}" data-mode="test">▶ Hacer test</button>
+          <button class="tc-btn secondary" data-n="${n}" data-mode="memo">🧠 Memorizar</button>
         </div>
       `;
       container.appendChild(card);
