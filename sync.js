@@ -485,28 +485,31 @@ export async function migrateLocalDataToDB() {
       lastActiveDate: local.lastActiveDate || dbProgress?.last_test_date || null,
     };
 
-    const localFavs = local.favorites || [];
-    const dbFavsList = dbFavs || [];
-    const allFavs = [...new Set([...localFavs, ...dbFavsList])];
+    const localFavs = Array.isArray(local.favorites) ? local.favorites : [];
+    const dbFavsList = Array.isArray(dbFavs) ? dbFavs : [];
+    const allFavs = [...new Set([...localFavs, ...dbFavsList])].filter(id => typeof id === 'string' && id.trim() !== '');
 
-    const localMistakes = local.mistakes || [];
-    const dbMistakesList = dbMistakes || [];
-    const allMistakes = [...new Set([...localMistakes, ...dbMistakesList])];
+    const localMistakes = Array.isArray(local.mistakes) ? local.mistakes : [];
+    const dbMistakesList = Array.isArray(dbMistakes) ? dbMistakes : [];
+    const allMistakes = [...new Set([...localMistakes, ...dbMistakesList])].filter(id => typeof id === 'string' && id.trim() !== '');
 
     const mergedTopicStats = { ...(dbTopicStats || {}) };
-    if (local.topicStats) {
+    if (local.topicStats && typeof local.topicStats === 'object') {
       Object.keys(local.topicStats).forEach(permitId => {
-        if (!mergedTopicStats[permitId]) mergedTopicStats[permitId] = {};
-        Object.keys(local.topicStats[permitId]).forEach(topicId => {
-          const localVal = local.topicStats[permitId][topicId];
-          const dbVal = mergedTopicStats[permitId][topicId];
-          if (localVal) {
-            mergedTopicStats[permitId][topicId] = {
-              correct: Math.max(localVal.correct || 0, dbVal?.correct || 0),
-              total: Math.max(localVal.total || 0, dbVal?.total || 0)
-            };
-          }
-        });
+        const localPermitStats = local.topicStats[permitId];
+        if (localPermitStats && typeof localPermitStats === 'object') {
+          if (!mergedTopicStats[permitId]) mergedTopicStats[permitId] = {};
+          Object.keys(localPermitStats).forEach(topicId => {
+            const localVal = localPermitStats[topicId];
+            const dbVal = mergedTopicStats[permitId]?.[topicId];
+            if (localVal && typeof localVal === 'object') {
+              mergedTopicStats[permitId][topicId] = {
+                correct: Math.max(Number(localVal.correct) || 0, Number(dbVal?.correct) || 0),
+                total: Math.max(Number(localVal.total) || 0, Number(dbVal?.total) || 0)
+              };
+            }
+          });
+        }
       });
     }
 
