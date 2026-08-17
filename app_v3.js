@@ -1025,6 +1025,7 @@ function showResults() {
     const ok = r.isCorrect;
     const div = document.createElement('div');
     div.className = `rr-item ${ok ? 'ok' : 'err'}`;
+    const explText = typeof r.q.explanation === 'string' ? r.q.explanation : (r.q.explanation ? JSON.stringify(r.q.explanation) : (r.q.explicacion ? (typeof r.q.explicacion === 'string' ? r.q.explicacion : JSON.stringify(r.q.explicacion)) : ''));
     div.innerHTML = `
       <div class="rr-icon">${ok ? '✅' : '❌'}</div>
       <div class="rr-content">
@@ -1033,6 +1034,11 @@ function showResults() {
           ${!ok ? `<span class="err-a">${r.selected ? r.q.respuestas[r.selected] : 'Ninguna'}</span>` : ''}
           <span class="ok-a">✓ ${r.q.respuestas[r.q.correcta]}</span>
         </div>
+        ${explText ? `
+          <div class="rr-expl" style="margin-top: 10px; padding: 10px 14px; background: var(--bg-warm); border-left: 3px solid var(--olive); border-radius: 6px; font-size: 13px; line-height: 1.5; color: var(--text2);">
+            <strong>💡 Explicación:</strong> ${explText}
+          </div>
+        ` : ''}
       </div>
     `;
     reviewEl.appendChild(div);
