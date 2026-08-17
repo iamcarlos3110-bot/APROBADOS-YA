@@ -581,7 +581,7 @@ function renderTopics() {
         </div>
       </div>
       <div class="topic-caret">
-        <span class="outline-btn sm" style="padding: 6px 14px; font-size: 11px; border-radius: 99px; pointer-events: none;">Entrar</span>
+        <span class="primary-btn sm" style="padding: 6px 14px; font-size: 11px; border-radius: 99px; pointer-events: none;">Entrar</span>
       </div>
     `;
     card.addEventListener('click', () => {
