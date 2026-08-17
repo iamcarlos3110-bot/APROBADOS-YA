@@ -1387,7 +1387,18 @@ async function continueLastTest() {
   
   try {
       const isOfficial = ls.testNum && typeof ls.testNum === 'string' && ls.testNum.startsWith('DGT');
-      if (isOfficial) {
+      if (ls.testNum === 'Pregunta del Día') {
+          const allPermitQs = db.dgtQuestions.filter(q => q.permit_id === ls.permitId);
+          if (allPermitQs.length > 0) {
+              const seedStr = new Date().toISOString().slice(0, 10);
+              let seed = 0;
+              for(let i=0; i<seedStr.length; i++) seed += seedStr.charCodeAt(i);
+              const randomIndex = seed % allPermitQs.length;
+              state.questions = [allPermitQs[randomIndex]];
+          } else {
+              state.questions = [];
+          }
+      } else if (isOfficial) {
           state.questions = db.getQuestionsByTest(ls.testNum);
       } else {
           state.questions = db.getAyQuestions(ls.permitId, ls.topicId, parseInt(ls.testNum));
