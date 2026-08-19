@@ -623,8 +623,7 @@ function renderTopics() {
 function getTestCardProgressHTML(testId, totalQs) {
   const ls = UserManager.data.lastState;
   
-  // A. Check if the test is currently in progress (active state)
-  const activeTestId = ls ? (ls.topicId === 'oficiales' ? `DGT-${ls.permitId}-${ls.testNum}` : `AY-${ls.permitId}-${ls.topicId}-${ls.testNum}`) : null;
+  const activeTestId = ls ? (ls.topicId === 'oficiales' ? ls.testNum : `AY-${ls.permitId}-${ls.topicId}-${ls.testNum}`) : null;
   
   if (ls && activeTestId === testId) {
       const answeredCount = Object.keys(ls.answers || {}).length;
@@ -1041,9 +1040,9 @@ function showResults() {
   const pId = (state.permit && typeof state.permit === 'object') ? state.permit.id : (state.permit || 'B');
   const tId = (state.topic && typeof state.topic === 'object') ? state.topic.id : (state.topic || 'general');
 
-  const testId = state.isOfficialDgt
-    ? `DGT-${pId}-${state.testNum}`
-    : `AY-${pId}-${tId}-${state.testNum}`;
+    const testId = state.isOfficialDgt
+      ? state.testNum
+      : `AY-${pId}-${tId}-${state.testNum}`;
   
   const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
   if (!UserManager.data.testScores) UserManager.data.testScores = {};
@@ -1057,7 +1056,7 @@ function showResults() {
   // ─── FASE F: Sincronizar con Supabase si hay sesión ────────
   if (window.SyncManager && typeof window.currentUser === 'function' && window.currentUser()) {
     const testId = state.isOfficialDgt
-      ? `DGT-${pId}-${state.testNum}`
+      ? state.testNum
       : `AY-${pId}-${tId}-${state.testNum}`;
 
     // Guardar historial del test
