@@ -75,6 +75,18 @@ export async function saveProgressToDB(progressData) {
       logSupabaseError('upsert', 'user_progress', error);
       throw error;
     }
+
+    // Save lastState to user_metadata for cross-device/session persistence
+    try {
+      await supabase.auth.updateUser({
+        data: {
+          lastState: progressData.lastState || null
+        }
+      });
+    } catch (metaErr) {
+      console.warn('SyncManager: error guardando metadata de usuario', metaErr);
+    }
+
     return true;
   } catch (e) {
     console.warn('SyncManager: error guardando progreso', e);
@@ -463,8 +475,16 @@ export async function syncFromDB() {
       UserManager.data.bestStreak = progressData.best_streak || 0;
       UserManager.data.lastActiveDate = progressData.last_test_date || null;
       UserManager.data.dailyQuestions = 0; // Se reinicia al iniciar sesión/refrescar
-      UserManager.data.lastPermit = UserManager.data.lastPermit || null;
-      UserManager.data.lastState = UserManager.data.lastState || null;
+      
+      // Restore active session state from cloud user_metadata if available
+      const cloudMetadata = user.user_metadata || {};
+      if (cloudMetadata.lastState) {
+        UserManager.data.lastState = cloudMetadata.lastState;
+        UserManager.data.lastPermit = cloudMetadata.lastState.permitId || null;
+      } else {
+        UserManager.data.lastPermit = UserManager.data.lastPermit || null;
+        UserManager.data.lastState = UserManager.data.lastState || null;
+      }
     } else {
       console.log('SyncManager: No existe registro en la nube. Creando progreso inicial...');
       await saveProgressToDB(UserManager.data);
