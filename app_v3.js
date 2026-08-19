@@ -579,32 +579,15 @@ function renderTopics() {
     const card = document.createElement('div');
     card.className = 'topic-card';
     const icon = getThemeIcon(t.id, t.name);
-    
-    // Calculate theme completion progress from UserManager.data.topicStats
-    const stats = (UserManager.data.topicStats[p.id] && UserManager.data.topicStats[p.id][t.id]) ? UserManager.data.topicStats[p.id][t.id] : null;
-    let percentage = 0;
-    if (stats && stats.total > 0) {
-      percentage = Math.round((stats.correct / stats.total) * 100);
-      if (percentage > 100) percentage = 100;
-    }
-
     card.innerHTML = `
-      <div class="topic-info" style="display:flex; align-items:center; gap:14px; width: 100%; overflow: hidden;">
-        <span style="font-size:28px; flex-shrink:0; line-height:1; align-self: flex-start; margin-top: 2px;">${icon}</span>
-        <div style="flex-grow: 1; min-width: 0;">
-          <div class="topic-name" style="margin-bottom:4px; font-weight: 700; color: var(--text);">${t.name}</div>
-          ${t.id === 'oficiales' ? '<span class="status-badge" style="font-size:10px; padding:3px 8px; border-radius:6px; margin-bottom:6px; display:inline-block;">★ OFICIAL DGT</span>' : ''}
-          
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 6px; font-size: 11px; color: var(--text3);">
-            <span>Progreso</span>
-            <span style="font-weight: 700; color: var(--olive);">${percentage}%</span>
-          </div>
-          <div class="topic-prog-bar" style="margin-top: 4px; height: 5px; background: var(--border); border-radius: 99px; overflow: hidden; position: relative;">
-            <div class="topic-prog-fill" style="width: ${percentage}%; height: 100%; background: linear-gradient(90deg, var(--olive), #a8cc40); border-radius: 99px; transition: width 0.4s ease;"></div>
-          </div>
+      <div class="topic-info" style="display:flex; align-items:center; gap:14px;">
+        <span style="font-size:28px; flex-shrink:0; line-height:1;">${icon}</span>
+        <div>
+          <div class="topic-name" style="margin-bottom:0;">${t.name}</div>
+          ${t.id === 'oficiales' ? '<span class="status-badge" style="font-size:10px; padding:3px 8px; border-radius:6px; margin-top:4px; display:inline-block;">★ OFICIAL DGT</span>' : ''}
         </div>
       </div>
-      <div class="topic-caret" style="margin-left: 10px; flex-shrink: 0;">
+      <div class="topic-caret">
         <span class="primary-btn sm" style="padding: 6px 14px; font-size: 11px; border-radius: 99px; pointer-events: none;">Entrar</span>
       </div>
     `;
@@ -658,7 +641,18 @@ function getTestCardProgressHTML(testId, totalQs) {
       `;
   }
   
-  return '';
+  // Default 0% bar for unstarted tests
+  return `
+    <div class="test-card-progress-wrap" style="width: 100%; margin-top: 12px; margin-bottom: 8px;">
+      <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text3); margin-bottom: 4px;">
+        <span>Sin empezar</span>
+        <span>0%</span>
+      </div>
+      <div style="height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; position: relative;">
+        <div class="test-prog-fill" style="width: 0%; height: 100%; background: var(--border2); border-radius: 99px;"></div>
+      </div>
+    </div>
+  `;
 }
 
 function renderTests() {
