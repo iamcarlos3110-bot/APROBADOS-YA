@@ -333,15 +333,51 @@ button { font-family: inherit; cursor: pointer; }
 #screen-home::before {
   content: '';
   position: absolute;
-  left: -120px;
-  top: 60px;
+  left: -180px;
+  top: 10%;
   width: 500px;
-  height: 500px;
-  background: radial-gradient(ellipse at center, rgba(100,140,30,0.18) 0%, rgba(92,107,26,0.08) 45%, transparent 70%);
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(138,158,42,0.18) 0%, rgba(92,107,26,0.06) 45%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
-  filter: blur(40px);
+  filter: blur(50px);
+}
+#screen-home::after {
+  content: '';
+  position: absolute;
+  right: -180px;
+  top: 25%;
+  width: 500px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(138,158,42,0.18) 0%, rgba(92,107,26,0.06) 45%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(50px);
+}
+.home-decor-dots {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  pointer-events: none;
+  opacity: 0.18;
+  z-index: 0;
+}
+.home-decor-dots--left {
+  left: 0;
+  background-image: radial-gradient(var(--olive) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0) 100%);
+}
+.home-decor-dots--right {
+  right: 0;
+  background-image: radial-gradient(var(--olive) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0) 100%);
 }
 .home-wrap {
   max-width: 1160px; margin: 0 auto; padding: 48px 24px 64px;
