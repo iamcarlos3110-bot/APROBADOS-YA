@@ -805,10 +805,9 @@ async function startTest(testIdentifier, mode, isOfficial = false) {
 
   if (mode === 'test') {
     state.currentQuestion = 0;
-    // Guardar estado para continuar después
-    UserManager.saveLastState(state.permit, state.testNum, state.topic, state.currentQuestion, state.answers);
     state.answers = {};
     state.score = 0;
+    // El guardado inicial se realiza automáticamente al llamar a renderQuestion(0)
     renderEngineUI();
     renderQuestion(0);
     showScreen('screen-test');
@@ -830,6 +829,11 @@ function renderEngineUI() {
 
 function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.data.favorites = [];
   state.currentQuestion = index;
+  
+  // Guardar estado actualizado en tiempo real mientras se responde o avanza
+  if (state.testMode === 'test' && !state.isSimulacro && state.permit && state.testNum !== undefined) {
+      UserManager.saveLastState(state.permit, state.testNum, state.topic, index, state.answers);
+  }
   const q = state.questions[index]; if (!q) { if(document.getElementById('questionText')) document.getElementById('questionText').textContent = 'Error: No se pudo cargar la pregunta (BD vaca o ndice invlido).'; return; }
   const total = state.questions.length;
   
