@@ -477,10 +477,32 @@ export async function syncFromDB() {
       UserManager.data.dailyQuestions = 0; // Se reinicia al iniciar sesión/refrescar
       
       // Restore active session state from cloud user_metadata if available
+      const localLS = UserManager.data.lastState;
       const cloudMetadata = user.user_metadata || {};
-      if (cloudMetadata.lastState) {
-        UserManager.data.lastState = cloudMetadata.lastState;
-        UserManager.data.lastPermit = cloudMetadata.lastState.permitId || null;
+      const cloudLS = cloudMetadata.lastState;
+      
+      let useCloudLS = false;
+      if (cloudLS) {
+          if (!localLS) {
+              useCloudLS = true;
+          } else {
+              const localTestId = localLS.topicId === 'oficiales' ? localLS.testNum : `AY-${localLS.permitId}-${localLS.topicId}-${localLS.testNum}`;
+              const cloudTestId = cloudLS.topicId === 'oficiales' ? cloudLS.testNum : `AY-${cloudLS.permitId}-${cloudLS.topicId}-${cloudLS.testNum}`;
+              if (localTestId !== cloudTestId) {
+                  useCloudLS = true;
+              } else {
+                  const localAnsCount = Object.keys(localLS.answers || {}).length;
+                  const cloudAnsCount = Object.keys(cloudLS.answers || {}).length;
+                  if (cloudAnsCount > localAnsCount) {
+                      useCloudLS = true;
+                  }
+              }
+          }
+      }
+      
+      if (useCloudLS) {
+        UserManager.data.lastState = cloudLS;
+        UserManager.data.lastPermit = cloudLS.permitId || null;
       } else {
         UserManager.data.lastPermit = UserManager.data.lastPermit || null;
         UserManager.data.lastState = UserManager.data.lastState || null;
