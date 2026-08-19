@@ -359,6 +359,37 @@ export async function loadTopicStatsFromDB() {
   }
 }
 
+// ─── LEER HISTORIAL DE TESTS PARA RECONSTRUIR PUNTUACIONES ───
+export async function loadTestHistoryFromDB() {
+  const user = window.currentUser?.();
+  if (!user) return null;
+
+  try {
+    const { data, error } = await supabase
+      .from('test_history')
+      .select('test_id, score')
+      .eq('user_id', user.id);
+
+    if (error) {
+      logSupabaseError('select', 'test_history', error);
+      throw error;
+    }
+
+    const testScores = {};
+    (data || []).forEach(row => {
+      // Find the highest score for each test ID
+      const numScore = Math.round(row.score);
+      if (testScores[row.test_id] === undefined || numScore > testScores[row.test_id]) {
+        testScores[row.test_id] = numScore;
+      }
+    });
+    return testScores;
+  } catch (e) {
+    console.warn('SyncManager: error leyendo historial de tests', e);
+    return null;
+  }
+}
+
 // ─── GUARDAR RESULTADO DE TEST EN HISTORIAL ───────────────
 export async function saveTestResultToDB({ testId, permitId, topicId, correct, wrong, total }) {
   const user = window.currentUser?.();
@@ -416,11 +447,12 @@ export async function syncFromDB() {
 
   try {
     console.log('SyncManager: Descargando progreso del usuario desde la nube...');
-    const [progressData, favData, mistakeData, topicStatsData] = await Promise.all([
+    const [progressData, favData, mistakeData, topicStatsData, testScoresData] = await Promise.all([
       loadProgressFromDB(),
       loadFavoritesFromDB(),
       loadMistakesFromDB(),
-      loadTopicStatsFromDB()
+      loadTopicStatsFromDB(),
+      loadTestHistoryFromDB()
     ]);
 
     // Supabase es la fuente de verdad. Reemplazamos los datos en UserManager sin Math.max.
@@ -448,6 +480,10 @@ export async function syncFromDB() {
 
     if (topicStatsData) {
       UserManager.data.topicStats = topicStatsData;
+    }
+
+    if (testScoresData) {
+      UserManager.data.testScores = testScoresData;
     }
 
     // Guardar en caché local e hidratar UI
@@ -600,6 +636,7 @@ window.SyncManager = {
   recordMistakesBulkToDB,
   saveTopicStatsBulkToDB,
   loadTopicStatsFromDB,
+  loadTestHistoryFromDB,
   saveTestResultToDB,
   migrateLocalDataToDB,
   syncFromDB
