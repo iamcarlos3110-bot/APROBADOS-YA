@@ -20,7 +20,8 @@ const UserManager = {
     topicStats: {},        // { "B": { "1": { correct: 10, total: 15 } } }
     dailyQuestions: 0,     // Questions answered today
     lastState: null,       // { permitId, testNum, topicId, currentQuestion, answers }
-    lastPermit: null       // Last used permit ID
+    lastPermit: null,      // Last used permit ID
+    testScores: {}         // { "DGT-B-1": 90 }
   },
   load() {
     try {
@@ -29,6 +30,7 @@ const UserManager = {
         this.data = { ...this.data, ...JSON.parse(stored) };
         if(!this.data.mistakes) this.data.mistakes = [];
         if(!this.data.topicStats) this.data.topicStats = {};
+        if(!this.data.testScores) this.data.testScores = {};
       }
       this.checkDaily();
     } catch(e) { console.warn('No se pudo cargar progreso', e); }
@@ -618,6 +620,48 @@ function renderTopics() {
 
 // ─── RENDER TESTS ───────────────────────────────────
 
+function getTestCardProgressHTML(testId, totalQs) {
+  const ls = UserManager.data.lastState;
+  
+  // A. Check if the test is currently in progress (active state)
+  const activeTestId = ls ? (ls.topicId === 'oficiales' ? `DGT-${ls.permitId}-${ls.testNum}` : `AY-${ls.permitId}-${ls.topicId}-${ls.testNum}`) : null;
+  
+  if (ls && activeTestId === testId) {
+      const answeredCount = Object.keys(ls.answers || {}).length;
+      const percentage = Math.round((answeredCount / totalQs) * 100);
+      return `
+        <div class="test-card-progress-wrap" style="width: 100%; margin-top: 12px; margin-bottom: 8px;">
+          <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text3); margin-bottom: 4px;">
+            <span style="font-weight: 700; color: #d97706;">⌛ En curso</span>
+            <span>${answeredCount}/${totalQs} (${percentage}%)</span>
+          </div>
+          <div style="height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; position: relative;">
+            <div class="test-prog-fill" style="width: ${percentage}%; height: 100%; background: linear-gradient(90deg, #d97706, #f59e0b); border-radius: 99px; transition: width 0.4s ease;"></div>
+          </div>
+        </div>
+      `;
+  }
+  
+  // B. Check if the test has a completed score
+  const score = UserManager.data.testScores && UserManager.data.testScores[testId];
+  if (score !== undefined) {
+      const apto = score >= 90; // max 3 wrong answers out of 30
+      return `
+        <div class="test-card-progress-wrap" style="width: 100%; margin-top: 12px; margin-bottom: 8px;">
+          <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text3); margin-bottom: 4px;">
+            <span style="font-weight: 800; color: ${apto ? 'var(--green)' : 'var(--red)'};">${apto ? '✅ APTO' : '❌ NO APTO'}</span>
+            <span style="font-weight: 600; color: var(--text2);">${score}% aciertos</span>
+          </div>
+          <div style="height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; position: relative;">
+            <div class="test-prog-fill" style="width: ${score}%; height: 100%; background: ${apto ? 'var(--green)' : 'var(--red)'}; border-radius: 99px; transition: width 0.4s ease;"></div>
+          </div>
+        </div>
+      `;
+  }
+  
+  return '';
+}
+
 function renderTests() {
   const p = state.permit;
   const t = state.topic;
@@ -638,6 +682,7 @@ function renderTests() {
       dgtTests.forEach(test => {
         const card = document.createElement('div');
         card.className = 'test-card';
+        const progressHtml = getTestCardProgressHTML(test.id, test.numero_preguntas || 30);
         card.innerHTML = `
           <div class="test-card-header">
             <h3>Test DGT ${test.numero || test.id.replace('DGT-','')}</h3>
@@ -647,6 +692,7 @@ function renderTests() {
             <span style="background:rgba(0,0,0,0.05); padding:4px 10px; border-radius:12px; font-weight:500;">📝 ${test.numero_preguntas || 30} Preguntas</span>
             <span style="background:rgba(0,0,0,0.05); padding:4px 10px; border-radius:12px; font-weight:500;">📅 ${test.fecha || 'Reciente'}</span>
           </div>
+          ${progressHtml}
           <div class="test-card-btns">
             <button class="tc-btn primary" data-id="${test.id}" data-mode="test">▶ Hacer test</button>
             <button class="tc-btn secondary" data-id="${test.id}" data-mode="memo">🧠 Memorizar</button>
@@ -713,6 +759,7 @@ function renderTests() {
 
       const card = document.createElement('div');
       card.className = 'test-card';
+      const progressHtml = getTestCardProgressHTML(`AY-${p.id}-${t.id}-${n}`, testQs);
       card.innerHTML = `
         <div class="test-card-header">
           <h3>TEST ${n.toString().padStart(2, '0')}</h3>
@@ -722,6 +769,7 @@ function renderTests() {
             <span style="background:rgba(0,0,0,0.05); padding:4px 10px; border-radius:12px; font-weight:500;">📝 ${testQs} Preguntas</span>
             <span style="background:rgba(0,0,0,0.05); padding:4px 10px; border-radius:12px; font-weight:500;">💡 Exclusivo</span>
         </div>
+        ${progressHtml}
         <div class="test-card-btns">
           <button class="tc-btn primary" data-n="${n}" data-mode="test">▶ Hacer test</button>
           <button class="tc-btn secondary" data-n="${n}" data-mode="memo">🧠 Memorizar</button>
@@ -992,6 +1040,14 @@ function showResults() {
   
   const pId = (state.permit && typeof state.permit === 'object') ? state.permit.id : (state.permit || 'B');
   const tId = (state.topic && typeof state.topic === 'object') ? state.topic.id : (state.topic || 'general');
+
+  const testId = state.isOfficialDgt
+    ? `DGT-${pId}-${state.testNum}`
+    : `AY-${pId}-${tId}-${state.testNum}`;
+  
+  const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
+  if (!UserManager.data.testScores) UserManager.data.testScores = {};
+  UserManager.data.testScores[testId] = pct;
   
   // No recorremos results para guardarlos en topicStats porque ya se guardaron en tiempo real al hacer click
   
