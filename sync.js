@@ -78,13 +78,18 @@ export async function saveProgressToDB(progressData) {
 
     // Save lastState to user_metadata for cross-device/session persistence
     try {
-      await supabase.auth.updateUser({
+      const { data: updateData, error: updateError } = await supabase.auth.updateUser({
         data: {
           lastState: progressData.lastState || null
         }
       });
+      if (updateError) {
+        logSupabaseError('updateUser', 'auth.users', updateError);
+      } else {
+        console.log('SyncManager: user_metadata lastState updated successfully', updateData);
+      }
     } catch (metaErr) {
-      console.warn('SyncManager: error guardando metadata de usuario', metaErr);
+      console.warn('SyncManager: error exception guardando metadata de usuario', metaErr);
     }
 
     return true;
