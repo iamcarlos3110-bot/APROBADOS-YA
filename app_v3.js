@@ -2238,3 +2238,4 @@ setTimeout(async () => {
 window.appState = state;
 window.startTest = startTest;
 window.renderTests = renderTests;
+window.renderPermits = renderPermits;

@@ -131,6 +131,9 @@ export async function initAuth() {
           clearInterval(interval);
           if (_event === 'SIGNED_IN') checkLocalDataMigration();
           await window.SyncManager.syncFromDB();
+          if (_event === 'SIGNED_IN' && typeof window.renderPermits === 'function') {
+            window.renderPermits();
+          }
         } else if (attempts >= 40) { // 2 segundos máximo
           clearInterval(interval);
           console.warn('[auth.js] No se cargó SyncManager real a tiempo. Se canceló la sincronización automática.');
