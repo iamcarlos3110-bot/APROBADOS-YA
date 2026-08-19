@@ -1082,7 +1082,6 @@ function showResults() {
 
 
   const skipped = total - results.length;
-  const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
 
   if(document.getElementById('resultScoreText')) document.getElementById('resultScoreText').textContent = `${correct}/${total}`;
   const circle = document.getElementById('resultScoreCircle');
