@@ -516,7 +516,10 @@ function renderPermits() {
   db.getPermits().forEach(p => {
     const card = document.createElement('div');
     card.className = 'permit-card';
+    const isPopular = (p.id === 'B');
+    if (isPopular) card.classList.add('permit-card--popular');
     card.innerHTML = `
+      ${isPopular ? '<div class="permit-popular-badge">⭐ Más popular</div>' : ''}
       <div class="permit-icon">${p.icon}</div>
       <div class="permit-name">${p.name}</div>
       <div class="permit-desc">${p.subtitle}</div>
