@@ -271,10 +271,43 @@ button { font-family: inherit; cursor: pointer; }
 /* ══════════════════════════════
    PANTALLA 1: INICIO / SELECCIÓN PERMISO
 ══════════════════════════════ */
+#screen-home {
+  position: relative;
+  overflow: hidden;
+}
+#screen-home::before {
+  content: '';
+  position: absolute;
+  left: -120px;
+  top: 60px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(100,140,30,0.18) 0%, rgba(92,107,26,0.08) 45%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(40px);
+}
 .home-wrap {
   max-width: 1160px; margin: 0 auto; padding: 48px 24px 64px;
+  position: relative; z-index: 1;
 }
 .home-hero { text-align: center; margin-bottom: 44px; }
+.home-dots {
+  display: inline-flex; gap: 5px; align-items: center;
+  margin-bottom: 6px; justify-content: center;
+}
+.home-dots span {
+  display: block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--olive); opacity: 0.85;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+.home-dots span:nth-child(2) { animation-delay: 0.3s; opacity: 0.55; background: #b5c060; }
+.home-dots span:nth-child(3) { animation-delay: 0.6s; opacity: 0.35; background: #8a9e2a; }
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+}
 .home-badge {
   display: inline-flex; align-items: center; gap: 6px;
   background: var(--olive-pale); border: 1px solid var(--olive-border);
@@ -1127,7 +1160,7 @@ button { font-family: inherit; cursor: pointer; }
 .apunte-list { padding-left: 20px; font-size: 14.5px; color: var(--text); line-height: 1.6; }
 .apunte-list li { margin-bottom: 10px; }
 
-/* --- SE�ALES SCREEN -------------------------- */
+/* --- SEALES SCREEN -------------------------- */
 .signs-tabs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; }
 .sign-tab { padding: 8px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; font-weight: 600; cursor: pointer; color: var(--text2); white-space: nowrap; }
 .sign-tab.active { background: var(--olive); color: white; border-color: var(--olive); }
