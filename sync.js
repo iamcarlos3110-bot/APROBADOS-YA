@@ -463,8 +463,8 @@ export async function syncFromDB() {
       UserManager.data.bestStreak = progressData.best_streak || 0;
       UserManager.data.lastActiveDate = progressData.last_test_date || null;
       UserManager.data.dailyQuestions = 0; // Se reinicia al iniciar sesión/refrescar
-      UserManager.data.lastPermit = null;
-      UserManager.data.lastState = null;
+      UserManager.data.lastPermit = UserManager.data.lastPermit || null;
+      UserManager.data.lastState = UserManager.data.lastState || null;
     } else {
       console.log('SyncManager: No existe registro en la nube. Creando progreso inicial...');
       await saveProgressToDB(UserManager.data);
