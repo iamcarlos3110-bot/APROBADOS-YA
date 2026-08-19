@@ -658,6 +658,9 @@ function getTestCardProgressHTML(testId, totalQs) {
 function renderTests() {
   const p = state.permit;
   const t = state.topic;
+  
+  const ls = UserManager.data.lastState;
+  const activeTestId = ls ? (ls.topicId === 'oficiales' ? ls.testNum : `AY-${ls.permitId}-${ls.topicId}-${ls.testNum}`) : null;
   if (!t) { renderPermits(); return; }
   
   if(document.getElementById('testsPermitBadge')) document.getElementById('testsPermitBadge').textContent = `${p.icon} ${p.name}`;
@@ -687,7 +690,7 @@ function renderTests() {
           </div>
           ${progressHtml}
           <div class="test-card-btns">
-            <button class="tc-btn primary" data-id="${test.id}" data-mode="test">▶ Hacer test</button>
+            <button class="tc-btn primary" data-id="${test.id}" data-mode="test">${ls && activeTestId === test.id ? '▶ Continuar' : '▶ Hacer test'}</button>
             <button class="tc-btn secondary" data-id="${test.id}" data-mode="memo">🧠 Memorizar</button>
           </div>
         `;
@@ -764,7 +767,7 @@ function renderTests() {
         </div>
         ${progressHtml}
         <div class="test-card-btns">
-          <button class="tc-btn primary" data-n="${n}" data-mode="test">▶ Hacer test</button>
+          <button class="tc-btn primary" data-n="${n}" data-mode="test">${ls && activeTestId === `AY-${p.id}-${t.id}-${n}` ? '▶ Continuar' : '▶ Hacer test'}</button>
           <button class="tc-btn secondary" data-n="${n}" data-mode="memo">🧠 Memorizar</button>
         </div>
       `;
@@ -835,6 +838,44 @@ async function startTest(testIdentifier, mode, isOfficial = false) {
     }
   }
   // ── FIN LÓGICA FREEMIUM ───────────────────────────
+
+  // Check if there is a saved state for this specific test that we should resume
+  const ls = UserManager.data.lastState;
+  const pId = state.permit.id;
+  const tId = state.topic ? state.topic.id : 'oficiales';
+  const currentTestId = isOfficial
+    ? testIdentifier
+    : `AY-${pId}-${tId}-${testIdentifier}`;
+  const savedTestId = ls ? (ls.topicId === 'oficiales' ? ls.testNum : `AY-${ls.permitId}-${ls.topicId}-${ls.testNum}`) : null;
+
+  if (mode === 'test' && ls && savedTestId === currentTestId) {
+      // Resume the test exactly where the user left off
+      state.testMode = mode;
+      state.isOfficialDgt = isOfficial;
+      state.testNum = testIdentifier;
+      state.currentQuestion = ls.currentQuestion || 0;
+      state.answers = ls.answers || {};
+      
+      if (isOfficial) {
+        state.questions = db.getQuestionsByTest(testIdentifier);
+      } else {
+        state.questions = db.getAyQuestions(pId, tId, parseInt(testIdentifier));
+      }
+      
+      // Recalculate current score based on answers
+      state.score = 0;
+      Object.keys(state.answers).forEach(idx => {
+         const q = state.questions[idx];
+         if (q && state.answers[idx] === q.correcta) {
+             state.score++;
+         }
+      });
+      
+      renderEngineUI();
+      renderQuestion(state.currentQuestion);
+      showScreen('screen-test');
+      return;
+  }
 
   state.testMode = mode;
   state.isOfficialDgt = isOfficial;
