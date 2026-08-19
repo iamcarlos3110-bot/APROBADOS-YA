@@ -33,10 +33,10 @@ const UserManager = {
       this.checkDaily();
     } catch(e) { console.warn('No se pudo cargar progreso', e); }
   },
-  save() {
+  save(syncToCloud = true) {
     try {
       localStorage.setItem('ay_progress', JSON.stringify(this.data));
-      if (typeof window.currentUser === 'function' && window.currentUser() && window.SyncManager?.saveProgressToDB) {
+      if (syncToCloud && typeof window.currentUser === 'function' && window.currentUser() && window.SyncManager?.saveProgressToDB) {
         window.SyncManager.saveProgressToDB(this.data);
       }
     } catch(e) { console.warn('No se pudo guardar progreso', e); }
@@ -81,7 +81,9 @@ const UserManager = {
     this.data.topicStats[permitId][t].total++;
     if(isCorrect) this.data.topicStats[permitId][t].correct++;
 
-    this.recordActivity();
+    // Save locally to update UI progress bars instantly without spamming cloud upsert requests
+    this.save(false);
+    this.updateUI();
   },
   saveLastState(permitObj, testNum, topicObj = null, currentQ = 0, ans = {}) {
     const pId = typeof permitObj === 'object' ? permitObj.id : permitObj;
@@ -909,6 +911,13 @@ function renderQuestion(index) { if(!UserManager.data.favorites) UserManager.dat
         btn.addEventListener('click', () => {
           state.answers[index] = key;
           if (!state.isSimulacro && key === q.correcta && !answered) state.score++;
+          
+          // Record results in real-time for normal tests (non-simulacros)
+          if (!state.isSimulacro && state.testMode === 'test') {
+            const isCorrect = key === q.correcta;
+            UserManager.recordQuestionResult(state.permit.id, state.topic ? state.topic.id : null, q.id, isCorrect);
+          }
+          
           renderQuestion(index);
         });
       }
@@ -978,31 +987,16 @@ function showResults() {
   const total = state.questions.filter(q => !q.isPlaceholder).length;
   const wrong = results.filter(r => !r.isCorrect).length;
 
-  // FASE 1: Registrar estadísticas detalladas sin lanzar 30 peticiones red concurrentes
+  // FASE 1: Registrar fin de examen e incrementar contador total
   UserManager.data.totalTests++;
   
   const pId = (state.permit && typeof state.permit === 'object') ? state.permit.id : (state.permit || 'B');
   const tId = (state.topic && typeof state.topic === 'object') ? state.topic.id : (state.topic || 'general');
   
-  results.forEach(r => {
-      UserManager.data.dailyQuestions++;
-      if (r.isCorrect) UserManager.data.totalCorrect++;
-
-      if (!r.isCorrect && !UserManager.data.mistakes.includes(r.q.id)) {
-          UserManager.data.mistakes.push(r.q.id);
-      } else if (r.isCorrect && UserManager.data.mistakes.includes(r.q.id)) {
-          UserManager.data.mistakes = UserManager.data.mistakes.filter(id => id !== r.q.id);
-      }
-
-      if (!UserManager.data.topicStats[pId]) UserManager.data.topicStats[pId] = {};
-      const t = tId || 'general';
-      if (!UserManager.data.topicStats[pId][t]) UserManager.data.topicStats[pId][t] = { correct: 0, total: 0 };
-      UserManager.data.topicStats[pId][t].total++;
-      if (r.isCorrect) UserManager.data.topicStats[pId][t].correct++;
-  });
+  // No recorremos results para guardarlos en topicStats porque ya se guardaron en tiempo real al hacer click
   
   UserManager.data.lastState = null;
-  UserManager.recordActivity(); // Guarda localmente y lanza una sola petición de progreso en la nube
+  UserManager.recordActivity(); // Guarda localmente y sincroniza la cabecera del progreso en la nube
 
   // ─── FASE F: Sincronizar con Supabase si hay sesión ────────
   if (window.SyncManager && typeof window.currentUser === 'function' && window.currentUser()) {
@@ -1022,6 +1016,11 @@ function showResults() {
       results.forEach(r => {
         window.SyncManager.recordMistakeToDB(r.q.id, r.isCorrect);
       });
+    }
+
+    // Sincronizar estadísticas acumuladas por tema en la DB en un solo lote
+    if (typeof window.SyncManager.saveTopicStatsBulkToDB === 'function') {
+      window.SyncManager.saveTopicStatsBulkToDB(UserManager.data.topicStats);
     }
   }
 
