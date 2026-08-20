@@ -1640,11 +1640,20 @@ async function renderMemoSelectors() {
     });
     
     let topicOpts = `<div class="custom-dropdown-item ${memoState.topicId === 'general' ? 'active' : ''}" data-action="topic" data-val="general">Todos los temas</div>`;
+    
+    // Añadir opción de "Mis Errores" si hay fallos acumulados
+    const errorCount = (UserManager.data.mistakes || []).length;
+    topicOpts += `<div class="custom-dropdown-item ${memoState.topicId === 'errors' ? 'active' : ''}" data-action="topic" data-val="errors" style="color: #E74C3C; font-weight: bold;">❌ Mis Errores (${errorCount})</div>`;
+
     db.getThemes(memoState.permitId).forEach(t => {
         topicOpts += `<div class="custom-dropdown-item ${memoState.topicId === t.id ? 'active' : ''}" data-action="topic" data-val="${t.id}">${t.name}</div>`;
     });
     
-    const activeTheme = memoState.topicId === 'general' ? 'Todos los temas' : db.getThemes(memoState.permitId).find(t => t.id === memoState.topicId)?.name || 'Temas';
+    const activeTheme = memoState.topicId === 'general' 
+        ? 'Todos los temas' 
+        : (memoState.topicId === 'errors' 
+            ? '❌ Mis Errores' 
+            : db.getThemes(memoState.permitId).find(t => t.id === memoState.topicId)?.name || 'Temas');
 
     let html = `
     <div style="display:flex; gap:12px; margin-top:16px;">
@@ -1686,6 +1695,9 @@ async function loadMemoQuestions() {
      const allPermitQs = db.dgtQuestions.filter(q => q.permit_id === memoState.permitId);
      if (memoState.topicId === 'general') {
          allQs = allPermitQs;
+     } else if (memoState.topicId === 'errors') {
+         const failedIds = UserManager.data.mistakes || [];
+         allQs = allPermitQs.filter(q => failedIds.includes(q.id));
      } else {
          allQs = allPermitQs.filter(q => q.theme_aprobados_ya === memoState.topicId || q.theme_id === memoState.topicId);
          
@@ -1716,7 +1728,12 @@ async function loadMemoQuestions() {
   } catch(e) {}
   
   if(allQs.length === 0) {
-      if(document.getElementById('memoList')) document.getElementById('memoList').innerHTML = '<div style="padding:40px;text-align:center">No hay preguntas disponibles para esta selección.</div>';
+      const msg = memoState.topicId === 'errors' 
+          ? '🎉 ¡Buen trabajo! No tienes preguntas falladas registradas para este permiso.' 
+          : 'No hay preguntas disponibles para esta selección.';
+      if(document.getElementById('memoList')) {
+          document.getElementById('memoList').innerHTML = `<div style="padding:40px;text-align:center;color:var(--text2);font-size:15px;line-height:1.5;">${msg}</div>`;
+      }
       return;
   }
   memoState.questions = allQs; 
@@ -1808,7 +1825,38 @@ function renderMemoCard(container = document.getElementById('memoList')) {
    container.innerHTML = html;
 }
 
-function handleMemoAnswer(idx) { memoState.selectedOpt = idx; renderMemoCard(memoState.mode === 'fav' ? document.getElementById('favoritesList') : document.getElementById('memoList')); }
+function handleMemoAnswer(idx) {
+  memoState.selectedOpt = idx;
+  const q = memoState.questions[memoState.currentIndex];
+  if (q) {
+      const correctKey = q.correcta || String.fromCharCode(65 + q.correct);
+      const isCorrect = (idx === correctKey);
+      
+      const mistakesList = UserManager.data.mistakes || [];
+      const hasError = mistakesList.includes(q.id);
+      
+      if (hasError && isCorrect) {
+          // Si estaba en errores y responde bien -> eliminar de errores
+          UserManager.data.mistakes = mistakesList.filter(id => id !== q.id);
+          UserManager.save();
+          if (window.SyncManager && typeof window.currentUser === 'function' && window.currentUser()) {
+              window.SyncManager.recordMistakeToDB(q.id, true);
+          }
+          // Refrescar selectores de memorizar para actualizar contador de errores
+          renderMemoSelectors();
+      } else if (!hasError && !isCorrect) {
+          // Si no estaba en errores y responde mal -> añadir a errores
+          if (!UserManager.data.mistakes) UserManager.data.mistakes = [];
+          UserManager.data.mistakes.push(q.id);
+          UserManager.save();
+          if (window.SyncManager && typeof window.currentUser === 'function' && window.currentUser()) {
+              window.SyncManager.recordMistakeToDB(q.id, false);
+          }
+          renderMemoSelectors();
+      }
+  }
+  renderMemoCard(memoState.mode === 'fav' ? document.getElementById('favoritesList') : document.getElementById('memoList'));
+}
 function showMemoAnswer() { memoState.selectedOpt = memoState.questions[memoState.currentIndex].correcta || String.fromCharCode(65 + memoState.questions[memoState.currentIndex].correct); renderMemoCard(memoState.mode === 'fav' ? document.getElementById('favoritesList') : document.getElementById('memoList')); }
 function nextMemoQuestion() { if (memoState.currentIndex < memoState.questions.length - 1) { memoState.currentIndex++; memoState.selectedOpt = null; renderMemoCard(memoState.mode === 'fav' ? document.getElementById('favoritesList') : document.getElementById('memoList')); } }
 function prevMemoQuestion() { if (memoState.currentIndex > 0) { memoState.currentIndex--; memoState.selectedOpt = null; renderMemoCard(memoState.mode === 'fav' ? document.getElementById('favoritesList') : document.getElementById('memoList')); } }
