@@ -497,14 +497,23 @@ button { font-family: inherit; cursor: pointer; }
   flex-wrap: wrap;
 }
 .back-btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: var(--bg-card); border: 1.5px solid var(--border);
-  color: var(--text2); border-radius: var(--radius-sm);
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(135deg, var(--olive), #6b8c2a); border: none;
+  color: #ffffff; border-radius: var(--radius-sm);
   padding: 9px 16px; font-size: 13px; font-weight: 600;
   transition: all var(--t); white-space: nowrap; flex-shrink: 0;
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 10px rgba(92,107,26,0.15);
+  cursor: pointer;
 }
-.back-btn:hover { border-color: var(--olive); color: var(--olive); background: var(--olive-pale); }
+.back-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(92,107,26,0.3);
+  filter: brightness(1.05);
+  color: #ffffff;
+}
+.back-btn:active {
+  transform: translateY(0);
+}
 .back-btn.sm { padding: 7px 13px; font-size: 12px; }
 
 .page-header-info { flex: 1; min-width: 0; }
