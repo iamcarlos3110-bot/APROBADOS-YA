@@ -1578,12 +1578,37 @@ function showPrepScreen() {
     <div class="progress-card olive"><h4>Tests Realizados</h4><div class="val">${UserManager.data.totalTests}</div></div>
     <div class="progress-card"><h4>Preguntas Acertadas</h4><div class="val">${UserManager.data.totalCorrect}</div></div>
     <div class="progress-card"><h4>Aciertos Totales</h4><div class="val">${pctTotal}%</div></div>
-    <div class="progress-card"><h4>Mis Errores</h4><div class="val" style="color:#E74C3C">${UserManager.data.mistakes.length}</div></div>
+    <div class="progress-card" onclick="window.goToMemoErrors()" style="cursor:pointer; border: 1.5px solid rgba(231,76,60,0.15); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+      <h4 style="color:#E74C3C">Mis Errores ➔</h4>
+      <div class="val" style="color:#E74C3C">${UserManager.data.mistakes.length}</div>
+    </div>
     <div class="progress-card"><h4>Días de Racha</h4><div class="val">${UserManager.data.streak} 🔥</div></div>
     
     <div style="grid-column: 1 / -1; margin-top:20px;"><h3>📚 Temas a mejorar</h3><div class="progress-list">${topicsHtml}</div></div>
   `;
 }
+
+async function goToMemoErrors() {
+    // Activar pestaña Memorizar en el menú de navegación superior
+    document.querySelectorAll('nav a').forEach(a => {
+        if (a.getAttribute('data-target') === 'screen-memo') {
+            a.classList.add('active');
+        } else {
+            a.classList.remove('active');
+        }
+    });
+    
+    // Configurar estado de memorizar
+    memoState.mode = 'memo';
+    memoState.permitId = UserManager.data.lastPermit || 'B';
+    memoState.topicId = 'errors';
+    
+    // Cargar pantalla
+    showScreen('screen-memo');
+    await renderMemoSelectors();
+    await loadMemoQuestions();
+}
+window.goToMemoErrors = goToMemoErrors;
 
 const memoState = { questions: [], currentIndex: 0, selectedOpt: null, mode: 'memo', permitId: 'B', topicId: 'general' };
 
