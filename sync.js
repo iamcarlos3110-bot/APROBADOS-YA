@@ -197,6 +197,7 @@ export async function recordMistakeToDB(questionId, isCorrect) {
       if (existing) {
         const { error } = await supabase.from('mistakes').update({
           times_wrong: existing.times_wrong + 1,
+          times_correct: 0, // Reset correct count so it is active again
           last_wrong_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         }).eq('user_id', user.id).eq('question_id', questionId);
@@ -269,7 +270,7 @@ export async function recordMistakesBulkToDB(results) {
             user_id: user.id,
             question_id: qId,
             times_wrong: dbRow.times_wrong + 1,
-            times_correct: dbRow.times_correct,
+            times_correct: 0, // Reset correct count so it is active again
             last_wrong_at: new Date().toISOString(),
             updated_at: new Date().toISOString()
           });
@@ -445,7 +446,8 @@ export async function loadMistakesFromDB() {
     const { data, error } = await supabase
       .from('mistakes')
       .select('question_id')
-      .eq('user_id', user.id);
+      .eq('user_id', user.id)
+      .eq('times_correct', 0);
     if (error) {
       logSupabaseError('select', 'mistakes', error);
       throw error;
